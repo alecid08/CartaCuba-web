@@ -1,4 +1,6 @@
 ---
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 <footer class="w-full mt-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant/50">
   <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto text-on-surface dark:text-inverse-on-surface">
@@ -19,10 +21,10 @@
     <div class="space-y-4">
       <h5 class="font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-wider text-sm">Explore</h5>
       <ul class="space-y-2 font-body-md text-body-md">
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/nature">Nature Trails</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/heritage">Urban Heritage</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/estancias">Local Stays</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/culture">Culture & Traditions</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}nature/`}>Nature Trails</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}heritage/`}>Urban Heritage</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}estancias/`}>Local Stays</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}culture/`}>Culture & Traditions</a></li>
       </ul>
     </div>
 

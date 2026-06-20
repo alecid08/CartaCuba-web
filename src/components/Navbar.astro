@@ -5,18 +5,21 @@ interface Props {
 
 const { activePage } = Astro.props;
 
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
 const links = [
-  { name: 'Nature', href: '/nature', id: 'nature' },
-  { name: 'Culture', href: '/culture', id: 'culture' },
-  { name: 'Heritage', href: '/heritage', id: 'heritage' },
-  { name: 'Experiences', href: '/experiencias', id: 'experiences' },
-  { name: 'Estancias', href: '/estancias', id: 'estancias' }
+  { name: 'Nature', href: `${cleanBase}nature/`, id: 'nature' },
+  { name: 'Culture', href: `${cleanBase}culture/`, id: 'culture' },
+  { name: 'Heritage', href: `${cleanBase}heritage/`, id: 'heritage' },
+  { name: 'Experiences', href: `${cleanBase}experiencias/`, id: 'experiences' },
+  { name: 'Estancias', href: `${cleanBase}estancias/`, id: 'estancias' }
 ];
 ---
 
 <header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300 ease-in-out h-20" id="main-nav">
   <div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-    <a class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight" href="/">CartaCuba</a>
+    <a class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight" href={cleanBase}>CartaCuba</a>
     
     <nav class="hidden md:flex items-center gap-8">
       {links.map((link) => {

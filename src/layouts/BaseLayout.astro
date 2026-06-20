@@ -17,6 +17,9 @@ const {
   bodyClass = "bg-background text-on-background font-body-md overflow-x-hidden", 
   isNaturePage = false 
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ const {
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   
   <!-- Favicon -->
-  <link rel="icon" href="./favicon.svg" />
+  <link rel="icon" href={`${cleanBase}favicon.svg`} />
   
   <title>{title}</title>
   
