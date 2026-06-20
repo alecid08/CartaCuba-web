@@ -3,21 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 ---
 
-<BaseLayout title="CartaCuba | Heritage of Camagüey" activePage="heritage">
+<BaseLayout title="CartaCuba | Patrimonio de Camagüey" activePage="heritage">
   <div class="grain-texture fixed inset-0 z-0 pointer-events-none"></div>
 
   <!-- Hero Section -->
   <HeroSection
     bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuB8xBxD_cgM0-37hJXv3L43uhfY8Yx-prN95qwFo2uB9RdjW2Y-nNESuzjlFUwCNexugcR7bb7r3rHNmL8WZ_gvoaVOXcu44X_rzwuIf8T3W87_gPba7CT1iJ37Wzndjcvr-bVx-oda8C-FOYl1ZWFNpsX_M6KsYY15Xx-gKp3aL132E3_NSTC8kWK2rxb4QABmAwzWjlXX2CVY8q1p4exJxv2rIGGLG5BNyF4jsKYUj_KL02J_k2XHq1cO9P-QElm-ayhEq24ou6g"
-    badgeText="UNESCO World Heritage Site"
+    badgeText="Patrimonio de la Humanidad UNESCO"
     badgeClass="inline-block bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full font-label-md text-label-md mb-6"
-    title="The Labyrinthine Heart of Camagüey"
-    description="Discover a city of asymmetric squares and winding alleys, designed to confuse pirates and preserve a legacy of colonial elegance."
+    title="El Corazón Laberíntico de Camagüey"
+    description="Descubre una ciudad de plazas asimétricas y callejones serpenteantes, diseñada para confundir a los piratas y preservar un legado de elegancia colonial."
     heightClass="h-[819px]"
     overlayClass="bg-black/40"
   >
-    <button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-lg hover:shadow-xl transition-all">Explore Map</button>
-    <button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">Watch History</button>
+    <button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-lg hover:shadow-xl transition-all">Explorar Mapa</button>
+    <button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">Ver la Historia</button>
   </HeroSection>
 
   <main class="relative z-10">
@@ -27,7 +27,7 @@ import HeroSection from '../components/HeroSection.astro';
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
           <!-- Sidebar: Landmarks -->
           <div class="lg:col-span-4 space-y-6">
-            <h2 class="font-headline-md text-headline-md text-on-surface mb-8 font-semibold">Historic Landmarks</h2>
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-8 font-semibold">Lugares Históricos</h2>
             <!-- Landmark Card 1 -->
             <div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
               <div class="flex items-start gap-4">
@@ -36,7 +36,7 @@ import HeroSection from '../components/HeroSection.astro';
                 </div>
                 <div>
                   <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">San Juan de Dios</h3>
-                  <p class="font-body-md text-body-md text-on-surface-variant">The most complete colonial square in Cuba, featuring the Church and Hospital of San Juan de Dios.</p>
+                  <p class="font-body-md text-body-md text-on-surface-variant">La plaza colonial más completa de Cuba, que cuenta con la Iglesia y el Hospital de San Juan de Dios.</p>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@ import HeroSection from '../components/HeroSection.astro';
                 </div>
                 <div>
                   <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Plaza del Carmen</h3>
-                  <p class="font-body-md text-body-md text-on-surface-variant">Famous for its life-sized bronze sculptures of local citizens and the Nuestra Señora del Carmen church.</p>
+                  <p class="font-body-md text-body-md text-on-surface-variant">Famosa por sus esculturas de bronce de tamaño natural de ciudadanos locales y la iglesia de Nuestra Señora del Carmen.</p>
                 </div>
               </div>
             </div>
@@ -59,8 +59,8 @@ import HeroSection from '../components/HeroSection.astro';
                   <span class="material-symbols-outlined">route</span>
                 </div>
                 <div>
-                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Winding Alleys</h3>
-                  <p class="font-body-md text-body-md text-on-surface-variant">Explore the irregular street grid, a unique defensive urban plan found nowhere else in the Caribbean.</p>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Callejones Serpenteantes</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">Explora la cuadrícula de calles irregulares, un plan urbano defensivo único que no se encuentra en ningún otro lugar del Caribe.</p>
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@ import HeroSection from '../components/HeroSection.astro';
                 </div>
                 <div class="absolute top-1/2 right-1/4 group-hotspot cursor-pointer">
                   <div class="bg-tertiary w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
-                  <div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap text-on-surface">Cathedral</div>
+                  <div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap text-on-surface">Catedral</div>
                 </div>
               </div>
               <!-- Map Overlay UI -->
@@ -100,8 +100,8 @@ import HeroSection from '../components/HeroSection.astro';
     <!-- Architectural Bento Grid -->
     <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       <div class="text-center mb-16">
-        <h2 class="font-display-lg text-display-lg text-on-surface mb-4 font-bold">Preserving the Tinajón Spirit</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">The architecture of Camagüey is defined by its massive clay pots, high ceilings, and interior patios that cool the tropical air.</p>
+        <h2 class="font-display-lg text-display-lg text-on-surface mb-4 font-bold">Preservando el Espíritu del Tinajón</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">La arquitectura de Camagüey se define por sus masivas vasijas de arcilla, techos altos y patios interiores que refrescan el aire tropical.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
         <!-- Large Feature Card -->
@@ -109,19 +109,19 @@ import HeroSection from '../components/HeroSection.astro';
           <img alt="Colonial Interior patio with tinajones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZaxGTqcU3VljN47-J2B4dwG8T4kHolxGOskpiUkGe8zfWJnciSbow6Z8GfaTo_pwjBS8A6HRpnW8VGhQVhCSs9sNDEP2EVRBIcs2JDqWNhfhLkU6hjwjr19DyIAs6IUPStl-n-Q0KE8zwo2KkTmVWUNq8MpsCT95k5gUyvqPYM2qBvu3f7dHquufaijeQPc5AFEjhDjpfNgpysicZE4zrx3I-0TY0pJQumksxY865lDYVKymnYUkJKaoSV4XH677TZuaz2NBBbg">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 p-10">
-            <h3 class="font-headline-md text-headline-md text-white mb-2 font-semibold">Internal Patios</h3>
-            <p class="text-white/80 font-body-md text-body-md">The lungs of the colonial house, designed for ventilation and rain collection.</p>
+            <h3 class="font-headline-md text-headline-md text-white mb-2 font-semibold">Patios Interiores</h3>
+            <p class="text-white/80 font-body-md text-body-md">Los pulmones de la casa colonial, diseñados para la ventilación y la recolección de lluvia.</p>
           </div>
         </div>
         <!-- Secondary Feature Card -->
         <div class="bg-surface-container-highest p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/30">
           <div>
             <span class="material-symbols-outlined text-primary text-5xl mb-6">architecture</span>
-            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 font-semibold">Preservation Efforts</h3>
-            <p class="font-body-md text-body-md text-on-surface-variant">Ongoing restoration programs maintain the authentic lime-washed facades and original woodwork of the 18th century.</p>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 font-semibold">Esfuerzos de Preservación</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">Los programas de restauración en curso mantienen las auténticas fachadas encaladas y la carpintería original del siglo XVIII.</p>
           </div>
           <a class="text-primary font-label-md text-label-md flex items-center gap-2 mt-8 hover:underline" href="#">
-            Learn about Stewardship <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            Conoce sobre Nuestro Compromiso <span class="material-symbols-outlined text-sm">arrow_forward</span>
           </a>
         </div>
         <!-- Detail Card 1 -->
@@ -146,9 +146,9 @@ import HeroSection from '../components/HeroSection.astro';
         <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 organic-shape -translate-y-1/2 translate-x-1/2"></div>
         <div class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 organic-shape translate-y-1/2 -translate-x-1/2"></div>
         <div class="relative z-10">
-          <h2 class="font-display-lg text-display-lg mb-6 font-bold">Experience the Living History</h2>
-          <p class="font-body-lg text-body-lg mb-10 max-w-xl mx-auto opacity-90">Join our local heritage experts for a private tour through the secrets of the labyrinth.</p>
-          <button class="bg-white text-primary px-10 py-4 rounded-full font-label-md text-label-md hover:shadow-2xl hover:scale-105 transition-all active:scale-95">Book an Architectural Walk</button>
+          <h2 class="font-display-lg text-display-lg mb-6 font-bold">Vive la Historia Viva</h2>
+          <p class="font-body-lg text-body-lg mb-10 max-w-xl mx-auto opacity-90">Únete a nuestros expertos locales en patrimonio para un recorrido privado por los secretos del laberinto.</p>
+          <button class="bg-white text-primary px-10 py-4 rounded-full font-label-md text-label-md hover:shadow-2xl hover:scale-105 transition-all active:scale-95">Reservar una Caminata Arquitectónica</button>
         </div>
       </div>
     </section>

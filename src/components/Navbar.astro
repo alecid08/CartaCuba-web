@@ -9,10 +9,10 @@ const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
 const links = [
-  { name: 'Nature', href: `${cleanBase}nature/`, id: 'nature' },
-  { name: 'Culture', href: `${cleanBase}culture/`, id: 'culture' },
-  { name: 'Heritage', href: `${cleanBase}heritage/`, id: 'heritage' },
-  { name: 'Experiences', href: `${cleanBase}experiencias/`, id: 'experiences' },
+  { name: 'Naturaleza', href: `${cleanBase}nature/`, id: 'nature' },
+  { name: 'Cultura', href: `${cleanBase}culture/`, id: 'culture' },
+  { name: 'Patrimonio', href: `${cleanBase}heritage/`, id: 'heritage' },
+  { name: 'Experiencias', href: `${cleanBase}experiencias/`, id: 'experiences' },
   { name: 'Estancias', href: `${cleanBase}estancias/`, id: 'estancias' }
 ];
 ---
@@ -45,7 +45,7 @@ const links = [
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
         <input 
           class="pl-10 pr-4 py-2 bg-surface-container-low border-outline-variant rounded-full text-label-md focus:outline-none focus:ring-2 focus:ring-primary/20 w-48 transition-all" 
-          placeholder="Explore..." 
+          placeholder="Explorar..." 
           type="text"
         />
       </div>
@@ -55,7 +55,7 @@ const links = [
       
       <!-- Call to Action -->
       <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all shadow-sm active:scale-95">
-        Book Now
+        Reservar
       </button>
       
       <!-- Mobile Menu Toggle -->
