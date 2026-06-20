@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CartaCuba | Heritage of Camagüey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&amp;family=Libre+Caslon+Text:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#005227",
+                        "inverse-on-surface": "#f8efea",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e9e1dc",
+                        "secondary": "#bb0017",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "primary-container": "#008643",
+                        "outline-variant": "#bdcabc",
+                        "surface-container": "#f5ece7",
+                        "inverse-primary": "#6edd8d",
+                        "primary": "#006b34",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c9c6c0",
+                        "on-primary-fixed": "#00210c",
+                        "background": "#fff8f5",
+                        "inverse-surface": "#34302c",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "tertiary-fixed": "#e5e2db",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-container": "#76756f",
+                        "on-secondary-container": "#fffbff",
+                        "outline": "#6e7a6e",
+                        "surface-tint": "#006d35",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#6edd8d",
+                        "on-surface": "#1e1b18",
+                        "surface": "#fff8f5",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-background": "#1e1b18",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#fbf2ed",
+                        "on-tertiary-container": "#fdffdd",
+                        "primary-fixed": "#8afaa7",
+                        "surface-container-highest": "#e9e1dc",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#efe6e2",
+                        "surface-dim": "#e1d8d4",
+                        "on-tertiary-fixed-variant": "#474742",
+                        "secondary-fixed": "#ffdad6",
+                        "on-surface-variant": "#3e4a3f",
+                        "tertiary": "#5d5c57",
+                        "on-secondary-fixed-variant": "#93000f",
+                        "on-primary-container": "#f6fff3",
+                        "secondary-container": "#e41e27"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .organic-shape {
+            border-radius: 63% 37% 54% 46% / 30% 60% 40% 70%;
+        }
+        .grain-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="grain-texture fixed inset-0 z-0"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 h-20">
+<nav class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight">
+                CartaCuba
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">Nature</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">Culture</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-semibold font-body-md text-body-md" href="#">Heritage</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">Experiences</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md" href="#">Estancias</a></div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all">
+                Book Now
+            </button>
+</nav>
+</header>
+<main class="relative z-10 pt-20">
+<!-- Hero Section -->
+<section class="relative h-[819px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0"><img alt="Heritage &amp; City hero background" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8xBxD_cgM0-37hJXv3L43uhfY8Yx-prN95qwFo2uB9RdjW2Y-nNESuzjlFUwCNexugcR7bb7r3rHNmL8WZ_gvoaVOXcu44X_rzwuIf8T3W87_gPba7CT1iJ37Wzndjcvr-bVx-oda8C-FOYl1ZWFNpsX_M6KsYY15Xx-gKp3aL132E3_NSTC8kWK2rxb4QABmAwzWjlXX2CVY8q1p4exJxv2rIGGLG5BNyF4jsKYUj_KL02J_k2XHq1cO9P-QElm-ayhEq24ou6g"><div class="absolute inset-0 bg-black/40"></div></div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="max-w-2xl">
+<span class="inline-block bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full font-label-md text-label-md mb-6">UNESCO World Heritage Site</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-6 text-white">The Labyrinthine Heart of Camagüey</h1>
+<p class="font-body-lg text-body-lg mb-8 text-white">Discover a city of asymmetric squares and winding alleys, designed to confuse pirates and preserve a legacy of colonial elegance.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-lg hover:shadow-xl transition-all">Explore Map</button>
+<button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">Watch History</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Navigation Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Sidebar: Landmarks -->
+<div class="lg:col-span-4 space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Historic Landmarks</h2>
+<!-- Landmark Card 1 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="bg-primary-container text-on-primary-container w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+<span class="material-symbols-outlined" data-icon="church">church</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">San Juan de Dios</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The most complete colonial square in Cuba, featuring the Church and Hospital of San Juan de Dios.</p>
+</div>
+</div>
+</div>
+<!-- Landmark Card 2 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="park">park</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Plaza del Carmen</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Famous for its life-sized bronze sculptures of local citizens and the Nuestra Señora del Carmen church.</p>
+</div>
+</div>
+</div>
+<!-- Landmark Card 3 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="bg-tertiary-container text-on-tertiary-container w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Winding Alleys</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Explore the irregular street grid, a unique defensive urban plan found nowhere else in the Caribbean.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Interface -->
+<div class="lg:col-span-8 sticky top-24">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-surface-container-highest h-[600px]">
+<img alt="Map Placeholder" class="w-full h-full object-cover grayscale opacity-40" data-alt="A highly detailed architectural site map of the historic center of Camagüey, Cuba. The map features a soft, parchment-like background with deep red and forest green accents indicating key landmarks and historic zones. The layout emphasizes the irregular, labyrinthine street pattern typical of the city's UNESCO zone. Elegant typography in a serif font labels the main plazas and colonial churches, creating a scholarly yet inviting aesthetic consistent with heritage preservation." data-location="Camaguey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDtK47MuTH0yyDrxrvb3MFUPiQm71qKapo30b6V6oXWOTlreS8lxHcAXWon_Ib955mJ6SuhFTsks0dlDAK2FQ-kM_NaL1grkQV31fEFeza4ivrTns-LslK8_GoLRlXmjl8NKm7dc-XPOKtMvvIz-0huZIHc3HQhXV2k3qPG39XhWV91gXXVuHcR9S9SkqMM9ERGDsP4ezmZb7EsNBFXv2zvi9O2fPqDXxzvhN2lT-udxrlIQv3gCs77sS5n_r-JFVccai0N0Y8hFk">
+<!-- Interactive Hotspots -->
+<div class="absolute inset-0 p-8">
+<div class="absolute top-1/3 left-1/4 animate-pulse">
+<div class="bg-primary w-6 h-6 rounded-full border-4 border-white shadow-lg cursor-pointer"></div>
+<div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap">San Juan de Dios</div>
+</div>
+<div class="absolute bottom-1/4 right-1/3">
+<div class="bg-primary-container w-6 h-6 rounded-full border-4 border-white shadow-lg cursor-pointer"></div>
+<div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap">Plaza del Carmen</div>
+</div>
+<div class="absolute top-1/2 right-1/4">
+<div class="bg-tertiary w-6 h-6 rounded-full border-4 border-white shadow-lg cursor-pointer"></div>
+<div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap">Cathedral</div>
+</div>
+</div>
+<!-- Map Overlay UI -->
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined" data-icon="add">add</span></button>
+<button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined" data-icon="remove">remove</span></button>
+<button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined" data-icon="my_location">my_location</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Architectural Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-4">Preserving the Tinajón Spirit</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">The architecture of Camagüey is defined by its massive clay pots, high ceilings, and interior patios that cool the tropical air.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 relative h-[500px] rounded-3xl overflow-hidden group">
+<img alt="Colonial Interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A photograph of a traditional colonial interior patio in Camagüey, featuring high ceilings with dark wood rafters and large, iconic terracotta tinajones (clay pots). The lighting is natural and atmospheric, streaming in through an open courtyard. Potted ferns and tropical greenery contrast beautifully with the earthy Heritage Bone wall textures. The scene evokes a sense of timeless elegance and masterful architectural preservation within a tropical climate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZaxGTqcU3VljN47-J2B4dwG8T4kHolxGOskpiUkGe8zfWJnciSbow6Z8GfaTo_pwjBS8A6HRpnW8VGhQVhCSs9sNDEP2EVRBIcs2JDqWNhfhLkU6hjwjr19DyIAs6IUPStl-n-Q0KE8zwo2KkTmVWUNq8MpsCT95k5gUyvqPYM2qBvu3f7dHquufaijeQPc5AFEjhDjpfNgpysicZE4zrx3I-0TY0pJQumksxY865lDYVKymnYUkJKaoSV4XH677TZuaz2NBBbg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-10">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Internal Patios</h3>
+<p class="text-white/80 font-body-md text-body-md">The lungs of the colonial house, designed for ventilation and rain collection.</p>
+</div>
+</div>
+<!-- Secondary Feature Card -->
+<div class="bg-surface-container-highest p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/30">
+<div>
+<span class="material-symbols-outlined text-primary text-5xl mb-6" data-icon="architecture">architecture</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Preservation Efforts</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ongoing restoration programs maintain the authentic lime-washed facades and original woodwork of the 18th century.</p>
+</div>
+<a class="text-primary font-label-md text-label-md flex items-center gap-2 mt-8 hover:underline" href="#">
+                        Learn about Stewardship <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Detail Card 1 -->
+<div class="relative h-[300px] rounded-3xl overflow-hidden group">
+<img alt="Architectural Detail" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Macro photograph focusing on the intricate ironwork of a colonial balcony in Camagüey. The hand-forged metal scrolls are set against a vibrant emerald green stucco wall. The lighting is sharp, creating dramatic shadows that emphasize the texture of the old masonry. This image highlights the artisanal craftsmanship and material heritage that defines the city's UNESCO identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa5jAGWdeBkStoCs7PV-exl9DF_yD5nfdRlQzr5da38uZEMfhc4gqXFQMtedzuM3BHPUMOY4dFtaiNiLnv37rpUQL8BVJ3SBW-wuGC6aNk-QFJi0KUj3N89GeGGfAyFHRuD4dakcNxS8oPM6EVF0RM4W2KUEiyN2Wj2mgLlt3S6W1c4U_BPOHv369ykJdnGHm-RXGCkROsgSTBReednyWNoY6p5ek4FgRv-Ez3VO9eDx7Aj8HF4_0gP8vFL9jaXCZn11_x34k4rbg">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+</div>
+<!-- Detail Card 2 -->
+<div class="relative h-[300px] rounded-3xl overflow-hidden group">
+<img alt="Winding Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A narrow, winding cobblestone street in Camagüey's historic center, showcasing the asymmetric urban design. The buildings on either side are painted in soft terracotta and ochre tones, with traditional wooden shutters. In the distance, the curve of the street obscures the view, creating a sense of mystery and medieval charm. The lighting is soft and diffused, highlighting the organic modernism of the preservation work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8FY2kJslYFvOlbxrrE3ClhAGZk7vUyr5CPROjHnB6LT5Yu-swxN9qIbt1FBafpEt_W2ZSKENg-xXOcJayYKDofYgG7h5EaMRyv8TSs6pOObTwCmO9xW4iFzKIGP7By1j9xBxa89SRp31z3muF6OP89pGNBb3JtCrfxQAG7t-a7KHgOFt6jODnthLfSnn145kggDYfSASR3kLnJqpLuYdUFpI6aV7keWzKKktn3RKomwEuXe8hkPIC0G0jJPWmLtWCc9qgunA3USSk1w">
+</div>
+<!-- Detail Card 3 -->
+<div class="relative h-[300px] rounded-3xl overflow-hidden group">
+<img alt="UNESCO Plaque" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A close-up shot of a weathered UNESCO World Heritage stone plaque mounted on an ancient colonial wall. The wall texture is rich with layers of history, showing traces of old paint and rough-hewn stone. The shot is composed with a shallow depth of field, with a blurred background of a sunlit plaza. It represents the official recognition and international significance of Camagüey's architectural legacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFCuBlQGan0OrbajQaJKvX4-YlHSdw6tOCAoAYwTpOJHQ7CzokKc5yvsZBti0hw1l4Ywyx3yx_u0-zU6_Wm3LM88Uu5AH8avA5l9dp0rOdveubOV7cZZZwfhiaSznXpaa8_ICX3ZpYqX4G8-8gfwabciv3g41f5JgBiib2w6CMSi2DvXSX78L0OwBoI5rL7R8Vo4qyNMC_9muKAx-hWykjUS5h6Tx5E7tJeoXjnnE0_D8WIrcgb3GWUkEg-WV0JHsgTXO3-mWGlQ">
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+<div class="bg-primary p-12 md:p-24 rounded-[4rem] text-on-primary relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 organic-shape -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 organic-shape translate-y-1/2 -translate-x-1/2"></div>
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg mb-6">Experience the Living History</h2>
+<p class="font-body-lg text-body-lg mb-10 max-w-xl mx-auto opacity-90">Join our local heritage experts for a private tour through the secrets of the labyrinth.</p>
+<button class="bg-white text-primary px-10 py-4 rounded-full font-label-md text-label-md hover:shadow-2xl hover:scale-105 transition-all">Book an Architectural Walk</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant/50">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto text-on-surface dark:text-inverse-on-surface font-body-md text-body-md">
+<div class="space-y-4">
+<div class="font-headline-sm text-headline-sm text-primary-fixed-dim">CartaCuba</div>
+<p class="opacity-80">© 2024 CartaCuba. Preserving the heritage of Camagüey.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Navigation</h4>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Contact Us</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Local Maps</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Conservation</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Heritage Fund</h4>
+<p class="text-on-surface-variant dark:text-surface-variant">Every booking contributes to the restoration of the colonial city center.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Follow the Legacy</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="photo_camera">photo_camera</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="language">language</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.add('bg-background');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Hover effect for map hotspots
+        document.querySelectorAll('.bg-primary, .bg-primary-container, .bg-tertiary').forEach(point => {
+            point.addEventListener('mouseenter', function() {
+                this.classList.add('scale-150');
+                this.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+            point.addEventListener('mouseleave', function() {
+                this.classList.remove('scale-150');
+            });
+        });
+    </script>
+
+
+</body></html>
