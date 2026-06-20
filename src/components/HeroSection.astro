@@ -1,0 +1,91 @@
+---
+interface Props {
+  bgImage: string;
+  badgeText: string;
+  badgeClass?: string;
+  badgeIcon?: string;
+  title: string;
+  description: string;
+  heightClass?: string;
+  overlayClass?: string;
+  showScrollIndicator?: boolean;
+  showExperts?: boolean;
+}
+
+const {
+  bgImage,
+  badgeText,
+  badgeClass = "bg-primary text-on-primary px-4 py-1 rounded-full font-label-md text-label-md mb-6",
+  badgeIcon,
+  title,
+  description,
+  heightClass = "h-[819px]",
+  overlayClass = "bg-black/30",
+  showScrollIndicator = false,
+  showExperts = false
+} = Astro.props;
+---
+
+<section class={`relative ${heightClass} flex items-center overflow-hidden w-full`}>
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      alt="Hero background image" 
+      class="w-full h-full object-cover" 
+      src={bgImage}
+    />
+    <div class={`absolute inset-0 ${overlayClass}`}></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+    <div class="max-w-2xl text-left">
+      <!-- Badge -->
+      {badgeIcon ? (
+        <span class={`inline-flex items-center gap-2 font-label-md mb-6 px-4 py-1.5 rounded-full border ${badgeClass}`}>
+          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">{badgeIcon}</span>
+          {badgeText}
+        </span>
+      ) : (
+        <span class={`inline-block mb-6 ${badgeClass}`}>
+          {badgeText}
+        </span>
+      )}
+
+      <!-- Title -->
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white" set:html={title}>
+      </h1>
+
+      <!-- Description -->
+      <p class="font-body-lg text-body-lg mb-8 max-w-lg text-white/90" set:html={description}>
+      </p>
+
+      <!-- Buttons Slot -->
+      <div class="flex flex-wrap gap-4">
+        <slot />
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional Experts Overlay -->
+  {showExperts && (
+    <div class="absolute bottom-10 left-margin-desktop hidden md:flex items-center gap-6 z-10">
+      <div class="flex -space-x-3">
+        <div class="w-12 h-12 rounded-full border-2 border-background overflow-hidden bg-surface-container">
+          <img alt="Expert ornithologist" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9IDdPJpAy-4KIrxY8ryBJ025fN6mO-TGrbU56OQ85j5EYBwxud-8cx5X2pTobrRI7ULgFKFXggPj0vilxciE2nj3jgWe5ZyVJIgHU6FWY0WXbM-fkcEpDPQ8BOH51taB47ZMFEsq9EBpRP6UKE8_xiXkS2-9wYPOOrDFv-vmseu1ksGOfpL_qtWEplfYaZYM606mheB62CuJqRqxBFpLQiT6jJBN3pSKK37MGuZv4VN8eU8mr7DFK62JemMmcE9ctcovUwJxVsaI" />
+        </div>
+        <div class="w-12 h-12 rounded-full border-2 border-background overflow-hidden bg-surface-container">
+          <img alt="Botanical researcher" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq_L-Ur5prFNh4ewFDTx8-M1NA21YZ9UowYCkr42ocLARe3o0OHtkbZ2tP45HCc907zVrdl1OxwU2SKp0E5KSztXK2GmElJ8cQX20c6aoVReFjif98eLKOnYdxQpP4vyOyqnsU8uS-O-x-FLRB9yOrHApxe9SafbgE-DLS9n1AazM0BEuXB8fKinHZarP9qYMhhjWBDczTbss93vHRE4eHqo7hI4ADix9pcc8FIuSGT1cBuoHymB_DkO3T0n29NdSx2hKfzqsrv0c" />
+        </div>
+      </div>
+      <p class="text-label-md text-white/90">Guided by local experts &amp; <br/>conservationists</p>
+    </div>
+  )}
+
+  <!-- Optional Scroll Indicator -->
+  {showScrollIndicator && (
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10">
+      <span class="material-symbols-outlined text-white text-4xl">keyboard_double_arrow_down</span>
+    </div>
+  )}
+</section>

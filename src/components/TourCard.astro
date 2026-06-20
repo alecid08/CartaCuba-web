@@ -1,0 +1,85 @@
+---
+interface Props {
+  type?: 'experience' | 'stay';
+  title: string;
+  subtitle?: string;
+  description?: string;
+  image: string;
+  badgeText?: string;
+  badgeClass?: string;
+  price?: string;
+  rating?: string;
+  href?: string;
+  cardClass?: string;
+}
+
+const {
+  type = 'experience',
+  title,
+  subtitle,
+  description,
+  image,
+  badgeText,
+  badgeClass = "bg-primary",
+  price,
+  rating,
+  href = "#",
+  cardClass = ""
+} = Astro.props;
+---
+
+{type === 'experience' ? (
+  <div class={`group relative overflow-hidden cursor-pointer ${cardClass}`}>
+    <img 
+      alt={title} 
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+      src={image} 
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 md:p-10 text-white">
+      {badgeText && (
+        <span class={`${badgeClass} px-3 py-1 rounded-full font-label-md text-[12px] uppercase mb-4 inline-block`}>
+          {badgeText}
+        </span>
+      )}
+      <h3 class="font-headline-sm text-headline-sm mb-2">{title}</h3>
+      {description && (
+        <p class="text-white/80 font-body-md text-body-md max-w-md">{description}</p>
+      )}
+    </div>
+  </div>
+) : (
+  <div class={`group cursor-pointer ${cardClass}`}>
+    <div class="relative aspect-[4/5] overflow-hidden leaf-corner mb-4">
+      <img 
+        alt={title} 
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+        src={image} 
+      />
+      {badgeText && (
+        <div class={`absolute top-4 left-4 ${badgeClass} text-on-primary font-label-md px-3 py-1 rounded-full`}>
+          {badgeText}
+        </div>
+      )}
+      {price && (
+        <div class="absolute bottom-4 right-4 bg-background/90 backdrop-blur px-3 py-1 rounded-lg text-primary font-bold shadow-sm">
+          {price} <span class="text-xs font-normal">/ noche</span>
+        </div>
+      )}
+    </div>
+    <div class="space-y-1">
+      <div class="flex justify-between items-start">
+        <h3 class="font-headline-sm text-headline-sm">{title}</h3>
+        {rating && (
+          <div class="flex items-center gap-1 text-secondary">
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="font-label-md">{rating}</span>
+          </div>
+        )}
+      </div>
+      {subtitle && (
+        <p class="text-on-surface-variant font-body-md italic">{subtitle}</p>
+      )}
+    </div>
+  </div>
+)}

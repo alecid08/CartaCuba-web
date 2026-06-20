@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<BaseLayout title="CartaCuba | Heritage of Camagüey" activePage="heritage">
+  <div class="grain-texture fixed inset-0 z-0 pointer-events-none"></div>
+
+  <!-- Hero Section -->
+  <HeroSection
+    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuB8xBxD_cgM0-37hJXv3L43uhfY8Yx-prN95qwFo2uB9RdjW2Y-nNESuzjlFUwCNexugcR7bb7r3rHNmL8WZ_gvoaVOXcu44X_rzwuIf8T3W87_gPba7CT1iJ37Wzndjcvr-bVx-oda8C-FOYl1ZWFNpsX_M6KsYY15Xx-gKp3aL132E3_NSTC8kWK2rxb4QABmAwzWjlXX2CVY8q1p4exJxv2rIGGLG5BNyF4jsKYUj_KL02J_k2XHq1cO9P-QElm-ayhEq24ou6g"
+    badgeText="UNESCO World Heritage Site"
+    badgeClass="inline-block bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full font-label-md text-label-md mb-6"
+    title="The Labyrinthine Heart of Camagüey"
+    description="Discover a city of asymmetric squares and winding alleys, designed to confuse pirates and preserve a legacy of colonial elegance."
+    heightClass="h-[819px]"
+    overlayClass="bg-black/40"
+  >
+    <button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-lg hover:shadow-xl transition-all">Explore Map</button>
+    <button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">Watch History</button>
+  </HeroSection>
+
+  <main class="relative z-10">
+    <!-- Map Navigation Section -->
+    <section class="py-24 bg-surface-container-low">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+          <!-- Sidebar: Landmarks -->
+          <div class="lg:col-span-4 space-y-6">
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-8 font-semibold">Historic Landmarks</h2>
+            <!-- Landmark Card 1 -->
+            <div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="bg-primary-container text-on-primary-container w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                  <span class="material-symbols-outlined">church</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">San Juan de Dios</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">The most complete colonial square in Cuba, featuring the Church and Hospital of San Juan de Dios.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Landmark Card 2 -->
+            <div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined">park</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Plaza del Carmen</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">Famous for its life-sized bronze sculptures of local citizens and the Nuestra Señora del Carmen church.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Landmark Card 3 -->
+            <div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-all cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="bg-tertiary-container text-on-tertiary-container w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined">route</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Winding Alleys</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">Explore the irregular street grid, a unique defensive urban plan found nowhere else in the Caribbean.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Map Interface -->
+          <div class="lg:col-span-8 sticky top-24">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-surface-container-highest h-[600px]">
+              <img alt="Map of Camagüey historic center" class="w-full h-full object-cover grayscale opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDtK47MuTH0yyDrxrvb3MFUPiQm71qKapo30b6V6oXWOTlreS8lxHcAXWon_Ib955mJ6SuhFTsks0dlDAK2FQ-kM_NaL1grkQV31fEFeza4ivrTns-LslK8_GoLRlXmjl8NKm7dc-XPOKtMvvIz-0huZIHc3HQhXV2k3qPG39XhWV91gXXVuHcR9S9SkqMM9ERGDsP4ezmZb7EsNBFXv2zvi9O2fPqDXxzvhN2lT-udxrlIQv3gCs77sS5n_r-JFVccai0N0Y8hFk">
+              <!-- Interactive Hotspots -->
+              <div class="absolute inset-0 p-8">
+                <div class="absolute top-1/3 left-1/4 animate-pulse group-hotspot cursor-pointer">
+                  <div class="bg-primary w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
+                  <div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap text-on-surface">San Juan de Dios</div>
+                </div>
+                <div class="absolute bottom-1/4 right-1/3 group-hotspot cursor-pointer">
+                  <div class="bg-primary-container w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
+                  <div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap text-on-surface">Plaza del Carmen</div>
+                </div>
+                <div class="absolute top-1/2 right-1/4 group-hotspot cursor-pointer">
+                  <div class="bg-tertiary w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
+                  <div class="absolute top-8 -left-4 bg-white p-2 rounded-lg shadow-md font-label-md text-label-md whitespace-nowrap text-on-surface">Cathedral</div>
+                </div>
+              </div>
+              <!-- Map Overlay UI -->
+              <div class="absolute bottom-6 right-6 flex flex-col gap-2">
+                <button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined">add</span></button>
+                <button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined">remove</span></button>
+                <button class="bg-white/90 backdrop-blur p-2 rounded-lg shadow-md hover:bg-white"><span class="material-symbols-outlined">my_location</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architectural Bento Grid -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-display-lg text-display-lg text-on-surface mb-4 font-bold">Preserving the Tinajón Spirit</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">The architecture of Camagüey is defined by its massive clay pots, high ceilings, and interior patios that cool the tropical air.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <!-- Large Feature Card -->
+        <div class="md:col-span-2 relative h-[500px] rounded-3xl overflow-hidden group cursor-pointer">
+          <img alt="Colonial Interior patio with tinajones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZaxGTqcU3VljN47-J2B4dwG8T4kHolxGOskpiUkGe8zfWJnciSbow6Z8GfaTo_pwjBS8A6HRpnW8VGhQVhCSs9sNDEP2EVRBIcs2JDqWNhfhLkU6hjwjr19DyIAs6IUPStl-n-Q0KE8zwo2KkTmVWUNq8MpsCT95k5gUyvqPYM2qBvu3f7dHquufaijeQPc5AFEjhDjpfNgpysicZE4zrx3I-0TY0pJQumksxY865lDYVKymnYUkJKaoSV4XH677TZuaz2NBBbg">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 p-10">
+            <h3 class="font-headline-md text-headline-md text-white mb-2 font-semibold">Internal Patios</h3>
+            <p class="text-white/80 font-body-md text-body-md">The lungs of the colonial house, designed for ventilation and rain collection.</p>
+          </div>
+        </div>
+        <!-- Secondary Feature Card -->
+        <div class="bg-surface-container-highest p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/30">
+          <div>
+            <span class="material-symbols-outlined text-primary text-5xl mb-6">architecture</span>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 font-semibold">Preservation Efforts</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">Ongoing restoration programs maintain the authentic lime-washed facades and original woodwork of the 18th century.</p>
+          </div>
+          <a class="text-primary font-label-md text-label-md flex items-center gap-2 mt-8 hover:underline" href="#">
+            Learn about Stewardship <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <!-- Detail Card 1 -->
+        <div class="relative h-[300px] rounded-3xl overflow-hidden group cursor-pointer">
+          <img alt="Architectural Detail balcon" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa5jAGWdeBkStoCs7PV-exl9DF_yD5nfdRlQzr5da38uZEMfhc4gqXFQMtedzuM3BHPUMOY4dFtaiNiLnv37rpUQL8BVJ3SBW-wuGC6aNk-QFJi0KUj3N89GeGGfAyFHRuD4dakcNxS8oPM6EVF0RM4W2KUEiyN2Wj2mgLlt3S6W1c4U_BPOHv369ykJdnGHm-RXGCkROsgSTBReednyWNoY6p5ek4FgRv-Ez3VO9eDx7Aj8HF4_0gP8vFL9jaXCZn11_x34k4rbg">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+        </div>
+        <!-- Detail Card 2 -->
+        <div class="relative h-[300px] rounded-3xl overflow-hidden group cursor-pointer">
+          <img alt="Winding Street of Camagüey" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8FY2kJslYFvOlbxrrE3ClhAGZk7vUyr5CPROjHnB6LT5Yu-swxN9qIbt1FBafpEt_W2ZSKENg-xXOcJayYKDofYgG7h5EaMRyv8TSs6pOObTwCmO9xW4iFzKIGP7By1j9xBxa89SRp31z3muF6OP89pGNBb3JtCrfxQAG7t-a7KHgOFt6jODnthLfSnn145kggDYfSASR3kLnJqpLuYdUFpI6aV7keWzKKktn3RKomwEuXe8hkPIC0G0jJPWmLtWCc9qgunA3USSk1w">
+        </div>
+        <!-- Detail Card 3 -->
+        <div class="relative h-[300px] rounded-3xl overflow-hidden group cursor-pointer">
+          <img alt="UNESCO Plaque on ancient wall" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFCuBlQGan0OrbajQaJKvX4-YlHSdw6tOCAoAYwTpOJHQ7CzokKc5yvsZBti0hw1l4Ywyx3yx_u0-zU6_Wm3LM88Uu5AH8avA5l9dp0rOdveubOV7cZZZwfhiaSznXpaa8_ICX3ZpYqX4G8-8gfwabciv3g41f5JgBiib2w6CMSi2DvXSX78L0OwBoI5rL7R8Vo4qyNMC_9muKAx-hWykjUS5h6Tx5E7tJeoXjnnE0_D8WIrcgb3GWUkEg-WV0JHsgTXO3-mWGlQ">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+      <div class="bg-primary p-12 md:p-24 rounded-[4rem] text-on-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 organic-shape -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 organic-shape translate-y-1/2 -translate-x-1/2"></div>
+        <div class="relative z-10">
+          <h2 class="font-display-lg text-display-lg mb-6 font-bold">Experience the Living History</h2>
+          <p class="font-body-lg text-body-lg mb-10 max-w-xl mx-auto opacity-90">Join our local heritage experts for a private tour through the secrets of the labyrinth.</p>
+          <button class="bg-white text-primary px-10 py-4 rounded-full font-label-md text-label-md hover:shadow-2xl hover:scale-105 transition-all active:scale-95">Book an Architectural Walk</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  // Hover effect for map hotspots
+  document.querySelectorAll('.bg-primary, .bg-primary-container, .bg-tertiary').forEach(point => {
+    point.addEventListener('mouseenter', function() {
+      this.classList.add('scale-150');
+      this.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
+    point.addEventListener('mouseleave', function() {
+      this.classList.remove('scale-150');
+    });
+  });
+</script>

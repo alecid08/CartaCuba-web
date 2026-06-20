@@ -1,0 +1,108 @@
+---
+interface Props {
+  activePage?: 'nature' | 'culture' | 'heritage' | 'experiences' | 'estancias' | 'home';
+}
+
+const { activePage } = Astro.props;
+
+const links = [
+  { name: 'Nature', href: '/nature', id: 'nature' },
+  { name: 'Culture', href: '/culture', id: 'culture' },
+  { name: 'Heritage', href: '/heritage', id: 'heritage' },
+  { name: 'Experiences', href: '/experiencias', id: 'experiences' },
+  { name: 'Estancias', href: '/estancias', id: 'estancias' }
+];
+---
+
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300 ease-in-out h-20" id="main-nav">
+  <div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+    <a class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight" href="/">CartaCuba</a>
+    
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((link) => {
+        const isActive = activePage === link.id;
+        return (
+          <a 
+            class={`font-body-md text-body-md transition-colors ${
+              isActive 
+                ? 'text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-semibold' 
+                : 'text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim'
+            }`} 
+            href={link.href}
+          >
+            {link.name}
+          </a>
+        );
+      })}
+    </nav>
+    
+    <div class="flex items-center gap-4">
+      <!-- Search Input/Button -->
+      <div class="relative hidden lg:block">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        <input 
+          class="pl-10 pr-4 py-2 bg-surface-container-low border-outline-variant rounded-full text-label-md focus:outline-none focus:ring-2 focus:ring-primary/20 w-48 transition-all" 
+          placeholder="Explore..." 
+          type="text"
+        />
+      </div>
+      <button class="lg:hidden material-symbols-outlined p-2 text-on-surface-variant hover:bg-primary/5 rounded-lg transition-all">
+        search
+      </button>
+      
+      <!-- Call to Action -->
+      <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all shadow-sm active:scale-95">
+        Book Now
+      </button>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="md:hidden material-symbols-outlined p-2 text-on-surface-variant" id="menu-toggle">
+        menu
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="hidden md:hidden absolute top-20 left-0 w-full bg-background border-b border-outline-variant/30 flex flex-col p-6 gap-4 z-40 shadow-lg" id="mobile-menu">
+    {links.map((link) => {
+      const isActive = activePage === link.id;
+      return (
+        <a 
+          class={`font-body-md text-body-md py-2 ${
+            isActive 
+              ? 'text-primary font-semibold border-l-4 border-primary pl-2' 
+              : 'text-on-surface-variant pl-2'
+          }`} 
+          href={link.href}
+        >
+          {link.name}
+        </a>
+      );
+    })}
+  </div>
+</header>
+
+<script>
+  // Simple scroll interaction for header
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      if (window.scrollY > 50) {
+        nav.classList.add('shadow-md', 'h-16');
+        nav.classList.remove('h-20');
+      } else {
+        nav.classList.remove('shadow-md', 'h-16');
+        nav.classList.add('h-20');
+      }
+    }
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>

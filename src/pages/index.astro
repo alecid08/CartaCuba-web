@@ -1,11 +1,140 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import TourCard from '../components/TourCard.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="CartaCuba | Immersive Ecotourism in Camagüey" activePage="home">
+  <!-- Hero Section -->
+  <HeroSection
+    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuD3_z2r53ZNoK8aqZAyJaERcpPa9p5ZMZUwjnJ3LDqUmdBfurWGH7-mutpGGTW7SyywJLunt4hWo1KumrNGjtRtTqez7HYXzkl_YEoyHy20LtBvqKXCM2t_186y0nrQelSIywpKndj_ZBfdLyK745CBjy5HOER3SP5DS0Oh5lNJ6A-qIvyw8yT15GnjeSzR9Yj7KYdcNWlAVA_Dx59zPoaKVFxuPR74pnZxDZ81wF_emquPyQnhTSQ8ozxltvD7-3NhPCF8oeGduSE"
+    badgeText="Camagüey, Cuba"
+    badgeClass="bg-secondary text-on-secondary px-4 py-1 rounded-full font-label-md text-label-md mb-6 uppercase tracking-widest animate-fade-in"
+    title="Where Nature Finds its <span class='italic'>Voice</span>."
+    description="Discover the raw, lush beauty of Cuba's biosphere through the eyes of the Todus multicolor. An authentic journey into heritage and conservation."
+    heightClass="h-screen"
+    showScrollIndicator={true}
+  >
+    <button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+      Explore Trails <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+    <button class="backdrop-blur-md bg-white/10 text-white border border-white/30 px-8 py-4 rounded-full font-label-md text-label-md hover:bg-white/20 transition-all">
+      Our Stewardship
+    </button>
+  </HeroSection>
+
+  <main class="relative">
+    <!-- Our Essence Section -->
+    <section class="py-24 bg-surface-container-low relative">
+      <div class="grainy-overlay absolute inset-0 pointer-events-none transition-all duration-1000 opacity-100 translate-y-0"></div>
+      <div class="px-margin-desktop max-w-container-max mx-auto grid md:grid-cols-2 gap-16 items-center transition-all duration-1000 opacity-100 translate-y-0">
+        <div class="relative">
+          <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+          <img alt="Camagüey Heritage" class="leaf-shape w-full h-[600px] object-cover border border-outline-variant/30 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w">
+          <div class="absolute -bottom-6 -right-6 bg-white p-8 rounded-xl shadow-lg border border-outline-variant/20 max-w-xs">
+            <span class="text-secondary font-headline-sm text-headline-sm block mb-2">500+ Years</span>
+            <p class="text-on-surface-variant font-body-md text-body-md italic">Preserving the legacy of pottery and natural wonder since the colonial era.</p>
+          </div>
+        </div>
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-widest block">The Spirit of the Land</span>
+            <h2 class="font-headline-md text-headline-md text-on-surface">Rooted in Heritage, Inspired by Nature</h2>
+            <p class="text-on-surface-variant font-body-lg text-body-lg">CartaCuba is more than a tour; it is a commitment to the stewardship of Camagüey's unique ecosystem. Our philosophy balances the raw elegance of the Cuban biosphere with the dignified architectural history of our tinajón-filled city.</p>
+          </div>
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">eco</span>
+              <div>
+                <h4 class="font-bold text-on-surface">Ethical Birdwatching</h4>
+                <p class="text-on-surface-variant font-body-md">Silent, non-intrusive trails designed to protect the fragile habitats of endemic species.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">architecture</span>
+              <div>
+                <h4 class="font-bold text-on-surface">Architectural Deep-Dives</h4>
+                <p class="text-on-surface-variant font-body-md">Exclusive access to colonial courtyards and traditional pottery workshops.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Experiences (Bento Grid) -->
+    <section class="py-24 bg-background">
+      <div class="px-margin-desktop max-w-container-max mx-auto transition-all duration-1000 opacity-100 translate-y-0">
+        <div class="flex justify-between items-end mb-16">
+          <div class="max-w-xl">
+            <h2 class="font-headline-md text-headline-md mb-4">Curated Immersions</h2>
+            <p class="text-on-surface-variant font-body-md text-body-md">From the emerald canopies to the red-tiled labyrinth of our streets, select your path of discovery.</p>
+          </div>
+          <button class="text-primary font-label-md text-label-md flex items-center gap-2 hover:underline">
+            View All Journeys <span class="material-symbols-outlined">east</span>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <!-- Nature Experience -->
+          <TourCard
+            type="experience"
+            cardClass="md:col-span-8 leaf-shape h-[450px]"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuDUTPY55lCaTz_QhPx_YhpsajDvwj_RiTXvM6AJWT1k0cZsVAclB1n026EOpddCrcXSKxmh7uhhfwBk8YAcZHrx8wzkj6jI5NPAFvYhpCeyMSelKFvi6_tqX3dpHiCDpDkn-W0Rk7ubnW7SDEaSAd37xcjmjg0rvdgRQRAk2UYKckS_91BBN7oGHOMDW9RAtbAoDomhKdw14sCJGTfScJNuz-ESjFSKQIkIE_4aTWslLALNvjVKeEKVFJo_eei6pQjKw8i_KrRL-4g"
+            badgeText="Nature"
+            badgeClass="bg-primary"
+            title="Sierra de Cubitas Expedition"
+            description="Trek through limestone plateaus and discover the nesting grounds of the elusive Cartacuba."
+          />
+
+          <!-- Culture Experience -->
+          <TourCard
+            type="experience"
+            cardClass="md:col-span-4 rounded-xl h-[450px] border border-outline-variant/30"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuCUdkJPGAnpigsTTeKSiCyIIhcWgNeEwjmhgA8FbvbhRnG08gcfJ7Zv23aKlq2fMkg0-ITNGUmcG9FhFxlQpkQ_ef-XH6LefqxgcDYqiYezYsJNOhdyg1BZr_AtXQ9F-qgJVt9wv_-Y5WyW0vsNByt2P9Un6VUgH1ies87sCsMB-pMihHUH_XzTW4LmV1wQ6YQCPgy-u6sYsRIb7418j_2LsGQlsseRGWGf3ihNZisQM2PlF1tdsSbKk6oWVDsIkfZ5ufKL5nius7g"
+            badgeText="Culture"
+            badgeClass="bg-secondary"
+            title="The Potter's Path"
+            description="Hands-on immersion into the 500-year-old tradition of Camagüey clay craft."
+          />
+
+          <!-- Heritage Experience -->
+          <TourCard
+            type="experience"
+            cardClass="md:col-span-4 rounded-xl h-[450px] border border-outline-variant/30"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuACkpEcIsnVAyGfwU1L9btjbeAZi7b3avKbhlM5Ft-HY5NL0t7bVGl8g7ZCkobddFmeYFit4a46QdnCRzGkm_J1izDjQE5bmzpyV1UVNjl47nNxQo1rqynReoN-v74mnZeE9_ndVhmoXkdxsc-K_WSwOoymCy5fZ74dZlGiVviUZJjmGqO6YJ_1d1p7gnDUW8qWJf1WQOTrE0P9yDbkI4_okjtBTzCU_YrCRB1VXG2ycHYednJtQccxk5SR-Tt7LOOQGCpX5GbVcrQ"
+            badgeText="Heritage"
+            badgeClass="bg-tertiary-container"
+            title="Silent Courtyards"
+            description="Walk through private history in the city's most beautifully preserved colonial homes."
+          />
+
+          <!-- Call to Action Card -->
+          <div class="md:col-span-8 bg-surface-container-highest leaf-shape flex flex-col items-center justify-center text-center p-12 border border-outline-variant/30 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+              <span class="material-symbols-outlined text-[120px] text-primary">potted_plant</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-6">Your Camagüey Story Awaits</h3>
+            <p class="text-on-surface-variant font-body-lg text-body-lg mb-8 max-w-lg">We create bespoke experiences tailored to your rhythm. Join us in preserving the spirit of central Cuba.</p>
+            <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all flex items-center gap-3">
+              Start Planning Your Journey <span class="material-symbols-outlined">travel_explore</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Visual Section -->
+    <section class="h-[500px] relative overflow-hidden flex items-center justify-center">
+      <div class="absolute inset-0 bg-fixed bg-center bg-cover transition-all duration-1000 opacity-100 translate-y-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLNVOsR1PVd7dzt3b6ZXxlzC0zTgYuR5utXqWceu2W1ws99Kkqjl0XYt782Xu1V5Prv2DpreUAK-ziymPj--vxtA0lj_uCsfAokNXOejp1Ob1WhmTtanSaYU3YMMexZOuvqcn8saRY5MLgavMiI3izcVaqEKG-c8g1PD8PMVDgVZAz0KypYAfpGpkEFs9GPAK7PtG9C0WPgzzbENVD1Ma9rahWP7q6_ADPH3On3j9O7eKbXOnE0Dt6QEKxQYZ7MsLnkMWyXOG9ozQ');">
+        <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+      </div>
+      <div class="relative z-10 text-center text-white px-margin-mobile transition-all duration-1000 opacity-100 translate-y-0">
+        <blockquote class="max-w-3xl">
+          <p class="font-display-lg text-display-lg-mobile md:text-display-lg italic mb-6">"To visit Camagüey is to step into a rhythm that hasn't changed in centuries, where nature and stone live in perfect harmony."</p>
+          <cite class="font-label-md text-label-md uppercase tracking-widest">— Local Conservationist</cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
