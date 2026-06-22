@@ -9,17 +9,17 @@ const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
 const links = [
-  { name: 'Naturaleza', href: `${cleanBase}nature/`, id: 'nature' },
-  { name: 'Cultura', href: `${cleanBase}culture/`, id: 'culture' },
-  { name: 'Patrimonio', href: `${cleanBase}heritage/`, id: 'heritage' },
-  { name: 'Experiencias', href: `${cleanBase}experiencias/`, id: 'experiences' },
-  { name: 'Estancias', href: `${cleanBase}estancias/`, id: 'estancias' }
+  { name: 'Naturaleza', href: '/CartaCuba-web/nature/', id: 'nature' },
+  { name: 'Cultura', href: '/CartaCuba-web/culture/', id: 'culture' },
+  { name: 'Patrimonio', href: '/CartaCuba-web/heritage/', id: 'heritage' },
+  { name: 'Experiencias', href: '/CartaCuba-web/experiencias/', id: 'experiences' },
+  { name: 'Estancias', href: '/CartaCuba-web/estancias/', id: 'estancias' }
 ];
 ---
 
 <header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300 ease-in-out h-20" id="main-nav">
   <div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-    <a class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight" href={cleanBase}>CartaCuba</a>
+    <a class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight" href="/CartaCuba-web/">CartaCuba</a>
     
     <nav class="hidden md:flex items-center gap-8">
       {links.map((link) => {
@@ -40,23 +40,16 @@ const links = [
     </nav>
     
     <div class="flex items-center gap-4">
-      <!-- Search Input/Button -->
-      <div class="relative hidden lg:block">
-        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-        <input 
-          class="pl-10 pr-4 py-2 bg-surface-container-low border-outline-variant rounded-full text-label-md focus:outline-none focus:ring-2 focus:ring-primary/20 w-48 transition-all" 
-          placeholder="Explorar..." 
-          type="text"
-        />
-      </div>
-      <button class="lg:hidden material-symbols-outlined p-2 text-on-surface-variant hover:bg-primary/5 rounded-lg transition-all">
-        search
-      </button>
-      
       <!-- Call to Action -->
-      <button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all shadow-sm active:scale-95">
-        Reservar
-      </button>
+      <a 
+        href="https://wa.me/+5351383690?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20recorridos%20de%20CartaCuba."
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="bg-[#25D366] text-white px-5 py-2.5 rounded-full font-label-md text-label-md hover:bg-[#20b858] transition-all shadow-sm active:scale-95 flex items-center gap-2"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.381 9.806-9.791.001-2.592-1.01-5.031-2.852-6.874a9.71 9.71 0 0 0-6.83-2.781c-5.41 0-9.81 4.384-9.813 9.795-.001 1.57.426 3.102 1.236 4.469l-1.015 3.704 3.828-1.004zM17.15 14.54c-.294-.147-1.74-.858-2.01-.957-.27-.099-.467-.147-.663.148-.196.294-.76.957-.93 1.152-.172.196-.344.22-.638.073-.293-.146-1.242-.457-2.366-1.458-.875-.78-1.465-1.744-1.637-2.038-.172-.294-.018-.453.128-.598.133-.131.294-.343.442-.515.147-.171.196-.293.294-.49.098-.195.049-.367-.025-.515-.074-.147-.663-1.597-.908-2.186-.239-.574-.482-.497-.663-.506-.172-.008-.368-.01-.565-.01-.196 0-.515.074-.784.368-.269.294-1.03 1.005-1.03 2.451 0 1.446 1.053 2.843 1.2 3.039.147.196 2.073 3.166 5.02 4.444.701.304 1.249.485 1.674.62.705.224 1.346.193 1.853.118.565-.084 1.74-.711 1.985-1.396.246-.686.246-1.274.172-1.397-.074-.122-.27-.196-.565-.343z"/></svg>
+        WhatsApp
+      </a>
       
       <!-- Mobile Menu Toggle -->
       <button class="md:hidden material-symbols-outlined p-2 text-on-surface-variant" id="menu-toggle">
