@@ -1,0 +1,206 @@
+---
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const slides = [
+  {
+    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCaYBuZ4CAf6xdm8j6JAHxFHfix6AQ29Qqyl2xsbTkG6fTKrWwKXmf1mcIwgPYsVrV7OIufBfsc9eHd9gJStDz9EXTWru80Bjl2fHlNvuCtqEo6uAPgzrDpeONrgOr5E3POKOoEY1Ijt-9AGA5hvByrPvnS06tk6pbBkbWJ-l2WaNsy3Oe84F6yvJH2qERLjX7L7JxdhjoHy5tK2nss-rqXzyW_n01hEcYYqI4yeZpJBJU262eb69nEWHIwtSXxxiAAhvomzKq7fiQ",
+    badgeText: "Naturaleza",
+    badgeIcon: "eco",
+    title: "Donde la Naturaleza Encuentra su <span class='italic text-primary-fixed font-normal'>Voz</span>",
+    description: "Sigue el vuelo del Cartacuba en un santuario ecológico único. Ecoturismo responsable y observación de aves en el corazón esmeralda de Cuba.",
+    ctaText: "Explorar Senderos",
+    ctaLink: `${cleanBase}tours/`
+  },
+  {
+    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w",
+    badgeText: "Patrimonio Histórico",
+    badgeIcon: "architecture",
+    title: "El Laberinto Colonial de los <span class='italic text-primary-fixed font-normal'>Tinajones</span>",
+    description: "Descubre plazas ocultas y patios coloniales en un trazado urbano diseñado para despistar piratas. Un viaje en el tiempo guiado por expertos locales.",
+    ctaText: "Ver Recorridos",
+    ctaLink: `${cleanBase}tours/`
+  },
+  {
+    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
+    badgeText: "Cultura y Tradición",
+    badgeIcon: "palette",
+    title: "Moldea la Historia con tus propias <span class='italic text-primary-fixed font-normal'>Manos</span>",
+    description: "Siente el tacto de la arcilla camagüeyana en talleres con más de 500 años de tradición. Conecta directamente con maestros artesanos y leyendas locales.",
+    ctaText: "Reservar Taller",
+    ctaLink: `${cleanBase}tours/`
+  }
+];
+---
+
+<section class="relative h-[650px] md:h-[820px] w-full overflow-hidden bg-black" id="hero-carousel">
+  <!-- Slides Container -->
+  <div class="relative w-full h-full">
+    {slides.map((slide, idx) => (
+      <div 
+        class={`hero-slide absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${idx === 0 ? 'opacity-100 z-10 active' : 'opacity-0 z-0'}`}
+        data-slide-index={idx}
+      >
+        <!-- Background Image with radial gradient overlay for better text contrast -->
+        <div class="absolute inset-0 z-0">
+          <img 
+            alt={slide.badgeText} 
+            class="w-full h-full object-cover transform scale-100 transition-transform duration-[8000ms] ease-out slide-bg-image" 
+            src={slide.bgImage}
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+          <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-full flex items-center w-full">
+          <div class="max-w-2xl text-left text-white space-y-6 md:space-y-8">
+            <!-- Badge -->
+            <span class="inline-flex items-center gap-2 font-label-md px-4 py-1.5 rounded-full border border-primary-fixed/30 bg-primary/20 backdrop-blur-sm text-primary-fixed animate-fade-in uppercase tracking-wider text-xs">
+              <span class="material-symbols-outlined text-[16px] text-primary-fixed" style="font-variation-settings: 'FILL' 1;">{slide.badgeIcon}</span>
+              {slide.badgeText}
+            </span>
+
+            <!-- Title -->
+            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-tight drop-shadow-md select-none" set:html={slide.title}>
+            </h1>
+
+            <!-- Description -->
+            <p class="font-body-lg text-body-lg max-w-lg text-white/90 drop-shadow-sm select-none">
+              {slide.description}
+            </p>
+
+            <!-- Action Button -->
+            <div class="flex gap-4">
+              <a 
+                href={slide.ctaLink} 
+                class="bg-primary text-white hover:bg-primary-container px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-lg active:scale-95"
+              >
+                <span>{slide.ctaText}</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button 
+    id="hero-prev" 
+    class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/20 bg-black/30 hover:bg-white/10 text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+    aria-label="Diapositiva anterior"
+  >
+    <span class="material-symbols-outlined text-2xl">chevron_left</span>
+  </button>
+  <button 
+    id="hero-next" 
+    class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/20 bg-black/30 hover:bg-white/10 text-white flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+    aria-label="Diapositiva siguiente"
+  >
+    <span class="material-symbols-outlined text-2xl">chevron_right</span>
+  </button>
+
+  <!-- Position Indicator Dots -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+    {slides.map((_, idx) => (
+      <button 
+        class={`hero-dot w-3 h-3 rounded-full border border-white/50 transition-all ${idx === 0 ? 'bg-primary border-primary w-6' : 'bg-white/30'}`}
+        data-slide-dot={idx}
+        aria-label={`Ir a la diapositiva ${idx + 1}`}
+      ></button>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Subtle zoom-in animation for active slide background */
+  .hero-slide.active .slide-bg-image {
+    transform: scale(1.08);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    let autoSlideInterval: number;
+
+    function showSlide(index: number) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('opacity-100', 'z-10', 'active');
+          slide.classList.remove('opacity-0', 'z-0');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10', 'active');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === index) {
+          dot.classList.add('bg-primary', 'border-primary', 'w-6');
+          dot.classList.remove('bg-white/30');
+        } else {
+          dot.classList.remove('bg-primary', 'border-primary', 'w-6');
+          dot.classList.add('bg-white/30');
+        }
+      });
+
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = window.setInterval(nextSlide, 7000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // Set up controls
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+      });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const dotBtn = e.currentTarget as HTMLButtonElement;
+        const targetIdx = parseInt(dotBtn.getAttribute('data-slide-dot') || '0', 10);
+        showSlide(targetIdx);
+        resetAutoSlide();
+      });
+    });
+
+    // Start auto slide
+    startAutoSlide();
+  });
+</script>

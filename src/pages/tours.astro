@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { tours } from '../data/tours.js';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+// Find the featured/most popular tour (Avistamiento de Aves)
+const featuredTour = tours.find(t => t.id === 'avistamiento-aves') || tours[0];
+
+const reviews = [
+  {
+    name: "Sarah Jenkins",
+    country: "Canadá",
+    rating: 5,
+    text: "El avistamiento de aves en la Sierra del Chorrillo fue el punto culminante de nuestro viaje. Pudimos ver tres Cartacubas de cerca. ¡El guía local tenía un conocimiento increíble!",
+    date: "Hace 2 semanas"
+  },
+  {
+    name: "Carlos Mendoza",
+    country: "España",
+    rating: 5,
+    text: "El taller de barro fue fantástico. Los alfareros te abren sus puertas con una calidez inmensa. Moldear un tinajón con mis manos fue una experiencia que nunca olvidaré.",
+    date: "Hace 1 mes"
+  },
+  {
+    name: "Marie & Pierre",
+    country: "Francia",
+    rating: 5,
+    text: "Caminar por el laberinto de Camagüey y entrar a patios coloniales privados fue mágico. El diseño urbano tiene una historia fascinante de piratas y resistencia colonial.",
+    date: "Hace 3 semanas"
+  }
+];
+---
+
+<BaseLayout title="Nuestros Tours | CartaCuba" activePage="tours">
+  <!-- Top Banner / Hero -->
+  <section class="relative pt-32 pb-24 bg-surface-container-high overflow-hidden">
+    <div class="organic-grain absolute inset-0 pointer-events-none opacity-40"></div>
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <span class="bg-primary/10 text-primary font-label-md px-4 py-1.5 rounded-full uppercase tracking-wider text-xs">Catálogo Oficial</span>
+        <h1 class="font-display-lg text-display-lg-mobile md:text-5xl text-on-surface font-bold leading-tight">
+          Explora Camagüey a Través de <br/>
+          <span class="text-primary italic font-normal">Experiencias Reales</span>
+        </h1>
+        <p class="text-on-surface-variant font-body-lg max-w-xl">
+          Diseñamos recorridos de bajo impacto ecológico y alto valor cultural. Viaja en grupos pequeños acompañados por guías locales y apoya directamente a la comunidad agramontina.
+        </p>
+      </div>
+      
+      <!-- Featured Tour CTA Banner -->
+      <div class="lg:col-span-5 bg-white dark:bg-inverse-surface border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden group">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full group-hover:scale-110 transition-transform"></div>
+        <div class="relative z-10 space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="bg-[#e41e27] text-white text-[11px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider">Más Vendido</span>
+            <div class="text-right">
+              <span class="text-xs text-on-surface-variant dark:text-surface-variant block uppercase">Precio especial</span>
+              <span class="font-bold text-primary font-headline-sm text-lg">${featuredTour.price} USD</span>
+            </div>
+          </div>
+          <h3 class="font-headline-sm text-[20px] text-on-surface dark:text-inverse-on-surface font-bold">
+            {featuredTour.title}
+          </h3>
+          <p class="text-on-surface-variant dark:text-surface-variant font-body-md text-sm line-clamp-3">
+            {featuredTour.shortDescription}
+          </p>
+          <div class="pt-2">
+            <a 
+              href={`${cleanBase}tours/${featuredTour.id}/`} 
+              class="w-full bg-[#bb0017] hover:bg-[#a00012] text-white text-center py-3 px-6 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span>Reservar Tour Destacado</span>
+              <span class="material-symbols-outlined text-[18px]">explore</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-24 bg-background">
+    <!-- Tours Catalog Grid -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-16">
+      <div class="text-center max-w-2xl mx-auto space-y-4">
+        <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Todos Nuestros Recorridos</h2>
+        <p class="text-on-surface-variant font-body-md">
+          Encuentra la inmersión perfecta en la naturaleza de la biosfera cubana o la rica historia colonial agramontina.
+        </p>
+      </div>
+
+      <!-- Large cards grid -->
+      <div class="space-y-12">
+        {tours.map((tour, idx) => (
+          <div class="bg-white dark:bg-inverse-surface border border-outline-variant/20 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all grid md:grid-cols-12 gap-0 group">
+            <!-- Image Area -->
+            <div class={`md:col-span-5 relative h-64 md:h-auto overflow-hidden ${idx % 2 === 1 ? 'md:order-last' : ''}`}>
+              <img 
+                alt={tour.title} 
+                class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700" 
+                src={tour.image}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden"></div>
+              <span class="absolute top-4 left-4 bg-primary text-white text-xs font-label-md px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-sm">
+                <span class="material-symbols-outlined text-sm">{tour.badgeIcon}</span>
+                {tour.category}
+              </span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="md:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center gap-4 text-xs font-label-md text-on-surface-variant dark:text-surface-variant uppercase tracking-wider">
+                  <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+                    <span>Duración: {tour.duration}</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-secondary">
+                    <span class="material-symbols-outlined text-[16px] font-semibold" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="font-bold text-on-surface dark:text-inverse-on-surface">{tour.rating}</span>
+                    <span>({tour.reviewCount} reviews)</span>
+                  </div>
+                </div>
+
+                <h3 class="font-headline-sm text-2xl text-on-surface dark:text-inverse-on-surface font-bold group-hover:text-primary transition-colors">
+                  {tour.title}
+                </h3>
+                
+                <p class="text-on-surface-variant dark:text-surface-variant font-body-md leading-relaxed">
+                  {tour.fullDescription}
+                </p>
+
+                <!-- Highlights tags -->
+                <div class="flex flex-wrap gap-2 pt-2">
+                  {tour.included.slice(0, 3).map((inc) => (
+                    <span class="bg-surface-container text-on-surface-variant dark:text-surface-variant text-[11px] font-medium px-3 py-1 rounded-lg border border-outline-variant/10">
+                      ✓ {inc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Price & CTA Line -->
+              <div class="pt-6 border-t border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4">
+                <div>
+                  <span class="text-xs text-on-surface-variant dark:text-surface-variant uppercase block">Precio final garantizado</span>
+                  <span class="font-headline-md text-2xl text-primary font-bold">${tour.price} USD</span>
+                  <span class="text-xs text-on-surface-variant dark:text-surface-variant"> por persona</span>
+                </div>
+                <a 
+                  href={`${cleanBase}tours/${tour.id}/`} 
+                  class="bg-primary hover:bg-primary-container text-white px-8 py-3.5 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 transition-all hover:scale-102 active:scale-98 shadow-sm"
+                >
+                  <span>Ver Detalles y Reservar</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 mt-24 bg-surface-container-low border-t border-outline-variant/20 relative">
+      <div class="grainy-overlay absolute inset-0 pointer-events-none opacity-50"></div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-16 relative z-10">
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+          <span class="text-primary font-label-md uppercase tracking-wider block">Opiniones Reales</span>
+          <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Experiencias de Nuestros Clientes</h2>
+          <p class="text-on-surface-variant font-body-md">
+            La confianza se construye con honestidad. Conoce el testimonio de quienes ya han explorado Camagüey con nosotros.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-gutter">
+          {reviews.map((rev) => (
+            <div class="bg-white dark:bg-inverse-surface border border-outline-variant/30 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm relative">
+              <span class="material-symbols-outlined text-4xl text-primary-container/20 absolute top-6 right-6 select-none" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+              <div class="space-y-4">
+                <!-- Stars -->
+                <div class="flex text-secondary">
+                  {Array.from({ length: rev.rating }).map(() => (
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                  ))}
+                </div>
+                <p class="text-on-surface dark:text-inverse-on-surface font-body-md italic leading-relaxed">
+                  "{rev.text}"
+                </p>
+              </div>
+              <div class="pt-6 border-t border-outline-variant/20 mt-6 flex justify-between items-center text-xs">
+                <div>
+                  <span class="font-bold text-on-surface dark:text-inverse-on-surface block text-sm">{rev.name}</span>
+                  <span class="text-on-surface-variant dark:text-surface-variant font-medium">{rev.country}</span>
+                </div>
+                <span class="text-on-surface-variant dark:text-surface-variant italic">{rev.date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

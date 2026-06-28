@@ -1,0 +1,161 @@
+---
+import { tours } from '../data/tours.js';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+---
+
+<div class="relative w-full overflow-hidden py-4" id="tour-carousel-container">
+  <!-- Nav Buttons (Visible on desktop) -->
+  <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-between pointer-events-none px-4 md:px-8">
+    <button 
+      id="tour-prev" 
+      class="w-10 h-10 rounded-full bg-white hover:bg-surface-container border border-outline-variant/30 text-on-surface flex items-center justify-center shadow-md transition-all pointer-events-auto hover:scale-105 active:scale-95 disabled:opacity-40 disabled:pointer-events-none"
+      aria-label="Tours anteriores"
+    >
+      <span class="material-symbols-outlined text-xl">west</span>
+    </button>
+    <button 
+      id="tour-next" 
+      class="w-10 h-10 rounded-full bg-white hover:bg-surface-container border border-outline-variant/30 text-on-surface flex items-center justify-center shadow-md transition-all pointer-events-auto hover:scale-105 active:scale-95 disabled:opacity-40 disabled:pointer-events-none"
+      aria-label="Tours siguientes"
+    >
+      <span class="material-symbols-outlined text-xl">east</span>
+    </button>
+  </div>
+
+  <!-- Carousel Track (Flex on mobile/tablet, grid or flex on desktop) -->
+  <div 
+    id="tour-track" 
+    class="flex gap-gutter overflow-x-auto scrollbar-none snap-x snap-mandatory px-margin-mobile md:px-margin-desktop scroll-smooth py-2"
+  >
+    {tours.map((tour) => (
+      <div 
+        class="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-start bg-white dark:bg-inverse-surface rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
+      >
+        <!-- Link covering the card for accessible navigation -->
+        <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-10" aria-label={`Ver detalles de ${tour.title}`}></a>
+
+        <!-- Card Image -->
+        <div class="relative h-48 sm:h-52 overflow-hidden bg-surface-container">
+          <img 
+            alt={tour.title} 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+            src={tour.image}
+            loading="lazy"
+          />
+          <div class="absolute top-4 left-4 z-20 flex gap-2">
+            <span class="bg-primary text-white text-[12px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">{tour.badgeIcon}</span>
+              {tour.category}
+            </span>
+          </div>
+        </div>
+
+        <!-- Card Content -->
+        <div class="p-5 flex flex-col flex-grow space-y-3">
+          <!-- Duration -->
+          <div class="flex items-center gap-1.5 text-on-surface-variant dark:text-surface-variant font-label-md text-xs uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[16px]">schedule</span>
+            <span>{tour.duration}</span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="font-headline-sm text-[18px] text-on-surface dark:text-inverse-on-surface font-bold line-clamp-2 min-h-[54px] group-hover:text-primary transition-colors">
+            {tour.title}
+          </h3>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-1 text-sm text-secondary">
+            <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="font-bold text-on-surface dark:text-inverse-on-surface">{tour.rating}</span>
+            <span class="text-on-surface-variant dark:text-surface-variant text-xs">({tour.reviewCount} reseñas)</span>
+          </div>
+
+          <!-- Price & CTA Line -->
+          <div class="pt-4 border-t border-outline-variant/30 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-xs text-on-surface-variant dark:text-surface-variant block uppercase tracking-wider">Desde</span>
+              <span class="font-headline-sm text-lg text-primary font-bold">${tour.price} USD</span>
+              <span class="text-[11px] text-on-surface-variant dark:text-surface-variant block">por persona</span>
+            </div>
+            <div class="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('tour-track');
+    const prevBtn = document.getElementById('tour-prev');
+    const nextBtn = document.getElementById('tour-next');
+    
+    if (track && prevBtn && nextBtn) {
+      // Update disabled state of navigation buttons
+      const updateButtons = () => {
+        const scrollLeft = track.scrollLeft;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        
+        // Disable prev button if at the start
+        if (scrollLeft <= 5) {
+          prevBtn.setAttribute('disabled', 'true');
+        } else {
+          prevBtn.removeAttribute('disabled');
+        }
+        
+        // Disable next button if at the end
+        if (scrollLeft >= maxScroll - 5) {
+          nextBtn.setAttribute('disabled', 'true');
+        } else {
+          nextBtn.removeAttribute('disabled');
+        }
+      };
+
+      // Slide amount
+      const getSlideAmount = () => {
+        const firstCard = track.firstElementChild;
+        if (firstCard) {
+          return firstCard.clientWidth + 24; // Card width + gap
+        }
+        return 320;
+      };
+
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({
+          left: getSlideAmount(),
+          behavior: 'smooth'
+        });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({
+          left: -getSlideAmount(),
+          behavior: 'smooth'
+        });
+      });
+
+      track.addEventListener('scroll', updateButtons);
+      window.addEventListener('resize', updateButtons);
+      
+      // Initialize states
+      setTimeout(updateButtons, 500);
+    }
+  });
+</script>
