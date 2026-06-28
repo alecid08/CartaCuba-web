@@ -1,140 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/HeroSection.astro';
-import TourCard from '../components/TourCard.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import TourCarousel from '../components/TourCarousel.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
-<BaseLayout title="CartaCuba | Descubre Cuba desde dentro" activePage="home">
-  <!-- Hero Section -->
-  <HeroSection
-    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuD3_z2r53ZNoK8aqZAyJaERcpPa9p5ZMZUwjnJ3LDqUmdBfurWGH7-mutpGGTW7SyywJLunt4hWo1KumrNGjtRtTqez7HYXzkl_YEoyHy20LtBvqKXCM2t_186y0nrQelSIywpKndj_ZBfdLyK745CBjy5HOER3SP5DS0Oh5lNJ6A-qIvyw8yT15GnjeSzR9Yj7KYdcNWlAVA_Dx59zPoaKVFxuPR74pnZxDZ81wF_emquPyQnhTSQ8ozxltvD7-3NhPCF8oeGduSE"
-    badgeText="Camagüey, Cuba"
-    badgeClass="bg-secondary text-on-secondary px-4 py-1 rounded-full font-label-md text-label-md mb-6 uppercase tracking-widest animate-fade-in"
-    title="Donde la Naturaleza Encuentra su <span class='italic'>Voz</span>."
-    description="Descubre la belleza cruda y exuberante de la biosfera cubana a través de los ojos del Cartacuba. Un viaje auténtico hacia el patrimonio y la conservación."
-    heightClass="h-screen"
-    showScrollIndicator={true}
-  >
-    <button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
-      Explorar Senderos <span class="material-symbols-outlined">arrow_forward</span>
-    </button>
-    <button class="backdrop-blur-md bg-white/10 text-white border border-white/30 px-8 py-4 rounded-full font-label-md text-label-md hover:bg-white/20 transition-all">
-      Nuestro Compromiso
-    </button>
-  </HeroSection>
+<BaseLayout title="CartaCuba | Ecoturismo y Patrimonio en Camagüey" activePage="home">
+  <!-- Hero Carousel (Inspirado en Intrepid Travel, sin buscador) -->
+  <HeroCarousel />
 
-  <main class="relative">
-    <!-- Our Essence Section -->
-    <section class="py-24 bg-surface-container-low relative">
-      <div class="grainy-overlay absolute inset-0 pointer-events-none transition-all duration-1000 opacity-100 translate-y-0"></div>
-      <div class="px-margin-desktop max-w-container-max mx-auto grid md:grid-cols-2 gap-16 items-center transition-all duration-1000 opacity-100 translate-y-0">
+  <main class="relative bg-background">
+    <!-- Tours & Offers Section (Pequeñas tarjetas, al estilo Intrepid Travel) -->
+    <section class="py-20 bg-background border-b border-outline-variant/20">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="max-w-2xl">
+          <span class="text-primary font-label-md uppercase tracking-wider block mb-2">Viajes que Inspiran</span>
+          <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Tours y Ofertas Disponibles</h2>
+          <p class="text-on-surface-variant font-body-md mt-2">
+            Pequeños grupos, grandes vivencias. Elige la experiencia que mejor se adapte a tu estilo de descubrimiento.
+          </p>
+        </div>
+        <a 
+          href={`${cleanBase}tours/`} 
+          class="inline-flex items-center gap-2 text-primary font-label-md hover:underline group self-start md:self-end"
+        >
+          <span>Ver todos los tours</span>
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">east</span>
+        </a>
+      </div>
+      
+      <!-- Tour Carousel Component -->
+      <TourCarousel />
+    </section>
+
+    <!-- Destination Essence Section (Naturaleza, Patrimonio, Cultura - Basado en la Esencia original) -->
+    <section class="py-24 bg-surface-container-low relative border-b border-outline-variant/20">
+      <div class="grainy-overlay absolute inset-0 pointer-events-none opacity-50"></div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <!-- Visuals Column -->
         <div class="relative">
           <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-          <img alt="Camagüey Heritage" class="leaf-shape w-full h-[600px] object-cover border border-outline-variant/30 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w">
-          <div class="absolute -bottom-6 -right-6 bg-white p-8 rounded-xl shadow-lg border border-outline-variant/20 max-w-xs">
-            <span class="text-secondary font-headline-sm text-headline-sm block mb-2">Más de 500 Años</span>
-            <p class="text-on-surface-variant font-body-md text-body-md italic">Preservando el legado de la alfarería y la maravilla natural desde la época colonial.</p>
+          <img 
+            alt="Patrimonio de Camagüey" 
+            class="leaf-shape w-full h-[550px] object-cover border border-outline-variant/30 shadow-md" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-white dark:bg-inverse-surface p-6 rounded-xl shadow-lg border border-outline-variant/20 max-w-xs">
+            <span class="text-secondary font-headline-sm text-headline-sm block mb-1">Más de 500 Años</span>
+            <p class="text-on-surface-variant dark:text-surface-variant font-body-md text-sm italic">Preservando el legado de la alfarería tradicional y las leyendas urbanas coloniales.</p>
           </div>
         </div>
+
+        <!-- Description Column -->
         <div class="space-y-8">
           <div class="space-y-4">
-            <span class="text-primary font-label-md text-label-md uppercase tracking-widest block">El Espíritu de la Tierra</span>
-            <h2 class="font-headline-md text-headline-md text-on-surface">Arraigados en el Patrimonio, Inspirados en la Naturaleza</h2>
-            <p class="text-on-surface-variant font-body-lg text-body-lg">CartaCuba es más que un recorrido; es un compromiso con la conservación del ecosistema único de Camagüey. Nuestra filosofía equilibra la elegancia pura de la biosfera cubana con la digna historia arquitectónica de nuestra ciudad llena de tinajones.</p>
+            <span class="text-primary font-label-md uppercase tracking-widest block">El Espíritu de la Tierra</span>
+            <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Arraigados en el Patrimonio, Inspirados en la Naturaleza</h2>
+            <p class="text-on-surface-variant font-body-lg">
+              CartaCuba es más que un recorrido turístico; es un compromiso activo con la conservación y la cultura local. Nuestra filosofía equilibra la pureza de la biosfera cubana con la digna historia arquitectónica de Camagüey, la ciudad de los tinajones.
+            </p>
           </div>
+          
           <ul class="space-y-6">
             <li class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">eco</span>
+              <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-lg" style="font-variation-settings: 'FILL' 1;">eco</span>
               <div>
-                <h4 class="font-bold text-on-surface">Observación Ética de Aves</h4>
-                <p class="text-on-surface-variant font-body-md">Senderos silenciosos y no intrusivos diseñados para proteger los hábitats frágiles de especies endémicas.</p>
+                <h4 class="font-bold text-on-surface">Ecoturismo Responsable</h4>
+                <p class="text-on-surface-variant font-body-md">Senderos ecológicos diseñados de forma ética para no interferir en el hábitat natural del Cartacuba y otras especies protegidas.</p>
               </div>
             </li>
             <li class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">architecture</span>
+              <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-lg" style="font-variation-settings: 'FILL' 1;">architecture</span>
               <div>
-                <h4 class="font-bold text-on-surface">Inmersiones Arquitectónicas</h4>
-                <p class="text-on-surface-variant font-body-md">Acceso exclusivo a patios coloniales y talleres de alfarería tradicionales.</p>
+                <h4 class="font-bold text-on-surface">Inmersiones en la Tradición</h4>
+                <p class="text-on-surface-variant font-body-md">Acceso de primera mano a talleres de artesanos, patios coloniales y rincones secretos ricos en leyendas agramontinas.</p>
               </div>
             </li>
           </ul>
-        </div>
-      </div>
-    </section>
 
-    <!-- Featured Experiences (Bento Grid) -->
-    <section class="py-24 bg-background">
-      <div class="px-margin-desktop max-w-container-max mx-auto transition-all duration-1000 opacity-100 translate-y-0">
-        <div class="flex justify-between items-end mb-16">
-          <div class="max-w-xl">
-            <h2 class="font-headline-md text-headline-md mb-4">Inmersiones Exclusivas</h2>
-            <p class="text-on-surface-variant font-body-md text-body-md">Desde los doseles esmeralda hasta el laberinto de techos rojos de nuestras calles, elige tu camino de descubrimiento.</p>
-          </div>
-          <button class="text-primary font-label-md text-label-md flex items-center gap-2 hover:underline">
-            Ver Todos los Viajes <span class="material-symbols-outlined">east</span>
-          </button>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-          <!-- Nature Experience -->
-          <TourCard
-            type="experience"
-            cardClass="md:col-span-8 leaf-shape h-[450px]"
-            image="https://lh3.googleusercontent.com/aida-public/AB6AXuDUTPY55lCaTz_QhPx_YhpsajDvwj_RiTXvM6AJWT1k0cZsVAclB1n026EOpddCrcXSKxmh7uhhfwBk8YAcZHrx8wzkj6jI5NPAFvYhpCeyMSelKFvi6_tqX3dpHiCDpDkn-W0Rk7ubnW7SDEaSAd37xcjmjg0rvdgRQRAk2UYKckS_91BBN7oGHOMDW9RAtbAoDomhKdw14sCJGTfScJNuz-ESjFSKQIkIE_4aTWslLALNvjVKeEKVFJo_eei6pQjKw8i_KrRL-4g"
-            badgeText="Naturaleza"
-            badgeClass="bg-primary"
-            title="Expedición Sierra de Cubitas"
-            description="Recorre mesetas de piedra caliza y descubre los sitios de anidación del escurridizo Cartacuba."
-          />
-
-          <!-- Culture Experience -->
-          <TourCard
-            type="experience"
-            cardClass="md:col-span-4 rounded-xl h-[450px] border border-outline-variant/30"
-            image="https://lh3.googleusercontent.com/aida-public/AB6AXuCUdkJPGAnpigsTTeKSiCyIIhcWgNeEwjmhgA8FbvbhRnG08gcfJ7Zv23aKlq2fMkg0-ITNGUmcG9FhFxlQpkQ_ef-XH6LefqxgcDYqiYezYsJNOhdyg1BZr_AtXQ9F-qgJVt9wv_-Y5WyW0vsNByt2P9Un6VUgH1ies87sCsMB-pMihHUH_XzTW4LmV1wQ6YQCPgy-u6sYsRIb7418j_2LsGQlsseRGWGf3ihNZisQM2PlF1tdsSbKk6oWVDsIkfZ5ufKL5nius7g"
-            badgeText="Cultura"
-            badgeClass="bg-secondary"
-            title="El Camino del Alfarero"
-            description="Inmersión práctica en la tradición de más de 500 años de la artesanía de arcilla de Camagüey."
-          />
-
-          <!-- Heritage Experience -->
-          <TourCard
-            type="experience"
-            cardClass="md:col-span-4 rounded-xl h-[450px] border border-outline-variant/30"
-            image="https://lh3.googleusercontent.com/aida-public/AB6AXuACkpEcIsnVAyGfwU1L9btjbeAZi7b3avKbhlM5Ft-HY5NL0t7bVGl8g7ZCkobddFmeYFit4a46QdnCRzGkm_J1izDjQE5bmzpyV1UVNjl47nNxQo1rqynReoN-v74mnZeE9_ndVhmoXkdxsc-K_WSwOoymCy5fZ74dZlGiVviUZJjmGqO6YJ_1d1p7gnDUW8qWJf1WQOTrE0P9yDbkI4_okjtBTzCU_YrCRB1VXG2ycHYednJtQccxk5SR-Tt7LOOQGCpX5GbVcrQ"
-            badgeText="Patrimonio"
-            badgeClass="bg-tertiary-container"
-            title="Patios Silenciosos"
-            description="Camina a través de la historia privada en las casas coloniales mejor conservadas de la ciudad."
-          />
-
-          <!-- Call to Action Card -->
-          <div class="md:col-span-8 bg-surface-container-highest leaf-shape flex flex-col items-center justify-center text-center p-12 border border-outline-variant/30 relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-8 opacity-10">
-              <span class="material-symbols-outlined text-[120px] text-primary">potted_plant</span>
-            </div>
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-6">Tu Historia en Camagüey te Espera</h3>
-            <p class="text-on-surface-variant font-body-lg text-body-lg mb-8 max-w-lg">Creamos experiencias personalizadas adaptadas a tu ritmo. Únete a nosotros en la preservación del espíritu del centro de Cuba.</p>
-            <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all flex items-center gap-3">
-              Comienza a Planear tu Viaje <span class="material-symbols-outlined">travel_explore</span>
-            </button>
+          <div class="pt-4">
+            <a 
+              href={`${cleanBase}destino/`} 
+              class="inline-flex items-center gap-2 bg-primary text-white hover:bg-primary-container px-6 py-3 rounded-full font-label-md transition-all shadow-sm"
+            >
+              <span>Explorar Camagüey</span>
+              <span class="material-symbols-outlined text-lg">explore</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Dynamic Visual Section -->
-    <section class="h-[500px] relative overflow-hidden flex items-center justify-center">
-      <div class="absolute inset-0 bg-fixed bg-center bg-cover transition-all duration-1000 opacity-100 translate-y-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLNVOsR1PVd7dzt3b6ZXxlzC0zTgYuR5utXqWceu2W1ws99Kkqjl0XYt782Xu1V5Prv2DpreUAK-ziymPj--vxtA0lj_uCsfAokNXOejp1Ob1WhmTtanSaYU3YMMexZOuvqcn8saRY5MLgavMiI3izcVaqEKG-c8g1PD8PMVDgVZAz0KypYAfpGpkEFs9GPAK7PtG9C0WPgzzbENVD1Ma9rahWP7q6_ADPH3On3j9O7eKbXOnE0Dt6QEKxQYZ7MsLnkMWyXOG9ozQ');">
-        <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+    <!-- Dynamic Visual Section (Local Guide Quote) -->
+    <section class="h-[550px] relative overflow-hidden flex items-center justify-center">
+      <div class="absolute inset-0 bg-fixed bg-center bg-cover parallax-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLNVOsR1PVd7dzt3b6ZXxlzC0zTgYuR5utXqWceu2W1ws99Kkqjl0XYt782Xu1V5Prv2DpreUAK-ziymPj--vxtA0lj_uCsfAokNXOejp1Ob1WhmTtanSaYU3YMMexZOuvqcn8saRY5MLgavMiI3izcVaqEKG-c8g1PD8PMVDgVZAz0KypYAfpGpkEFs9GPAK7PtG9C0WPgzzbENVD1Ma9rahWP7q6_ADPH3On3j9O7eKbXOnE0Dt6QEKxQYZ7MsLnkMWyXOG9ozQ');">
+        <div class="absolute inset-0 bg-primary/50 mix-blend-multiply"></div>
       </div>
-      <div class="relative z-10 text-center text-white px-margin-mobile transition-all duration-1000 opacity-100 translate-y-0">
-        <blockquote class="max-w-3xl">
-          <p class="font-display-lg text-display-lg-mobile md:text-display-lg italic mb-6">"Visitar Camagüey es entrar en un ritmo que no ha cambiado en siglos, donde la naturaleza y la piedra viven en perfecta armonía."</p>
-          <cite class="font-label-md text-label-md uppercase tracking-widest">— Conservacionista Local</cite>
+      <div class="relative z-10 text-center text-white px-margin-mobile max-w-4xl mx-auto space-y-6">
+        <span class="material-symbols-outlined text-5xl text-primary-fixed animate-bounce">format_quote</span>
+        <blockquote>
+          <p class="font-display-lg text-display-lg-mobile md:text-3xl lg:text-4xl italic font-semibold leading-relaxed">
+            "Visitar Camagüey es entrar en un ritmo que no ha cambiado en siglos, donde la naturaleza y la piedra colonial viven en perfecta armonía."
+          </p>
+          <cite class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed font-bold block mt-6">
+            — Conservacionista y Guía Local
+          </cite>
         </blockquote>
       </div>
     </section>
   </main>
 </BaseLayout>
+
