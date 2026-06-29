@@ -4,85 +4,98 @@ import { tours } from '../data/tours.js';
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
-const featuredIds = ['camaguey-laberintica', 'flamencos-sabanas', 'mesa-camagueyana'];
-const featuredTours = tours.filter(tour => featuredIds.includes(tour.id));
+// Clone elements for infinite loop (since we show up to 4 cards on desktop, we need 4 clones on each side)
+const startClones = tours.slice(-4);
+const endClones = tours.slice(0, 4);
+const allTours = [...startClones, ...tours, ...endClones];
 ---
 
-<div class="relative w-full overflow-hidden py-4" id="tour-carousel-container">
-  <!-- Nav Buttons (Visible on desktop) -->
-  <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-between pointer-events-none px-4 md:px-8">
-    <button 
-      id="tour-prev" 
-      class="w-10 h-10 rounded-full bg-white hover:bg-surface-container border border-outline-variant/30 text-on-surface flex items-center justify-center shadow-md transition-all pointer-events-auto hover:scale-105 active:scale-95 disabled:opacity-40 disabled:pointer-events-none"
-      aria-label="Tours anteriores"
-    >
-      <span class="material-symbols-outlined text-xl">west</span>
-    </button>
-    <button 
-      id="tour-next" 
-      class="w-10 h-10 rounded-full bg-white hover:bg-surface-container border border-outline-variant/30 text-on-surface flex items-center justify-center shadow-md transition-all pointer-events-auto hover:scale-105 active:scale-95 disabled:opacity-40 disabled:pointer-events-none"
-      aria-label="Tours siguientes"
-    >
-      <span class="material-symbols-outlined text-xl">east</span>
-    </button>
-  </div>
-
-  <!-- Carousel Track (Flex on mobile/tablet, grid or flex on desktop) -->
-  <div 
-    id="tour-track" 
-    class="flex gap-gutter overflow-x-auto scrollbar-none snap-x snap-mandatory px-margin-mobile md:px-margin-desktop scroll-smooth py-2"
+<div class="relative w-full overflow-hidden py-4 px-0 md:px-16" id="tour-carousel-container">
+  <!-- Nav Buttons (Visible on desktop/tablet) -->
+  <button 
+    id="tour-prev" 
+    class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-inverse-surface border border-outline-variant/30 text-on-surface items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95"
+    aria-label="Tours anteriores"
   >
-    {featuredTours.map((tour) => (
-      <div 
-        class="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-start bg-white dark:bg-inverse-surface rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
-      >
-        <!-- Link covering the card for accessible navigation -->
-        <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-10" aria-label={`Ver detalles de ${tour.title}`}></a>
+    <span class="material-symbols-outlined text-xl">west</span>
+  </button>
 
-        <!-- Card Image -->
-        <div class="relative h-48 sm:h-52 overflow-hidden bg-surface-container">
-          <img 
-            alt={tour.title} 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-            src={tour.image}
-            loading="lazy"
-          />
-          <div class="absolute top-4 left-4 z-20 flex gap-2">
-            <span class="bg-primary text-white text-[12px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
-              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">{tour.badgeIcon}</span>
-              {tour.category}
-            </span>
-          </div>
-        </div>
+  <!-- Track Wrapper -->
+  <div class="overflow-hidden w-full py-2">
+    <div 
+      id="tour-track" 
+      class="flex gap-6 py-2"
+    >
+      {allTours.map((tour) => (
+        <div 
+          class="tour-card-slide bg-[#E8D8B7] rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
+        >
+          <!-- Link covering the card for accessible navigation -->
+          <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-10" aria-label={`Ver detalles de ${tour.title}`}></a>
 
-        <!-- Card Content -->
-        <div class="p-5 flex flex-col flex-grow space-y-3">
-          <!-- Duration -->
-          <div class="flex items-center gap-1.5 text-on-surface-variant dark:text-surface-variant font-label-md text-xs uppercase tracking-wider">
-            <span class="material-symbols-outlined text-[16px]">schedule</span>
-            <span>{tour.duration}</span>
-          </div>
-
-          <!-- Title -->
-          <h3 class="font-headline-sm text-[18px] text-on-surface dark:text-inverse-on-surface font-bold line-clamp-2 min-h-[54px] group-hover:text-primary transition-colors">
-            {tour.title}
-          </h3>
-
-          <!-- Price & CTA Line -->
-          <div class="pt-4 border-t border-outline-variant/30 flex items-center justify-between mt-auto">
-            <div>
-              <span class="text-xs text-on-surface-variant dark:text-surface-variant block uppercase tracking-wider">Desde</span>
-              <span class="font-headline-sm text-lg text-primary font-bold">${tour.price} USD</span>
-              <span class="text-[11px] text-on-surface-variant dark:text-surface-variant block">por persona</span>
-            </div>
-            <div class="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-sm">
-              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          <!-- 1. Imagen del tour (arriba, ocupa ~45% de la card) -->
+          <div class="relative h-[45%] overflow-hidden bg-surface-container">
+            <img 
+              alt={tour.title} 
+              class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300 ease-in-out" 
+              src={tour.image}
+              loading="lazy"
+            />
+            <div class="absolute top-4 left-4 z-20 flex gap-2">
+              <span class="bg-primary text-white text-[12px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">{tour.badgeIcon}</span>
+                {tour.category}
+              </span>
             </div>
           </div>
+
+          <!-- Card Content (55%) -->
+          <div class="p-5 flex flex-col h-[55%] justify-between">
+            <div class="space-y-2">
+              <!-- 2. Nombre del tour — elemento principal, fuente grande, peso bold, color #1F3D2B -->
+              <h3 class="font-headline-sm text-base font-bold text-[#1F3D2B] dark:text-[#E8D8B7] line-clamp-2 leading-tight">
+                {tour.title}
+              </h3>
+
+              <!-- 3. Duración — debajo del nombre, color #C47A2C (ámbar), tamaño ligeramente mayor -->
+              <div class="flex items-center gap-1 text-[#C47A2C] font-label-md text-sm font-semibold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-[18px]">schedule</span>
+                <span>{tour.duration}</span>
+              </div>
+
+              <!-- 4. Descripción breve — debajo de duración, fuente normal, color oscuro, máximo 2 líneas -->
+              <p class="text-on-surface-variant dark:text-surface-variant font-body-md text-xs line-clamp-2 leading-relaxed">
+                {tour.shortDescription}
+              </p>
+            </div>
+
+            <!-- Price & CTA Button -->
+            <div class="space-y-3 pt-2">
+              <!-- 5. Precio — debajo de descripción, sin el texto "Precio final garantizado", solo: "Desde $XX USD / persona" -->
+              <div class="text-on-surface-variant dark:text-surface-variant text-xs">
+                <span>Desde <strong class="text-[#1F3D2B] dark:text-[#E8D8B7] text-base font-bold">${tour.price} USD</strong> / persona</span>
+              </div>
+
+              <!-- 6. Botón CTA — al fondo de la card -->
+              <div class="w-full bg-[#1F3D2B]/10 text-[#1F3D2B] group-hover:bg-[#1F3D2B] group-hover:text-white text-center py-2.5 rounded-full font-label-md transition-all duration-300 flex items-center justify-center gap-2 text-xs font-bold">
+                <span>Ver Detalles</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
+
+  <!-- Nav Buttons (Visible on desktop/tablet) -->
+  <button 
+    id="tour-next" 
+    class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-inverse-surface border border-outline-variant/30 text-on-surface items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95"
+    aria-label="Tours siguientes"
+  >
+    <span class="material-symbols-outlined text-xl">east</span>
+  </button>
 </div>
 
 <style>
@@ -95,6 +108,38 @@ const featuredTours = tours.filter(tour => featuredIds.includes(tour.id));
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  #tour-track {
+    display: flex;
+    gap: 1.5rem; /* 24px */
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .tour-card-slide {
+    height: 460px; /* Fixed height for all cards */
+    flex: 0 0 100%;
+    width: 100%;
+    background-color: #E8D8B7;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .tour-card-slide:hover {
+    background-color: #D4E8D4 !important;
+  }
+
+  @media (min-width: 768px) {
+    .tour-card-slide {
+      flex: 0 0 calc((100% - 1.5rem) / 2);
+      width: calc((100% - 1.5rem) / 2);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .tour-card-slide {
+      flex: 0 0 calc((100% - 4.5rem) / 4);
+      width: calc((100% - 4.5rem) / 4);
+    }
+  }
 </style>
 
 <script>
@@ -104,54 +149,68 @@ const featuredTours = tours.filter(tour => featuredIds.includes(tour.id));
     const nextBtn = document.getElementById('tour-next');
     
     if (track && prevBtn && nextBtn) {
-      // Update disabled state of navigation buttons
-      const updateButtons = () => {
-        const scrollLeft = track.scrollLeft;
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        
-        // Disable prev button if at the start
-        if (scrollLeft <= 5) {
-          prevBtn.setAttribute('disabled', 'true');
-        } else {
-          prevBtn.removeAttribute('disabled');
-        }
-        
-        // Disable next button if at the end
-        if (scrollLeft >= maxScroll - 5) {
-          nextBtn.setAttribute('disabled', 'true');
-        } else {
-          nextBtn.removeAttribute('disabled');
-        }
-      };
+      const cards = Array.from(track.children);
+      const totalOriginals = 5;
+      const cloneCount = 4;
+      
+      let currentIndex = cloneCount; // Start at the first original card
+      let isTransitioning = false;
 
-      // Slide amount
-      const getSlideAmount = () => {
-        const firstCard = track.firstElementChild;
+      const getStep = () => {
+        const firstCard = cards[0];
         if (firstCard) {
-          return firstCard.clientWidth + 24; // Card width + gap
+          return firstCard.getBoundingClientRect().width + 24; // Width + gap (1.5rem = 24px)
         }
         return 320;
       };
 
+      const updatePosition = (animate = true) => {
+        const step = getStep();
+        if (animate) {
+          track.style.transition = 'transform 0.4s ease-in-out';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translate3d(${-currentIndex * step}px, 0, 0)`;
+      };
+
+      // Handle transitions and looping
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        
+        // Loop check
+        if (currentIndex >= totalOriginals + cloneCount) {
+          currentIndex = cloneCount;
+          updatePosition(false);
+        } else if (currentIndex < cloneCount) {
+          currentIndex = totalOriginals + cloneCount - 1;
+          updatePosition(false);
+        }
+      });
+
       nextBtn.addEventListener('click', () => {
-        track.scrollBy({
-          left: getSlideAmount(),
-          behavior: 'smooth'
-        });
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex++;
+        updatePosition(true);
       });
 
       prevBtn.addEventListener('click', () => {
-        track.scrollBy({
-          left: -getSlideAmount(),
-          behavior: 'smooth'
-        });
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex--;
+        updatePosition(true);
       });
 
-      track.addEventListener('scroll', updateButtons);
-      window.addEventListener('resize', updateButtons);
-      
-      // Initialize states
-      setTimeout(updateButtons, 500);
+      // Handle resizing to keep correct position
+      window.addEventListener('resize', () => {
+        updatePosition(false);
+      });
+
+      // Initial alignment
+      setTimeout(() => {
+        updatePosition(false);
+      }, 300);
     }
   });
 </script>
