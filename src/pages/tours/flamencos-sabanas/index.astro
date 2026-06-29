@@ -1,15 +1,24 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { tours } from '../../data/tours.js';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { tours } from '../../../data/tours.js';
 
-export async function getStaticPaths() {
-  return tours.map(tour => ({
-    params: { id: tour.id },
-    props: { tour }
-  }));
-}
+const baseTour = tours.find(t => t.id === 'flamencos-sabanas') || {};
 
-const { tour } = Astro.props;
+const tour = {
+  ...baseTour,
+  id: 'flamencos-sabanas',
+  title: 'Flamencos y Sabanas',
+  category: 'Naturaleza',
+  badgeIcon: 'eco',
+  duration: 'Día completo',
+  price: 60,
+  priceDisplay: '$60–80 USD',
+  included: ['Transporte privado ida y vuelta', 'Guía naturalista', 'Almuerzo criollo en entorno natural'],
+  excluded: ['Equipamiento fotográfico', 'Propinas'],
+  fullDescription: 'Refugio de Fauna Río Máximo o Cayo Sabinal. El mayor santuario de nidificación del flamenco rosado en el Caribe. Manglares, cocodrilo cubano, jutía, sinsonte. Tres alternativas de destino según condiciones del día.',
+  galleryImages: [],
+  itinerary: []
+};
 ---
 
 <BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
@@ -39,11 +48,6 @@ const { tour } = Astro.props;
             <span class="material-symbols-outlined text-primary-fixed">schedule</span>
             <span>{tour.duration}</span>
           </div>
-          <div class="flex items-center gap-1 text-secondary">
-            <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="font-bold text-white">{tour.rating}</span>
-            <span class="text-white/80">({tour.reviewCount} reviews)</span>
-          </div>
           <div class="flex items-center gap-1">
             <span class="material-symbols-outlined text-primary-fixed">group</span>
             <span>Grupos pequeños (máx. 10)</span>
@@ -58,7 +62,7 @@ const { tour } = Astro.props;
     <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div class="border-r border-outline-variant/30 last:border-none">
         <span class="text-xs text-on-surface-variant uppercase tracking-wider block">Precio Desde</span>
-        <span class="font-bold text-primary font-headline-sm">${tour.price} USD</span>
+        <span class="font-bold text-primary font-headline-sm">{tour.priceDisplay}</span>
       </div>
       <div class="border-r border-outline-variant/30 last:border-none">
         <span class="text-xs text-on-surface-variant uppercase tracking-wider block">Duración</span>
@@ -81,31 +85,32 @@ const { tour } = Astro.props;
       <!-- Content Column (Left) -->
       <div class="lg:col-span-7 space-y-12">
         
-        <!-- Image Gallery Slider -->
-        <section class="space-y-4">
-          <h3 class="font-headline-sm text-xl text-on-surface font-bold">Galería de la Experiencia</h3>
-          <div class="grid grid-cols-3 gap-3">
-            {tour.galleryImages.map((img, index) => (
-              <button 
-                class="gallery-thumb-btn aspect-[4/3] rounded-xl overflow-hidden border border-outline-variant/20 relative group cursor-pointer"
-                data-gallery-idx={index}
-              >
-                <img src={img} alt={`${tour.title} ${index + 1}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
-              </button>
-            ))}
-          </div>
-
-          <!-- Lightbox modal (simple container) -->
-          <div id="gallery-lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
-            <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">close</span></button>
-            <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_left</span></button>
-            <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_right</span></button>
-            <div class="max-w-4xl max-h-[80vh] flex items-center justify-center">
-              <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-full rounded-lg object-contain shadow-2xl" />
+        {tour.galleryImages && tour.galleryImages.length > 0 && (
+          <section class="space-y-4">
+            <h3 class="font-headline-sm text-xl text-on-surface font-bold">Galería de la Experiencia</h3>
+            <div class="grid grid-cols-3 gap-3">
+              {tour.galleryImages.map((img, index) => (
+                <button 
+                  class="gallery-thumb-btn aspect-[4/3] rounded-xl overflow-hidden border border-outline-variant/20 relative group cursor-pointer"
+                  data-gallery-idx={index}
+                >
+                  <img src={img} alt={`${tour.title} ${index + 1}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+                </button>
+              ))}
             </div>
-          </div>
-        </section>
+
+            <!-- Lightbox modal (simple container) -->
+            <div id="gallery-lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
+              <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">close</span></button>
+              <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_left</span></button>
+              <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_right</span></button>
+              <div class="max-w-4xl max-h-[80vh] flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-full rounded-lg object-contain shadow-2xl" />
+              </div>
+            </div>
+          </section>
+        )}
 
         <!-- Description -->
         <section class="space-y-4">
@@ -115,23 +120,25 @@ const { tour } = Astro.props;
           </p>
         </section>
 
-        <!-- Interactive Itinerary Timeline -->
-        <section class="space-y-6">
-          <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Itinerario Detallado</h3>
-          <div class="relative pl-6 border-l-2 border-primary/20 space-y-8 py-2">
-            {tour.itinerary.map((item) => (
-              <div class="relative space-y-1 group">
-                <!-- Timeline Dot -->
-                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-primary group-hover:bg-primary transition-all"></div>
-                <div class="flex items-center gap-3">
-                  <span class="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-md font-bold uppercase">{item.time}</span>
-                  <h4 class="font-bold text-on-surface font-body-lg text-sm">{item.title}</h4>
+        <!-- Itinerary -->
+        {tour.itinerary && tour.itinerary.length > 0 && (
+          <section class="space-y-6">
+            <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Itinerario Detallado</h3>
+            <div class="relative pl-6 border-l-2 border-primary/20 space-y-8 py-2">
+              {tour.itinerary.map((item) => (
+                <div class="relative space-y-1 group">
+                  <!-- Timeline Dot -->
+                  <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-primary group-hover:bg-primary transition-all"></div>
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-md font-bold uppercase">{item.time}</span>
+                    <h4 class="font-bold text-on-surface font-body-lg text-sm">{item.title}</h4>
+                  </div>
+                  <p class="text-on-surface-variant font-body-md text-sm pl-0 pt-1 leading-relaxed">{item.desc}</p>
                 </div>
-                <p class="text-on-surface-variant font-body-md text-sm pl-0 pt-1 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        )}
 
         <!-- Included / Excluded -->
         <section class="grid sm:grid-cols-2 gap-8 p-6 sm:p-8 bg-surface-container-low rounded-3xl border border-outline-variant/30">
@@ -162,6 +169,34 @@ const { tour } = Astro.props;
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <!-- 3 Alternativas Section -->
+        <section class="space-y-6 pt-6 border-t border-outline-variant/30">
+          <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Alternativas de la Experiencia</h3>
+          <p class="font-body-lg text-on-surface-variant leading-relaxed">
+            Cuba tiene su propia forma de sorprender. Por eso cada experiencia tiene tres variantes igualmente valiosas, según el día y el momento.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+            <!-- Alternativa 1 -->
+            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
+              <span class="material-symbols-outlined text-primary text-3xl">filter_1</span>
+              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante A</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
+            </div>
+            <!-- Alternativa 2 -->
+            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
+              <span class="material-symbols-outlined text-primary text-3xl">filter_2</span>
+              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante B</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
+            </div>
+            <!-- Alternativa 3 -->
+            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
+              <span class="material-symbols-outlined text-primary text-3xl">filter_3</span>
+              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante C</h4>
+              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
+            </div>
           </div>
         </section>
 
@@ -443,7 +478,6 @@ const { tour } = Astro.props;
       if (e.key === 'ArrowLeft' && lightbox && !lightbox.classList.contains('hidden')) slideLightbox(-1);
     });
 
-    // ------------------------------------------------------------------------------------------------
     // Tab switching functionality
     const tabBookBtn = document.getElementById('tab-btn-book');
     const tabPayBtn = document.getElementById('tab-btn-pay');
@@ -471,7 +505,6 @@ const { tour } = Astro.props;
     if (tabBookBtn) tabBookBtn.addEventListener('click', () => switchTab('book'));
     if (tabPayBtn) tabPayBtn.addEventListener('click', () => switchTab('pay'));
 
-    // ------------------------------------------------------------------------------------------------
     // Price estimation updates
     const basePriceElement = document.getElementById('tour-base-price');
     const peopleInput = document.getElementById('book-people');
@@ -496,7 +529,6 @@ const { tour } = Astro.props;
       peopleInput.addEventListener('change', updateCalculations);
     }
 
-    // ------------------------------------------------------------------------------------------------
     // WhatsApp Booking Form Submission
     const bookingForm = document.getElementById('whatsapp-booking-form');
     if (bookingForm) {
@@ -526,7 +558,6 @@ Quedo atento a la confirmación de la disponibilidad y métodos de pago. ¡Graci
       });
     }
 
-    // ------------------------------------------------------------------------------------------------
     // Simulated Payment Submission
     const paymentForm = document.getElementById('simulated-payment-form');
     const loadingOverlay = document.getElementById('payment-loading-overlay');
