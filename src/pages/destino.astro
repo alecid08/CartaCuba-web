@@ -16,47 +16,17 @@ import TourCard from '../components/TourCard.astro';
         Explora la Región Agramontina
       </span>
       <h1 class="font-display-lg text-display-lg-mobile md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-md">
-        Camagüey: Barro, Leyendas y <span class="text-primary-fixed italic font-normal">Naturaleza Viva</span>
+        Descubre Camagüey
       </h1>
       <p class="font-body-lg text-white/90 max-w-2xl mx-auto text-sm md:text-base">
-        Una inmersión profunda a través del laberinto colonial más grande del Caribe, las tradiciones alfareras centenarias y el santuario de aves de la Sierra del Chorrillo.
+        Explora la biodiversidad de sus áreas protegidas, el laberinto colonial más grande del Caribe y sus ricas tradiciones alfareras.
       </p>
     </div>
   </section>
 
-  <!-- Interactive Section Tabs -->
-  <section class="py-6 bg-surface-container border-b border-outline-variant/30 sticky top-20 z-40 shadow-sm">
-    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-      <div class="flex justify-center gap-2 md:gap-6">
-        <button 
-          class="tab-btn active px-4 py-2.5 rounded-full font-label-md text-sm transition-all flex items-center gap-2 bg-primary text-white"
-          data-tab="naturaleza"
-        >
-          <span class="material-symbols-outlined text-lg">eco</span>
-          <span>Naturaleza</span>
-        </button>
-        <button 
-          class="tab-btn px-4 py-2.5 rounded-full font-label-md text-sm transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-highest"
-          data-tab="patrimonio"
-        >
-          <span class="material-symbols-outlined text-lg">architecture</span>
-          <span>Patrimonio e Historia</span>
-        </button>
-        <button 
-          class="tab-btn px-4 py-2.5 rounded-full font-label-md text-sm transition-all flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-highest"
-          data-tab="cultura"
-        >
-          <span class="material-symbols-outlined text-lg">palette</span>
-          <span>Tradición y Cultura</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <main class="relative z-10 bg-background min-h-screen">
-    
-    <!-- ================= NATURALEZA TAB ================= -->
-    <div id="tab-naturaleza" class="tab-content block">
+    <!-- ================= NATURALEZA ================= -->
+    <div id="naturaleza">
       <!-- Species Spotlight: Cartacuba -->
       <section class="py-20 bg-surface-container-low relative">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -72,97 +42,41 @@ import TourCard from '../components/TourCard.astro';
             </div>
             <div>
               <span class="text-primary font-label-md uppercase tracking-wider block mb-2">Fauna Emblemática</span>
-              <h2 class="font-headline-md text-headline-md text-on-surface mb-6 font-semibold">El Cartacuba: Un Espectro Vivo</h2>
+              <h2 class="font-headline-md text-headline-md text-on-surface mb-6 font-semibold">La Cartacuba</h2>
               <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
-                El homónimo de nuestra marca, el <em>Cartacuba</em> (Todus multicolor), es una diminuta maravilla de la biosfera. Midiendo apenas 11 centímetros, esta criatura iridiscente encarna la vibrante resiliencia de los bosques de Camagüey.
+                El homónimo y ave símbolo de nuestra marca, la <em>Cartacuba</em> (Todus multicolor), es una diminuta maravilla de la biosfera. Con apenas 11 centímetros, esta criatura iridiscente habita en las reservas naturales de la provincia, especialmente en los bosques y laderas de la Sierra de Najasa, encarnando la vibrante resiliencia de la fauna camagüeyana.
               </p>
               <ul class="space-y-4 mb-8">
                 <li class="flex items-start gap-4">
                   <span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">nest_multi_room</span>
                   <div>
-                    <strong class="text-on-surface block font-bold">Hábitat Único</strong>
-                    <span class="text-body-md text-on-surface-variant">Anida en madrigueras de tierra excavadas en bancos de arcilla verticales a lo largo de senderos sombreados.</span>
+                    <strong class="text-on-surface block font-bold">Hábitat Único y Reservas Naturales</strong>
+                    <span class="text-body-md text-on-surface-variant">Anida en madrigueras de tierra excavadas en bancos de arcilla verticales a lo largo de senderos sombreados, protegida dentro del ecosistema de la Sierra de Najasa y otras reservas naturales.</span>
                   </div>
                 </li>
                 <li class="flex items-start gap-4">
                   <span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">palette</span>
                   <div>
                     <strong class="text-on-surface block font-bold">El Rojo "Cartacuba"</strong>
-                    <span class="text-body-md text-on-surface-variant">Famoso por su distintiva garganta roja brillante, pecho rosado y su plumaje verde metálico.</span>
+                    <span class="text-body-md text-on-surface-variant">Famosa por su distintiva garganta roja brillante, pecho rosado y su plumaje verde metálico que brilla en el bosque.</span>
                   </div>
                 </li>
               </ul>
               <div class="p-6 bg-surface-container-highest rounded-xl border-l-4 border-primary">
-                <p class="italic text-on-surface font-headline-sm text-lg">"En el silencio de la Sierra del Chorrillo, el chasquido del pico de un Cartacuba es el ritmo del bosque."</p>
+                <p class="italic text-on-surface font-headline-sm text-lg">"En el silencio de la Sierra de Najasa y las reservas naturales, el chasquido del pico de la Cartacuba es el auténtico latido del bosque."</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Biodiversity Bento Grid -->
-      <section class="py-20 bg-background">
-        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-          <div class="text-center mb-16">
-            <span class="text-primary font-label-md uppercase tracking-wider block mb-2">Ecosistema Protegido</span>
-            <h2 class="font-headline-md text-headline-md text-on-surface mb-4 font-semibold">Portafolio de Biodiversidad</h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Descubre la intrincada red de vida que hace de Camagüey un centro de endemismo reconocido mundialmente.</p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[700px]">
-            <!-- Large Card: Flora -->
-            <TourCard
-              type="experience"
-              cardClass="md:col-span-2 md:row-span-2 relative group overflow-hidden leaf-corner bg-surface-container-low shadow-sm hover:shadow-xl transition-all border border-outline-variant/30 h-full"
-              image="https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE"
-              badgeText="Flora"
-              badgeClass="bg-primary"
-              title="Bosques de la Sierra de Cubitas"
-              description="Hogar de más de 300 especies de helechos y la prehistórica Microcycas calocoma."
-            />
-
-            <!-- Medium Card: Reptiles -->
-            <div class="md:col-span-2 relative group overflow-hidden rounded-xl bg-surface-container shadow-sm border border-outline-variant/30">
-              <div class="grid md:grid-cols-2 h-full">
-                <div class="p-8 flex flex-col justify-center">
-                  <span class="text-primary font-label-md mb-2">Reptiles Endémicos</span>
-                  <h3 class="font-headline-sm text-on-surface mb-3 font-semibold">Majá de Santa María</h3>
-                  <p class="text-body-md text-on-surface-variant mb-4">Un majestuoso depredador de las cuevas de piedra caliza, esencial para el equilibrio del ecosistema.</p>
-                </div>
-                <div class="relative overflow-hidden min-h-[200px]">
-                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Exotic reptile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtWux-LkZsDIbemoZp4_eDA2UwVG4nQ5pklxwmaMA-TYUQdHTEUAAA1ZkHsEDQuBDVBJFLxwQs-8GkVTP_ha5TNlvwA5mQcu9UN64FHGpGSRj3gN5LhzCErUM8p905C8ZVU99rdbtIsRS9p6A2ZfNHeWl6B8pFHzDqbUcIyRJCbsgFoSljMgVN5ih2_SX78SJXmyiQ9nUmFGOk7kXSW9gOdefbkF84KLt8FBd4BpDNZ0SRxL5lDwqHYzzK9KpULbf12Ze9W4MYZ8w">
-                </div>
-              </div>
-            </div>
-            
-            <!-- Small Card: Conservation -->
-            <div class="relative group overflow-hidden rounded-xl bg-primary-container p-8 flex flex-col justify-between text-white">
-              <span class="material-symbols-outlined text-on-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">landscape</span>
-              <div>
-                <h3 class="font-headline-sm mb-2 font-semibold">Reserva Ecológica</h3>
-                <p class="text-white/80 text-label-md">Programas de protección Limones-Tuabaquey para la fauna local.</p>
-              </div>
-            </div>
-            
-            <!-- Small Card: Maps -->
-            <div class="relative group overflow-hidden rounded-xl border border-outline-variant/30 bg-surface-container-highest">
-              <img class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" alt="Topographical map representation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBPNBA2TFHPHX6amqhj2UD2wCixcHjQSeM-Qx5UvtZOpZaUh5fHckrg8wi3Kv2RPmQUGs2EpETCN1ldsQczkkDVNQxVTovoNLrnDjOURqmCGihB-imQRp5VHxnVgeV5OlfNGj3rvzRMIfbRK2hLR2Y76mWRMAK_F1dyeksEXZ_uS6JofHRYdojHeY7xlsviHOjmizxTH7_AHxrHTtf1YZgPWiDSKROgmgG1cLpbIEjowBVCSDbw8i97blfxypfY7Wb6OOcAMGf36s">
-              <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <span class="material-symbols-outlined text-primary mb-2 text-3xl">map</span>
-                <h3 class="font-label-md text-on-surface font-semibold">Senderos de Observación</h3>
-                <p class="text-[12px] text-on-surface-variant mt-1">Guía SIG Interactiva</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Local Flora Grid -->
+      <!-- Flora Botánica -->
       <section class="py-20 bg-surface-container-high">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
           <div class="max-w-xl mb-12">
             <span class="text-primary font-label-md uppercase tracking-wider block mb-2">Botánica Nativa</span>
-            <h2 class="font-headline-md text-headline-md text-on-surface mb-4 font-semibold">Maravillas Botánicas</h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">La flora de Camagüey es un testimonio de resiliencia, desde los cactus secos de la costa hasta las exuberantes orquídeas de las montañas.</p>
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-4 font-semibold">Flora Botánica</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">La flora endémica camagüeyana es un testimonio de resiliencia en ecosistemas únicos, desde las orquídeas de las áreas montañosas hasta la majestuosa palma real y la palma yarey en las llanuras.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             <!-- Flora Item 1 -->
@@ -184,15 +98,15 @@ import TourCard from '../components/TourCard.astro';
             <!-- Flora Item 3 -->
             <div class="group">
               <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Yarey Palm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTYekWgiJg7mjash0-EsDEHFVkz1vF6vcLYV7cyTMJ_TbNCZ0IWBIdike0XnolMCk12c7MGJQq8XhL1EVD0dQSPPdbXmkHi05SYQAXMrl24PU7k-NuITvj36bbwfwwKRE6yTawSliJHwvtuyENpOz6_tWK0CxCaw5jbbApo5nTPEnEEMTO8opD5YWlNynq95nXhasbYxQO8ecGFQHsr_9QAyjmcsYbFlkW0F_AjOg6B_VW8K_T8Yw0gkzlrKP4WwSm8nZdHBhkQjM">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Palma Real" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTYekWgiJg7mjash0-EsDEHFVkz1vF6vcLYV7cyTMJ_TbNCZ0IWBIdike0XnolMCk12c7MGJQq8XhL1EVD0dQSPPdbXmkHi05SYQAXMrl24PU7k-NuITvj36bbwfwwKRE6yTawSliJHwvtuyENpOz6_tWK0CxCaw5jbbApo5nTPEnEEMTO8opD5YWlNynq95nXhasbYxQO8ecGFQHsr_9QAyjmcsYbFlkW0F_AjOg6B_VW8K_T8Yw0gkzlrKP4WwSm8nZdHBhkQjM">
               </div>
-              <h4 class="font-headline-sm text-on-surface font-semibold">Palma Yarey</h4>
-              <p class="text-label-md text-primary uppercase tracking-wider mt-1">Coccothrinax</p>
+              <h4 class="font-headline-sm text-on-surface font-semibold">Palma Real</h4>
+              <p class="text-label-md text-primary uppercase tracking-wider mt-1">Roystonea regia</p>
             </div>
             <!-- Flora Item 4 -->
             <div class="group">
               <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tree Fern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUw__XYkIP58d9K9uc_OnugN6K_rJGts7KrDmPaxXq-llydk_d9bR-H7JWOKDCsk6gXs9z3qGg-nO_jrunH-mes9g71-13XPkLUwmNHZ_E1_PPrFjy4m5HOyBSkxndbj5v4wVFUS2lyFN26BDhuQzvb1TFZ0VX37doJpIT4_f1dt--WX3fIgSBaejy_FXRDzYNUez8y0XaCJn01QYlo8L-hW72eI7VzzL4P_O4xq47v9ENAqJVh6BuPxPT_azfiNUvXFNZ2hU4l5Y">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Helecho Arborescente" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUw__XYkIP58d9K9uc_OnugN6K_rJGts7KrDmPaxXq-llydk_d9bR-H7JWOKDCsk6gXs9z3qGg-nO_jrunH-mes9g71-13XPkLUwmNHZ_E1_PPrFjy4m5HOyBSkxndbj5v4wVFUS2lyFN26BDhuQzvb1TFZ0VX37doJpIT4_f1dt--WX3fIgSBaejy_FXRDzYNUez8y0XaCJn01QYlo8L-hW72eI7VzzL4P_O4xq47v9ENAqJVh6BuPxPT_azfiNUvXFNZ2hU4l5Y">
               </div>
               <h4 class="font-headline-sm text-on-surface font-semibold">Helecho Arborescente</h4>
               <p class="text-label-md text-primary uppercase tracking-wider mt-1">Cyatheales</p>
@@ -202,8 +116,8 @@ import TourCard from '../components/TourCard.astro';
       </section>
     </div>
 
-    <!-- ================= PATRIMONIO TAB ================= -->
-    <div id="tab-patrimonio" class="tab-content hidden">
+    <!-- ================= PATRIMONIO HISTÓRICO ================= -->
+    <div id="patrimonio">
       <!-- Mapping & Winding City -->
       <section class="py-20 bg-surface-container-low">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -332,8 +246,8 @@ import TourCard from '../components/TourCard.astro';
       </section>
     </div>
 
-    <!-- ================= CULTURA TAB ================= -->
-    <div id="tab-cultura" class="tab-content hidden">
+    <!-- ================= CULTURA Y TRADICIÓN ================= -->
+    <div id="cultura">
       <!-- Bento Tradition Grid -->
       <section class="py-20 bg-surface-container-low">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -498,43 +412,9 @@ import TourCard from '../components/TourCard.astro';
   </main>
 </BaseLayout>
 
-<style>
-  .tab-btn {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-</style>
+
 
 <script is:inline>
-  // ================= TAB NAVIGATION LOGIC =================
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active class from all tabs
-      tabs.forEach(t => {
-        t.classList.remove('active', 'bg-primary', 'text-white');
-        t.classList.add('text-on-surface-variant');
-      });
-      
-      // Add active class to clicked tab
-      tab.classList.add('active', 'bg-primary', 'text-white');
-      tab.classList.remove('text-on-surface-variant');
-
-      // Hide all contents
-      contents.forEach(c => c.classList.replace('block', 'hidden'));
-
-      // Show targeted content
-      const target = document.getElementById(`tab-${tab.dataset.tab}`);
-      if (target) {
-        target.classList.replace('hidden', 'block');
-        
-        // Trigger scroll animations for new elements
-        window.dispatchEvent(new Event('scroll'));
-      }
-    });
-  });
-
   // ================= EDITABLE GALLERY LOGIC =================
   const DEFAULT_IMAGES = [
     {

@@ -71,7 +71,7 @@ const featuredTour = tours.find(t => t.id === 'avistamiento-aves') || tours[0];
         {tours.map((tour, idx) => (
           <div class="tour-card border border-outline-variant/20 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all grid md:grid-cols-12 gap-0 group relative">
             <!-- Link covering the entire card -->
-            <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-10" aria-label={`Ver detalles de ${tour.title}`}></a>
+            <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-30" aria-label={`Ver detalles de ${tour.title}`}></a>
 
             <!-- 1. Imagen (izquierda en desktop ~42% o md:col-span-5, arriba en mobile - alternada en index impar) -->
             <div class={`md:col-span-5 relative h-64 md:h-auto overflow-hidden bg-surface-container ${idx % 2 === 1 ? 'md:order-last' : ''}`}>

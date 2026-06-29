@@ -16,7 +16,12 @@ const tour = {
   included: ['Transporte privado ida y vuelta', 'Guía naturalista', 'Almuerzo criollo en entorno natural'],
   excluded: ['Equipamiento fotográfico', 'Propinas'],
   fullDescription: 'Refugio de Fauna Río Máximo o Cayo Sabinal. El mayor santuario de nidificación del flamenco rosado en el Caribe. Manglares, cocodrilo cubano, jutía, sinsonte. Tres alternativas de destino según condiciones del día.',
-  galleryImages: [],
+  galleryImages: [
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCXb3g3-vDuDx-GJe0ZkIOPJ0QQdfGNJLAEwYoTcKfysmwUuKhL-v1fn5QwjsyhIas4Tb5jvCaLKsGrhL5ZeNiZ9bIXjSf2_PwQJ9FctJFfhSHfNH6qLTWIorcHB2rjcu3cMUg0CIpOAhwopcLL8ZD0WhyY4ECSxM4S3XIeKiPqs7tF-fOs95G2VJgOeDY7Avq9dwW2GGoiKEiRlWPBGZiTeH0nWDJXWfjxLJS3V9jRQXuVTo5LrG7xrc71Aoz__kntjy4UHLGiTE0',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCTYekWgiJg7mjash0-EsDEHFVkz1vF6vcLYV7cyTMJ_TbNCZ0IWBIdike0XnolMCk12c7MGJQq8XhL1EVD0dQSPPdbXmkHi05SYQAXMrl24PU7k-NuITvj36bbwfwwKRE6yTawSliJHwvtuyENpOz6_tWK0CxCaw5jbbApo5nTPEnEEMTO8opD5YWlNynq95nXhasbYxQO8ecGFQHsr_9QAyjmcsYbFlkW0F_AjOg6B_VW8K_T8Yw0gkzlrKP4WwSm8nZdHBhkQjM',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDUw__XYkIP58d9K9uc_OnugN6K_rJGts7KrDmPaxXq-llydk_d9bR-H7JWOKDCsk6gXs9z3qGg-nO_jrunH-mes9g71-13XPkLUwmNHZ_E1_PPrFjy4m5HOyBSkxndbj5v4wVFUS2lyFN26BDhuQzvb1TFZ0VX37doJpIT4_f1dt--WX3fIgSBaejy_FXRDzYNUez8y0XaCJn01QYlo8L-hW72eI7VzzL4P_O4xq47v9ENAqJVh6BuPxPT_azfiNUvXFNZ2hU4l5Y',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCaYBuZ4CAf6xdm8j6JAHxFHfix6AQ29Qqyl2xsbTkG6fTKrWwKXmf1mcIwgPYsVrV7OIufBfsc9eHd9gJStDz9EXTWru80Bjl2fHlNvuCtqEo6uAPgzrDpeONrgOr5E3POKOoEY1Ijt-9AGA5hvByrPvnS06tk6pbBkbWJ-l2WaNsy3Oe84F6yvJH2qERLjX7L7JxdhjoHy5tK2nss-rqXzyW_n01hEcYYqI4yeZpJBJU262eb69nEWHIwtSXxxiAAhvomzKq7fiQ'
+  ],
   itinerary: []
 };
 ---
@@ -85,39 +90,38 @@ const tour = {
       <!-- Content Column (Left) -->
       <div class="lg:col-span-7 space-y-12">
         
-        {tour.galleryImages && tour.galleryImages.length > 0 && (
-          <section class="space-y-4">
-            <h3 class="font-headline-sm text-xl text-on-surface font-bold">Galería de la Experiencia</h3>
-            <div class="grid grid-cols-3 gap-3">
-              {tour.galleryImages.map((img, index) => (
-                <button 
-                  class="gallery-thumb-btn aspect-[4/3] rounded-xl overflow-hidden border border-outline-variant/20 relative group cursor-pointer"
-                  data-gallery-idx={index}
-                >
-                  <img src={img} alt={`${tour.title} ${index + 1}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                  <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
-                </button>
-              ))}
-            </div>
-
-            <!-- Lightbox modal (simple container) -->
-            <div id="gallery-lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
-              <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">close</span></button>
-              <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_left</span></button>
-              <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-115 transition-transform"><span class="material-symbols-outlined">chevron_right</span></button>
-              <div class="max-w-4xl max-h-[80vh] flex items-center justify-center">
-                <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-full rounded-lg object-contain shadow-2xl" />
-              </div>
-            </div>
-          </section>
-        )}
-
         <!-- Description -->
         <section class="space-y-4">
           <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Descripción del Viaje</h3>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
             {tour.fullDescription}
           </p>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="space-y-6">
+          <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Cómo vives esta experiencia</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {tour.galleryImages.map((img, index) => (
+              <button 
+                class="gallery-thumb-btn aspect-[4/3] rounded-2xl overflow-hidden border border-outline-variant/20 relative group cursor-pointer"
+                data-gallery-idx={index}
+              >
+                <img src={img} alt={`${tour.title} ${index + 1}`} class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300"></div>
+              </button>
+            ))}
+          </div>
+
+          <!-- Lightbox modal (simple container) -->
+          <div id="gallery-lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
+            <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:scale-110 transition-transform"><span class="material-symbols-outlined">close</span></button>
+            <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-110 transition-transform"><span class="material-symbols-outlined">chevron_left</span></button>
+            <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl hover:scale-110 transition-transform"><span class="material-symbols-outlined">chevron_right</span></button>
+            <div class="max-w-4xl max-h-[80vh] flex items-center justify-center">
+              <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-full rounded-2xl object-contain shadow-2xl" />
+            </div>
+          </div>
         </section>
 
         <!-- Itinerary -->
@@ -172,33 +176,7 @@ const tour = {
           </div>
         </section>
 
-        <!-- 3 Alternativas Section -->
-        <section class="space-y-6 pt-6 border-t border-outline-variant/30">
-          <h3 class="font-headline-sm text-2xl text-on-surface font-bold">Alternativas de la Experiencia</h3>
-          <p class="font-body-lg text-on-surface-variant leading-relaxed">
-            Cuba tiene su propia forma de sorprender. Por eso cada experiencia tiene tres variantes igualmente valiosas, según el día y el momento.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-            <!-- Alternativa 1 -->
-            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
-              <span class="material-symbols-outlined text-primary text-3xl">filter_1</span>
-              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante A</h4>
-              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
-            </div>
-            <!-- Alternativa 2 -->
-            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
-              <span class="material-symbols-outlined text-primary text-3xl">filter_2</span>
-              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante B</h4>
-              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
-            </div>
-            <!-- Alternativa 3 -->
-            <div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 space-y-3">
-              <span class="material-symbols-outlined text-primary text-3xl">filter_3</span>
-              <h4 class="font-bold text-on-surface font-body-lg text-sm">Variante C</h4>
-              <p class="text-on-surface-variant text-xs leading-relaxed">[PENDIENTE]</p>
-            </div>
-          </div>
-        </section>
+
 
         <!-- Chat with Operator -->
         <section class="bg-primary/5 p-6 rounded-2xl border border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -244,7 +222,7 @@ const tour = {
           <!-- Tab Content 1: Book Form -->
           <div id="tab-content-book" class="tab-content space-y-4">
             <div class="bg-surface-container-low p-4 rounded-xl text-xs space-y-1">
-              <span class="text-on-surface-variant block uppercase tracking-wider">Precio Final por Persona</span>
+              <span class="text-on-surface-variant block uppercase tracking-wider">Desde ${tour.price} USD por persona</span>
               <div class="flex justify-between items-baseline">
                 <span class="font-bold text-primary text-xl" id="tour-base-price" data-price={tour.price}>${tour.price} USD</span>
                 <span class="text-on-surface-variant" id="total-estimation-text">Total: ${tour.price} USD</span>

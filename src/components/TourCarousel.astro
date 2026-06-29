@@ -31,7 +31,7 @@ const allTours = [...startClones, ...tours, ...endClones];
           class="tour-card-slide bg-[#E8D8B7] rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
         >
           <!-- Link covering the card for accessible navigation -->
-          <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-10" aria-label={`Ver detalles de ${tour.title}`}></a>
+          <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-30" aria-label={`Ver detalles de ${tour.title}`}></a>
 
           <!-- 1. Imagen del tour (arriba, ocupa ~45% de la card) -->
           <div class="relative h-[45%] overflow-hidden bg-surface-container">
