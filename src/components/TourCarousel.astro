@@ -3,6 +3,9 @@ import { tours } from '../data/tours.js';
 
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const featuredIds = ['camaguey-laberintica', 'flamencos-sabanas', 'mesa-camagueyana'];
+const featuredTours = tours.filter(tour => featuredIds.includes(tour.id));
 ---
 
 <div class="relative w-full overflow-hidden py-4" id="tour-carousel-container">
@@ -29,7 +32,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     id="tour-track" 
     class="flex gap-gutter overflow-x-auto scrollbar-none snap-x snap-mandatory px-margin-mobile md:px-margin-desktop scroll-smooth py-2"
   >
-    {tours.map((tour) => (
+    {featuredTours.map((tour) => (
       <div 
         class="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-start bg-white dark:bg-inverse-surface rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
       >
@@ -64,13 +67,6 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
           <h3 class="font-headline-sm text-[18px] text-on-surface dark:text-inverse-on-surface font-bold line-clamp-2 min-h-[54px] group-hover:text-primary transition-colors">
             {tour.title}
           </h3>
-
-          <!-- Rating -->
-          <div class="flex items-center gap-1 text-sm text-secondary">
-            <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="font-bold text-on-surface dark:text-inverse-on-surface">{tour.rating}</span>
-            <span class="text-on-surface-variant dark:text-surface-variant text-xs">({tour.reviewCount} reseñas)</span>
-          </div>
 
           <!-- Price & CTA Line -->
           <div class="pt-4 border-t border-outline-variant/30 flex items-center justify-between mt-auto">
