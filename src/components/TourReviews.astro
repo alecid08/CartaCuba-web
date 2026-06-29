@@ -1,0 +1,189 @@
+---
+export interface Review {
+  name: string;
+  country: string;
+  rating: number;
+  text: string;
+  date: string;
+}
+
+export interface Props {
+  tourTitle: string;
+  reviews?: Review[];
+}
+
+const { tourTitle, reviews = [] } = Astro.props;
+---
+
+<section class="py-16 bg-surface-container-low border-t border-outline-variant/30">
+  <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- PARTE B — Área de visualización de reseñas aprobadas -->
+      <div class="lg:col-span-7 space-y-6">
+        <h3 class="font-headline-sm text-2xl text-on-surface font-bold">
+          Lo que dicen quienes ya estuvieron aquí
+        </h3>
+        
+        {reviews.length === 0 ? (
+          <div class="py-12 px-6 bg-white dark:bg-inverse-surface border border-outline-variant/20 rounded-3xl text-center">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant/40 mb-3 block">rate_review</span>
+            <p class="text-on-surface-variant/70 font-body-md text-base">
+              Sé el primero en dejar tu reseña sobre esta experiencia.
+            </p>
+          </div>
+        ) : (
+          <div class="space-y-6">
+            {reviews.map((review) => (
+              <div class="bg-white dark:bg-inverse-surface p-6 rounded-r-3xl rounded-l-lg border-l-4 border-[#C47A2C] shadow-sm space-y-3 transition-all hover:shadow-md">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <h4 class="font-bold text-[#1F3D2B] dark:text-[#E8D8B7] font-body-lg text-base">{review.name}</h4>
+                    <p class="text-xs text-on-surface-variant/80 font-body-md">{review.country}</p>
+                  </div>
+                  <span class="text-xs text-on-surface-variant/60 font-body-md">{review.date}</span>
+                </div>
+                
+                <div class="flex text-[#C47A2C] text-lg select-none" aria-label={`${review.rating} de 5 estrellas`}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span>{i < review.rating ? '★' : '☆'}</span>
+                  ))}
+                </div>
+                
+                <p class="text-on-surface-variant dark:text-surface-variant/90 text-sm font-body-md leading-relaxed whitespace-pre-line">
+                  {review.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- PARTE A — Formulario de envío de reseña -->
+      <div class="lg:col-span-5 bg-white dark:bg-inverse-surface p-6 sm:p-8 rounded-3xl border border-outline-variant/30 shadow-sm space-y-6">
+        <h3 class="font-headline-sm text-xl text-[#1F3D2B] dark:text-[#E8D8B7] font-bold">
+          ¿Ya viviste esta experiencia? Cuéntanos
+        </h3>
+        
+        <form 
+          action="mailto:reservas@cartacuba.com" 
+          method="POST" 
+          enctype="text/plain" 
+          class="space-y-5"
+          id="reviews-submission-form"
+        >
+          <!-- Tour Title context for mailto -->
+          <input type="hidden" name="Tour" value={tourTitle} />
+
+          <div class="space-y-1">
+            <label for="review-name" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Nombre completo *</label>
+            <input 
+              type="text" 
+              id="review-name" 
+              name="Nombre" 
+              required 
+              class="w-full bg-background border border-outline-variant rounded-xl px-4 py-2.5 text-sm text-on-surface focus:ring-primary focus:ring-primary outline-none"
+              placeholder="Ej. María González"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label for="review-origin" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">País o ciudad de origen *</label>
+            <input 
+              type="text" 
+              id="review-origin" 
+              name="Origen" 
+              required 
+              class="w-full bg-background border border-outline-variant rounded-xl px-4 py-2.5 text-sm text-on-surface focus:ring-primary focus:ring-primary outline-none"
+              placeholder="Ej. Madrid, España o La Habana"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <span class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Valoración *</span>
+            <div class="flex items-center gap-1.5" id="star-selector">
+              <button type="button" class="star-selector-btn text-3xl focus:outline-none transition-transform duration-100 hover:scale-110 cursor-pointer" data-value="1" aria-label="1 estrella" style="color: #C47A2C;">★</button>
+              <button type="button" class="star-selector-btn text-3xl focus:outline-none transition-transform duration-100 hover:scale-110 cursor-pointer" data-value="2" aria-label="2 estrellas" style="color: #C47A2C;">★</button>
+              <button type="button" class="star-selector-btn text-3xl focus:outline-none transition-transform duration-100 hover:scale-110 cursor-pointer" data-value="3" aria-label="3 estrellas" style="color: #C47A2C;">★</button>
+              <button type="button" class="star-selector-btn text-3xl focus:outline-none transition-transform duration-100 hover:scale-110 cursor-pointer" data-value="4" aria-label="4 estrellas" style="color: #C47A2C;">★</button>
+              <button type="button" class="star-selector-btn text-3xl focus:outline-none transition-transform duration-100 hover:scale-110 cursor-pointer" data-value="5" aria-label="5 estrellas" style="color: #C47A2C;">★</button>
+            </div>
+            <input type="hidden" name="Valoracion" id="rating-input" value="5" />
+          </div>
+
+          <div class="space-y-1">
+            <label for="review-opinion" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Opinión (mínimo 30 caracteres) *</label>
+            <textarea 
+              id="review-opinion" 
+              name="Opinion" 
+              required 
+              minlength="30"
+              rows="4"
+              class="w-full bg-background border border-outline-variant rounded-xl px-4 py-2.5 text-sm text-on-surface focus:ring-primary focus:ring-primary outline-none resize-none leading-relaxed"
+              placeholder="Cuéntanos qué tal fue tu experiencia en este tour..."
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full text-white font-label-md py-3.5 rounded-full hover:opacity-95 transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer shadow-md text-sm font-bold"
+              style="background-color: #1F3D2B;"
+            >
+              Enviar mi reseña
+            </button>
+            <span class="text-[11px] text-on-surface-variant/80 text-center block mt-3 leading-normal">
+              Tu reseña será revisada antes de publicarse. Normalmente en menos de 48 horas.
+            </span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const starBtns = document.querySelectorAll('.star-selector-btn');
+    const ratingInput = document.getElementById('rating-input') as HTMLInputElement;
+    const starContainer = document.getElementById('star-selector');
+
+    function updateStars(rating: number) {
+      starBtns.forEach((btn) => {
+        const val = parseInt(btn.getAttribute('data-value') || '0', 10);
+        const htmlBtn = btn as HTMLButtonElement;
+        if (val <= rating) {
+          htmlBtn.style.color = '#C47A2C';
+        } else {
+          htmlBtn.style.color = '#E9E1DC';
+        }
+      });
+    }
+
+    if (ratingInput && starBtns.length > 0) {
+      // Set initial 5-star state
+      updateStars(5);
+
+      starBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = parseInt(btn.getAttribute('data-value') || '5', 10);
+          ratingInput.value = val.toString();
+          updateStars(val);
+        });
+
+        btn.addEventListener('mouseover', () => {
+          const val = parseInt(btn.getAttribute('data-value') || '5', 10);
+          updateStars(val);
+        });
+      });
+
+      if (starContainer) {
+        starContainer.addEventListener('mouseleave', () => {
+          const currentRating = parseInt(ratingInput.value || '5', 10);
+          updateStars(currentRating);
+        });
+      }
+    }
+  });
+</script>

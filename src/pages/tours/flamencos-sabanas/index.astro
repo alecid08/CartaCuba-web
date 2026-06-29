@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
+import TourReviews from '../../../components/TourReviews.astro';
 
 const baseTour = tours.find(t => t.id === 'flamencos-sabanas') || {};
 
@@ -400,6 +401,8 @@ const tour = {
 
     </div>
   </main>
+
+  <TourReviews tourTitle={tour.title} />
 </BaseLayout>
 
 <script define:vars={{ tourTitle: tour.title }}>

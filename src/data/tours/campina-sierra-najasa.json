@@ -1,0 +1,28 @@
+{
+  "id": "campina-sierra-najasa",
+  "title": "Campiña y Sierra de Najasa",
+  "category": "Naturaleza",
+  "badgeIcon": "eco",
+  "duration": "Día completo",
+  "price": 55,
+  "priceDisplay": "$55–70 USD",
+  "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAp5nAvWqrvgNRD82KSdFM8hErt-mCakDkYoHjsb_49A-uxGM6Lh1jI9e5Apt-EExz8mNmO1OjmMDpDtykz1o2q5r8XFnGxxZdPZ4Q5_G-y2K88i3qtgsI4kmv8A5xgHSXLrPW6bjPTQw80ZRECAgmM-cTYqjgemkyLYhCFQSYsFZ96C_PyKFtOvUvfykmleIToDs03bpzvLoPkY_OOfWan3-vzJfTcM8QG8TMIAlq_36qK1yUd2bvHOk3lxRVJ1QO8vfKF8IRFjPY",
+  "shortDescription": "Reserva natural Sierra de Najasa. Tocororo, Cartacuba, orquídeas endémicas, palma real. Paisaje rural auténtico con historia precolombina ciboney. Transporte incluido.",
+  "fullDescription": "Reserva natural con ecosistema único en Cuba central. Tocororo, Cartacuba, orquídeas endémicas, palma real. Sitios arqueológicos precolombinos de la cultura ciboney. Fincas reales, trabajo del campo, almuerzo auténtico.",
+  "included": [
+    "Transporte privado",
+    "Guía naturalista e historiador",
+    "Gastronomía criolla rural"
+  ],
+  "excluded": [
+    "Equipo de senderismo",
+    "Propinas"
+  ],
+  "galleryImages": [
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCtWux-LkZsDIbemoZp4_eDA2UwVG4nQ5pklxwmaMA-TYUQdHTEUAAA1ZkHsEDQuBDVBJFLxwQs-8GkVTP_ha5TNlvwA5mQcu9UN64FHGpGSRj3gN5LhzCErUM8p905C8ZVU99rdbtIsRS9p6A2ZfNHeWl6B8pFHzDqbUcIyRJCbsgFoSljMgVN5ih2_SX78SJXmyiQ9nUmFGOk7kXSW9gOdefbkF84KLt8FBd4BpDNZ0SRxL5lDwqHYzzK9KpULbf12Ze9W4MYZ8w",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDTe9B-JxqZ5szupHDRwc5neO0AKDCxeePxR3izli7HwDtI5beVViJrZEhrmNBo9rLfhfikRO5L25Nz4Ya-QemDffoxjgPD7ZxZbRoVxjyJq3LHhLz2fRAC6KvUvP66yPKS4OR0QqgX-_NZCYniCe1vM8WqtjyqQVv27iaTrHc90FOH05JSFjKp3QxH8_tNq_SOGVzLbM8Wt0kOQPPL_j1kb8cgTp4-kcuM0HynDqFhKWm55JzfqQUMDTJ5ekaaOTnNjOVcClxVBMw",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE"
+  ],
+  "itinerary": []
+}

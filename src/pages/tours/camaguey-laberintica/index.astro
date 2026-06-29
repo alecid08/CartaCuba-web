@@ -1,29 +1,16 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
+import TourReviews from '../../../components/TourReviews.astro';
+import tourData from '../../../data/tours/camaguey-laberintica.json';
+import reviewsData from '../../../data/reviews/camaguey-laberintica.json';
 
 const baseTour = tours.find(t => t.id === 'camaguey-laberintica') || {};
-
 const tour = {
   ...baseTour,
-  id: 'camaguey-laberintica',
-  title: 'Camagüey Laberíntica',
-  category: 'Patrimonio',
-  badgeIcon: 'architecture',
-  duration: '3–4 horas',
-  price: 30,
-  priceDisplay: '$30–40 USD',
-  included: ['Guía historiador local', 'Entradas a plazas y casonas coloniales', 'Jugo natural de cortesía'],
-  excluded: ['Transporte', 'Comidas adicionales'],
-  fullDescription: 'Plazas coloniales, tinajones, Iglesia de la Merced, Teatro Principal. Un recorrido por el laberinto urbano diseñado para despistar piratas ingleses en el siglo XVII. Grupos de máximo 6 personas.',
-  galleryImages: [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDdZaxGTqcU3VljN47-J2B4dwG8T4kHolxGOskpiUkGe8zfWJnciSbow6Z8GfaTo_pwjBS8A6HRpnW8VGhQVhCSs9sNDEP2EVRBIcs2JDqWNhfhLkU6hjwjr19DyIAs6IUPStl-n-Q0KE8zwo2KkTmVWUNq8MpsCT95k5gUyvqPYM2qBvu3f7dHquufaijeQPc5AFEjhDjpfNgpysicZE4zrx3I-0TY0pJQumksxY865lDYVKymnYUkJKaoSV4XH677TZuaz2NBBbg',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuBa5jAGWdeBkStoCs7PV-exl9DF_yD5nfdRlQzr5da38uZEMfhc4gqXFQMtedzuM3BHPUMOY4dFtaiNiLnv37rpUQL8BVJ3SBW-wuGC6aNk-QFJi0KUj3N89GeGGfAyFHRuD4dakcNxS8oPM6EVF0RM4W2KUEiyN2Wj2mgLlt3S6W1c4U_BPOHv369ykJdnGHm-RXGCkROsgSTBReednyWNoY6p5ek4FgRv-Ez3VO9eDx7Aj8HF4_0gP8vFL9jaXCZn11_x34k4rbg',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuB8FY2kJslYFvOlbxrrE3ClhAGZk7vUyr5CPROjHnB6LT5Yu-swxN9qIbt1FBafpEt_W2ZSKENg-xXOcJayYKDofYgG7h5EaMRyv8TSs6pOObTwCmO9xW4iFzKIGP7By1j9xBxa89SRp31z3muF6OP89pGNBb3JtCrfxQAG7t-a7KHgOFt6jODnthLfSnn145kggDYfSASR3kLnJqpLuYdUFpI6aV7keWzKKktn3RKomwEuXe8hkPIC0G0jJPWmLtWCc9qgunA3USSk1w',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuASFCuBlQGan0OrbajQaJKvX4-YlHSdw6tOCAoAYwTpOJHQ7CzokKc5yvsZBti0hw1l4Ywyx3yx_u0-zU6_Wm3LM88Uu5AH8avA5l9dp0rOdveubOV7cZZZwfhiaSznXpaa8_ICX3ZpYqX4G8-8gfwabciv3g41f5JgBiib2w6CMSi2DvXSX78L0OwBoI5rL7R8Vo4qyNMC_9muKAx-hWykjUS5h6Tx5E7tJeoXjnnE0_D8WIrcgb3GWUkEg-WV0JHsgTXO3-mWGlQ'
-  ],
-  itinerary: []
+  ...tourData
 };
+const reviews = reviewsData.reviews;
 ---
 
 <BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
@@ -400,6 +387,8 @@ const tour = {
 
     </div>
   </main>
+
+  <TourReviews tourTitle={tour.title} reviews={reviews} />
 </BaseLayout>
 
 <script define:vars={{ tourTitle: tour.title }}>

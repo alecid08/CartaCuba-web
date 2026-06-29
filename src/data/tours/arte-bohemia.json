@@ -1,0 +1,28 @@
+{
+  "id": "arte-bohemia",
+  "title": "Arte y Bohemia Camagüeyana",
+  "category": "Cultura",
+  "badgeIcon": "palette",
+  "duration": "2–3 horas",
+  "price": 25,
+  "priceDisplay": "$25–35 USD",
+  "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
+  "shortDescription": "Talleres de artistas plásticos activos, músicos de trova, artesanos de cerámica. Acceso directo a la escena creativa camagüeyana que no aparece en ninguna guía turística.",
+  "fullDescription": "Pintores, ceramistas, trovadores y artesanos en sus espacios reales. Acceso a la galería provincial y estudios privados que normalmente permanecen cerrados al público general.",
+  "included": [
+    "Visita a talleres de artistas activos",
+    "Encuentro con músicos",
+    "Café local"
+  ],
+  "excluded": [
+    "Compras de obras de arte",
+    "Transporte"
+  ],
+  "galleryImages": [
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCa3JeHwXcw11lEsFE6Zx1CKz6PBudf3NZHvt02FAE_7dMfI3rxfOIEff04K4moXph3sX2UKgaUoD3uNXyGperCWpYHoq1R4X58ljTOhrePdDI9RnC2TBixIoIhtciu12-2fX1uB55d4a6y4TwzbxVxhQyw_kEmJPEp6vyy0V98AbNGk8_JR3-h34grFYJ7gcAx-XKvIHtKKejkFVCFG2gUWhEUPE7E5hW9DlADqNyOq74yCsLyhYYDtX0fbueqxemzb36TTB-YH9Q",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCYkf7WyKrLoAo84V_pSeSTFUM8svSMqWh4X2yMBkk4fp33no_SxlSWAKSyJ1VdB2V0wkorpFBZbvqF7VbS_qUfFVbMbpiIX61qCmNDV-ynzPoEDSPnhMEbfgK5teX4w5KA7oggkLRA76HInicTpAbvJu5B4P74fog-QTb1xnIxG4nfFBob2DUMpAapOfigeC2Z_t25hqoS-fbZbL61R-ABBZzd0pvoLt6OAR3W5MGOE0NzYZHzxrbJd1Zey07Rf1C8_ZMBcE8P1Bs",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuB4CGZIsFgj5ptXEY0lJL24TwAkiwFrvwwKBoXx2zXM2Zz6FF1YbzNV3AERkk2DLRPd8rvhGHvnLyTluS86zY-QJgbPt9jSOR71RYDyqOjOawnTM4vrIIfXIlAYOXhDa-7YU81AlEXAs3NOsof_EG0H3Ne2KULYS2hCv8oHdLTD3xE7rnoOklIr95gx5vikjjwLXO7RrbcYwLT3k1mdHzErHUf514zyW5kCBKbz53CjZinrN5n_xWZQrSkrSQIZ1JHVKQI3b1yNUNA",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCptiss7N2AWTgPothLayC95TWVYgsnVHXtumaiT0yOM1a_lxe0So5KvhhM11Jdmfvl2oYbSychr-qBsAEVb9KeUOywtYDBTJf30k8nmrOM3AeUM2mw1XvK3xq5zBwY5SsQUjyssKh79pcuXfGAX4tJ4T6W7vN8aRX1JlCi59rN95XtO-zkgiUqryu-FHg-Hm6JLMF_1ynSiBIiuRIWjWlENsj22dQ--nleiih-vQjSwyq4NhV29zK3NTBqUZ76kGARpim7-Mz9lpE"
+  ],
+  "itinerary": []
+}
