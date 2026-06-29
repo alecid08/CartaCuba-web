@@ -8,29 +8,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
 // Find the featured/most popular tour (Avistamiento de Aves)
 const featuredTour = tours.find(t => t.id === 'avistamiento-aves') || tours[0];
 
-const reviews = [
-  {
-    name: "Sarah Jenkins",
-    country: "Canadá",
-    rating: 5,
-    text: "El avistamiento de aves en la Sierra del Chorrillo fue el punto culminante de nuestro viaje. Pudimos ver tres Cartacubas de cerca. ¡El guía local tenía un conocimiento increíble!",
-    date: "Hace 2 semanas"
-  },
-  {
-    name: "Carlos Mendoza",
-    country: "España",
-    rating: 5,
-    text: "El taller de barro fue fantástico. Los alfareros te abren sus puertas con una calidez inmensa. Moldear un tinajón con mis manos fue una experiencia que nunca olvidaré.",
-    date: "Hace 1 mes"
-  },
-  {
-    name: "Marie & Pierre",
-    country: "Francia",
-    rating: 5,
-    text: "Caminar por el laberinto de Camagüey y entrar a patios coloniales privados fue mágico. El diseño urbano tiene una historia fascinante de piratas y resistencia colonial.",
-    date: "Hace 3 semanas"
-  }
-];
+
 ---
 
 <BaseLayout title="Nuestros Tours | CartaCuba" activePage="tours">
@@ -157,44 +135,6 @@ const reviews = [
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-24 mt-24 bg-surface-container-low border-t border-outline-variant/20 relative">
-      <div class="grainy-overlay absolute inset-0 pointer-events-none opacity-50"></div>
-      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-16 relative z-10">
-        <div class="text-center max-w-2xl mx-auto space-y-4">
-          <span class="text-primary font-label-md uppercase tracking-wider block">Opiniones Reales</span>
-          <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Experiencias de Nuestros Clientes</h2>
-          <p class="text-on-surface-variant font-body-md">
-            La confianza se construye con honestidad. Conoce el testimonio de quienes ya han explorado Camagüey con nosotros.
-          </p>
-        </div>
 
-        <div class="grid md:grid-cols-3 gap-gutter">
-          {reviews.map((rev) => (
-            <div class="bg-white dark:bg-inverse-surface border border-outline-variant/30 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm relative">
-              <span class="material-symbols-outlined text-4xl text-primary-container/20 absolute top-6 right-6 select-none" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-              <div class="space-y-4">
-                <!-- Stars -->
-                <div class="flex text-secondary">
-                  {Array.from({ length: rev.rating }).map(() => (
-                    <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
-                  ))}
-                </div>
-                <p class="text-on-surface dark:text-inverse-on-surface font-body-md italic leading-relaxed">
-                  "{rev.text}"
-                </p>
-              </div>
-              <div class="pt-6 border-t border-outline-variant/20 mt-6 flex justify-between items-center text-xs">
-                <div>
-                  <span class="font-bold text-on-surface dark:text-inverse-on-surface block text-sm">{rev.name}</span>
-                  <span class="text-on-surface-variant dark:text-surface-variant font-medium">{rev.country}</span>
-                </div>
-                <span class="text-on-surface-variant dark:text-surface-variant italic">{rev.date}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   </main>
 </BaseLayout>

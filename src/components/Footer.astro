@@ -21,10 +21,10 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     <div class="space-y-4">
       <h5 class="font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-wider text-sm">Explorar</h5>
       <ul class="space-y-2 font-body-md text-body-md">
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/CartaCuba-web/nature/">Senderos Naturales</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/CartaCuba-web/heritage/">Patrimonio Urbano</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/CartaCuba-web/estancias/">Estancias Locales</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="/CartaCuba-web/culture/">Cultura y Tradiciones</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}tours/`}>Tours y Experiencias</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}tours/camaguey-laberintica/`}>Camagüey Laberíntica</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}tours/flamencos-sabanas/`}>Flamencos y Sabanas</a></li>
+        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href={`${cleanBase}tours/mesa-camagueyana/`}>Mesa Camagüeyana</a></li>
       </ul>
     </div>
 
@@ -32,10 +32,10 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     <div class="space-y-4">
       <h5 class="font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-wider text-sm">Destinos</h5>
       <ul class="space-y-2 font-body-md text-body-md">
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Sierra de Cubitas</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Limones-Tuabaquey</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Plaza de San Juan</a></li>
-        <li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors" href="#">Patios Coloniales</a></li>
+        <li class="text-on-surface-variant dark:text-surface-variant">Sierra de Cubitas</li>
+        <li class="text-on-surface-variant dark:text-surface-variant">Limones-Tuabaquey</li>
+        <li class="text-on-surface-variant dark:text-surface-variant">Plaza de San Juan</li>
+        <li class="text-on-surface-variant dark:text-surface-variant">Patios Coloniales</li>
       </ul>
     </div>
 
@@ -59,7 +59,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
   <!-- Copyright Bar -->
   <div class="border-t border-outline-variant/30 py-6 text-center">
     <p class="text-on-surface-variant dark:text-surface-variant text-[12px] font-body-md">
-      © 2024 CartaCuba. Preservando el patrimonio de Camagüey.
+      © 2025 CartaCuba. Preservando el patrimonio de Camagüey.
     </p>
   </div>
 </footer>

@@ -50,8 +50,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- Why Choose Us Grid -->
+    <!-- Host Section -->
     <section class="py-24 bg-background border-b border-outline-variant/20">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="relative order-2 md:order-1">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+            <img 
+              alt="Alejandro, anfitrión y fundador de CartaCuba" 
+              class="leaf-shape w-full h-[450px] object-cover border border-outline-variant/30 shadow-md"
+              src="/alejandro_host.png"
+            />
+          </div>
+          <div class="space-y-6 order-1 md:order-2">
+            <span class="text-primary font-label-md uppercase tracking-wider block">El Anfitrión</span>
+            <h2 class="font-headline-md text-headline-md text-on-surface font-semibold">El Anfitrión</h2>
+            <p class="font-body-lg text-on-surface-variant">
+              CartaCuba nació de una convicción simple: Camagüey merece ser descubierta, no consumida. Soy Alejandro, camagüeyano de nacimiento y fundador de este proyecto. Crecí en las mismas calles laberínticas que hoy guío, aprendí las historias de los tinajones antes de aprender a leerlas en los libros, y con los años comprendí que el turismo convencional estaba convirtiendo una ciudad viva en una postal.
+            </p>
+            <p class="font-body-md text-on-surface-variant text-sm">
+              CartaCuba no es una agencia. Es una forma de entender el viaje: cercana, honesta, adaptable a cada grupo y a cada momento. No tengo guiones fijos. Tengo historias reales, alianzas con artistas, cocineras, artesanos y naturalistas de la provincia que hacen de cada experiencia algo irrepetible.
+            </p>
+            <p class="font-body-md text-on-surface font-semibold text-sm">
+              Si visitas Camagüey con nosotros, no serás un turista. Serás un descubridor.
+            </p>
+            <div class="pt-4">
+              <a 
+                href="https://wa.me/+5351383690?text=Hola%20Alejandro%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20CartaCuba."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-primary text-white hover:bg-primary-container px-6 py-3 rounded-full font-label-md transition-all shadow-sm"
+              >
+                <span>Conversa con Alejandro por WhatsApp</span>
+                <span class="material-symbols-outlined text-lg">chat</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Grid -->
+    <section class="py-24 bg-surface-container-low border-b border-outline-variant/20">
       <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div class="text-center max-w-2xl mx-auto mb-16">
           <span class="text-primary font-label-md uppercase tracking-wider block mb-2">Turismo Sostenible</span>
@@ -65,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="space-y-6">
               <span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">groups</span>
               <h3 class="font-headline-sm text-lg text-on-surface font-semibold">Grupos Pequeños y Cercanos</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">Limitamos nuestros grupos a un máximo de 10 personas. Esto permite una verdadera inmersión, acceso a espacios íntimos y evita perturbar la fauna o saturar las calles históricas.</p>
+              <p class="font-body-md text-sm text-on-surface-variant">Limitamos nuestros grupos a un máximo de 6 personas. Esto garantiza una experiencia íntima y personalizada, acceso a espacios privados y una conexión real con cada viajero.</p>
             </div>
             <span class="text-primary font-label-md text-xs uppercase tracking-wider block mt-8 font-semibold">Inmersión Personalizada</span>
           </div>
@@ -94,7 +134,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- Contact & Map Section -->
-    <section class="py-24 bg-surface-container-low">
+    <section class="py-24 bg-background">
       <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
@@ -121,7 +161,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <span class="material-symbols-outlined text-primary text-2xl">mail</span>
                 <div>
                   <span class="font-label-md text-xs text-on-surface-variant block">Correo Electrónico</span>
-                  <a href="mailto:info@cartacuba.com" class="font-body-md text-on-surface font-semibold hover:underline">reservas@cartacuba.com</a>
+                  <a href="mailto:reservas@cartacuba.com" class="font-body-md text-on-surface font-semibold hover:underline">reservas@cartacuba.com</a>
                 </div>
               </div>
               <!-- Detail 3 -->
