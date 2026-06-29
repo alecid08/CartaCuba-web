@@ -1,0 +1,92 @@
+backend:
+  name: github
+  repo: alecid08/CartaCuba-web
+  branch: main
+  site_domain: cartacuba.com
+
+local_backend: true
+
+media_folder: "CartaCuba-web/public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "tours"
+    label: "Tours"
+    description: "Editar la información, precios y detalles de cada tour individual"
+    files:
+      - label: "Arte y Bohemia"
+        name: "arte-bohemia"
+        file: "CartaCuba-web/src/data/tours/arte-bohemia.json"
+        fields: &tour_fields
+          - { label: "ID del Tour", name: "id", widget: "hidden" }
+          - { label: "Título del Tour", name: "title", widget: "string" }
+          - { label: "Categoría", name: "category", widget: "select", options: ["Cultura", "Patrimonio", "Naturaleza", "Gastronomía"] }
+          - { label: "Icono de Distintivo", name: "badgeIcon", widget: "string", hint: "Material Symbols icon name (e.g. palette, eco, architecture, restaurant)" }
+          - { label: "Duración", name: "duration", widget: "string" }
+          - { label: "Precio Base (USD)", name: "price", widget: "number", value_type: "int" }
+          - { label: "Texto de Rango de Precios", name: "priceDisplay", widget: "string", hint: "Ej. $25–35 USD" }
+          - { label: "Imagen de Portada", name: "image", widget: "string", hint: "URL de la imagen de portada" }
+          - { label: "Descripción Corta", name: "shortDescription", widget: "string" }
+          - { label: "Descripción Completa", name: "fullDescription", widget: "text" }
+          - { label: "Qué Incluye", name: "included", widget: "list", field: { label: "Elemento", name: "item", widget: "string" } }
+          - { label: "No Incluye", name: "excluded", widget: "list", field: { label: "Elemento", name: "item", widget: "string" } }
+          - { label: "Imágenes de Galería", name: "galleryImages", widget: "list", field: { label: "URL de Imagen", name: "img", widget: "string" } }
+      
+      - label: "Camagüey Laberíntica"
+        name: "camaguey-laberintica"
+        file: "CartaCuba-web/src/data/tours/camaguey-laberintica.json"
+        fields: *tour_fields
+        
+      - label: "Campiña y Sierra de Najasa"
+        name: "campina-sierra-najasa"
+        file: "CartaCuba-web/src/data/tours/campina-sierra-najasa.json"
+        fields: *tour_fields
+        
+      - label: "Flamencos y Sabanas"
+        name: "flamencos-sabanas"
+        file: "CartaCuba-web/src/data/tours/flamencos-sabanas.json"
+        fields: *tour_fields
+        
+      - label: "Mesa Camagüeyana"
+        name: "mesa-camagueyana"
+        file: "CartaCuba-web/src/data/tours/mesa-camagueyana.json"
+        fields: *tour_fields
+
+  - name: "reviews"
+    label: "Reseñas"
+    description: "Moderar y publicar las reseñas de cada tour"
+    files:
+      - label: "Reseñas - Arte y Bohemia"
+        name: "arte-bohemia-reviews"
+        file: "CartaCuba-web/src/data/reviews/arte-bohemia.json"
+        fields: &review_fields
+          - label: "Reseñas Aprobadas"
+            name: "reviews"
+            widget: "list"
+            summary: "{{fields.name}} ({{fields.rating}} ★) - {{fields.date}}"
+            fields:
+              - { label: "Nombre completo", name: "name", widget: "string" }
+              - { label: "País o ciudad de origen", name: "country", widget: "string" }
+              - { label: "Valoración (1-5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "Opinión", name: "text", widget: "text" }
+              - { label: "Fecha de publicación", name: "date", widget: "string", hint: "Ej. 29 de Junio, 2026" }
+
+      - label: "Reseñas - Camagüey Laberíntica"
+        name: "camaguey-laberintica-reviews"
+        file: "CartaCuba-web/src/data/reviews/camaguey-laberintica.json"
+        fields: *review_fields
+
+      - label: "Reseñas - Campiña y Sierra de Najasa"
+        name: "campina-sierra-najasa-reviews"
+        file: "CartaCuba-web/src/data/reviews/campina-sierra-najasa.json"
+        fields: *review_fields
+
+      - label: "Reseñas - Flamencos y Sabanas"
+        name: "flamencos-sabanas-reviews"
+        file: "CartaCuba-web/src/data/reviews/flamencos-sabanas.json"
+        fields: *review_fields
+
+      - label: "Reseñas - Mesa Camagüeyana"
+        name: "mesa-camagueyana-reviews"
+        file: "CartaCuba-web/src/data/reviews/mesa-camagueyana.json"
+        fields: *review_fields

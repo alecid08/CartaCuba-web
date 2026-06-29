@@ -2,29 +2,15 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
 import TourReviews from '../../../components/TourReviews.astro';
+import tourData from '../../../data/tours/flamencos-sabanas.json';
+import reviewsData from '../../../data/reviews/flamencos-sabanas.json';
 
 const baseTour = tours.find(t => t.id === 'flamencos-sabanas') || {};
-
 const tour = {
   ...baseTour,
-  id: 'flamencos-sabanas',
-  title: 'Flamencos y Sabanas',
-  category: 'Naturaleza',
-  badgeIcon: 'eco',
-  duration: 'Día completo',
-  price: 60,
-  priceDisplay: '$60–80 USD',
-  included: ['Transporte privado ida y vuelta', 'Guía naturalista', 'Almuerzo criollo en entorno natural'],
-  excluded: ['Equipamiento fotográfico', 'Propinas'],
-  fullDescription: 'Refugio de Fauna Río Máximo o Cayo Sabinal. El mayor santuario de nidificación del flamenco rosado en el Caribe. Manglares, cocodrilo cubano, jutía, sinsonte. Tres alternativas de destino según condiciones del día.',
-  galleryImages: [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCXb3g3-vDuDx-GJe0ZkIOPJ0QQdfGNJLAEwYoTcKfysmwUuKhL-v1fn5QwjsyhIas4Tb5jvCaLKsGrhL5ZeNiZ9bIXjSf2_PwQJ9FctJFfhSHfNH6qLTWIorcHB2rjcu3cMUg0CIpOAhwopcLL8ZD0WhyY4ECSxM4S3XIeKiPqs7tF-fOs95G2VJgOeDY7Avq9dwW2GGoiKEiRlWPBGZiTeH0nWDJXWfjxLJS3V9jRQXuVTo5LrG7xrc71Aoz__kntjy4UHLGiTE0',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCTYekWgiJg7mjash0-EsDEHFVkz1vF6vcLYV7cyTMJ_TbNCZ0IWBIdike0XnolMCk12c7MGJQq8XhL1EVD0dQSPPdbXmkHi05SYQAXMrl24PU7k-NuITvj36bbwfwwKRE6yTawSliJHwvtuyENpOz6_tWK0CxCaw5jbbApo5nTPEnEEMTO8opD5YWlNynq95nXhasbYxQO8ecGFQHsr_9QAyjmcsYbFlkW0F_AjOg6B_VW8K_T8Yw0gkzlrKP4WwSm8nZdHBhkQjM',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDUw__XYkIP58d9K9uc_OnugN6K_rJGts7KrDmPaxXq-llydk_d9bR-H7JWOKDCsk6gXs9z3qGg-nO_jrunH-mes9g71-13XPkLUwmNHZ_E1_PPrFjy4m5HOyBSkxndbj5v4wVFUS2lyFN26BDhuQzvb1TFZ0VX37doJpIT4_f1dt--WX3fIgSBaejy_FXRDzYNUez8y0XaCJn01QYlo8L-hW72eI7VzzL4P_O4xq47v9ENAqJVh6BuPxPT_azfiNUvXFNZ2hU4l5Y',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCaYBuZ4CAf6xdm8j6JAHxFHfix6AQ29Qqyl2xsbTkG6fTKrWwKXmf1mcIwgPYsVrV7OIufBfsc9eHd9gJStDz9EXTWru80Bjl2fHlNvuCtqEo6uAPgzrDpeONrgOr5E3POKOoEY1Ijt-9AGA5hvByrPvnS06tk6pbBkbWJ-l2WaNsy3Oe84F6yvJH2qERLjX7L7JxdhjoHy5tK2nss-rqXzyW_n01hEcYYqI4yeZpJBJU262eb69nEWHIwtSXxxiAAhvomzKq7fiQ'
-  ],
-  itinerary: []
+  ...tourData
 };
+const reviews = reviewsData.reviews;
 ---
 
 <BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
@@ -402,7 +388,7 @@ const tour = {
     </div>
   </main>
 
-  <TourReviews tourTitle={tour.title} />
+  <TourReviews tourTitle={tour.title} reviews={reviews} />
 </BaseLayout>
 
 <script define:vars={{ tourTitle: tour.title }}>

@@ -2,29 +2,15 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
 import TourReviews from '../../../components/TourReviews.astro';
+import tourData from '../../../data/tours/mesa-camagueyana.json';
+import reviewsData from '../../../data/reviews/mesa-camagueyana.json';
 
 const baseTour = tours.find(t => t.id === 'mesa-camagueyana') || {};
-
 const tour = {
   ...baseTour,
-  id: 'mesa-camagueyana',
-  title: 'Mesa Camagüeyana',
-  category: 'Gastronomía',
-  badgeIcon: 'restaurant',
-  duration: '4–5 horas',
-  price: 45,
-  priceDisplay: '$45–55 USD',
-  included: ['Visita al mercado', 'Todos los ingredientes', 'Cocción con anfitriona local', 'Almuerzo completo', 'Ron cubano artesanal'],
-  excluded: ['Transporte al mercado', 'Propinas'],
-  fullDescription: 'Mercado agropecuario local, cocina en casa particular camagüeyana. Ajiaco, ropa vieja, fufú. Historia de la gastronomía cubana con raíces africanas, españolas y aborígenes. El turista cocina, comparte y come como un camagüeyano real.',
-  galleryImages: [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuD9aYh5j-rWStO4H8aY8WEXvQ99RGAzQpqxLgM9e_Zp4m5E5vX7k_B7Yt8KOK7Z4c7-Q5hV_XhX5L25NzGZ_S8kP_T_T8J3Z_P_S8Z9_S8kP_T8J3Z_P_S8Z9_S8kP_T8J3Z_P_S8Z9_S8kP_T8J3Z_P_S8Z9_S8kP_T8',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDTB1JxqZ5szupHDRwc5neO0AKDCxeePxR3izli7HwDtI5beVViJrZEhrmNBo9rLfhfikRO5L25Nz4Ya-QemDffoxjgPD7ZxZbRoVxjyJq3LHhLz2fRAC6KvUvP66yPKS4OR0QqgX-_NZCYniCe1vM8WqtjyqQVv27iaTrHc90FOH05JSFjKp3QxH8_tNq_SOGVzLbM8Wt0kOQPPL_j1kb8cgTp4-kcuM0HynDqFhKWm55JzfqQUMDTJ5ekaaOTnNjOVcClxVBMw',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg'
-  ],
-  itinerary: []
+  ...tourData
 };
+const reviews = reviewsData.reviews;
 ---
 
 <BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
@@ -402,7 +388,7 @@ const tour = {
     </div>
   </main>
 
-  <TourReviews tourTitle={tour.title} />
+  <TourReviews tourTitle={tour.title} reviews={reviews} />
 </BaseLayout>
 
 <script define:vars={{ tourTitle: tour.title }}>
