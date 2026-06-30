@@ -18,7 +18,7 @@ const links = [
 
 <header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300 ease-in-out h-20" id="main-nav">
   <div class="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-    <a class="flex items-center gap-3 font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight transition-transform hover:scale-102" href={cleanBase}>
+    <a class="flex items-center gap-3 font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight transition-transform hover:scale-102 shrink-0 whitespace-nowrap" href={cleanBase}>
       <!-- Custom SVG Logo representing the Cartacuba bird and conservation leaf -->
       <svg class="w-10 h-10 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Bird wing/leaf shape in emerald green -->
@@ -50,17 +50,17 @@ const links = [
     </nav>
     
     <div class="flex items-center gap-4">
-      <!-- Call to Action - Highlighted -->
+      <!-- Call to Action - Highlighted (Hidden on mobile) -->
       <a 
         href={`${cleanBase}tours/`}
-        class="bg-primary hover:bg-primary-container text-white dark:bg-primary dark:hover:bg-primary-container px-6 py-3 rounded-full font-label-md text-label-md transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2 border border-primary/20 hover:scale-105"
+        class="hidden md:flex bg-primary hover:bg-primary-container text-white dark:bg-primary dark:hover:bg-primary-container px-6 py-3 rounded-full font-label-md text-label-md transition-all shadow-md hover:shadow-lg active:scale-95 items-center gap-2 border border-primary/20 hover:scale-105"
       >
         <span class="material-symbols-outlined text-[20px]">explore</span>
         <span>Reservar Ahora</span>
       </a>
       
-      <!-- Mobile Menu Toggle -->
-      <button class="md:hidden material-symbols-outlined p-2 text-on-surface-variant" id="menu-toggle">
+      <!-- Mobile Menu Toggle (Aligned with padding-right 16px) -->
+      <button class="md:hidden material-symbols-outlined p-2 pr-4 text-on-surface-variant flex items-center justify-center" id="menu-toggle">
         menu
       </button>
     </div>

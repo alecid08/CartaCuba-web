@@ -10,14 +10,14 @@ const endClones = tours.slice(0, 4);
 const allTours = [...startClones, ...tours, ...endClones];
 ---
 
-<div class="relative w-full overflow-hidden py-4 px-0 md:px-16" id="tour-carousel-container">
-  <!-- Nav Buttons (Visible on desktop/tablet) -->
+<div class="relative w-full overflow-hidden py-4" id="tour-carousel-container">
+  <!-- Nav Buttons -->
   <button 
     id="tour-prev" 
-    class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-inverse-surface border border-outline-variant/30 text-on-surface items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95"
+    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
     aria-label="Tours anteriores"
   >
-    <span class="material-symbols-outlined text-xl">west</span>
+    <span class="material-symbols-outlined text-2xl font-bold">west</span>
   </button>
 
   <!-- Track Wrapper -->
@@ -91,17 +91,84 @@ const allTours = [...startClones, ...tours, ...endClones];
     </div>
   </div>
 
-  <!-- Nav Buttons (Visible on desktop/tablet) -->
+  <!-- Dots Indicators -->
+  <div class="flex justify-center gap-2 mt-6" id="tour-dots">
+    {tours.map((_, index) => (
+      <button 
+        class={index === 0 ? 'active' : ''}
+        data-index={index}
+        aria-label={`Ir al tour ${index + 1}`}
+      ></button>
+    ))}
+  </div>
+
+  <!-- Nav Buttons -->
   <button 
     id="tour-next" 
-    class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-inverse-surface border border-outline-variant/30 text-on-surface items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95"
+    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
     aria-label="Tours siguientes"
   >
-    <span class="material-symbols-outlined text-xl">east</span>
+    <span class="material-symbols-outlined text-2xl font-bold">east</span>
   </button>
 </div>
 
 <style>
+  /* Container Padding (Ensure 1 card visible on mobile, centered within padding) */
+  #tour-carousel-container {
+    padding-left: 3rem; /* 48px */
+    padding-right: 3rem; /* 48px */
+  }
+
+  @media (min-width: 768px) {
+    #tour-carousel-container {
+      padding-left: 4rem; /* 64px */
+      padding-right: 4rem; /* 64px */
+    }
+  }
+
+  /* Nav Buttons Styling */
+  .tour-nav-btn {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #C47A2C;
+    z-index: 45;
+  }
+
+  #tour-prev {
+    left: 4px;
+  }
+  #tour-next {
+    right: 4px;
+  }
+
+  @media (min-width: 768px) {
+    #tour-prev {
+      left: 16px;
+    }
+    #tour-next {
+      right: 16px;
+    }
+  }
+
+  /* Dots Indicators Styling */
+  #tour-dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(31, 61, 43, 0.3); /* #1F3D2B with 30% opacity */
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+
+  #tour-dots button.active {
+    background-color: #C47A2C;
+    width: 24px;
+  }
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   .scrollbar-none::-webkit-scrollbar {
     display: none;
@@ -158,6 +225,7 @@ const allTours = [...startClones, ...tours, ...endClones];
       
       let currentIndex = cloneCount; // Start at the first original card
       let isTransitioning = false;
+      let transitionTimeout = null;
 
       const getStep = () => {
         const firstCard = cards[0];
@@ -165,6 +233,24 @@ const allTours = [...startClones, ...tours, ...endClones];
           return firstCard.getBoundingClientRect().width + 24; // Width + gap (1.5rem = 24px)
         }
         return 320;
+      };
+
+      const updateDots = () => {
+        const dots = Array.from(document.querySelectorAll('#tour-dots button'));
+        if (!dots.length) return;
+        
+        let activeIndex = (currentIndex - cloneCount) % totalOriginals;
+        if (activeIndex < 0) {
+          activeIndex += totalOriginals;
+        }
+        
+        dots.forEach((dot, idx) => {
+          if (idx === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
       };
 
       const updatePosition = (animate = true) => {
@@ -175,13 +261,10 @@ const allTours = [...startClones, ...tours, ...endClones];
           track.style.transition = 'none';
         }
         track.style.transform = `translate3d(${-currentIndex * step}px, 0, 0)`;
+        updateDots();
       };
 
-      // Handle transitions and looping
-      track.addEventListener('transitionend', () => {
-        isTransitioning = false;
-        
-        // Loop check
+      const handleLoopCheck = () => {
         if (currentIndex >= totalOriginals + cloneCount) {
           currentIndex = cloneCount;
           updatePosition(false);
@@ -189,20 +272,95 @@ const allTours = [...startClones, ...tours, ...endClones];
           currentIndex = totalOriginals + cloneCount - 1;
           updatePosition(false);
         }
+      };
+
+      const setTransitioning = () => {
+        isTransitioning = true;
+        clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          if (isTransitioning) {
+            isTransitioning = false;
+            handleLoopCheck();
+          }
+        }, 500); // 0.4s transition + 100ms safety margin
+      };
+
+      // Handle transitions and looping
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        handleLoopCheck();
       });
 
       nextBtn.addEventListener('click', () => {
         if (isTransitioning) return;
-        isTransitioning = true;
+        setTransitioning();
         currentIndex++;
         updatePosition(true);
       });
 
       prevBtn.addEventListener('click', () => {
         if (isTransitioning) return;
-        isTransitioning = true;
+        setTransitioning();
         currentIndex--;
         updatePosition(true);
+      });
+
+      // Dot navigation
+      const dots = Array.from(document.querySelectorAll('#tour-dots button'));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          if (isTransitioning) return;
+          const targetIndex = parseInt(dot.getAttribute('data-index') || '0', 10);
+          currentIndex = cloneCount + targetIndex;
+          setTransitioning();
+          updatePosition(true);
+        });
+      });
+
+      // Touch swipe support (distinguishing vertical scroll from horizontal swipe)
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+      let isSwiping = false;
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchEndX = touchStartX;
+        touchEndY = touchStartY;
+        isSwiping = true;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+      }, { passive: true });
+
+      track.addEventListener('touchend', () => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        
+        // Trigger swipe if horizontal movement is greater than vertical and exceeds 40px threshold
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+          if (diffX < 0) {
+            // Swipe Left -> Next
+            if (isTransitioning) return;
+            setTransitioning();
+            currentIndex++;
+            updatePosition(true);
+          } else {
+            // Swipe Right -> Prev
+            if (isTransitioning) return;
+            setTransitioning();
+            currentIndex--;
+            updatePosition(true);
+          }
+        }
       });
 
       // Handle resizing to keep correct position
