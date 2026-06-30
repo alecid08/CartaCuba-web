@@ -31,7 +31,7 @@ const allTours = [...startClones, ...tours, ...endClones];
           class="tour-card-slide bg-[#E8D8B7] rounded-2xl overflow-hidden border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col group relative"
         >
           <!-- Link covering the card for accessible navigation -->
-          <a href={`${cleanBase}tours/${tour.id}/`} class="absolute inset-0 z-30" aria-label={`Ver detalles de ${tour.title}`}></a>
+          <a href={`${cleanBase}tours/${tour.id}`} class="absolute inset-0 z-30" aria-label={`Ver detalles de ${tour.title}`}></a>
 
           <!-- 1. Imagen del tour (arriba, ocupa ~45% de la card) -->
           <div class="relative h-[45%] overflow-hidden bg-surface-container">
@@ -77,10 +77,13 @@ const allTours = [...startClones, ...tours, ...endClones];
               </div>
 
               <!-- 6. Botón CTA — al fondo de la card -->
-              <div class="w-full bg-[#1F3D2B]/10 text-[#1F3D2B] group-hover:bg-[#1F3D2B] group-hover:text-white text-center py-2.5 rounded-full font-label-md transition-all duration-300 flex items-center justify-center gap-2 text-xs font-bold">
-                <span>Ver Detalles</span>
+              <a 
+                href={`${cleanBase}tours/${tour.id}`}
+                class="w-full bg-[#C47A2C] text-white hover:bg-[#a6621b] text-center py-2.5 rounded-full font-label-md transition-all duration-300 flex items-center justify-center gap-2 text-xs font-bold relative z-40"
+              >
+                <span>Conocer más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
