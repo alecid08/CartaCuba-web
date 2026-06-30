@@ -53,7 +53,7 @@ const links = [
       <!-- Call to Action - Highlighted (Hidden on mobile) -->
       <a 
         href={`${cleanBase}tours/`}
-        class="hidden md:flex bg-primary hover:bg-primary-container text-white dark:bg-primary dark:hover:bg-primary-container px-6 py-3 rounded-full font-label-md text-label-md transition-all shadow-md hover:shadow-lg active:scale-95 items-center gap-2 border border-primary/20 hover:scale-105"
+        class="nav-cta-btn hidden md:flex bg-primary hover:bg-primary-container text-white dark:bg-primary dark:hover:bg-primary-container px-6 py-3 rounded-full font-label-md text-label-md transition-all shadow-md hover:shadow-lg active:scale-95 items-center gap-2 border border-primary/20 hover:scale-105"
       >
         <span class="material-symbols-outlined text-[20px]">explore</span>
         <span>Reservar Ahora</span>
@@ -110,3 +110,12 @@ const links = [
     });
   }
 </script>
+
+<style>
+  /* Prevent Flash of Unstyled Content (FOUC) and ensure button is hidden on mobile screens */
+  @media (max-width: 767px) {
+    .nav-cta-btn {
+      display: none !important;
+    }
+  }
+</style>
