@@ -2,9 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import TourCarousel from '../components/TourCarousel.astro';
+import EssenceSlider from '../components/EssenceSlider.astro';
 
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const travelerReviews = [
+  {
+    name: "María González",
+    initial: "M",
+    country: "España 🇪🇸",
+    comment: "Una experiencia completamente diferente a todo lo que habíamos vivido antes. Alejandro nos llevó a rincones de Camagüey que nunca hubiéramos encontrado solos. La conexión con los artistas locales y la historia contada desde adentro fue simplemente inolvidable."
+  },
+  {
+    name: "Carlos Mendoza",
+    initial: "C",
+    country: "México 🇲🇽",
+    comment: "Viajamos en familia y fue la mejor decisión del viaje. El trato fue cercano desde el primer mensaje. Nos adaptaron absolutamente todo a nuestro ritmo y los niños quedaron fascinados. Cuba auténtica, sin filtros y sin artificios."
+  },
+  {
+    name: "Lucía Fernández",
+    initial: "L",
+    country: "Argentina 🇦🇷",
+    comment: "Pensé que ya conocía Cuba, pero CartaCuba me mostró que no había visto nada. La naturaleza, la gastronomía, el arte... todo integrado en una experiencia que se siente viva. Ya estoy planeando volver para los otros tours."
+  }
+];
 ---
 
 <BaseLayout title="CartaCuba | Ecoturismo y Patrimonio en Camagüey" activePage="home">
@@ -37,57 +59,60 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     <!-- Destination Essence Section (Naturaleza, Patrimonio, Cultura - Basado en la Esencia original) -->
     <section class="py-24 bg-surface-container-low relative border-b border-outline-variant/20">
       <div class="grainy-overlay absolute inset-0 pointer-events-none opacity-50"></div>
-      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <!-- Visuals Column -->
-        <div class="relative">
-          <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-          <img 
-            alt="Patrimonio de Camagüey" 
-            class="leaf-shape w-full h-[550px] object-cover border border-outline-variant/30 shadow-md" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w"
-          />
-          <div class="absolute -bottom-6 -right-6 bg-white dark:bg-inverse-surface p-6 rounded-xl shadow-lg border border-outline-variant/20 max-w-xs">
-            <span class="text-secondary font-headline-sm text-headline-sm block mb-1">Más de 500 Años</span>
-            <p class="text-on-surface-variant dark:text-surface-variant font-body-md text-sm italic">Preservando el legado de la alfarería tradicional y las leyendas urbanas coloniales.</p>
-          </div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-primary font-label-md uppercase tracking-widest block mb-2">El Espíritu de la Tierra</span>
+          <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Arraigados en el Patrimonio, Inspirados en la Naturaleza</h2>
+          <p class="text-[#1F3D2B] dark:text-surface-variant font-body-lg mt-3 font-semibold">
+            CartaCuba es más que un recorrido turístico; es un compromiso activo con la conservación y la cultura local.
+          </p>
+        </div>
+        
+        <EssenceSlider />
+      </div>
+    </section>
+
+    <!-- Testimonials / Reviews Section -->
+    <section class="py-24 bg-[#E8D8B7] border-b border-outline-variant/20 relative">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="font-display-playfair text-[#1F3D2B] text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            Lo que dicen nuestros viajeros
+          </h2>
         </div>
 
-        <!-- Description Column -->
-        <div class="space-y-8">
-          <div class="space-y-4">
-            <span class="text-primary font-label-md uppercase tracking-widest block">El Espíritu de la Tierra</span>
-            <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Arraigados en el Patrimonio, Inspirados en la Naturaleza</h2>
-            <p class="text-on-surface-variant font-body-lg">
-              CartaCuba es más que un recorrido turístico; es un compromiso activo con la conservación y la cultura local. Nuestra filosofía equilibra la pureza de la biosfera cubana con la digna historia arquitectónica de Camagüey, la ciudad de los tinajones.
-            </p>
-          </div>
-          
-          <ul class="space-y-6">
-            <li class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-lg" style="font-variation-settings: 'FILL' 1;">eco</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {travelerReviews.map((review) => (
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-[#3E6B48]/30 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between h-full">
               <div>
-                <h4 class="font-bold text-on-surface">Ecoturismo Responsable</h4>
-                <p class="text-on-surface-variant font-body-md">Senderos ecológicos diseñados de forma ética para no interferir en el hábitat natural del Cartacuba y otras especies protegidas.</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-lg" style="font-variation-settings: 'FILL' 1;">architecture</span>
-              <div>
-                <h4 class="font-bold text-on-surface">Inmersiones en la Tradición</h4>
-                <p class="text-on-surface-variant font-body-md">Acceso de primera mano a talleres de artesanos, patios coloniales y rincones secretos ricos en leyendas agramontinas.</p>
-              </div>
-            </li>
-          </ul>
+                <!-- User Profile Header -->
+                <div class="flex items-center gap-4 mb-4">
+                  <!-- Circular avatar -->
+                  <div class="w-12 h-12 rounded-full bg-[#C47A2C] text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-sm select-none">
+                    {review.initial}
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-[#1F3D2B] font-body-lg text-base leading-tight">
+                      {review.name}
+                    </h4>
+                    <p class="text-xs text-on-surface-variant/80 font-body-md mt-0.5">
+                      {review.country}
+                    </p>
+                  </div>
+                </div>
 
-          <div class="pt-4">
-            <a 
-              href={`${cleanBase}destino/`} 
-              class="inline-flex items-center gap-2 bg-primary text-white hover:bg-primary-container px-6 py-3 rounded-full font-label-md transition-all shadow-sm"
-            >
-              <span>Explorar Camagüey</span>
-              <span class="material-symbols-outlined text-lg">explore</span>
-            </a>
-          </div>
+                <!-- Star Rating -->
+                <div class="flex text-[#C47A2C] text-lg select-none mb-4" aria-label="5 de 5 estrellas">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+
+                <!-- Comment text -->
+                <p class="text-on-surface-variant dark:text-on-surface-variant font-body-md text-sm sm:text-base leading-relaxed italic">
+                  "{review.comment}"
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

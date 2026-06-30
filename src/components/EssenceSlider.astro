@@ -1,0 +1,221 @@
+---
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const essences = [
+  {
+    id: "naturaleza",
+    title: "Naturaleza Viva",
+    icon: "eco",
+    badge: "Ecosistemas Únicos",
+    badgeDesc: "Desde flamencos rosados a la cartacuba.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg",
+    text: "Camagüey alberga ecosistemas únicos en Cuba central. Sus sabanas, cayos y reservas naturales son hogar del flamenco rosado, el tocororo y la cartacuba, rodeados de manglares, orquídeas endémicas y cielos abiertos que pocos viajeros llegan a contemplar.",
+    link: `${cleanBase}destino/#naturaleza`
+  },
+  {
+    id: "ciudad",
+    title: "La Ciudad Laberinto",
+    icon: "route",
+    badge: "Diseño Defensivo",
+    badgeDesc: "Calles trazadas como laberinto contra piratas.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8FY2kJslYFvOlbxrrE3ClhAGZk7vUyr5CPROjHnB6LT5Yu-swxN9qIbt1FBafpEt_W2ZSKENg-xXOcJayYKDofYgG7h5EaMRyv8TSs6pOObTwCmO9xW4iFzKIGP7By1j9xBxa89SRp31z3muF6OP89pGNBb3JtCrfxQAG7t-a7KHgOFt6jODnthLfSnn145kggDYfSASR3kLnJqpLuYdUFpI6aV7keWzKKktn3RKomwEuXe8hkPIC0G0jJPWmLtWCc9qgunA3USSk1w",
+    text: "Fundada en 1528 y declarada Patrimonio de la Humanidad por la UNESCO, Camagüey es la única ciudad de Cuba cuyas calles medievales fueron diseñadas como laberinto para confundir a los piratas. Plazas, tinajones y campanarios cuentan siglos de historia en cada esquina.",
+    link: `${cleanBase}destino/#patrimonio`
+  },
+  {
+    id: "patrimonio",
+    title: "Patrimonio y Cultura",
+    icon: "palette",
+    badge: "Arte en las Venas",
+    badgeDesc: "De la trova tradicional al ballet contemporáneo.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzJbCzSWWEURx_HC4cIVlOLmhNAk8vVuS3EpqqDykV2YH97cHzFqRfos930Yr4_5fTHI_LI6rQ4tckXZzkwQmmOgmQqIanBjMKTc6zLyH3F8Q4cyyReHWS5piDwd9rk5FAzX3zJ4I5daeFWCsNd9QmzKP9YRpb3CbOKFRML2Q7CoVXJAWRVH77YJ40p4ot4IDY0_sCUuL6cRIM9qwVbWMm2nTd8DiPTIKshHDufuThKxItDlJkmS4PV4IJ2VfCa4PEQ-Wti4XHY6w",
+    text: "De la trova al ballet, de los talleres de cerámica a las galerías de arte contemporáneo, Camagüey es una ciudad que crea. Su patrimonio no se exhibe en vitrinas: vive en las manos de sus artistas, en las voces de sus trovadores y en las historias que sus habitantes comparten con quienes saben escuchar.",
+    link: `${cleanBase}destino/#cultura`
+  }
+];
+
+// Clone 1 card on each side for infinite loop
+const startClones = [essences[essences.length - 1]];
+const endClones = [essences[0]];
+const allEssences = [...startClones, ...essences, ...endClones];
+---
+
+<div class="relative w-full overflow-hidden py-6 px-12 sm:px-20 md:px-24" id="essence-slider-container">
+  <!-- Nav Buttons (Visible and functional in all formats) -->
+  <button 
+    id="essence-prev" 
+    class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex items-center gap-1.5 bg-[#E8D8B7] hover:bg-[#1F3D2B] border border-[#1F3D2B] text-[#1F3D2B] hover:text-[#E8D8B7] rounded-full p-2.5 sm:px-4 sm:py-2 transition-all duration-300 active:scale-95 shadow-md cursor-pointer hover:shadow-lg group"
+    aria-label="Anterior esencia"
+  >
+    <span class="material-symbols-outlined text-lg sm:text-xl font-bold transition-transform group-hover:-translate-x-0.5">west</span>
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-colors" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 80C30 80 65 65 80 40C90 25 85 5 70 10C50 15 35 40 30 55C25 45 20 30 10 25C0 20 0 40 5 55C7 63 7 73 15 80Z" fill="currentColor"/>
+      <path d="M70 10C63 13 57 20 55 27C59 29 65 27 70 23C72 19 72 13 70 10Z" fill="#bb0017"/>
+      <circle cx="73" cy="17" r="2.5" fill="white"/>
+    </svg>
+    <span class="hidden md:inline font-label-md text-[11px] font-bold uppercase tracking-wider">Camagüey</span>
+  </button>
+
+  <!-- Track Wrapper -->
+  <div class="overflow-hidden w-full py-2">
+    <div 
+      id="essence-track" 
+      class="flex gap-6 py-2"
+    >
+      {allEssences.map((card) => (
+        <div 
+          class="essence-card-slide flex-shrink-0 w-full"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center p-6 sm:p-8 md:p-12 bg-white dark:bg-inverse-surface rounded-3xl border border-[#3E6B48]/20 shadow-md">
+            
+            <!-- Visuals Column -->
+            <div class="relative w-full h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden rounded-2xl shadow-sm group">
+              <img 
+                alt={card.title} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" 
+                src={card.image}
+                loading="lazy"
+              />
+              <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+              
+              <!-- Overlap Card badge -->
+              <div class="absolute bottom-4 left-4 bg-white/95 dark:bg-inverse-surface/95 p-4 rounded-xl shadow-md border border-outline-variant/30 max-w-[240px] backdrop-blur-sm">
+                <span class="text-[#C47A2C] font-headline-sm text-sm sm:text-base block mb-1 font-bold">{card.badge}</span>
+                <p class="text-on-surface-variant dark:text-surface-variant font-body-md text-xs italic">{card.badgeDesc}</p>
+              </div>
+            </div>
+
+            <!-- Description Column -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-[#1F3D2B]/10 dark:bg-[#1F3D2B]/20 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[#1F3D2B] dark:text-[#E8D8B7] text-2xl font-variation-settings: 'FILL' 1;">{card.icon}</span>
+                </div>
+                <div>
+                  <span class="text-[#C47A2C] font-label-md text-xs uppercase tracking-widest block font-bold">El Espíritu de la Tierra</span>
+                  <h3 class="font-headline-md text-headline-sm sm:text-headline-md text-[#1F3D2B] dark:text-white font-bold leading-tight mt-0.5">
+                    {card.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p class="text-on-surface-variant dark:text-surface-variant/95 font-body-lg text-sm sm:text-base leading-relaxed">
+                {card.text}
+              </p>
+
+              <div class="pt-2">
+                <a 
+                  href={card.link} 
+                  class="inline-flex items-center gap-2 bg-[#1F3D2B] hover:bg-[#C47A2C] text-white px-6 py-3 rounded-full font-label-md transition-all duration-300 shadow-sm text-xs font-bold uppercase tracking-wider"
+                >
+                  <span>Explorar Camagüey</span>
+                  <span class="material-symbols-outlined text-sm">explore</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Next Button -->
+  <button 
+    id="essence-next" 
+    class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex items-center gap-1.5 bg-[#E8D8B7] hover:bg-[#1F3D2B] border border-[#1F3D2B] text-[#1F3D2B] hover:text-[#E8D8B7] rounded-full p-2.5 sm:px-4 sm:py-2 transition-all duration-300 active:scale-95 shadow-md cursor-pointer hover:shadow-lg group"
+    aria-label="Siguiente esencia"
+  >
+    <span class="hidden md:inline font-label-md text-[11px] font-bold uppercase tracking-wider">Camagüey</span>
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-colors" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 80C30 80 65 65 80 40C90 25 85 5 70 10C50 15 35 40 30 55C25 45 20 30 10 25C0 20 0 40 5 55C7 63 7 73 15 80Z" fill="currentColor"/>
+      <path d="M70 10C63 13 57 20 55 27C59 29 65 27 70 23C72 19 72 13 70 10Z" fill="#bb0017"/>
+      <circle cx="73" cy="17" r="2.5" fill="white"/>
+    </svg>
+    <span class="material-symbols-outlined text-lg sm:text-xl font-bold transition-transform group-hover:translate-x-0.5">east</span>
+  </button>
+</div>
+
+<style>
+  #essence-track {
+    display: flex;
+    gap: 1.5rem; /* 24px */
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .essence-card-slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('essence-track');
+    const prevBtn = document.getElementById('essence-prev');
+    const nextBtn = document.getElementById('essence-next');
+    
+    if (track && prevBtn && nextBtn) {
+      const cards = Array.from(track.children);
+      const totalOriginals = 3;
+      const cloneCount = 1;
+      
+      let currentIndex = cloneCount; 
+      let isTransitioning = false;
+
+      const getStep = () => {
+        const firstCard = cards[0];
+        if (firstCard) {
+          return firstCard.getBoundingClientRect().width + 24; // Width + gap (24px)
+        }
+        return 800;
+      };
+
+      const updatePosition = (animate = true) => {
+        const step = getStep();
+        if (animate) {
+          track.style.transition = 'transform 0.4s ease-in-out';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translate3d(${-currentIndex * step}px, 0, 0)`;
+      };
+
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        
+        if (currentIndex >= totalOriginals + cloneCount) {
+          currentIndex = cloneCount;
+          updatePosition(false);
+        } else if (currentIndex < cloneCount) {
+          currentIndex = totalOriginals + cloneCount - 1;
+          updatePosition(false);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex++;
+        updatePosition(true);
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex--;
+        updatePosition(true);
+      });
+
+      window.addEventListener('resize', () => {
+        updatePosition(false);
+      });
+
+      // Initial alignment
+      setTimeout(() => {
+        updatePosition(false);
+      }, 300);
+    }
+  });
+</script>
