@@ -38,6 +38,7 @@ export const tours = [
     price: 60,
     shortDescription: "Excursión al Refugio de Fauna Río Máximo o Cayo Sabinal. Avistamiento de flamencos rosados en su mayor santuario del Caribe, manglares, fauna endémica. Transporte y almuerzo incluidos.",
     fullDescription: "Excursión al Refugio de Fauna Río Máximo o Cayo Sabinal. Avistamiento de flamencos rosados en su mayor santuario del Caribe, manglares, fauna endémica. Transporte y almuerzo incluidos.",
+    // TODO: Falta foto real de flamencos o cayería para reemplazar el stock actual.
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAp5nAvWqrvgNRD82KSdFM8hErt-mCakDkYoHjsb_49A-uxGM6Lh1jI9e5Apt-EExz8mNmO1OjmMDpDtykz1o2q5r8XFnGxxZdPZ4Q5_G-y2K88i3qtgsI4kmv8A5xgHSXLrPW6bjPTQw80ZRECAgmM-cTYqjgemkyLYhCFQSYsFZ96C_PyKFtOvUvfykmleIToDs03bpzvLoPkY_OOfWan3-vzJfTcM8QG8TMIAlq_36qK1yUd2bvHOk3lxRVJ1QO8vfKF8IRFjPY",
     galleryImages: [],
     itinerary: [],
@@ -53,7 +54,7 @@ export const tours = [
     price: 55,
     shortDescription: "Reserva natural Sierra de Najasa. Tocororo, Cartacuba, orquídeas endémicas, palma real. Paisaje rural auténtico con historia precolombina ciboney. Transporte incluido.",
     fullDescription: "Reserva natural Sierra de Najasa. Tocororo, Cartacuba, orquídeas endémicas, palma real. Paisaje rural auténtico con historia precolombina ciboney. Transporte incluido.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAp5nAvWqrvgNRD82KSdFM8hErt-mCakDkYoHjsb_49A-uxGM6Lh1jI9e5Apt-EExz8mNmO1OjmMDpDtykz1o2q5r8XFnGxxZdPZ4Q5_G-y2K88i3qtgsI4kmv8A5xgHSXLrPW6bjPTQw80ZRECAgmM-cTYqjgemkyLYhCFQSYsFZ96C_PyKFtOvUvfykmleIToDs03bpzvLoPkY_OOfWan3-vzJfTcM8QG8TMIAlq_36qK1yUd2bvHOk3lxRVJ1QO8vfKF8IRFjPY",
+    image: "/CartaCuba-web/images/orquideas.jpeg",
     galleryImages: [],
     itinerary: [],
     included: ["Transporte"],
@@ -68,6 +69,7 @@ export const tours = [
     price: 45,
     shortDescription: "Mercado agropecuario local, cocina en casa particular con anfitriona camagüeyana, ajiaco, ropa vieja, fufú y ron artesanal. El turista cocina y come como un camagüeyano real.",
     fullDescription: "Mercado agropecuario local, cocina en casa particular con anfitriona camagüeyana, ajiaco, ropa vieja, fufú y ron artesanal. El turista cocina y come como un camagüeyano real.",
+    // TODO: la imagen actual es de alfarería (duplicada de Arte y Bohemia), no de gastronomía. Falta foto real de cocina/mercado/ajiaco.
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
     galleryImages: [],
     itinerary: [],

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <BaseLayout title="Nosotros y Contacto | CartaCuba" activePage="nosotros">
@@ -40,7 +43,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img 
               alt="Ecoturismo y Guías locales en Camagüey" 
               class="leaf-shape w-full h-[450px] object-cover border border-outline-variant/30 shadow-md"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg"
+              src={`${cleanBase}images/15c8360f-74a8-44e5-9522-474ef0003fce.jpeg`}
             />
           </div>
         </div>
