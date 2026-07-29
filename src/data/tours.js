@@ -81,6 +81,7 @@ export const tours = [
     included: ["Talleres con artistas locales"],
     excluded: []
   },
+  // PENDIENTE: Tarjeta del tour "Flamencos y Sabanas" (temporalmente reemplazado por Limones y Tuabaquey) sigue sin foto propia. Falta foto real de flamencos o cayería para reemplazar el stock actual.
   {
     id: "limones-tuabaquey",
     title: "Limones y Tuabaquey",
@@ -187,6 +188,7 @@ export const tours = [
     price: 45,
     shortDescription: "Mercado agropecuario local, cocina en casa particular con anfitriona camagüeyana, ajiaco, ropa vieja, fufú y ron artesanal. El turista cocina y come como un camagüeyano real.",
     fullDescription: "Mercado agropecuario local, cocina en casa particular con anfitriona camagüeyana, ajiaco, ropa vieja, fufú y ron artesanal. El turista cocina y come como un camagüeyano real.",
+    // PENDIENTE: la imagen actual es de alfarería (duplicada de Arte y Bohemia), no de gastronomía. Falta foto real de cocina/mercado/ajiaco.
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
     galleryImages: [],
     itinerary: [
