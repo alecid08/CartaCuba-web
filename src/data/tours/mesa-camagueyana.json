@@ -26,5 +26,31 @@
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE",
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg"
   ],
-  "itinerary": []
+  "itinerary": [
+    {
+      "time": "10:00",
+      "title": "Compras",
+      "desc": "Visita guiada al mercado agropecuario para seleccionar ingredientes frescos y locales."
+    },
+    {
+      "time": "11:00",
+      "title": "Traslado",
+      "desc": "Traslado y bienvenida en la acogedora casa de la familia anfitriona."
+    },
+    {
+      "time": "11:30",
+      "title": "Cocina",
+      "desc": "Experiencia de cocina en vivo preparando platos tradicionales cubanos como el ajiaco, la ropa vieja y el fufú."
+    },
+    {
+      "time": "13:30",
+      "title": "Almuerzo",
+      "desc": "Disfrute de la comida elaborada, maridada con ron cubano artesanal."
+    },
+    {
+      "time": "14:30",
+      "title": "Sobremesa",
+      "desc": "Conversación y sobremesa amena con la familia anfitriona compartiendo costumbres e historias locales."
+    }
+  ]
 }

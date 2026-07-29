@@ -24,5 +24,36 @@
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDTe9B-JxqZ5szupHDRwc5neO0AKDCxeePxR3izli7HwDtI5beVViJrZEhrmNBo9rLfhfikRO5L25Nz4Ya-QemDffoxjgPD7ZxZbRoVxjyJq3LHhLz2fRAC6KvUvP66yPKS4OR0QqgX-_NZCYniCe1vM8WqtjyqQVv27iaTrHc90FOH05JSFjKp3QxH8_tNq_SOGVzLbM8Wt0kOQPPL_j1kb8cgTp4-kcuM0HynDqFhKWm55JzfqQUMDTJ5ekaaOTnNjOVcClxVBMw",
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE"
   ],
-  "itinerary": []
+  "itinerary": [
+    {
+      "time": "08:30",
+      "title": "Salida",
+      "desc": "Salida desde Camagüey hacia la reserva natural de Najasa."
+    },
+    {
+      "time": "09:30",
+      "title": "Historia",
+      "desc": "Recorrido guiado por sitios arqueológicos precolombinos vinculados a la cultura ciboney."
+    },
+    {
+      "time": "10:45",
+      "title": "Senderismo",
+      "desc": "Observación y disfrute de la flora endémica, incluyendo orquídeas salvajes, palma real y ceibas."
+    },
+    {
+      "time": "12:00",
+      "title": "Tradición",
+      "desc": "Visita a una finca rural local, compartiendo directamente con el trabajo cotidiano del campo."
+    },
+    {
+      "time": "13:30",
+      "title": "Almuerzo",
+      "desc": "Disfrute de un delicioso almuerzo con gastronomía criolla campesina tradicional."
+    },
+    {
+      "time": "15:30",
+      "title": "Retorno",
+      "desc": "Regreso a Camagüey al final de la tarde."
+    }
+  ]
 }

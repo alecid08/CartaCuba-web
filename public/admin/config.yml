@@ -42,9 +42,9 @@ collections:
         file: "CartaCuba-web/src/data/tours/campina-sierra-najasa.json"
         fields: *tour_fields
         
-      - label: "Flamencos y Sabanas"
-        name: "flamencos-sabanas"
-        file: "CartaCuba-web/src/data/tours/flamencos-sabanas.json"
+      - label: "Limones y Tuabaquey"
+        name: "limones-tuabaquey"
+        file: "CartaCuba-web/src/data/tours/limones-tuabaquey.json"
         fields: *tour_fields
         
       - label: "Mesa Camagüeyana"
@@ -81,9 +81,9 @@ collections:
         file: "CartaCuba-web/src/data/reviews/campina-sierra-najasa.json"
         fields: *review_fields
 
-      - label: "Reseñas - Flamencos y Sabanas"
-        name: "flamencos-sabanas-reviews"
-        file: "CartaCuba-web/src/data/reviews/flamencos-sabanas.json"
+      - label: "Reseñas - Limones y Tuabaquey"
+        name: "limones-tuabaquey-reviews"
+        file: "CartaCuba-web/src/data/reviews/limones-tuabaquey.json"
         fields: *review_fields
 
       - label: "Reseñas - Mesa Camagüeyana"

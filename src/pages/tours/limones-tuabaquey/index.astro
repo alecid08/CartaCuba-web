@@ -2,10 +2,10 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
 import TourReviews from '../../../components/TourReviews.astro';
-import tourData from '../../../data/tours/flamencos-sabanas.json';
-import reviewsData from '../../../data/reviews/flamencos-sabanas.json';
+import tourData from '../../../data/tours/limones-tuabaquey.json';
+import reviewsData from '../../../data/reviews/limones-tuabaquey.json';
 
-const baseTour = tours.find(t => t.id === 'flamencos-sabanas') || {};
+const baseTour = tours.find(t => t.id === 'limones-tuabaquey') || {};
 const tour = {
   ...baseTour,
   ...tourData
