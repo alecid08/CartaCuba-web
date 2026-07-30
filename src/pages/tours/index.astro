@@ -5,8 +5,7 @@ import { tours } from '../../data/tours.js';
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
-// Find the featured/most popular tour (Avistamiento de Aves)
-const featuredTour = tours.find(t => t.id === 'avistamiento-aves') || tours[0];
+const featuredTour = tours[0];
 ---
 
 <BaseLayout title="Nuestros Tours | CartaCuba" activePage="tours">

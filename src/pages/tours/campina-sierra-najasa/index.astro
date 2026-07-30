@@ -2,14 +2,9 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { tours } from '../../../data/tours.js';
 import TourReviews from '../../../components/TourReviews.astro';
-import tourData from '../../../data/tours/campina-sierra-najasa.json';
 import reviewsData from '../../../data/reviews/campina-sierra-najasa.json';
 
-const baseTour = tours.find(t => t.id === 'campina-sierra-najasa') || {};
-const tour = {
-  ...baseTour,
-  ...tourData
-};
+const tour = tours.find(t => t.id === 'campina-sierra-najasa') || {};
 const reviews = reviewsData.reviews;
 ---
 
@@ -188,26 +183,12 @@ const reviews = reviewsData.reviews;
       <div class="lg:col-span-5">
         <div class="bg-white dark:bg-inverse-surface border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-md sticky top-28 space-y-6" id="booking-sidebar">
           
-          <!-- Tab Headers -->
-          <div class="grid grid-cols-2 border-b border-outline-variant/30 pb-3">
-            <button 
-              id="tab-btn-book" 
-              class="tab-btn font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-2 text-center"
-              data-tab="book"
-            >
-              1. Reservar (WA)
-            </button>
-            <button 
-              id="tab-btn-pay" 
-              class="tab-btn font-label-md text-label-md text-on-surface-variant dark:text-surface-variant pb-2 text-center"
-              data-tab="pay"
-            >
-              2. Pago Seguro (Sim)
-            </button>
+          <!-- Booking Header -->
+          <div class="border-b border-outline-variant/30 pb-3">
+            <span class="font-label-md text-label-md text-primary font-bold">Reservar tu Tour</span>
           </div>
 
-          <!-- Tab Content 1: Book Form -->
-          <div id="tab-content-book" class="tab-content space-y-4">
+          <div id="tab-content-book" class="space-y-4">
             <div class="bg-surface-container-low p-4 rounded-xl text-xs space-y-1">
               <span class="text-on-surface-variant block uppercase tracking-wider">Desde ${tour.price} USD por persona</span>
               <div class="flex justify-between items-baseline">
@@ -281,105 +262,10 @@ const reviews = reviewsData.reviews;
                 <span>Enviar Reserva por WhatsApp</span>
               </button>
             </form>
-          </div>
 
-          <!-- Tab Content 2: Payment Gateway (Simulated) -->
-          <div id="tab-content-pay" class="tab-content hidden space-y-4 relative">
-            
-            <!-- Success Overlay -->
-            <div id="payment-success-overlay" class="hidden absolute inset-0 bg-white dark:bg-inverse-surface z-30 flex flex-col items-center justify-center text-center space-y-4 py-8">
-              <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center animate-bounce">
-                <span class="material-symbols-outlined text-4xl">check_circle</span>
-              </div>
-              <h4 class="font-headline-sm text-lg font-bold text-on-surface">¡Pago Simulado con Éxito!</h4>
-              <p class="text-xs text-on-surface-variant max-w-xs leading-relaxed">
-                Su pago ha sido procesado de forma simulada. Por favor, complete el envío de la reserva por WhatsApp para coordinar los detalles con el operador.
-              </p>
-              <button 
-                id="success-done-btn"
-                class="bg-primary text-white text-xs px-6 py-2.5 rounded-full font-label-md"
-              >
-                Volver a la Reserva
-              </button>
-            </div>
-
-            <!-- Loader Overlay -->
-            <div id="payment-loading-overlay" class="hidden absolute inset-0 bg-white/80 dark:bg-inverse-surface/80 z-20 flex flex-col items-center justify-center text-center space-y-3">
-              <div class="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-              <span class="text-sm font-label-md text-primary">Procesando pago seguro...</span>
-            </div>
-
-            <div class="bg-surface-container-low p-4 rounded-xl text-xs space-y-1">
-              <span class="text-on-surface-variant block uppercase tracking-wider">Total a Pagar</span>
-              <div class="flex justify-between items-baseline">
-                <span class="font-bold text-primary text-xl" id="payment-total-text">${tour.price} USD</span>
-                <span class="text-on-surface-variant" id="payment-people-count">1 viajero</span>
-              </div>
-            </div>
-
-            <form id="simulated-payment-form" class="space-y-4">
-              <div class="space-y-1">
-                <label for="pay-name" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Titular de la Tarjeta *</label>
-                <input 
-                  type="text" 
-                  id="pay-name" 
-                  required 
-                  class="w-full bg-background border border-outline-variant rounded-xl px-4 py-2.5 text-sm text-on-surface focus:ring-primary focus:border-primary"
-                  placeholder="Ej. Sarah Jenkins"
-                />
-              </div>
-
-              <div class="space-y-1">
-                <label for="pay-card" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Número de Tarjeta *</label>
-                <div class="relative">
-                  <input 
-                    type="text" 
-                    id="pay-card" 
-                    required 
-                    pattern="[0-9]{16}"
-                    maxlength="16"
-                    class="w-full bg-background border border-outline-variant rounded-xl pl-4 pr-12 py-2.5 text-sm text-on-surface focus:ring-primary focus:border-primary"
-                    placeholder="4111 2222 3333 4444"
-                  />
-                  <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant">credit_card</span>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-1">
-                  <label for="pay-expiry" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Vencimiento *</label>
-                  <input 
-                    type="text" 
-                    id="pay-expiry" 
-                    required 
-                    pattern="(0[1-9]|1[0-2])\/[2-9][0-9]"
-                    maxlength="5"
-                    class="w-full bg-background border border-outline-variant rounded-xl px-3 py-2 text-sm text-on-surface focus:ring-primary focus:border-primary"
-                    placeholder="MM/AA"
-                  />
-                </div>
-                <div class="space-y-1">
-                  <label for="pay-cvv" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">CVV *</label>
-                  <input 
-                    type="password" 
-                    id="pay-cvv" 
-                    required 
-                    pattern="[0-9]{3,4}"
-                    maxlength="4"
-                    class="w-full bg-background border border-outline-variant rounded-xl px-3 py-2 text-sm text-on-surface focus:ring-primary focus:border-primary"
-                    placeholder="123"
-                  />
-                </div>
-              </div>
-
-              <button 
-                type="submit" 
-                class="w-full bg-primary hover:bg-primary-container text-white py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md mt-6"
-              >
-                <span class="material-symbols-outlined text-[18px]">lock</span>
-                <span>Procesar Pago Seguro</span>
-              </button>
-            </form>
+            <p class="text-xs text-on-surface-variant/80 text-center leading-relaxed pt-2">
+              El pago se realiza en efectivo, directamente con el operador, al finalizar el tour. No se requiere pago en línea.
+            </p>
           </div>
 
         </div>
@@ -445,49 +331,18 @@ const reviews = reviewsData.reviews;
       if (e.key === 'ArrowLeft' && lightbox && !lightbox.classList.contains('hidden')) slideLightbox(-1);
     });
 
-    // Tab switching functionality
-    const tabBookBtn = document.getElementById('tab-btn-book');
-    const tabPayBtn = document.getElementById('tab-btn-pay');
-    const contentBook = document.getElementById('tab-content-book');
-    const contentPay = document.getElementById('tab-content-pay');
-
-    function switchTab(tabId) {
-      if (tabId === 'book') {
-        tabBookBtn.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-        tabBookBtn.classList.remove('text-on-surface-variant', 'dark:text-surface-variant');
-        tabPayBtn.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-        tabPayBtn.classList.add('text-on-surface-variant', 'dark:text-surface-variant');
-        contentBook.classList.remove('hidden');
-        contentPay.classList.add('hidden');
-      } else {
-        tabPayBtn.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-        tabPayBtn.classList.remove('text-on-surface-variant', 'dark:text-surface-variant');
-        tabBookBtn.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-        tabBookBtn.classList.add('text-on-surface-variant', 'dark:text-surface-variant');
-        contentPay.classList.remove('hidden');
-        contentBook.classList.add('hidden');
-      }
-    }
-
-    if (tabBookBtn) tabBookBtn.addEventListener('click', () => switchTab('book'));
-    if (tabPayBtn) tabPayBtn.addEventListener('click', () => switchTab('pay'));
-
     // Price estimation updates
     const basePriceElement = document.getElementById('tour-base-price');
     const peopleInput = document.getElementById('book-people');
     const totalEstText = document.getElementById('total-estimation-text');
-    const payTotalText = document.getElementById('payment-total-text');
-    const payPeopleCount = document.getElementById('payment-people-count');
 
     function updateCalculations() {
       if (basePriceElement && peopleInput) {
         const basePrice = parseInt(basePriceElement.getAttribute('data-price') || '0', 10);
         const people = parseInt(peopleInput.value || '1', 10);
         const total = basePrice * people;
-        
+
         if (totalEstText) totalEstText.innerText = `Total: $${total} USD`;
-        if (payTotalText) payTotalText.innerText = `$${total} USD`;
-        if (payPeopleCount) payPeopleCount.innerText = `${people} ${people === 1 ? 'viajero' : 'viajeros'}`;
       }
     }
 
@@ -525,34 +380,5 @@ Quedo atento a la confirmación de la disponibilidad y métodos de pago. ¡Graci
       });
     }
 
-    // Simulated Payment Submission
-    const paymentForm = document.getElementById('simulated-payment-form');
-    const loadingOverlay = document.getElementById('payment-loading-overlay');
-    const successOverlay = document.getElementById('payment-success-overlay');
-    const successDoneBtn = document.getElementById('success-done-btn');
-
-    if (paymentForm) {
-      paymentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Show simulated loading
-        if (loadingOverlay) loadingOverlay.classList.remove('hidden');
-        
-        setTimeout(() => {
-          // Hide loading
-          if (loadingOverlay) loadingOverlay.classList.add('hidden');
-          // Show success screen
-          if (successOverlay) successOverlay.classList.remove('hidden');
-        }, 2000);
-      });
-    }
-
-    if (successDoneBtn) {
-      successDoneBtn.addEventListener('click', () => {
-        if (successOverlay) successOverlay.classList.add('hidden');
-        if (paymentForm) paymentForm.reset();
-        switchTab('book');
-      });
-    }
   });
 </script>

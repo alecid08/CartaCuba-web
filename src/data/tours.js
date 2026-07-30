@@ -1,4 +1,21 @@
-export const tours = [
+import overrideArteBohemia from './tours/arte-bohemia.json';
+import overrideCamagueyLaberintica from './tours/camaguey-laberintica.json';
+import overrideCampinaSierraNajasa from './tours/campina-sierra-najasa.json';
+import overrideLimonesTuabaquey from './tours/limones-tuabaquey.json';
+import overrideMesaCamagueyana from './tours/mesa-camagueyana.json';
+
+const overridesById = {
+  'arte-bohemia': overrideArteBohemia,
+  'camaguey-laberintica': overrideCamagueyLaberintica,
+  'campina-sierra-najasa': overrideCampinaSierraNajasa,
+  'limones-tuabaquey': overrideLimonesTuabaquey,
+  'mesa-camagueyana': overrideMesaCamagueyana,
+};
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const rawTours = [
   {
     id: "camaguey-laberintica",
     title: "Camagüey Laberíntica",
@@ -49,7 +66,7 @@ export const tours = [
     price: 25,
     shortDescription: "Talleres de artistas plásticos, músicos trovadores y artesanos de la cerámica. Acceso directo a la escena creativa camagüeyana que no aparece en ninguna guía turística.",
     fullDescription: "Pintores, ceramistas, trovadores y artesanos en sus espacios reales. Acceso a la galería provincial y estudios privados que normalmente permanecen cerrados al público general.",
-    image: "/CartaCuba-web/images/joel_jover.jpeg",
+    image: "/images/joel_jover.jpeg",
     galleryImages: [],
     itinerary: [
       {
@@ -96,7 +113,7 @@ export const tours = [
     price: 55,
     shortDescription: "Senderismo guiado por la Reserva Ecológica Limones-Tuabaquey, en la Sierra de Cubitas: cuevas con arte rupestre precolombino, cañones de piedra caliza y el canto del tocororo y la cartacuba en su hábitat natural.",
     fullDescription: "A 32 km al norte de Camagüey, la Sierra de Cubitas guarda uno de los paisajes más singulares de Cuba: un carso tabular tallado por millones de años, con cañones, cuevas y un microclima propio. Aquí camina el visitante entre pictografías aborígenes de más de mil años, desciende a una depresión kárstica única en la isla y escucha el canto del tocororo —ave nacional— y de la cartacuba, la misma que da nombre a nuestra agencia. El acceso a los senderos es exclusivamente con guía, lo que convierte esta experiencia en un privilegio, no en un recorrido más.",
-    image: "/CartaCuba-web/images/limones_tuabaquey.png",
+    image: "/images/limones_tuabaquey.png",
     galleryImages: [],
     itinerary: [
       {
@@ -147,7 +164,7 @@ export const tours = [
     price: 55,
     shortDescription: "Reserva natural Sierra de Najasa. Tocororo, Cartacuba, orquídeas endémicas, palma real. Paisaje rural auténtico con historia precolombina ciboney. Transporte incluido.",
     fullDescription: "Reserva natural Sierra de Najasa. Tocororo, Cartacuba, orquídeas endémicas, palma real. Paisaje rural auténtico con historia precolombina ciboney. Transporte incluido.",
-    image: "/CartaCuba-web/images/orquideas.jpeg",
+    image: "/images/orquideas.jpeg",
     galleryImages: [],
     itinerary: [
       {
@@ -227,3 +244,14 @@ export const tours = [
     excluded: []
   }
 ];
+
+function withBase(path) {
+  if (!path || path.startsWith('http')) return path;
+  const relative = path.replace(/^\/CartaCuba-web\//, '').replace(/^\//, '');
+  return `${cleanBase}${relative}`;
+}
+
+export const tours = rawTours.map((t) => {
+  const merged = { ...t, ...overridesById[t.id] };
+  return { ...merged, image: withBase(merged.image) };
+});
