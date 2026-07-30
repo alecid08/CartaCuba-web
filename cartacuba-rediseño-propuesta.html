@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CartaCuba — Propuesta de rediseño</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-oscuro:#1F3D2B;
+    --verde-natural:#3E6B48;
+    --verde-musgo:#28492f;
+    --ambar:#C47A2C;
+    --ambar-claro:#E3A85C;
+    --beige:#E8D8B7;
+    --beige-claro:#F5EDDA;
+    --rojo:#8B1E1E;
+    --crema:#FBF6EC;
+  }
+  
+  /* organic wave/blob transition instead of hard cut */
+  .organic-transition{
+    position:relative;height:160px;margin-top:-2px;z-index:3;
+  }
+  .organic-transition svg{position:absolute;bottom:0;left:0;width:100%;height:100%;display:block;}
+
+  /* ============ MARQUEE / STRIP ============ */
+  .strip{
+    background:var(--crema);padding:26px 0;overflow:hidden;position:relative;
+    border-bottom:1px solid rgba(31,61,43,.08);
+  }
+  .strip-track{display:flex;gap:60px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--verde-natural);opacity:.7;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ============ TOURS SECTION ============ */
+  .tours{
+    background:var(--crema);
+    padding:100px 48px 40px;position:relative;
+  }
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+  .section-head .tag{color:var(--ambar);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;display:block;}
+  .section-head h2{font-size:clamp(32px,4vw,48px);color:var(--verde-oscuro);max-width:560px;line-height:1.15;}
+  .section-head p{max-width:340px;font-size:15px;line-height:1.6;color:#5a5346;}
+
+  .tour-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .tour-card{
+    position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4.1;
+    background-size:cover;background-position:center;
+    display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .tour-card:hover{transform:translateY(-10px) rotate(-0.4deg);}
+  .tour-card:nth-child(even):hover{transform:translateY(-10px) rotate(0.4deg);}
+  .tour-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(190deg, rgba(31,61,43,0) 30%, rgba(20,32,22,.92) 100%);
+  }
+  .tour-card .badge{
+    position:relative;z-index:2;align-self:flex-start;
+    background:rgba(251,246,236,.9);color:var(--verde-oscuro);
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;
+    margin-bottom:auto;
+  }
+  .tour-card .info{position:relative;z-index:2;color:var(--beige-claro);}
+  .tour-card .info h3{font-size:23px;margin-bottom:8px;line-height:1.15;}
+  .tour-card .info .meta{font-size:12px;opacity:.75;display:flex;gap:14px;margin-bottom:10px;}
+  .tour-card .info .price{font-size:14px;color:var(--ambar-claro);font-weight:600;}
+  .tour-card:nth-child(1){transform:translateY(10px);}
+  .tour-card:nth-child(3){transform:translateY(-14px);}
+  .tour-card:nth-child(1):hover, .tour-card:nth-child(3):hover{transform:translateY(0) scale(1.02);}
+
+  /* ============ ORGANIC TRANSITION 2: torn-edge blob into dark nature section ============ */
+  .blob-transition{position:relative;height:200px;margin-top:-40px;z-index:5;pointer-events:none;}
+  .blob-transition svg{width:100%;height:100%;}
+
+  /* ============ SPIRIT SECTION ============ */
+  .spirit{
+    background:linear-gradient(155deg,#132018 0%, #1F3D2B 55%, #3E6B48 120%);
+    padding:0 48px 140px;position:relative;color:var(--beige-claro);
+    margin-top:-2px;
+  }
+  .spirit-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding-top:40px;}
+  .spirit-visual{position:relative;}
+  .spirit-visual img{width:100%;border-radius:24px;display:block;filter:saturate(1.05);}
+  .spirit-visual .float-card{
+    position:absolute;bottom:-30px;left:-30px;background:rgba(251,246,236,.95);color:var(--verde-oscuro);
+    padding:20px 24px;border-radius:18px;max-width:230px;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);
+  }
+  .spirit-visual .float-card .n{font-family:'Playfair Display',serif;font-size:28px;color:var(--ambar);}
+  .spirit-text .tag{color:var(--ambar-claro);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:block;}
+  .spirit-text h2{font-size:clamp(30px,3.6vw,42px);line-height:1.2;margin-bottom:22px;}
+  .spirit-text p{font-size:16px;line-height:1.8;color:rgba(232,216,183,.8);margin-bottom:30px;}
+  .leaf-divider{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+  .leaf-divider svg{width:20px;height:20px;color:var(--ambar-claro);}
+
+  /* ============ TESTIMONIALS with gradient blend ============ */
+  .testi-transition{height:120px;margin-top:-1px;position:relative;}
+  .testi-transition svg{width:100%;height:100%;}
+  .testimonials{
+    background:linear-gradient(180deg, var(--beige) 0%, var(--beige-claro) 100%);
+    padding:20px 48px 120px;
+  }
+  .testimonials .section-head{justify-content:center;text-align:center;flex-direction:column;align-items:center;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1200px;margin:0 auto;}
+  .testi-card{
+    background:var(--crema);border-radius:22px;padding:34px;position:relative;
+    box-shadow:0 20px 50px -30px rgba(31,61,43,.4);
+  }
+  .testi-card .quote-mark{position:absolute;top:20px;right:26px;font-family:'Playfair Display',serif;font-size:60px;color:var(--ambar);opacity:.2;line-height:1;}
+  .testi-card .who{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--ambar),var(--rojo));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-weight:700;}
+  .who .name{font-weight:700;font-size:14px;}
+  .who .loc{font-size:12px;color:#7a715f;}
+  .stars{color:var(--ambar);font-size:13px;margin-bottom:14px;}
+  .testi-card p{font-size:14.5px;line-height:1.7;color:#4a4436;font-style:italic;}
+
+  @media (max-width:1000px){
+    .tour-grid{grid-template-columns:repeat(2,1fr);}
+    .spirit-inner{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    nav{padding:16px 20px;}
+    .navlinks{display:none;}
+    .hero,.tours,.spirit,.testimonials{padding-left:22px;padding-right:22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <b>Propuesta de dirección visual — no es el sitio final.</b> Esto es un mockup para validar el nuevo lenguaje visual antes de tocar el repo Astro: degradados orgánicos entre secciones (en vez del corte recto actual), formas tipo hoja/onda como transición, tarjetas de tours con imagen de fondo y overlay (más "editorial", menos "bloque"), y una paleta que respira más verde/naturaleza sin perder el ámbar de marca. Todo con Playfair Display + DM Sans, tal como ya está definido.
+</div>
+
+<nav>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 14C4 8 9 4 15 4C15 4 16 9 12 12C8 15 4 14 4 14Z" fill="#3E6B48"/><path d="M4 14C4 14 6 20 12 20C18 20 20 14 20 14" stroke="#C47A2C" stroke-width="1.5" fill="none"/></svg>
+    CartaCuba
+  </div>
+  <div class="navlinks">
+    <a href="#" class="active">Inicio</a>
+    <a href="#">Tours</a>
+    <a href="#">Destino</a>
+    <a href="#">Nosotros</a>
+  </div>
+  <button class="cta-btn">↗ Reservar Ahora</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Descubre Cuba desde dentro</span>
+    <h1>La Camagüey que <em>no</em> aparece<br>en las guías de viaje</h1>
+    <p>Grupos pequeños, anfitriones locales y experiencias que se sienten vividas — no visitadas. Cultura, naturaleza y sabor auténtico en el corazón colonial de Cuba.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Explorar experiencias</button>
+      <a href="#" class="btn-ghost">▶ Ver historias reales</a>
+    </div>
+  </div>
+
+  <!-- organic wave transition, replaces hard rectangular cut -->
+  <div class="organic-transition">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="waveFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1F3D2B" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#FBF6EC" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,80 C240,140 400,20 720,60 C1040,100 1200,20 1440,70 L1440,160 L0,160 Z" fill="url(#waveFade)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Tinajones centenarios &nbsp;•&nbsp; Flamencos rosados &nbsp;•&nbsp; Trova y bohemia &nbsp;•&nbsp; Sierra de Najasa &nbsp;•&nbsp; Mesa camagüeyana &nbsp;•&nbsp; </span>
+    <span>Tinajones centenarios &nbsp;•&nbsp; Flamencos rosados &nbsp;•&nbsp; Trova y bohemia &nbsp;•&nbsp; Sierra de Najasa &nbsp;•&nbsp; Mesa camagüeyana &nbsp;•&nbsp; </span>
+  </div>
+</div>
+
+<!-- TOURS -->
+<section class="tours">
+  <div class="section-head">
+    <div>
+      <span class="tag">Viajes que inspiran</span>
+      <h2>Cinco formas de vivir Camagüey, nunca dos veces igual</h2>
+    </div>
+    <p>Grupos de 4–6 personas. Cada experiencia se adapta al ritmo y los intereses de quienes viajan.</p>
+  </div>
+
+  <div class="tour-grid">
+    <div class="tour-card" style="background-image:url('https://images.unsplash.com/photo-1591870439940-e78b2ec52b52?w=600')">
+      <span class="badge">Patrimonio</span>
+      <div class="info">
+        <h3>Camagüey Laberíntica</h3>
+        <div class="meta"><span>3–4 horas</span><span>Grupo pequeño</span></div>
+        <div class="price">Desde $30 USD</div>
+      </div>
+    </div>
+    <div class="tour-card" style="background-image:url('https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600')">
+      <span class="badge">Cultura</span>
+      <div class="info">
+        <h3>Arte y Bohemia Camagüeyana</h3>
+        <div class="meta"><span>2–3 horas</span><span>Artesanos</span></div>
+        <div class="price">Desde $25 USD</div>
+      </div>
+    </div>
+    <div class="tour-card" style="background-image:url('https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=600')">
+      <span class="badge">Naturaleza · Flagship</span>
+      <div class="info">
+        <h3>Flamencos y Sabanas</h3>
+        <div class="meta"><span>Día completo</span><span>Cayo Sabinal</span></div>
+        <div class="price">Desde $60 USD</div>
+      </div>
+    </div>
+    <div class="tour-card" style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?w=600')">
+      <span class="badge">Naturaleza</span>
+      <div class="info">
+        <h3>Campiña y Sierra de Najasa</h3>
+        <div class="meta"><span>Día completo</span><span>Ecoturismo</span></div>
+        <div class="price">Desde $55 USD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- transition into dark spirit section using a leaf/blob shape, not a hard rectangle -->
+<div class="blob-transition">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <path d="M0,200 L0,90 C180,40 320,150 560,100 C820,46 980,140 1200,80 C1320,50 1400,90 1440,110 L1440,200 Z" fill="#1F3D2B"/>
+  </svg>
+</div>
+
+<!-- SPIRIT / NATURE SECTION -->
+<section class="spirit">
+  <div class="spirit-inner">
+    <div class="spirit-visual">
+      <img src="https://images.unsplash.com/photo-1552083375-1447ce886485?w=700" alt="Cartacuba, ave endémica">
+      <div class="float-card">
+        <div class="n">30+</div>
+        <div style="font-size:13px;line-height:1.4;">especies de aves observables en la Sierra de Najasa y Río Máximo</div>
+      </div>
+    </div>
+    <div class="spirit-text">
+      <span class="tag">El espíritu de la tierra</span>
+      <h2>Arraigados en el patrimonio, inspirados en la naturaleza</h2>
+      <div class="leaf-divider">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 14C4 8 9 4 15 4C15 4 16 9 12 12C8 15 4 14 4 14Z"/></svg>
+        <span style="font-size:13px;letter-spacing:.05em;">Naturaleza viva</span>
+      </div>
+      <p>CartaCuba es más que un recorrido turístico: es un compromiso activo con la conservación y la cultura local. Cada experiencia reinvierte directamente en las familias, artistas y guardianes de estos ecosistemas.</p>
+      <button class="btn-primary" style="background:var(--ambar-claro);color:#1c1206;">Explorar senderos</button>
+    </div>
+  </div>
+</section>
+
+<!-- transition from dark green into beige testimonials -->
+<div class="testi-transition">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,0 C300,90 700,10 1000,60 C1200,95 1350,40 1440,20 L1440,0 Z" fill="#3E6B48" opacity="0.5"/>
+    <path d="M0,20 C260,100 650,30 980,80 C1200,110 1350,60 1440,40 L1440,120 L0,120 Z" fill="#E8D8B7"/>
+  </svg>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-head">
+    <span class="tag">Voces de viajeros</span>
+    <h2 style="max-width:600px;">Lo que se siente al descubrir Cuba desde dentro</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <span class="quote-mark">"</span>
+      <div class="who"><div class="avatar">M</div><div><div class="name">María González</div><div class="loc">España 🇪🇸</div></div></div>
+      <div class="stars">★★★★★</div>
+      <p>Alejandro nos llevó a rincones de Camagüey que nunca hubiéramos encontrado solos. La conexión con los artistas locales fue simplemente inolvidable.</p>
+    </div>
+    <div class="testi-card">
+      <span class="quote-mark">"</span>
+      <div class="who"><div class="avatar">C</div><div><div class="name">Carlos Mendoza</div><div class="loc">México 🇲🇽</div></div></div>
+      <div class="stars">★★★★★</div>
+      <p>El trato fue cercano desde el primer mensaje. Nos adaptaron todo a nuestro ritmo y los niños quedaron fascinados. Cuba auténtica, sin filtros.</p>
+    </div>
+    <div class="testi-card">
+      <span class="quote-mark">"</span>
+      <div class="who"><div class="avatar">L</div><div><div class="name">Lucía Fernández</div><div class="loc">Argentina 🇦🇷</div></div></div>
+      <div class="stars">★★★★★</div>
+      <p>Pensé que ya conocía Cuba, pero CartaCuba me mostró que no había visto nada. Ya estoy planeando volver para los otros tours.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
