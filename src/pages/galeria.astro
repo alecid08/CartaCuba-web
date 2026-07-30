@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const galleryItems = [
+  {
+    title: "Plaza e Iglesia Colonial",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/plaza_e_iglesia.jpeg`
+  },
+  {
+    title: "Patio Colonial Tradicional",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/patio_colonial.jpeg`
+  },
+  {
+    title: "Tinajones en Patio Colonial",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/patio_colonial_vista_aerea.jpeg`
+  },
+  {
+    title: "Camagüey Desde el Mirador",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/ciudad_desde_el_mirador.jpeg`
+  },
+  {
+    title: "Atardecer en la Ciudad Patrimonial",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/ciudad_patrimonial_en_la_tarde.jpeg`
+  },
+  {
+    title: "Vista a las Campanarios Coloniales",
+    category: "experiencias",
+    categoryName: "Experiencias de Viajeros",
+    img: `${cleanBase}images/turista_con_vista_a_la_iglesia.jpeg`
+  },
+  {
+    title: "Galerías y Estudios de Arte",
+    category: "arte",
+    categoryName: "Arte & Bohemia",
+    img: `${cleanBase}images/galerias_y_artistas.jpeg`
+  },
+  {
+    title: "Reserva Limones-Tuabaquey",
+    category: "ecoturismo",
+    categoryName: "Ecoturismo & Naturaleza",
+    img: `${cleanBase}images/limones_tuabaquey.png`
+  },
+  {
+    title: "Cotorra Cubana en la Naturaleza",
+    category: "ecoturismo",
+    categoryName: "Ecoturismo & Naturaleza",
+    img: `${cleanBase}images/cotorra.jpg`
+  },
+  {
+    title: "Mochileros en Senderos de Najasa",
+    category: "experiencias",
+    categoryName: "Experiencias de Viajeros",
+    img: `${cleanBase}images/Group.jpg`
+  },
+  {
+    title: "Búho de la Sierra de Najasa",
+    category: "ecoturismo",
+    categoryName: "Ecoturismo & Naturaleza",
+    img: `${cleanBase}images/buho.jpeg`
+  },
+  {
+    title: "Orquídeas Silvestres Camagüeyanas",
+    category: "ecoturismo",
+    categoryName: "Ecoturismo & Naturaleza",
+    img: `${cleanBase}images/orquideas.jpeg`
+  },
+  {
+    title: "Letrero Escultórico de Camagüey",
+    category: "destino",
+    categoryName: "Destino & Patrimonio",
+    img: `${cleanBase}images/cartel_de_camaguey.jpeg`
+  }
+];
+---
+
+<BaseLayout title="Galería | CartaCuba Ecoturismo" activePage="galeria">
+  <div class="organic-grain fixed inset-0 pointer-events-none opacity-40 z-0"></div>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 bg-surface-container-high overflow-hidden border-b border-outline-variant/20">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 text-center space-y-4">
+      <span class="bg-primary/10 text-primary font-label-md px-4 py-1.5 rounded-full uppercase tracking-wider text-xs inline-block">
+        Colección Visual
+      </span>
+      <h1 class="font-display-lg text-display-lg-mobile md:text-5xl text-on-surface font-bold leading-tight">
+        Galería de <span class="text-primary italic font-normal">Camagüey y Sus Experiencias</span>
+      </h1>
+      <p class="text-on-surface-variant font-body-lg max-w-2xl mx-auto text-sm md:text-base">
+        Una mirada fotográfica a la riqueza arquitectónica, la fauna endémica y los momentos inolvidables vividos por nuestros viajeros.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-16 bg-background relative z-10">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-12">
+      
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center items-center gap-3" id="gallery-filters">
+        <button 
+          class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs sm:text-sm font-label-md font-bold transition-all shadow-sm"
+          data-filter="all"
+        >
+          Todas ({galleryItems.length})
+        </button>
+        <button 
+          class="filter-btn bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high px-5 py-2 rounded-full text-xs sm:text-sm font-label-md font-bold transition-all"
+          data-filter="destino"
+        >
+          Destino & Patrimonio
+        </button>
+        <button 
+          class="filter-btn bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high px-5 py-2 rounded-full text-xs sm:text-sm font-label-md font-bold transition-all"
+          data-filter="ecoturismo"
+        >
+          Ecoturismo & Naturaleza
+        </button>
+        <button 
+          class="filter-btn bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high px-5 py-2 rounded-full text-xs sm:text-sm font-label-md font-bold transition-all"
+          data-filter="arte"
+        >
+          Arte & Bohemia
+        </button>
+        <button 
+          class="filter-btn bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high px-5 py-2 rounded-full text-xs sm:text-sm font-label-md font-bold transition-all"
+          data-filter="experiencias"
+        >
+          Vivencias de Viajeros
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="gallery-grid">
+        {galleryItems.map((item, idx) => (
+          <div 
+            class="gallery-item group relative overflow-hidden rounded-3xl aspect-[4/3] sm:aspect-square shadow-sm hover:shadow-xl transition-all duration-300 bg-surface-container border border-outline-variant/20 cursor-pointer"
+            data-category={item.category}
+            data-idx={idx}
+          >
+            <img 
+              src={item.img} 
+              alt={item.title} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+              loading="lazy" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+              <span class="text-[11px] font-label-md uppercase tracking-wider text-primary-fixed block mb-1">
+                {item.categoryName}
+              </span>
+              <h3 class="font-bold font-headline-sm text-base leading-tight">
+                {item.title}
+              </h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="full-lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4">
+      <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:scale-110 transition-transform p-2 z-10" aria-label="Cerrar">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+      <button id="lightbox-prev" class="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 text-white hover:scale-110 transition-transform p-3 bg-black/40 rounded-full backdrop-blur-sm z-10" aria-label="Anterior">
+        <span class="material-symbols-outlined text-3xl">chevron_left</span>
+      </button>
+      <button id="lightbox-next" class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 text-white hover:scale-110 transition-transform p-3 bg-black/40 rounded-full backdrop-blur-sm z-10" aria-label="Siguiente">
+        <span class="material-symbols-outlined text-3xl">chevron_right</span>
+      </button>
+
+      <div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center space-y-4">
+        <img id="lightbox-img" src="" alt="Vista ampliada" class="max-w-full max-h-[75vh] rounded-2xl object-contain shadow-2xl" />
+        <div class="text-center text-white space-y-1">
+          <span id="lightbox-category" class="text-xs font-label-md text-primary-fixed uppercase tracking-wider block"></span>
+          <h3 id="lightbox-title" class="font-bold text-lg"></h3>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+    
+    // Lightbox elements
+    const lightbox = document.getElementById('full-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxCategory = document.getElementById('lightbox-category');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let visibleItems = Array.from(items);
+    let activeIndex = 0;
+
+    // Filter functionality
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-primary', 'text-white');
+          b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        btn.classList.add('active', 'bg-primary', 'text-white');
+        btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+        visibleItems = [];
+        items.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.style.display = 'block';
+            visibleItems.push(item);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox functionality
+    function updateLightbox(idx) {
+      if (visibleItems.length === 0) return;
+      if (idx < 0) idx = visibleItems.length - 1;
+      if (idx >= visibleItems.length) idx = 0;
+      activeIndex = idx;
+
+      const currentItem = visibleItems[activeIndex];
+      const img = currentItem.querySelector('img');
+      const title = currentItem.querySelector('h3')?.innerText || '';
+      const category = currentItem.querySelector('span')?.innerText || '';
+
+      if (lightboxImg) lightboxImg.src = img.src;
+      if (lightboxTitle) lightboxTitle.innerText = title;
+      if (lightboxCategory) lightboxCategory.innerText = category;
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1 && lightbox) {
+          updateLightbox(idx);
+          lightbox.classList.remove('hidden');
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        lightbox?.classList.add('hidden');
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        updateLightbox(activeIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        updateLightbox(activeIndex + 1);
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!lightbox || lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') lightbox.classList.add('hidden');
+      if (e.key === 'ArrowLeft') updateLightbox(activeIndex - 1);
+      if (e.key === 'ArrowRight') updateLightbox(activeIndex + 1);
+    });
+  });
+</script>

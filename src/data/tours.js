@@ -49,7 +49,7 @@ export const tours = [
     price: 25,
     shortDescription: "Talleres de artistas plásticos, músicos trovadores y artesanos de la cerámica. Acceso directo a la escena creativa camagüeyana que no aparece en ninguna guía turística.",
     fullDescription: "Pintores, ceramistas, trovadores y artesanos en sus espacios reales. Acceso a la galería provincial y estudios privados que normalmente permanecen cerrados al público general.",
-    image: "/CartaCuba-web/images/galerias_y_artistas.jpeg",
+    image: "/CartaCuba-web/images/joel_jover.jpeg",
     galleryImages: [],
     itinerary: [
       {

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activePage?: 'home' | 'tours' | 'destino' | 'nosotros';
+  activePage?: 'home' | 'tours' | 'destino' | 'galeria' | 'nosotros';
 }
 
 const { activePage } = Astro.props;
@@ -12,6 +12,7 @@ const links = [
   { name: 'Inicio', href: cleanBase, id: 'home' },
   { name: 'Tours', href: `${cleanBase}tours/`, id: 'tours' },
   { name: 'Destino', href: `${cleanBase}destino/`, id: 'destino' },
+  { name: 'Galería', href: `${cleanBase}galeria/`, id: 'galeria' },
   { name: 'Nosotros', href: `${cleanBase}nosotros/`, id: 'nosotros' }
 ];
 ---

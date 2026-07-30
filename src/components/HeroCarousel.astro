@@ -33,7 +33,7 @@ const slides = [
 ];
 ---
 
-<section class="relative h-[650px] md:h-[820px] w-full overflow-hidden bg-black" id="hero-carousel">
+<section class="relative mt-20 h-[580px] md:h-[720px] lg:h-[780px] w-full overflow-hidden bg-black" id="hero-carousel">
   <!-- Slides Container -->
   <div class="relative w-full h-full">
     {slides.map((slide, idx) => (
@@ -45,7 +45,7 @@ const slides = [
         <div class="absolute inset-0 z-0">
           <img 
             alt={slide.badgeText} 
-            class="w-full h-full object-cover transform scale-100 transition-transform duration-[8000ms] ease-out slide-bg-image" 
+            class="w-full h-full object-cover object-center transform scale-100 transition-transform duration-[8000ms] ease-out slide-bg-image" 
             src={slide.bgImage}
           />
           <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
