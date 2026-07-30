@@ -6,8 +6,8 @@
   "duration": "2–3 horas",
   "price": 25,
   "priceDisplay": "$25–35 USD",
-  "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
-  "shortDescription": "Talleres de artistas plásticos activos, músicos de trova, artesanos de cerámica. Acceso directo a la escena creativa camagüeyana que no aparece en ninguna guía turística.",
+  "image": "/CartaCuba-web/images/galerias_y_artistas.jpeg",
+  "shortDescription": "Talleres de artistas plásticos, músicos trovadores y artesanos de la cerámica. Acceso directo a la escena creativa camagüeyana que no aparece en ninguna guía turística.",
   "fullDescription": "Pintores, ceramistas, trovadores y artesanos en sus espacios reales. Acceso a la galería provincial y estudios privados que normalmente permanecen cerrados al público general.",
   "included": [
     "Visita a talleres de artistas activos",
@@ -26,17 +26,22 @@
   ],
   "itinerary": [
     {
-      "time": "10:00",
+      "time": "9:00",
       "title": "Inicio",
       "desc": "Encuentro en la zona cultural del centro histórico para dar inicio al recorrido."
     },
     {
-      "time": "10:30",
-      "title": "Talleres",
+      "time": "9:30",
+      "title": "Visita a Taller de Joel Jover, artista plástico",
+      "desc": "Conozca en la intimidad a unos de los artistas de la plástica más destacados en camaguey "
+    },
+    {
+      "time": "10:15",
+      "title": "Visita a taller de artista de la cerámica",
       "desc": "Visita exclusiva al taller de un renombrado artista plástico local en activo."
     },
     {
-      "time": "11:15",
+      "time": "11:00",
       "title": "Tradición",
       "desc": "Encuentro cercano con trovadores o repentistas locales, conociendo su arte de improvisación."
     },
