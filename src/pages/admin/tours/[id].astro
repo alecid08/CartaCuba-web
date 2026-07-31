@@ -52,8 +52,10 @@ const saved = Astro.url.searchParams.get('saved') === '1';
       </div>
     </div>
 
-    <label for="image">URL de imagen de portada</label>
-    <input type="text" id="image" name="image" value={tour.image} />
+    <label for="image-input">Imagen de portada</label>
+    <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp,image/avif" />
+    <p class="field-hint">Recomendado: 1920×1080px mínimo (16:9), JPEG/WebP/AVIF, máx 10MB. Se usa en portada, tarjeta de catálogo y carrusel de inicio.</p>
+    <input type="hidden" id="image-value" name="image" value={tour.image} />
 
     <label for="shortDescription">Descripción corta</label>
     <textarea id="shortDescription" name="shortDescription">{tour.shortDescription}</textarea>
@@ -67,8 +69,10 @@ const saved = Astro.url.searchParams.get('saved') === '1';
     <label for="excluded">No incluye (JSON array de strings)</label>
     <textarea id="excluded" name="excluded">{JSON.stringify(tour.excluded, null, 2)}</textarea>
 
-    <label for="galleryImages">Imágenes de galería (JSON array de URLs)</label>
-    <textarea id="galleryImages" name="galleryImages">{JSON.stringify(tour.galleryImages, null, 2)}</textarea>
+    <label for="gallery-input">Imágenes de galería</label>
+    <input type="file" id="gallery-input" multiple accept="image/jpeg,image/png,image/webp,image/avif" />
+    <p class="field-hint">Recomendado: 1200×900px mínimo (4:3), JPEG/WebP/AVIF, máx 10MB c/u.</p>
+    <input type="hidden" id="gallery-value" name="galleryImages" value={JSON.stringify(tour.galleryImages)} />
 
     <label for="itinerary">Itinerario (JSON array de {'{'}time, title, desc{'}'})</label>
     <textarea id="itinerary" name="itinerary" style="min-height: 200px;">{JSON.stringify(tour.itinerary, null, 2)}</textarea>
@@ -76,4 +80,62 @@ const saved = Astro.url.searchParams.get('saved') === '1';
     <button type="submit">Guardar cambios</button>
     <a class="btn secondary" href="/admin/tours/" style="margin-left: 0.5rem;">Cancelar</a>
   </form>
+
+  <script is:inline define:vars={{ tourId: tour.id, initialImage: tour.image, initialGallery: tour.galleryImages }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginFileValidateType,
+        FilePondPluginFileValidateSize,
+        FilePondPluginImageValidateSize
+      );
+
+      const imageValueInput = document.getElementById('image-value');
+      const coverPond = FilePond.create(document.getElementById('image-input'), {
+        allowMultiple: false,
+        acceptedFileTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'],
+        maxFileSize: '10MB',
+        imageValidateSizeMinWidth: 1920,
+        imageValidateSizeMinHeight: 1080,
+        labelIdle: 'Arrastra la imagen de portada o <span class="filepond--label-action">búscala</span>',
+        server: { process: `/admin/api/upload-image?tourId=${encodeURIComponent(tourId)}&kind=cover` },
+        files: initialImage ? [{ source: initialImage, options: { type: 'local' } }] : [],
+      });
+      coverPond.on('processfile', (error, file) => {
+        if (error) return;
+        imageValueInput.value = file.serverId;
+      });
+      coverPond.on('removefile', () => {
+        imageValueInput.value = '';
+      });
+
+      const galleryValueInput = document.getElementById('gallery-value');
+      let galleryUrls = Array.isArray(initialGallery) ? [...initialGallery] : [];
+      const galleryPond = FilePond.create(document.getElementById('gallery-input'), {
+        allowMultiple: true,
+        acceptedFileTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'],
+        maxFileSize: '10MB',
+        imageValidateSizeMinWidth: 1200,
+        imageValidateSizeMinHeight: 900,
+        labelIdle: 'Arrastra imágenes de galería o <span class="filepond--label-action">búscalas</span>',
+        server: { process: `/admin/api/upload-image?tourId=${encodeURIComponent(tourId)}&kind=gallery` },
+        files: galleryUrls.map((url) => ({ source: url, options: { type: 'local' } })),
+      });
+
+      function syncGalleryValue() {
+        galleryValueInput.value = JSON.stringify(galleryUrls);
+      }
+
+      galleryPond.on('processfile', (error, file) => {
+        if (error) return;
+        galleryUrls.push(file.serverId);
+        syncGalleryValue();
+      });
+      galleryPond.on('removefile', (error, file) => {
+        if (error) return;
+        galleryUrls = galleryUrls.filter((url) => url !== file.serverId);
+        syncGalleryValue();
+      });
+    });
+  </script>
 </AdminLayout>

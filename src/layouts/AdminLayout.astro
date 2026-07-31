@@ -11,62 +11,135 @@ const { title } = Astro.props;
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta name="robots" content="noindex, nofollow" />
   <title>{title} | Admin CartaCuba</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" is:inline></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" is:inline></script>
+
+  <link href="https://unpkg.com/filepond@4/dist/filepond.css" rel="stylesheet" />
+  <link href="https://unpkg.com/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+  <script src="https://unpkg.com/filepond-plugin-file-validate-type@1/dist/filepond-plugin-file-validate-type.js" is:inline></script>
+  <script src="https://unpkg.com/filepond-plugin-file-validate-size@2/dist/filepond-plugin-file-validate-size.js" is:inline></script>
+  <script src="https://unpkg.com/filepond-plugin-image-validate-size@1/dist/filepond-plugin-image-validate-size.js" is:inline></script>
+  <script src="https://unpkg.com/filepond-plugin-image-preview@4/dist/filepond-plugin-image-preview.js" is:inline></script>
+  <script src="https://unpkg.com/filepond@4/dist/filepond.js" is:inline></script>
+
   <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  </style>
+
+  <style>
+    :root {
+      --primary: #006b34;
+      --primary-container: #008643;
+      --secondary: #bb0017;
+      --on-primary: #ffffff;
+      --background: #fff8f5;
+      --surface: #fff8f5;
+      --surface-container: #f5ece7;
+      --surface-container-high: #efe6e2;
+      --surface-container-highest: #e9e1dc;
+      --on-surface: #1e1b18;
+      --on-surface-variant: #3e4a3f;
+      --outline-variant: #bdcabc;
+      --error: #ba1a1a;
+      --error-container: #ffdad6;
+    }
     * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       margin: 0;
-      background: #f5f2ed;
-      color: #1e1b18;
+      background: var(--background);
+      color: var(--on-surface);
     }
     header {
-      background: #1F3D2B;
-      color: white;
+      background: var(--background);
+      color: var(--on-surface);
       padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid var(--outline-variant);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    header a { color: white; text-decoration: none; font-weight: 600; }
+    header .brand { display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; font-family: 'Libre Caslon Text', serif; font-weight: 700; font-size: 1.1rem; }
     nav { display: flex; gap: 1.25rem; }
-    nav a { color: #E8D8B7; text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { text-decoration: underline; }
+    nav a { color: var(--on-surface-variant); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--primary); }
     main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
-    h1 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #eee; font-size: 0.875rem; vertical-align: top; }
-    th { background: #efe6e2; font-weight: 600; }
+    h1 { font-family: 'Libre Caslon Text', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--on-surface); }
+    .page-subtitle { font-size: 0.95rem; color: var(--on-surface-variant); margin: -1rem 0 2rem; }
+    table { width: 100%; border-collapse: collapse; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--surface-container-highest); font-size: 0.875rem; vertical-align: top; }
+    th { background: var(--surface-container-high); font-weight: 600; color: var(--on-surface-variant); }
     tr:last-child td { border-bottom: none; }
     .badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
     .badge-pending { background: #fff3cd; color: #856404; }
     .badge-approved, .badge-confirmed, .badge-read { background: #d4edda; color: #155724; }
-    .badge-rejected, .badge-cancelled { background: #f8d7da; color: #721c24; }
+    .badge-rejected, .badge-cancelled { background: var(--error-container); color: var(--error); }
     .badge-new { background: #d1ecf1; color: #0c5460; }
     .badge-archived, .badge-contacted { background: #e2e3e5; color: #383d41; }
     form.inline { display: inline; }
     button, .btn {
-      background: #1F3D2B; color: white; border: none; padding: 0.4rem 0.9rem;
-      border-radius: 6px; font-size: 0.8rem; cursor: pointer; text-decoration: none;
-      display: inline-block;
+      background: var(--primary); color: var(--on-primary); border: none; padding: 0.4rem 0.9rem;
+      border-radius: 999px; font-size: 0.8rem; font-weight: 600; cursor: pointer; text-decoration: none;
+      display: inline-block; transition: background 0.2s;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
-    button.secondary, .btn.secondary { background: #C47A2C; }
-    button.danger, .btn.danger { background: #bb0017; }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .card { background: white; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    .card .count { font-size: 2rem; font-weight: 700; color: #1F3D2B; }
-    .card .label { font-size: 0.85rem; color: #666; }
-    label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem; color: #444; }
+    button:hover, .btn:hover { background: var(--primary-container); }
+    button.secondary, .btn.secondary { background: var(--surface-container-highest); color: var(--on-surface); }
+    button.secondary:hover, .btn.secondary:hover { background: var(--outline-variant); }
+    button.danger, .btn.danger { background: var(--error); }
+    button.danger:hover, .btn.danger:hover { background: #93000a; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+    .card {
+      background: #ffffff; border-radius: 16px; padding: 1.5rem;
+      border: 1px solid var(--surface-container-highest);
+      box-shadow: 0 4px 14px rgba(30, 27, 24, 0.08);
+      display: flex; align-items: center; gap: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-top: 4px solid var(--card-accent, var(--primary));
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(30, 27, 24, 0.14); }
+    .card .icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: color-mix(in srgb, var(--card-accent, var(--primary)) 14%, white);
+      color: var(--card-accent, var(--primary));
+    }
+    .card .icon .material-symbols-outlined { font-size: 26px; }
+    .card .count { font-family: 'Libre Caslon Text', serif; font-size: 2.1rem; font-weight: 700; line-height: 1.1; color: var(--on-surface); }
+    .card .label { font-size: 0.85rem; color: var(--on-surface-variant); }
+    .card.accent-secondary { --card-accent: var(--secondary); }
+    .card.accent-warning { --card-accent: #b8860b; }
+    label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--on-surface-variant); }
     input, textarea, select {
-      width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px;
+      width: 100%; padding: 0.5rem; border: 1px solid var(--outline-variant); border-radius: 6px;
       font-size: 0.9rem; margin-bottom: 1rem; font-family: inherit;
     }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); }
     textarea { min-height: 80px; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field-hint { font-size: 0.75rem; color: var(--on-surface-variant); margin: -0.75rem 0 1rem; }
+    .filepond--panel-root { border-radius: 12px; background: var(--surface-container); }
+    .filepond--drop-label { color: var(--on-surface-variant); }
+    .filepond--label-action { color: var(--primary); text-decoration-color: var(--primary); }
   </style>
 </head>
 <body>
   <header>
-    <a href="/admin/">CartaCuba Admin</a>
+    <a class="brand" href="/admin/">
+      <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 80C30 80 65 65 80 40C90 25 85 5 70 10C50 15 35 40 30 55C25 45 20 30 10 25C0 20 0 40 5 55C7 63 7 73 15 80Z" fill="#006b34"/>
+        <path d="M70 10C63 13 57 20 55 27C59 29 65 27 70 23C72 19 72 13 70 10Z" fill="#bb0017"/>
+        <circle cx="73" cy="17" r="2.5" fill="white"/>
+      </svg>
+      CartaCuba Admin
+    </a>
     <nav>
       <a href="/admin/tours/">Tours</a>
       <a href="/admin/reviews/">Reseñas</a>

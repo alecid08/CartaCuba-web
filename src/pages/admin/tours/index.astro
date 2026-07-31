@@ -10,6 +10,7 @@ const tours = await getTours();
   <table>
     <thead>
       <tr>
+        <th></th>
         <th>Título</th>
         <th>Categoría</th>
         <th>Precio</th>
@@ -19,6 +20,9 @@ const tours = await getTours();
     <tbody>
       {tours.map((tour) => (
         <tr>
+          <td>
+            {tour.image && <img src={tour.image} alt="" width="64" height="48" style="width:64px;height:48px;object-fit:cover;border-radius:6px;" />}
+          </td>
           <td>{tour.title}</td>
           <td>{tour.category}</td>
           <td>${tour.price} USD</td>
