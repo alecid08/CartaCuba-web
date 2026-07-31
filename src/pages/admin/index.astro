@@ -14,19 +14,29 @@ const newBookings = bookings.filter((b) => b.status === 'new').length;
 
 <AdminLayout title="Panel">
   <h1>Panel de administración</h1>
+  <p class="page-subtitle">Resumen rápido de tours, reseñas y leads.</p>
 
   <div class="card-grid">
     <a href="/admin/tours/" class="card" style="text-decoration:none; color:inherit;">
-      <div class="count">{tours.length}</div>
-      <div class="label">Tours publicados</div>
+      <div class="icon"><span class="material-symbols-outlined">map</span></div>
+      <div>
+        <div class="count">{tours.length}</div>
+        <div class="label">Tours publicados</div>
+      </div>
     </a>
-    <a href="/admin/reviews/" class="card" style="text-decoration:none; color:inherit;">
-      <div class="count">{pendingReviews}</div>
-      <div class="label">Reseñas pendientes de moderar</div>
+    <a href="/admin/reviews/" class="card accent-warning" style="text-decoration:none; color:inherit;">
+      <div class="icon"><span class="material-symbols-outlined">star</span></div>
+      <div>
+        <div class="count">{pendingReviews}</div>
+        <div class="label">Reseñas pendientes de moderar</div>
+      </div>
     </a>
-    <a href="/admin/leads/" class="card" style="text-decoration:none; color:inherit;">
-      <div class="count">{newContacts + newBookings}</div>
-      <div class="label">Leads nuevos (contacto + reservas)</div>
+    <a href="/admin/leads/" class="card accent-secondary" style="text-decoration:none; color:inherit;">
+      <div class="icon"><span class="material-symbols-outlined">mail</span></div>
+      <div>
+        <div class="count">{newContacts + newBookings}</div>
+        <div class="label">Leads nuevos (contacto + reservas)</div>
+      </div>
     </a>
   </div>
 </AdminLayout>
