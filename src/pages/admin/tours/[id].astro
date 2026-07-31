@@ -9,80 +9,132 @@ if (!tour) {
   return Astro.redirect('/admin/tours/');
 }
 
-const saved = Astro.url.searchParams.get('saved') === '1';
 ---
 
 <AdminLayout title={`Editar ${tour.title}`}>
   <h1>Editar tour</h1>
-  {saved && <p style="color:#155724; background:#d4edda; padding:0.75rem 1rem; border-radius:6px;">Cambios guardados.</p>}
+  <div id="saved-toast" class="toast">Cambios guardados.</div>
 
   <form method="POST" action="/admin/api/tours-update">
     <input type="hidden" name="id" value={tour.id} />
 
-    <div class="field-row">
-      <div>
-        <label for="title">Título</label>
-        <input type="text" id="title" name="title" value={tour.title} required />
+    <div class="form-section">
+      <h2>Información general</h2>
+      <div class="field-row">
+        <div>
+          <label for="title">Título <span class="req">*</span></label>
+          <input type="text" id="title" name="title" value={tour.title} required />
+        </div>
+        <div>
+          <label for="category">Categoría <span class="req">*</span></label>
+          <input type="text" id="category" name="category" value={tour.category} required />
+        </div>
       </div>
-      <div>
-        <label for="category">Categoría</label>
-        <input type="text" id="category" name="category" value={tour.category} required />
+
+      <div class="field-row">
+        <div>
+          <label for="badgeIcon">Ícono (Material Symbols) <span class="opt">(Opcional)</span></label>
+          <input type="text" id="badgeIcon" name="badgeIcon" value={tour.badgeIcon} />
+        </div>
+        <div>
+          <label for="duration">Duración <span class="opt">(Opcional)</span></label>
+          <input type="text" id="duration" name="duration" value={tour.duration} />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <label for="price">Precio base (USD, entero) <span class="req">*</span></label>
+          <input type="number" id="price" name="price" value={tour.price} min="1" step="1" required />
+        </div>
+        <div>
+          <label for="priceDisplay">Texto de rango de precio <span class="opt">(Opcional)</span></label>
+          <input type="text" id="priceDisplay" name="priceDisplay" value={tour.priceDisplay} placeholder="Ej. $25–35 USD" />
+        </div>
       </div>
     </div>
 
-    <div class="field-row">
-      <div>
-        <label for="badgeIcon">Ícono (Material Symbols)</label>
-        <input type="text" id="badgeIcon" name="badgeIcon" value={tour.badgeIcon} />
-      </div>
-      <div>
-        <label for="duration">Duración</label>
-        <input type="text" id="duration" name="duration" value={tour.duration} />
+    <div class="form-section">
+      <h2>Imagen de portada</h2>
+      <label for="image-input">Imagen de portada <span class="opt">(Opcional)</span></label>
+      <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp,image/avif" />
+      <p class="field-hint">Recomendado: 1920×1080px mínimo (16:9), JPEG/WebP/AVIF, máx 10MB. Se usa en portada, tarjeta de catálogo y carrusel de inicio.</p>
+      <input type="hidden" id="image-value" name="image" value={tour.image} />
+    </div>
+
+    <div class="form-section">
+      <h2>Descripciones</h2>
+      <label for="shortDescription">Descripción corta <span class="opt">(Opcional)</span></label>
+      <textarea id="shortDescription" name="shortDescription">{tour.shortDescription}</textarea>
+
+      <label for="fullDescription">Descripción completa <span class="opt">(Opcional)</span></label>
+      <textarea id="fullDescription" name="fullDescription">{tour.fullDescription}</textarea>
+    </div>
+
+    <div class="form-section">
+      <h2>Qué incluye / No incluye</h2>
+      <div class="field-row">
+        <div>
+          <label>Qué incluye <span class="opt">(Opcional)</span></label>
+          <div id="included-list" class="tag-list"></div>
+          <button type="button" id="included-add" class="add-btn">
+            <span class="material-symbols-outlined">add</span> Agregar ítem
+          </button>
+          <input type="hidden" id="included-value" name="included" />
+        </div>
+        <div>
+          <label>No incluye <span class="opt">(Opcional)</span></label>
+          <div id="excluded-list" class="tag-list"></div>
+          <button type="button" id="excluded-add" class="add-btn">
+            <span class="material-symbols-outlined">add</span> Agregar ítem
+          </button>
+          <input type="hidden" id="excluded-value" name="excluded" />
+        </div>
       </div>
     </div>
 
-    <div class="field-row">
-      <div>
-        <label for="price">Precio base (USD, entero)</label>
-        <input type="number" id="price" name="price" value={tour.price} required />
-      </div>
-      <div>
-        <label for="priceDisplay">Texto de rango de precio</label>
-        <input type="text" id="priceDisplay" name="priceDisplay" value={tour.priceDisplay} placeholder="Ej. $25–35 USD" />
-      </div>
+    <div class="form-section">
+      <h2>Imágenes de galería</h2>
+      <label for="gallery-input">Imágenes de galería <span class="opt">(Opcional)</span></label>
+      <input type="file" id="gallery-input" multiple accept="image/jpeg,image/png,image/webp,image/avif" />
+      <p class="field-hint">Recomendado: 1200×900px mínimo (4:3), JPEG/WebP/AVIF, máx 10MB c/u.</p>
+      <input type="hidden" id="gallery-value" name="galleryImages" value={JSON.stringify(tour.galleryImages)} />
     </div>
 
-    <label for="image-input">Imagen de portada</label>
-    <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp,image/avif" />
-    <p class="field-hint">Recomendado: 1920×1080px mínimo (16:9), JPEG/WebP/AVIF, máx 10MB. Se usa en portada, tarjeta de catálogo y carrusel de inicio.</p>
-    <input type="hidden" id="image-value" name="image" value={tour.image} />
+    <div class="form-section">
+      <h2>Itinerario <span class="opt">(Opcional)</span></h2>
+      <div id="itinerary-list"></div>
+      <button type="button" id="itinerary-add" class="add-btn">
+        <span class="material-symbols-outlined">add</span> Agregar parada
+      </button>
+      <input type="hidden" id="itinerary-value" name="itinerary" />
+    </div>
 
-    <label for="shortDescription">Descripción corta</label>
-    <textarea id="shortDescription" name="shortDescription">{tour.shortDescription}</textarea>
-
-    <label for="fullDescription">Descripción completa</label>
-    <textarea id="fullDescription" name="fullDescription">{tour.fullDescription}</textarea>
-
-    <label for="included">Qué incluye (JSON array de strings)</label>
-    <textarea id="included" name="included">{JSON.stringify(tour.included, null, 2)}</textarea>
-
-    <label for="excluded">No incluye (JSON array de strings)</label>
-    <textarea id="excluded" name="excluded">{JSON.stringify(tour.excluded, null, 2)}</textarea>
-
-    <label for="gallery-input">Imágenes de galería</label>
-    <input type="file" id="gallery-input" multiple accept="image/jpeg,image/png,image/webp,image/avif" />
-    <p class="field-hint">Recomendado: 1200×900px mínimo (4:3), JPEG/WebP/AVIF, máx 10MB c/u.</p>
-    <input type="hidden" id="gallery-value" name="galleryImages" value={JSON.stringify(tour.galleryImages)} />
-
-    <label for="itinerary">Itinerario (JSON array de {'{'}time, title, desc{'}'})</label>
-    <textarea id="itinerary" name="itinerary" style="min-height: 200px;">{JSON.stringify(tour.itinerary, null, 2)}</textarea>
-
-    <button type="submit">Guardar cambios</button>
-    <a class="btn secondary" href="/admin/tours/" style="margin-left: 0.5rem;">Cancelar</a>
+    <div class="sticky-actions">
+      <button type="submit">Guardar cambios</button>
+      <a class="btn secondary" href="/admin/tours/" style="margin-left: 0.5rem;">Cancelar</a>
+    </div>
   </form>
 
-  <script is:inline define:vars={{ tourId: tour.id, initialImage: tour.image, initialGallery: tour.galleryImages }}>
+  <script
+    is:inline
+    define:vars={{
+      tourId: tour.id,
+      initialImage: tour.image,
+      initialGallery: tour.galleryImages,
+      initialIncluded: tour.included,
+      initialExcluded: tour.excluded,
+      initialItinerary: tour.itinerary,
+      saved: Astro.url.searchParams.get('saved') === '1',
+    }}
+  >
     document.addEventListener('DOMContentLoaded', () => {
+      if (saved) {
+        const toast = document.getElementById('saved-toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+
       FilePond.registerPlugin(
         FilePondPluginImagePreview,
         FilePondPluginFileValidateType,
@@ -136,6 +188,200 @@ const saved = Astro.url.searchParams.get('saved') === '1';
         galleryUrls = galleryUrls.filter((url) => url !== file.serverId);
         syncGalleryValue();
       });
+
+      // --- Tag list builder (used for "included" / "excluded") ---
+      function createTagList(listEl, addBtnEl, hiddenInput, initial, placeholder) {
+        const items = Array.isArray(initial) ? [...initial] : [];
+
+        function sync() {
+          hiddenInput.value = JSON.stringify(items);
+        }
+
+        function render() {
+          listEl.innerHTML = '';
+          items.forEach((value, idx) => {
+            const row = document.createElement('div');
+            row.className = 'tag-item';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = value;
+            input.placeholder = placeholder;
+            input.addEventListener('input', () => {
+              items[idx] = input.value;
+              sync();
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'icon-btn';
+            removeBtn.setAttribute('aria-label', 'Quitar');
+            removeBtn.innerHTML = '<span class="material-symbols-outlined">close</span>';
+            removeBtn.addEventListener('click', () => {
+              items.splice(idx, 1);
+              render();
+            });
+
+            row.appendChild(input);
+            row.appendChild(removeBtn);
+            listEl.appendChild(row);
+          });
+          sync();
+        }
+
+        addBtnEl.addEventListener('click', () => {
+          items.push('');
+          render();
+        });
+
+        render();
+      }
+
+      createTagList(
+        document.getElementById('included-list'),
+        document.getElementById('included-add'),
+        document.getElementById('included-value'),
+        initialIncluded,
+        'Ej. Guía turístico'
+      );
+      createTagList(
+        document.getElementById('excluded-list'),
+        document.getElementById('excluded-add'),
+        document.getElementById('excluded-value'),
+        initialExcluded,
+        'Ej. Propinas'
+      );
+
+      // --- Itinerary builder ---
+      function createItineraryBuilder(listEl, addBtnEl, hiddenInput, initial) {
+        const items = Array.isArray(initial)
+          ? initial.map((stop) => ({ time: stop.time || '', title: stop.title || '', desc: stop.desc || '' }))
+          : [];
+
+        function sync() {
+          hiddenInput.value = JSON.stringify(items);
+        }
+
+        function render() {
+          listEl.innerHTML = '';
+          items.forEach((item, idx) => {
+            const card = document.createElement('div');
+            card.className = 'itinerary-item';
+
+            const header = document.createElement('div');
+            header.className = 'item-header';
+            const stepLabel = document.createElement('span');
+            stepLabel.className = 'step-label';
+            stepLabel.textContent = `Parada ${idx + 1}`;
+
+            const actions = document.createElement('div');
+            actions.className = 'header-actions';
+
+            const upBtn = document.createElement('button');
+            upBtn.type = 'button';
+            upBtn.className = 'icon-btn';
+            upBtn.setAttribute('aria-label', 'Subir parada');
+            upBtn.innerHTML = '<span class="material-symbols-outlined">arrow_upward</span>';
+            upBtn.disabled = idx === 0;
+            upBtn.addEventListener('click', () => {
+              [items[idx - 1], items[idx]] = [items[idx], items[idx - 1]];
+              render();
+            });
+
+            const downBtn = document.createElement('button');
+            downBtn.type = 'button';
+            downBtn.className = 'icon-btn';
+            downBtn.setAttribute('aria-label', 'Bajar parada');
+            downBtn.innerHTML = '<span class="material-symbols-outlined">arrow_downward</span>';
+            downBtn.disabled = idx === items.length - 1;
+            downBtn.addEventListener('click', () => {
+              [items[idx], items[idx + 1]] = [items[idx + 1], items[idx]];
+              render();
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'icon-btn';
+            removeBtn.setAttribute('aria-label', 'Quitar parada');
+            removeBtn.innerHTML = '<span class="material-symbols-outlined">close</span>';
+            removeBtn.addEventListener('click', () => {
+              items.splice(idx, 1);
+              render();
+            });
+
+            actions.appendChild(upBtn);
+            actions.appendChild(downBtn);
+            actions.appendChild(removeBtn);
+            header.appendChild(stepLabel);
+            header.appendChild(actions);
+
+            const row = document.createElement('div');
+            row.className = 'stop-row';
+
+            const timeWrap = document.createElement('div');
+            const timeLabel = document.createElement('label');
+            timeLabel.textContent = 'Hora';
+            const timeInput = document.createElement('input');
+            timeInput.type = 'text';
+            timeInput.placeholder = 'Ej. 9:00 am';
+            timeInput.value = item.time;
+            timeInput.addEventListener('input', () => {
+              item.time = timeInput.value;
+              sync();
+            });
+            timeWrap.appendChild(timeLabel);
+            timeWrap.appendChild(timeInput);
+
+            const titleWrap = document.createElement('div');
+            const titleLabel = document.createElement('label');
+            titleLabel.textContent = 'Título';
+            const titleInput = document.createElement('input');
+            titleInput.type = 'text';
+            titleInput.placeholder = 'Ej. Plaza San Juan de Dios';
+            titleInput.value = item.title;
+            titleInput.addEventListener('input', () => {
+              item.title = titleInput.value;
+              sync();
+            });
+            titleWrap.appendChild(titleLabel);
+            titleWrap.appendChild(titleInput);
+
+            row.appendChild(timeWrap);
+            row.appendChild(titleWrap);
+
+            const descLabel = document.createElement('label');
+            descLabel.textContent = 'Descripción';
+            const descInput = document.createElement('textarea');
+            descInput.placeholder = 'Detalle de la parada';
+            descInput.value = item.desc;
+            descInput.addEventListener('input', () => {
+              item.desc = descInput.value;
+              sync();
+            });
+
+            card.appendChild(header);
+            card.appendChild(row);
+            card.appendChild(descLabel);
+            card.appendChild(descInput);
+            listEl.appendChild(card);
+          });
+          sync();
+        }
+
+        addBtnEl.addEventListener('click', () => {
+          items.push({ time: '', title: '', desc: '' });
+          render();
+        });
+
+        render();
+      }
+
+      createItineraryBuilder(
+        document.getElementById('itinerary-list'),
+        document.getElementById('itinerary-add'),
+        document.getElementById('itinerary-value'),
+        initialItinerary
+      );
     });
   </script>
 </AdminLayout>
