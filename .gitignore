@@ -2,6 +2,8 @@ node_modules
 dist
 .env
 .DS_Store
+.astro
+.wrangler
 
 html originales/
 imagene para a web/

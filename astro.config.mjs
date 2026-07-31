@@ -1,9 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, sessionDrivers } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/CartaCuba-web',
+  site: 'https://cartacuba.org',
+  output: 'server',
+  // The site uses neither Astro.session nor the <Image> component, so both
+  // are pinned to no-op config here — otherwise the adapter auto-provisions
+  // a KV namespace and an Images binding on deploy, which this API token
+  // isn't scoped to create.
+  session: {
+    driver: sessionDrivers.memory(),
+  },
+  adapter: cloudflare({
+    imageService: 'passthrough',
+  }),
   vite: {
     server: {
       allowedHosts: true,

@@ -1,0 +1,32 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getTours, listReviews, listContactSubmissions, listBookingRequests } from '../../lib/db.js';
+
+const tours = await getTours();
+const reviews = await listReviews();
+const contacts = await listContactSubmissions();
+const bookings = await listBookingRequests();
+
+const pendingReviews = reviews.filter((r) => r.status === 'pending').length;
+const newContacts = contacts.filter((c) => c.status === 'new').length;
+const newBookings = bookings.filter((b) => b.status === 'new').length;
+---
+
+<AdminLayout title="Panel">
+  <h1>Panel de administración</h1>
+
+  <div class="card-grid">
+    <a href="/admin/tours/" class="card" style="text-decoration:none; color:inherit;">
+      <div class="count">{tours.length}</div>
+      <div class="label">Tours publicados</div>
+    </a>
+    <a href="/admin/reviews/" class="card" style="text-decoration:none; color:inherit;">
+      <div class="count">{pendingReviews}</div>
+      <div class="label">Reseñas pendientes de moderar</div>
+    </a>
+    <a href="/admin/leads/" class="card" style="text-decoration:none; color:inherit;">
+      <div class="count">{newContacts + newBookings}</div>
+      <div class="label">Leads nuevos (contacto + reservas)</div>
+    </a>
+  </div>
+</AdminLayout>

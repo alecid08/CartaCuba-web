@@ -1,0 +1,51 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { listReviews } from '../../../lib/db.js';
+
+const reviews = await listReviews();
+---
+
+<AdminLayout title="Reseñas">
+  <h1>Reseñas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Tour</th>
+        <th>Nombre</th>
+        <th>País</th>
+        <th>★</th>
+        <th>Texto</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {reviews.map((r) => (
+        <tr>
+          <td>{r.tour_title}</td>
+          <td>{r.name}</td>
+          <td>{r.country}</td>
+          <td>{r.rating}</td>
+          <td style="max-width: 260px;">{r.text}</td>
+          <td><span class={`badge badge-${r.status}`}>{r.status}</span></td>
+          <td>
+            {r.status !== 'approved' && (
+              <form class="inline" method="POST" action="/admin/api/reviews-update">
+                <input type="hidden" name="id" value={r.id} />
+                <input type="hidden" name="status" value="approved" />
+                <button type="submit">Aprobar</button>
+              </form>
+            )}
+            {r.status !== 'rejected' && (
+              <form class="inline" method="POST" action="/admin/api/reviews-update">
+                <input type="hidden" name="id" value={r.id} />
+                <input type="hidden" name="status" value="rejected" />
+                <button type="submit" class="danger">Rechazar</button>
+              </form>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</AdminLayout>

@@ -10,12 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && gh-pages -d dist -b gh-pages"
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
-    "astro": "^6.4.7"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@astrojs/cloudflare": "^13.7.0",
+    "astro": "^6.4.7",
+    "wrangler": "^4.116.0"
   }
 }

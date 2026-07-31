@@ -1,0 +1,30 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getTours } from '../../../lib/db.js';
+
+const tours = await getTours();
+---
+
+<AdminLayout title="Tours">
+  <h1>Tours</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {tours.map((tour) => (
+        <tr>
+          <td>{tour.title}</td>
+          <td>{tour.category}</td>
+          <td>${tour.price} USD</td>
+          <td><a class="btn" href={`/admin/tours/${tour.id}/`}>Editar</a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</AdminLayout>

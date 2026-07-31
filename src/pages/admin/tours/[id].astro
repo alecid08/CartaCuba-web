@@ -1,0 +1,79 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getTour } from '../../../lib/db.js';
+
+const { id } = Astro.params;
+const tour = await getTour(id);
+
+if (!tour) {
+  return Astro.redirect('/admin/tours/');
+}
+
+const saved = Astro.url.searchParams.get('saved') === '1';
+---
+
+<AdminLayout title={`Editar ${tour.title}`}>
+  <h1>Editar tour</h1>
+  {saved && <p style="color:#155724; background:#d4edda; padding:0.75rem 1rem; border-radius:6px;">Cambios guardados.</p>}
+
+  <form method="POST" action="/admin/api/tours-update">
+    <input type="hidden" name="id" value={tour.id} />
+
+    <div class="field-row">
+      <div>
+        <label for="title">Título</label>
+        <input type="text" id="title" name="title" value={tour.title} required />
+      </div>
+      <div>
+        <label for="category">Categoría</label>
+        <input type="text" id="category" name="category" value={tour.category} required />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div>
+        <label for="badgeIcon">Ícono (Material Symbols)</label>
+        <input type="text" id="badgeIcon" name="badgeIcon" value={tour.badgeIcon} />
+      </div>
+      <div>
+        <label for="duration">Duración</label>
+        <input type="text" id="duration" name="duration" value={tour.duration} />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div>
+        <label for="price">Precio base (USD, entero)</label>
+        <input type="number" id="price" name="price" value={tour.price} required />
+      </div>
+      <div>
+        <label for="priceDisplay">Texto de rango de precio</label>
+        <input type="text" id="priceDisplay" name="priceDisplay" value={tour.priceDisplay} placeholder="Ej. $25–35 USD" />
+      </div>
+    </div>
+
+    <label for="image">URL de imagen de portada</label>
+    <input type="text" id="image" name="image" value={tour.image} />
+
+    <label for="shortDescription">Descripción corta</label>
+    <textarea id="shortDescription" name="shortDescription">{tour.shortDescription}</textarea>
+
+    <label for="fullDescription">Descripción completa</label>
+    <textarea id="fullDescription" name="fullDescription">{tour.fullDescription}</textarea>
+
+    <label for="included">Qué incluye (JSON array de strings)</label>
+    <textarea id="included" name="included">{JSON.stringify(tour.included, null, 2)}</textarea>
+
+    <label for="excluded">No incluye (JSON array de strings)</label>
+    <textarea id="excluded" name="excluded">{JSON.stringify(tour.excluded, null, 2)}</textarea>
+
+    <label for="galleryImages">Imágenes de galería (JSON array de URLs)</label>
+    <textarea id="galleryImages" name="galleryImages">{JSON.stringify(tour.galleryImages, null, 2)}</textarea>
+
+    <label for="itinerary">Itinerario (JSON array de {'{'}time, title, desc{'}'})</label>
+    <textarea id="itinerary" name="itinerary" style="min-height: 200px;">{JSON.stringify(tour.itinerary, null, 2)}</textarea>
+
+    <button type="submit">Guardar cambios</button>
+    <a class="btn secondary" href="/admin/tours/" style="margin-left: 0.5rem;">Cancelar</a>
+  </form>
+</AdminLayout>

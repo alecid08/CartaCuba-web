@@ -1,8 +1,10 @@
 ---
-import { tours } from '../data/tours.js';
+import { getTours } from '../lib/db.js';
 
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const tours = await getTours();
 
 // Clone elements for infinite loop (since we show up to 4 cards on desktop, we need 4 clones on each side)
 const startClones = tours.slice(-4);
@@ -212,15 +214,14 @@ const allTours = [...startClones, ...tours, ...endClones];
   }
 </style>
 
-<script>
+<script define:vars={{ totalOriginals: tours.length }}>
   document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('tour-track');
     const prevBtn = document.getElementById('tour-prev');
     const nextBtn = document.getElementById('tour-next');
-    
+
     if (track && prevBtn && nextBtn) {
       const cards = Array.from(track.children);
-      const totalOriginals = 5;
       const cloneCount = 4;
       
       let currentIndex = cloneCount; // Start at the first original card

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { tours } from '../../../data/tours.js';
 import TourReviews from '../../../components/TourReviews.astro';
-import reviewsData from '../../../data/reviews/campina-sierra-najasa.json';
+import { getTour, getApprovedReviews } from '../../../lib/db.js';
 
-const tour = tours.find(t => t.id === 'campina-sierra-najasa') || {};
-const reviews = reviewsData.reviews;
+const tour = await getTour('campina-sierra-najasa');
+if (!tour) {
+  return Astro.redirect('/tours/');
+}
+const reviews = await getApprovedReviews('campina-sierra-najasa');
 ---
 
 <BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
@@ -274,10 +276,10 @@ const reviews = reviewsData.reviews;
     </div>
   </main>
 
-  <TourReviews tourTitle={tour.title} reviews={reviews} />
+  <TourReviews tourId={tour.id} tourTitle={tour.title} reviews={reviews} />
 </BaseLayout>
 
-<script define:vars={{ tourTitle: tour.title }}>
+<script define:vars={{ tourId: tour.id, tourTitle: tour.title }}>
   document.addEventListener('DOMContentLoaded', () => {
     // Gallery Lightbox functionality
     const thumbs = document.querySelectorAll('.gallery-thumb-btn');
@@ -354,14 +356,31 @@ const reviews = reviewsData.reviews;
     // WhatsApp Booking Form Submission
     const bookingForm = document.getElementById('whatsapp-booking-form');
     if (bookingForm) {
-      bookingForm.addEventListener('submit', (e) => {
+      bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const name = document.getElementById('book-name').value;
         const email = document.getElementById('book-email').value;
         const date = document.getElementById('book-date').value;
         const people = document.getElementById('book-people').value;
         const notes = document.getElementById('book-notes').value || 'Ninguna';
+
+        try {
+          await fetch('/api/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              tourId,
+              name,
+              email,
+              travelDate: date,
+              travelers: parseInt(people, 10),
+              notes,
+            }),
+          });
+        } catch {
+          // Best-effort: still let the traveler reach us via WhatsApp below.
+        }
 
         const message = `Hola CartaCuba! Me gustaría oficializar mi reserva para el tour:
 *"${tourTitle}"*
@@ -373,7 +392,7 @@ const reviews = reviewsData.reviews;
 • *Viajeros:* ${people}
 • *Petición Especial:* ${notes}
 
-Quedo atento a la confirmación de la disponibilidad y métodos de pago. ¡Gracias!`;
+Quedo atento a la confirmación de la disponibilidad. ¡Gracias!`;
 
         const waUrl = `https://wa.me/+5351383690?text=${encodeURIComponent(message)}`;
         window.open(waUrl, '_blank');

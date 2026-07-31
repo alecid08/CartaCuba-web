@@ -303,24 +303,38 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
   const successScreen = document.getElementById('form-success-screen');
   const resetFormBtn = document.getElementById('reset-form-btn');
 
-  // Submit via Web simulated form action
-  contactForm.addEventListener('submit', (e) => {
+  // Submit via Web form to /api/contact
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     // Disable inputs and show loader
     submitBtn.disabled = true;
     submitBtnText.textContent = "Enviando mensaje...";
     submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-    setTimeout(() => {
-      // Show success screen
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const subject = document.getElementById('contact-subject').value;
+    const message = document.getElementById('contact-message').value.trim();
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'No se pudo enviar el mensaje.');
+      }
       successScreen.classList.replace('hidden', 'flex');
-      
-      // Reset button states
+    } catch (err) {
+      alert(err.message || 'No se pudo enviar el mensaje. Intenta de nuevo o escríbenos por WhatsApp.');
+    } finally {
       submitBtn.disabled = false;
       submitBtnText.textContent = "Enviar Mensaje por Web";
       submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-    }, 1500);
+    }
   });
 
   // Reset form success screen

@@ -1,0 +1,86 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { listContactSubmissions, listBookingRequests } from '../../../lib/db.js';
+
+const contacts = await listContactSubmissions();
+const bookings = await listBookingRequests();
+---
+
+<AdminLayout title="Leads">
+  <h1>Reservas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Tour</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Fecha viaje</th>
+        <th>Viajeros</th>
+        <th>Notas</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {bookings.map((b) => (
+        <tr>
+          <td>{b.tour_title}</td>
+          <td>{b.name}</td>
+          <td>{b.email}</td>
+          <td>{b.travel_date}</td>
+          <td>{b.travelers}</td>
+          <td style="max-width: 200px;">{b.notes}</td>
+          <td><span class={`badge badge-${b.status}`}>{b.status}</span></td>
+          <td>
+            <form class="inline" method="POST" action="/admin/api/leads-update">
+              <input type="hidden" name="kind" value="booking" />
+              <input type="hidden" name="id" value={b.id} />
+              <select name="status" onchange="this.form.requestSubmit()">
+                <option value="new" selected={b.status === 'new'}>Nuevo</option>
+                <option value="contacted" selected={b.status === 'contacted'}>Contactado</option>
+                <option value="confirmed" selected={b.status === 'confirmed'}>Confirmado</option>
+                <option value="cancelled" selected={b.status === 'cancelled'}>Cancelado</option>
+              </select>
+            </form>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <h1 style="margin-top: 2.5rem;">Mensajes de contacto</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Asunto</th>
+        <th>Mensaje</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {contacts.map((c) => (
+        <tr>
+          <td>{c.name}</td>
+          <td>{c.email}</td>
+          <td>{c.subject}</td>
+          <td style="max-width: 260px;">{c.message}</td>
+          <td><span class={`badge badge-${c.status}`}>{c.status}</span></td>
+          <td>
+            <form class="inline" method="POST" action="/admin/api/leads-update">
+              <input type="hidden" name="kind" value="contact" />
+              <input type="hidden" name="id" value={c.id} />
+              <select name="status" onchange="this.form.requestSubmit()">
+                <option value="new" selected={c.status === 'new'}>Nuevo</option>
+                <option value="read" selected={c.status === 'read'}>Leído</option>
+                <option value="archived" selected={c.status === 'archived'}>Archivado</option>
+              </select>
+            </form>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</AdminLayout>

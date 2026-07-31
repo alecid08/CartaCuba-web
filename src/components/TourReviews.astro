@@ -8,11 +8,12 @@ export interface Review {
 }
 
 export interface Props {
+  tourId: string;
   tourTitle: string;
   reviews?: Review[];
 }
 
-const { tourTitle, reviews = [] } = Astro.props;
+const { tourId, tourTitle, reviews = [] } = Astro.props;
 ---
 
 <section class="py-16 bg-surface-container-low border-t border-outline-variant/30">
@@ -65,15 +66,11 @@ const { tourTitle, reviews = [] } = Astro.props;
           ¿Ya viviste esta experiencia? Cuéntanos
         </h3>
         
-        <form 
-          action="mailto:reservas@cartacuba.com" 
-          method="POST" 
-          enctype="text/plain" 
+        <form
           class="space-y-5"
           id="reviews-submission-form"
         >
-          <!-- Tour Title context for mailto -->
-          <input type="hidden" name="Tour" value={tourTitle} />
+          <p id="review-form-message" class="hidden text-sm font-body-md rounded-xl px-4 py-3"></p>
 
           <div class="space-y-1">
             <label for="review-name" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Nombre completo *</label>
@@ -143,16 +140,57 @@ const { tourTitle, reviews = [] } = Astro.props;
   </div>
 </section>
 
-<script>
+<script define:vars={{ tourId }}>
   document.addEventListener('DOMContentLoaded', () => {
     const starBtns = document.querySelectorAll('.star-selector-btn');
-    const ratingInput = document.getElementById('rating-input') as HTMLInputElement;
+    const ratingInput = document.getElementById('rating-input');
     const starContainer = document.getElementById('star-selector');
+    const form = document.getElementById('reviews-submission-form');
+    const messageEl = document.getElementById('review-form-message');
 
-    function updateStars(rating: number) {
+    function showMessage(text, isError) {
+      if (!messageEl) return;
+      messageEl.textContent = text;
+      messageEl.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50', 'text-green-700');
+      messageEl.classList.add(isError ? 'bg-red-50' : 'bg-green-50', isError ? 'text-red-700' : 'text-green-700');
+    }
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const name = document.getElementById('review-name').value;
+        const country = document.getElementById('review-origin').value;
+        const rating = parseInt(ratingInput ? ratingInput.value : '5', 10);
+        const text = document.getElementById('review-opinion').value;
+
+        if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+        try {
+          const res = await fetch('/api/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tourId, name, country, rating, text }),
+          });
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            throw new Error(data.error || 'No se pudo enviar la reseña.');
+          }
+          showMessage('¡Gracias! Tu reseña quedó enviada y será revisada antes de publicarse.', false);
+          form.reset();
+          if (ratingInput) ratingInput.value = '5';
+          updateStars(5);
+        } catch (err) {
+          showMessage(err.message || 'No se pudo enviar la reseña. Intenta de nuevo.', true);
+        } finally {
+          if (submitBtn) submitBtn.removeAttribute('disabled');
+        }
+      });
+    }
+
+    function updateStars(rating) {
       starBtns.forEach((btn) => {
         const val = parseInt(btn.getAttribute('data-value') || '0', 10);
-        const htmlBtn = btn as HTMLButtonElement;
+        const htmlBtn = btn;
         if (val <= rating) {
           htmlBtn.style.color = '#C47A2C';
         } else {

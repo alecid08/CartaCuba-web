@@ -1,0 +1,80 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{title} | Admin CartaCuba</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #f5f2ed;
+      color: #1e1b18;
+    }
+    header {
+      background: #1F3D2B;
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header a { color: white; text-decoration: none; font-weight: 600; }
+    nav { display: flex; gap: 1.25rem; }
+    nav a { color: #E8D8B7; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #eee; font-size: 0.875rem; vertical-align: top; }
+    th { background: #efe6e2; font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+    .badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .badge-pending { background: #fff3cd; color: #856404; }
+    .badge-approved, .badge-confirmed, .badge-read { background: #d4edda; color: #155724; }
+    .badge-rejected, .badge-cancelled { background: #f8d7da; color: #721c24; }
+    .badge-new { background: #d1ecf1; color: #0c5460; }
+    .badge-archived, .badge-contacted { background: #e2e3e5; color: #383d41; }
+    form.inline { display: inline; }
+    button, .btn {
+      background: #1F3D2B; color: white; border: none; padding: 0.4rem 0.9rem;
+      border-radius: 6px; font-size: 0.8rem; cursor: pointer; text-decoration: none;
+      display: inline-block;
+    }
+    button.secondary, .btn.secondary { background: #C47A2C; }
+    button.danger, .btn.danger { background: #bb0017; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .card { background: white; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .card .count { font-size: 2rem; font-weight: 700; color: #1F3D2B; }
+    .card .label { font-size: 0.85rem; color: #666; }
+    label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem; color: #444; }
+    input, textarea, select {
+      width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px;
+      font-size: 0.9rem; margin-bottom: 1rem; font-family: inherit;
+    }
+    textarea { min-height: 80px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/admin/">CartaCuba Admin</a>
+    <nav>
+      <a href="/admin/tours/">Tours</a>
+      <a href="/admin/reviews/">Reseñas</a>
+      <a href="/admin/leads/">Leads</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+</body>
+</html>
