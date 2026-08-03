@@ -43,10 +43,11 @@ const slides = [
       >
         <!-- Background Image with radial gradient overlay for better text contrast -->
         <div class="absolute inset-0 z-0">
-          <img 
-            alt={slide.badgeText} 
-            class="w-full h-full object-cover object-center transform scale-100 transition-transform duration-[8000ms] ease-out slide-bg-image" 
+          <img
+            alt={slide.badgeText}
+            class="w-full h-full object-cover object-center transform scale-100 transition-transform duration-[8000ms] ease-out slide-bg-image"
             src={slide.bgImage}
+            fetchpriority={idx === 0 ? 'high' : 'low'}
           />
           <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
           <div class="absolute inset-0 bg-black/20"></div>
