@@ -1,4 +1,5 @@
 import { getTour, submitBooking } from '../../lib/db.js';
+import { verifyTurnstile } from '../../lib/turnstile.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -32,6 +33,11 @@ export async function POST({ request }) {
   }
   if (!Number.isInteger(travelers) || travelers < 1 || travelers > 10) {
     return json({ error: 'Número de viajeros inválido.' }, 400);
+  }
+
+  const verified = await verifyTurnstile(body.turnstileToken, request.headers.get('CF-Connecting-IP'));
+  if (!verified) {
+    return json({ error: 'Verificación anti-bots fallida.' }, 403);
   }
 
   const tour = await getTour(tourId);

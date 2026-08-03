@@ -264,6 +264,8 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
                 ></textarea>
               </div>
 
+              <div class="cf-turnstile" id="cf-turnstile-contact" data-sitekey="0x4AAAAAAEFdsOQ_57bxeYzw" data-action="turnstile-spin-v2"></div>
+
               <!-- Action Buttons -->
               <div class="flex flex-col sm:flex-row gap-4 pt-4">
                 <!-- Submit Web Form -->
@@ -318,12 +320,16 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     const email = document.getElementById('contact-email').value.trim();
     const subject = document.getElementById('contact-subject').value;
     const message = document.getElementById('contact-message').value.trim();
+    const turnstileToken = document.querySelector('#cf-turnstile-contact [name="cf-turnstile-response"]')?.value;
 
     try {
+      if (!turnstileToken) {
+        throw new Error('Completa la verificación anti-bots antes de enviar.');
+      }
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify({ name, email, subject, message, turnstileToken }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -336,6 +342,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
       submitBtn.disabled = false;
       submitBtnText.textContent = "Enviar Mensaje por Web";
       submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+      if (window.turnstile) window.turnstile.reset('#cf-turnstile-contact');
     }
   });
 

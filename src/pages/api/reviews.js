@@ -1,4 +1,5 @@
 import { getTour, submitReview } from '../../lib/db.js';
+import { verifyTurnstile } from '../../lib/turnstile.js';
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -32,6 +33,11 @@ export async function POST({ request }) {
   }
   if (name.length > 200 || country.length > 200 || text.length > 5000) {
     return json({ error: 'Uno de los campos excede la longitud permitida.' }, 400);
+  }
+
+  const verified = await verifyTurnstile(body.turnstileToken, request.headers.get('CF-Connecting-IP'));
+  if (!verified) {
+    return json({ error: 'Verificación anti-bots fallida.' }, 403);
   }
 
   const tour = await getTour(tourId);

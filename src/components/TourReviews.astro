@@ -121,9 +121,11 @@ const { tourId, tourTitle, reviews = [] } = Astro.props;
             ></textarea>
           </div>
 
+          <div class="cf-turnstile" id="cf-turnstile-review" data-sitekey="0x4AAAAAAEFdsOQ_57bxeYzw" data-action="turnstile-spin-v2"></div>
+
           <div class="pt-2">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               class="w-full text-white font-label-md py-3.5 rounded-full hover:opacity-95 transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer shadow-md text-sm font-bold"
               style="background-color: #1F3D2B;"
             >
@@ -163,13 +165,17 @@ const { tourId, tourTitle, reviews = [] } = Astro.props;
         const country = document.getElementById('review-origin').value;
         const rating = parseInt(ratingInput ? ratingInput.value : '5', 10);
         const text = document.getElementById('review-opinion').value;
+        const turnstileToken = document.querySelector('#cf-turnstile-review [name="cf-turnstile-response"]')?.value;
 
         if (submitBtn) submitBtn.setAttribute('disabled', 'true');
         try {
+          if (!turnstileToken) {
+            throw new Error('Completa la verificación anti-bots antes de enviar.');
+          }
           const res = await fetch('/api/reviews', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ tourId, name, country, rating, text }),
+            body: JSON.stringify({ tourId, name, country, rating, text, turnstileToken }),
           });
           if (!res.ok) {
             const data = await res.json().catch(() => ({}));
@@ -183,6 +189,7 @@ const { tourId, tourTitle, reviews = [] } = Astro.props;
           showMessage(err.message || 'No se pudo enviar la reseña. Intenta de nuevo.', true);
         } finally {
           if (submitBtn) submitBtn.removeAttribute('disabled');
+          if (window.turnstile) window.turnstile.reset('#cf-turnstile-review');
         }
       });
     }
