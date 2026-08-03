@@ -40,10 +40,11 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
           </div>
           <div class="relative">
             <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-            <img 
-              alt="Ecoturismo y Guías locales en Camagüey" 
+            <img
+              alt="Ecoturismo y Guías locales en Camagüey"
               class="leaf-shape w-full h-[450px] object-cover border border-outline-variant/30 shadow-md"
-              src={`${cleanBase}images/15c8360f-74a8-44e5-9522-474ef0003fce.jpeg`}
+              src={`${cleanBase}images/15c8360f-74a8-44e5-9522-474ef0003fce.webp`}
+              width="681" height="1024" loading="lazy"
             />
           </div>
         </div>
@@ -56,10 +57,11 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
         <div class="grid md:grid-cols-2 gap-16 items-center">
           <div class="relative order-2 md:order-1">
             <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-            <img 
-              alt="Alejandro, anfitrión y fundador de CartaCuba" 
+            <img
+              alt="Alejandro, anfitrión y fundador de CartaCuba"
               class="leaf-shape w-full h-[450px] object-cover border border-outline-variant/30 shadow-md"
-              src="/alejandro_host.png"
+              src="/alejandro_host.webp"
+              width="900" height="900" loading="lazy"
             />
           </div>
           <div class="space-y-6 order-1 md:order-2">
@@ -176,7 +178,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
             <!-- Stylized Map Mock -->
             <div class="relative rounded-3xl overflow-hidden shadow-lg border border-outline-variant/30 h-[220px] group">
-              <img alt="Map of Camagüey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDtK47MuTH0yyDrxrvb3MFUPiQm71qKapo30b6V6oXWOTlreS8lxHcAXWon_Ib955mJ6SuhFTsks0dlDAK2FQ-kM_NaL1grkQV31fEFeza4ivrTns-LslK8_GoLRlXmjl8NKm7dc-XPOKtMvvIz-0huZIHc3HQhXV2k3qPG39XhWV91gXXVuHcR9S9SkqMM9ERGDsP4ezmZb7EsNBFXv2zvi9O2fPqDXxzvhN2lT-udxrlIQv3gCs77sS5n_r-JFVccai0N0Y8hFk">
+              <img alt="Map of Camagüey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60" src={`${cleanBase}images/mapa_camaguey.webp`} width="512" height="512" loading="lazy">
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 border-white animate-bounce">
                   <span class="material-symbols-outlined text-lg">location_on</span>
