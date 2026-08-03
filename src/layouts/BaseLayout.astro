@@ -22,6 +22,10 @@ const {
 
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+// Base64-encoded to keep the WhatsApp number out of static HTML/JS source (anti-scraping).
+// Decoded client-side by the script below.
+const waNumberB64 = "KzUzNTEzODM2OTA=";
 ---
 
 <!DOCTYPE html>
@@ -145,6 +149,26 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
         }
       }
     };
+  </script>
+
+  <!-- Contact link obfuscation: keeps phone/email out of static page source -->
+  <script define:vars={{ waNumberB64 }} is:inline>
+    window.__WA_NUMBER = atob(waNumberB64);
+
+    window.buildWaLink = function (text) {
+      const base = `https://wa.me/${window.__WA_NUMBER}`;
+      return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-wa-msg]').forEach((el) => {
+        el.href = window.buildWaLink(el.dataset.waMsg);
+      });
+      document.querySelectorAll('[data-obf-href]').forEach((el) => {
+        el.href = atob(el.dataset.obfHref);
+        if (el.dataset.obfText) el.textContent = atob(el.dataset.obfText);
+      });
+    });
   </script>
 </head>
 <body class={bodyClass}>

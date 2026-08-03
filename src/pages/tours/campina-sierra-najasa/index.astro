@@ -169,7 +169,7 @@ const reviews = await getApprovedReviews('campina-sierra-najasa');
             <p class="text-on-surface-variant font-body-md text-sm">Chatea directamente con nuestro operador de turismo en tiempo real.</p>
           </div>
           <a 
-            href={`https://wa.me/+5351383690?text=Hola,%20tengo%20una%20pregunta%20sobre%20el%20tour:%20"${tour.title}".`}
+            data-wa-msg={`Hola, tengo una pregunta sobre el tour: "${tour.title}".`}
             target="_blank"
             rel="noopener noreferrer"
             class="bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-3 rounded-full font-label-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-sm whitespace-nowrap"
@@ -394,7 +394,7 @@ const reviews = await getApprovedReviews('campina-sierra-najasa');
 
 Quedo atento a la confirmación de la disponibilidad. ¡Gracias!`;
 
-        const waUrl = `https://wa.me/+5351383690?text=${encodeURIComponent(message)}`;
+        const waUrl = window.buildWaLink(message);
         window.open(waUrl, '_blank');
       });
     }

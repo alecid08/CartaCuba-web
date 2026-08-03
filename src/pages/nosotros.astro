@@ -77,8 +77,8 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
               Si visitas Camagüey con nosotros, no serás un turista. Serás un descubridor.
             </p>
             <div class="pt-4">
-              <a 
-                href="https://wa.me/+5351383690?text=Hola%20Alejandro%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20CartaCuba."
+              <a
+                data-wa-msg="Hola Alejandro, me gustaría conocer más sobre CartaCuba."
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 bg-primary text-white hover:bg-primary-container px-6 py-3 rounded-full font-label-md transition-all shadow-sm"
@@ -155,7 +155,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
                 <span class="material-symbols-outlined text-primary text-2xl">call</span>
                 <div>
                   <span class="font-label-md text-xs text-on-surface-variant block">Teléfono / WhatsApp</span>
-                  <a href="https://wa.me/+5351383690" class="font-body-md text-on-surface font-semibold hover:underline">+53 51383690</a>
+                  <a data-obf-href="aHR0cHM6Ly93YS5tZS8rNTM1MTM4MzY5MA==" data-obf-text="KzUzIDUxMzgzNjkw" class="font-body-md text-on-surface font-semibold hover:underline"></a>
                 </div>
               </div>
               <!-- Detail 2 -->
@@ -163,7 +163,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
                 <span class="material-symbols-outlined text-primary text-2xl">mail</span>
                 <div>
                   <span class="font-label-md text-xs text-on-surface-variant block">Correo Electrónico</span>
-                  <a href="mailto:reservas@cartacuba.com" class="font-body-md text-on-surface font-semibold hover:underline">reservas@cartacuba.com</a>
+                  <a data-obf-href="bWFpbHRvOnJlc2VydmFzQGNhcnRhY3ViYS5jb20=" data-obf-text="cmVzZXJ2YXNAY2FydGFjdWJhLmNvbQ==" class="font-body-md text-on-surface font-semibold hover:underline"></a>
                 </div>
               </div>
               <!-- Detail 3 -->
@@ -362,7 +362,7 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     const whatsappMessage = `Hola CartaCuba! Mi nombre es ${name} (${email}). Deseo realizar una consulta sobre: "${subject}".\n\nMensaje: ${message}`;
     
     // Redirect to WhatsApp URL
-    const whatsappUrl = `https://wa.me/+5351383690?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = window.buildWaLink(whatsappMessage);
     window.open(whatsappUrl, '_blank');
   });
 </script>
