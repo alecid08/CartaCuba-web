@@ -119,8 +119,13 @@
 }
 
 .grainy-overlay {
-    background-image: url("/images/textures/natural-paper.webp");
     opacity: 0.05;
+}
+.grainy-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/textures/natural-paper.webp");
 }
 
 .leaf-shape {
@@ -144,8 +149,15 @@
 }
 
 .textured-bg {
+    position: relative;
+}
+.textured-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image: url("/images/textures/natural-paper.webp");
-    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    pointer-events: none;
 }
 
 .leaf-corner {
@@ -166,13 +178,23 @@
 }
 
 .organic-grain {
-    background-image: url("/images/textures/pinstriped-suit.webp");
     opacity: 0.03;
     pointer-events: none;
 }
+.organic-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/textures/pinstriped-suit.webp");
+}
 
 .grain-texture {
-    background-image: url("/images/textures/natural-paper.webp");
     opacity: 0.05;
     pointer-events: none;
+}
+.grain-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/textures/natural-paper.webp");
 }
