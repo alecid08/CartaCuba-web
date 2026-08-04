@@ -7,11 +7,13 @@ import '@fontsource/libre-caslon-text/400.css';
 import '@fontsource/libre-caslon-text/400-italic.css';
 import '@fontsource/libre-caslon-text/700.css';
 import '@fontsource/be-vietnam-pro/400.css';
+import '@fontsource/be-vietnam-pro/400-italic.css';
 import '@fontsource/be-vietnam-pro/500.css';
 import '@fontsource/be-vietnam-pro/600.css';
 import '@fontsource/be-vietnam-pro/700.css';
-import '@fontsource-variable/playfair-display/wght.css';
-import '@fontsource-variable/playfair-display/wght-italic.css';
+import libreCaslon700Url from '@fontsource/libre-caslon-text/files/libre-caslon-text-latin-700-normal.woff2?url';
+import beVietnam400Url from '@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-400-normal.woff2?url';
+import beVietnam600Url from '@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-600-normal.woff2?url';
 
 interface Props {
   title: string;
@@ -48,6 +50,11 @@ const waNumberB64 = "KzUzNTEzODM2OTA=";
   <link rel="icon" href={`${cleanBase}favicon.svg`} />
   
   <title>{title}</title>
+
+  <!-- Preload above-the-fold fonts (Navbar + Hero): shortcuts the CSS-discovery chain -->
+  <link rel="preload" as="font" type="font/woff2" href={libreCaslon700Url} crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href={beVietnam400Url} crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href={beVietnam600Url} crossorigin />
 
   <!-- Material Symbols: only remaining Google Fonts dependency (self-hosting balloons this variable icon font to ~3.5x Google's served size, see Aug 2026 perf audit) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

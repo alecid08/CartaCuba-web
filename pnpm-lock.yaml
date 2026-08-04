@@ -14,9 +14,6 @@ importers:
       '@fontsource-variable/material-symbols-outlined':
         specifier: ^5.3.2
         version: 5.3.2
-      '@fontsource-variable/playfair-display':
-        specifier: ^5.3.0
-        version: 5.3.0
       '@fontsource/be-vietnam-pro':
         specifier: ^5.3.0
         version: 5.3.0
@@ -465,9 +462,6 @@ packages:
 
   '@fontsource-variable/material-symbols-outlined@5.3.2':
     resolution: {integrity: sha512-h953nfche+a401mc4wC6VGo0Ccd84UdbR/dOjZEhqCXFtVJkkxIlrYi+P68jcuUFq4L0DfBL/+BRhv/TRObvqA==}
-
-  '@fontsource-variable/playfair-display@5.3.0':
-    resolution: {integrity: sha512-IHdzTvE8eGIXHteZql7KXoqdc3Gfm+Zs1u4XlSC3MeplkwviT3sx/P6gI0tLwg/xIYLF4ZJYveZ5V+bl9cnDwA==}
 
   '@fontsource/be-vietnam-pro@5.3.0':
     resolution: {integrity: sha512-xhAQBGHDxP5BF8IJxedy5MoWUmc1DlPCcZbMLhvnPkf8TaYCbbUVs3LjpuJ4BYdTrdiCLaewNaY8z+owq/FqFw==}
@@ -2318,8 +2312,6 @@ snapshots:
     optional: true
 
   '@fontsource-variable/material-symbols-outlined@5.3.2': {}
-
-  '@fontsource-variable/playfair-display@5.3.0': {}
 
   '@fontsource/be-vietnam-pro@5.3.0': {}
 
