@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <BaseLayout title="Estancias Auténticas | CartaCuba" activePage="estancias" bodyClass="bg-background text-on-background font-body-md texture-grain min-h-screen flex flex-col">
   <!-- Hero Section -->
   <HeroSection
-    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDnlb4glw2CPTGZCUI-HOuLt92aOEaYRT_uFZB9Klw-loSnseHCPIXOghOOOZPGHeNn0RrdKfy1AEUBBaydvT2Ixg3lRQux-ZGXV91RQQ4sR9aLSx63eSRLfqxre_sl7ZOVL8-Re2IWwcOaaAZmwS2D_0azOl2L1GQ70FgdE9xqos4SMBjFi4ZZbnVuhvvWG1-KrhgWksTih7Q3z4W5dp3rWM_nuEVif4VVhNLYf1IiVG6ig2mN-iiBnLyc0KE7f3xesXtT2RRnd8M"
+    bgImage={`${cleanBase}images/estancias-hero.webp`}
+    bgWidth={512}
+    bgHeight={293}
     badgeText="Estancias Auténticas"
     badgeClass="inline-block bg-primary/10 text-primary font-label-md px-4 py-1 rounded-full mb-6"
     title="Hospedaje en Camagüey — Nuestras recomendaciones"
@@ -27,7 +32,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Casa de Renta 1 -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSWkVOOypuBYarFpfYFpdQB6tpYW2l12hwUVPHASzcyRinF2J71is-6_00W7clUwFQyHTc7JLOSd99Nz8LiPvq2FwcPfyPNMQQGSf36Hc0ZwPVQ7XViFFgYcYrhz79hd0OuNKkv23JaO5qiOdrKcMfhwujVGWQbSC4B4kH3s-OXKC-Y4sMvpUxI37gj9-bCjoi4MKwq_-7PcPFvKPChwyfEYedE1DNdZRbIdcWLkQ-DbSoYBsS1zZ4fcZj1WaOZsNWFkiX94lhIY" alt="Casa de Renta en Camagüey" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/casa-renta-particular.webp`} alt="Casa de Renta en Camagüey" class="w-full h-full object-cover" width="512" height="512" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Casa de Renta Particular</h3>
@@ -45,7 +50,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Casa de Renta 2 -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0X8UILMIH4e9HzrxMUwHRaDDJ9ykgL2ZDin5ruDdtaFV0fRs45uugCn4ZXdMzd40bWhRhgrlduOf9A2TsAgXMGBIg_QtdGxKJnUXmXcLXGZpDW7DaqHMLMUGhxmYAyErR9CaXZtG38l3_k2udT8qpYhKt6cDlomYS9b5p9v8Z-5jIFGR4lP1KJYgwhorwivqscHDObv1X95Z9xSRnMUfA6bzBKyUk_Rwez2pMhRNlgKrlNHBuTVcdTP1GiVnvWxGi2F0EH4fJWmY" alt="Casa de Renta Colonial" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/casa-renta-colonial.webp`} alt="Casa de Renta Colonial" class="w-full h-full object-cover" width="512" height="512" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Casa de Renta Colonial</h3>
@@ -63,7 +68,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Casa de Renta 3 -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIFnm245DOyNWCckQ3Z2d5_HDpxqbT0ywHadIkq4QwajKw6QdyXJCMa0644MiRYr0gmil33HzIc5xi0f3A6o7a_Ol9EzLZA9X9fZrEl7H026_-lUysmq_O9HF0gleXMczaGp0hWFslsYwHM6GYQrK_xRSdfXHLHKnmv0G-XGCy1M4XmgE7O1hj_SVyIdXPU0b9wCQ0MxHXD7AXedyXUCDG7vfyR2Modpk2xoAhYp6CeKsW8aAp8Mg5sW6bLTeYQwuECG0dqMAg4Uk" alt="Casa de Renta Económica" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/casa-renta-economica.webp`} alt="Casa de Renta Económica" class="w-full h-full object-cover" width="512" height="512" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Casa de Renta Estándar</h3>
@@ -81,7 +86,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Hotel E Camino de Hierro -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel E Camino de Hierro" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/hotel-camino-hierro.webp`} alt="Hotel E Camino de Hierro" class="w-full h-full object-cover" width="800" height="533" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Hotel E Camino de Hierro</h3>
@@ -95,7 +100,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Hotel E La Avellaneda -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel E La Avellaneda" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/hotel-la-avellaneda.webp`} alt="Hotel E La Avellaneda" class="w-full h-full object-cover" width="800" height="533" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Hotel E La Avellaneda</h3>
@@ -109,7 +114,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Gran Hotel -->
         <div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/30 flex flex-col hover:-translate-y-1 transition-transform duration-300">
           <div class="h-64 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1551882547-ff40c0d13936?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gran Hotel Camagüey" class="w-full h-full object-cover" />
+            <img src={`${cleanBase}images/gran-hotel.webp`} alt="Gran Hotel Camagüey" class="w-full h-full object-cover" width="800" height="533" loading="lazy" />
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="font-headline-sm text-headline-sm font-semibold mb-2 text-on-surface">Gran Hotel</h3>

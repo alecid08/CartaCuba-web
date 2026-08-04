@@ -30,10 +30,11 @@ const {
 
 {type === 'experience' ? (
   <div class={`group relative overflow-hidden cursor-pointer ${cardClass}`}>
-    <img 
-      alt={title} 
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-      src={image} 
+    <img
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      src={image}
+      loading="lazy"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
     <div class="absolute bottom-0 left-0 p-8 md:p-10 text-white">
@@ -51,10 +52,11 @@ const {
 ) : (
   <div class={`group cursor-pointer ${cardClass}`}>
     <div class="relative aspect-[4/5] overflow-hidden leaf-corner mb-4">
-      <img 
-        alt={title} 
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-        src={image} 
+      <img
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        src={image}
+        loading="lazy"
       />
       {badgeText && (
         <div class={`absolute top-4 left-4 ${badgeClass} text-on-primary font-label-md px-3 py-1 rounded-full`}>

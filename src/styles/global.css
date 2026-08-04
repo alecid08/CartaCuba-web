@@ -119,7 +119,7 @@
 }
 
 .grainy-overlay {
-    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-image: url("/images/textures/natural-paper.webp");
     opacity: 0.05;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .textured-bg {
-    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-image: url("/images/textures/natural-paper.webp");
     background-blend-mode: multiply;
 }
 
@@ -162,17 +162,17 @@
     inset: 0;
     opacity: 0.03;
     pointer-events: none;
-    background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+    background-image: url("/images/textures/felt.webp");
 }
 
 .organic-grain {
-    background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+    background-image: url("/images/textures/pinstriped-suit.webp");
     opacity: 0.03;
     pointer-events: none;
 }
 
 .grain-texture {
-    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-image: url("/images/textures/natural-paper.webp");
     opacity: 0.05;
     pointer-events: none;
 }

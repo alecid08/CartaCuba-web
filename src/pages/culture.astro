@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <BaseLayout title="Cultura y Tradiciones | CartaCuba" activePage="culture" bodyClass="bg-background text-on-background font-body-md textured-bg">
   <!-- Hero Section -->
   <HeroSection
-    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJNzvvDBl5O8gkiYyAkiS1cuaHmV5_SDTBAO7KwxYQwaAG9xqFUtHy4Lt0YU-Gfp0m41af6_A-YokKYuyxyHQj2PBMPLxMXFJpd9qmlMwmI3MLjSdFV9x6y-c4O2IPCRWY-McZFcW_9ADPtFY2zW6YItvGHM5_khMNSKBq1mBrCBbOJoBDJKfjTNSDINyJvenanl2bY1j93h0m4xb9PbkJXTZlQSoNknjBpMKCn0zSNFCjMDs5Y5TE7YALCnucNHuU-e4MuSFspI"
+    bgImage={`${cleanBase}images/culture-hero.webp`}
+    bgWidth={512}
+    bgHeight={293}
     badgeText="La Identidad Agramontina"
     badgeClass="inline-block bg-primary text-on-primary px-4 py-1 rounded-full font-label-md text-label-md mb-6"
     title="Ecos Auténticos de <br/><span class='text-primary italic'>Camagüey</span>"
@@ -25,7 +30,7 @@ import HeroSection from '../components/HeroSection.astro';
         <!-- Large Feature: Tinajones -->
         <div class="md:col-span-8 bg-surface-container rounded-3xl overflow-hidden group border border-outline-variant/30 flex flex-col md:flex-row h-full">
           <div class="md:w-1/2 overflow-hidden">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Clay tinajones in a courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4CGZIsFgj5ptXEY0lJL24TwAkiwFrvwwKBoXx2zXM2Zz6FF1YbzNV3AERkk2DLRPd8rvhGHvnLyTluS86zY-QJgbPt9jSOR71RYDyqOjOawnTM4vrIIfXIlAYOXhDa-7YU81AlEXAs3NOsof_EG0H3Ne2KULYS2hCv8oHdLTD3xE7rnoOklIr95gx5vikjjwLXO7RrbcYwLT3k1mdHzErHUf514zyW5kCBKbz53CjZinrN5n_xWZQrSkrSQIZ1JHVKQI3b1yNUNA">
+            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Clay tinajones in a courtyard" src={`${cleanBase}images/tinajones-patio.webp`} width="512" height="512" loading="lazy">
           </div>
           <div class="md:w-1/2 p-10 flex flex-col justify-center">
             <h3 class="font-headline-md text-headline-md mb-4 text-primary font-semibold">La Leyenda del Tinajón</h3>
@@ -42,7 +47,7 @@ import HeroSection from '../components/HeroSection.astro';
             <h3 class="font-headline-sm text-headline-sm mb-4 font-semibold">San Juan Camagüeyano</h3>
             <p class="font-body-md text-body-md opacity-90 mb-8">El carnaval más antiguo y vibrante de Cuba. Una explosión rítmica de 'congas', 'comparsas' y el ritual de la quema del 'San Juan'.</p>
             <div class="mt-auto">
-              <img class="w-full aspect-video object-cover rounded-xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500" alt="San Juan carnival dancers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYkf7WyKrLoAo84V_pSeSTFUM8svSMqWh4X2yMBkk4fp33no_SxlSWAKSyJ1VdB2V0wkorpFBZbvqF7VbS_qUfFVbMbpiIX61qCmNDV-ynzPoEDSPnhMEbfgK5teX4w5KA7oggkLRA76HInicTpAbvJu5B4P74fog-QTb1xnIxG4nfFBob2DUMpAapOfigeC2Z_t25hqoS-fbZbL61R-ABBZzd0pvoLt6OAR3W5MGOE0NzYZHzxrbJd1Zey07Rf1C8_ZMBcE8P1Bs">
+              <img class="w-full aspect-video object-cover rounded-xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500" alt="San Juan carnival dancers" src={`${cleanBase}images/carnaval-san-juan.webp`} width="512" height="512" loading="lazy">
               <p class="font-label-md uppercase tracking-widest text-xs opacity-80">Cada 24 - 29 de junio</p>
             </div>
           </div>
@@ -55,7 +60,7 @@ import HeroSection from '../components/HeroSection.astro';
         <div class="md:col-span-6 bg-surface-container-high rounded-3xl p-8 flex gap-8 items-center border border-outline-variant/20">
           <div class="w-1/3">
             <div class="organic-shape bg-primary/10 overflow-hidden aspect-square">
-              <img class="w-full h-full object-cover" alt="Artisan weaving" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa3JeHwXcw11lEsFE6Zx1CKz6PBudf3NZHvt02FAE_7dMfI3rxfOIEff04K4moXph3sX2UKgaUoD3uNXyGperCWpYHoq1R4X58ljTOhrePdDI9RnC2TBixIoIhtciu12-2fX1uB55d4a6y4TwzbxVxhQyw_kEmJPEp6vyy0V98AbNGk8_JR3-h34grFYJ7gcAx-XKvIHtKKejkFVCFG2gUWhEUPE7E5hW9DlADqNyOq74yCsLyhYYDtX0fbueqxemzb36TTB-YH9Q">
+              <img class="w-full h-full object-cover" alt="Artisan weaving" src={`${cleanBase}images/artesania-nativa.webp`} width="512" height="512" loading="lazy">
             </div>
           </div>
           <div class="w-2/3">
@@ -117,7 +122,7 @@ import HeroSection from '../components/HeroSection.astro';
         </div>
         <div class="md:w-1/2 relative">
           <div class="bg-surface-container p-4 rounded-[2rem] shadow-xl rotate-2">
-            <img class="rounded-[1.5rem] w-full aspect-square object-cover" alt="Aerial view of Camagüey historic center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCptiss7N2AWTgPothLayC95TWVYgsnVHXtumaiT0yOM1a_lxe0So5KvhhM11Jdmfvl2oYbSychr-qBsAEVb9KeUOywtYDBTJf30k8nmrOM3AeUM2mw1XvK3xq5zBwY5SsQUjyssKh79pcuXfGAX4tJ4T6W7vN8aRX1JlCi59rN95XtO-zkgiUqryu-FHg-Hm6JLMF_1ynSiBIiuRIWjWlENsj22dQ--nleiih-vQjSwyq4NhV29zK3NTBqUZ76kGARpim7-Mz9lpE">
+            <img class="rounded-[1.5rem] w-full aspect-square object-cover" alt="Aerial view of Camagüey historic center" src={`${cleanBase}images/vista-aerea-centro-historico.webp`} width="512" height="512" loading="lazy">
           </div>
           <div class="absolute -bottom-6 -left-6 bg-primary-container text-on-primary-container p-8 rounded-2xl shadow-lg -rotate-3 hidden lg:block border border-primary-fixed/20">
             <p class="font-headline-sm font-semibold">UNESCO</p>

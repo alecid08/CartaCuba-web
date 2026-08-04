@@ -3,11 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import TourCard from '../components/TourCard.astro';
 
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
 const experiences = [
   {
     title: "Avistamiento de Aves en la Sierra del Chorrillo",
     description: "Adéntrate en los senderos sombreados de la Sierra del Chorrillo para contemplar al Tocororo y al Zunzún en su hábitat natural. Guiado por naturalistas locales dedicados a la conservación de nuestra biodiversidad.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAp5nAvWqrvgNRD82KSdFM8hErt-mCakDkYoHjsb_49A-uxGM6Lh1jI9e5Apt-EExz8mNmO1OjmMDpDtykz1o2q5r8XFnGxxZdPZ4Q5_G-y2K88i3qtgsI4kmv8A5xgHSXLrPW6bjPTQw80ZRECAgmM-cTYqjgemkyLYhCFQSYsFZ96C_PyKFtOvUvfykmleIToDs03bpzvLoPkY_OOfWan3-vzJfTcM8QG8TMIAlq_36qK1yUd2bvHOk3lxRVJ1QO8vfKF8IRFjPY",
+    image: `${cleanBase}images/experiencia-avistamiento-aves.webp`,
     message: "Hola, me interesa reservar la experiencia de Avistamiento de Aves en la Sierra del Chorrillo.",
     alternativesTitle: "Senderos Alternativos de Igual Belleza",
     alternatives: [
@@ -28,7 +31,7 @@ const experiences = [
   {
     title: "Taller Ancestral de Barro y Alfarería",
     description: "Siente la arcilla de Camagüey moldearse bajo tus manos. Comparte una tarde con maestros artesanos que custodian una tradición alfarera de más de 500 años en sus talleres históricos.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8",
+    image: `${cleanBase}images/experiencia-taller-alfarero.webp`,
     message: "Hola, me interesa reservar el Taller Ancestral de Barro y Alfarería.",
     alternativesTitle: "Talleres Creativos Igualmente Enriquecedores",
     alternatives: [
@@ -49,7 +52,7 @@ const experiences = [
   {
     title: "Ruta del Laberinto y Patios Coloniales",
     description: "Camina por el laberinto urbano diseñado en la época colonial para despistar a los piratas. Descubre los patios interiores y tinajones más bellos de la ciudad, habitualmente cerrados al público.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuChv-vowG9d03HtQirv__UJDgtUcZIPm9yg8qFhoFhulqs_z_1Al73RjgayNpw_4JW9KCn7gzkP87-cQj3SraSYdbej78YvCUqw9uS1888KTLXwVJslmarZjWSarP4l-tLYUrVbFh5RR0P_eifLXzjZJs77oI6UDq5_6ak1TL4FF3-NSrHarAmCL-4zKQ94j8Wg6DIhm38ojZCqYM-38Y65wZaT0xkfrg3S5g9bsUPGW3FUHtD0bV0ba6TD6TqG6y-Fc7fHSyuTJkQ",
+    image: `${cleanBase}images/experiencia-laberinto-patios.webp`,
     message: "Hola, me interesa reservar la Ruta del Laberinto y Patios Coloniales.",
     alternativesTitle: "Exploraciones Históricas de Gran Encanto",
     alternatives: [
@@ -73,7 +76,9 @@ const experiences = [
 <BaseLayout title="Experiencias & Actividades | CartaCuba" activePage="experiences" bodyClass="bg-background text-on-background font-body-md overflow-x-hidden">
   <!-- Hero Section -->
   <HeroSection
-    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDYmYQ5zTF7BpjmvbLqeuCNtWHL3vljSmflbdnKrZnsztO2gV6oJACLF6Sbzcmibitw-sP9jQXV_vM7WIt4KJ53UKFof4bTYczIqhDZErQ1Xw1xWSATKgQ1QxEQSgpQpcSJIWW2nDVKD7_Wj-kNsRNvTM2V2SQHd0sdDKA6u3H8Kq7uHwWux8JNAUXruNa6-ltkpZMYx6TscW0Yy6RUZ6cBnbEBR656SKhleiir1TYRVRgVaS8Y1tJIsgDZj0C5t_POZWgpSJF9Xdk"
+    bgImage={`${cleanBase}images/experiencias-hero.webp`}
+    bgWidth={512}
+    bgHeight={512}
     badgeText="Experiencias Sostenibles"
     badgeClass="inline-block bg-secondary text-on-secondary px-4 py-1 rounded-full text-label-md uppercase tracking-widest"
     title="Voces y Vivencias en el Corazón de <span class='text-primary italic font-normal'>Camagüey</span>"
@@ -125,10 +130,11 @@ const experiences = [
             <!-- Image Area -->
             <div class={`lg:col-span-6 relative group ${idx % 2 === 1 ? 'lg:order-last' : ''}`}>
               <div class="leaf-corner overflow-hidden aspect-[4/3] shadow-xl border border-outline-variant/30">
-                <img 
-                  alt={exp.title} 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                <img
+                  alt={exp.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   src={exp.image}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -186,25 +192,25 @@ const experiences = [
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="md:col-span-2 group relative overflow-hidden rounded-xl leaf-corner h-96">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChv-vowG9d03HtQirv__UJDgtUcZIPm9yg8qFhoFhulqs_z_1Al73RjgayNpw_4JW9KCn7gzkP87-cQj3SraSYdbej78YvCUqw9uS1888KTLXwVJslmarZjWSarP4l-tLYUrVbFh5RR0P_eifLXzjZJs77oI6UDq5_6ak1TL4FF3-NSrHarAmCL-4zKQ94j8Wg6DIhm38ojZCqYM-38Y65wZaT0xkfrg3S5g9bsUPGW3FUHtD0bV0ba6TD6TqG6y-Fc7fHSyuTJkQ" alt="Plaza colonial"/>
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={`${cleanBase}images/experiencia-laberinto-patios.webp`} width="512" height="384" loading="lazy" alt="Plaza colonial"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <p class="text-white font-label-md flex items-center gap-2"><span class="material-symbols-outlined">location_on</span> Plaza del Centro Histórico</p>
           </div>
         </div>
         <div class="group relative overflow-hidden rounded-xl h-96">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEUzMaxQGf76bMPOMV9IjzwWGYhY8uiMS0-tcT33gwDFkpqFWEOAF8VGVCtTibOTM-UCGUu65MEIkyCeaYLyDQ_Q87jxFlFbxQY6ZbHe21mHh50xsPoqW0Cuub4Qun96mMoojv6ZnDeBdihS9uOKbAB0UBw0Ov0b4xBEgWfaSV9Dljm1-1a-iTNn0GU3Ktv1mYUgnX2fy216pg6q3m08DC2wZfJbfqqn90Az4TNBDDWu8cTdgFe6llXYqr3qiTa6zU5ZkeDzgv2b8" alt="Taller alfarero"/>
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={`${cleanBase}images/experiencia-taller-alfarero.webp`} width="512" height="270" loading="lazy" alt="Taller alfarero"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <p class="text-white font-label-md flex items-center gap-2"><span class="material-symbols-outlined">restaurant</span> Delicias Locales</p>
           </div>
         </div>
         <div class="group relative overflow-hidden rounded-xl h-96">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp5nAvWqrvgNRD82KSdFM8hErt-mCakDkYoHjsb_49A-uxGM6Lh1jI9e5Apt-EExz8mNmO1OjmMDpDtykz1o2q5r8XFnGxxZdPZ4Q5_G-y2K88i3qtgsI4kmv8A5xgHSXLrPW6bjPTQw80ZRECAgmM-cTYqjgemkyLYhCFQSYsFZ96C_PyKFtOvUvfykmleIToDs03bpzvLoPkY_OOfWan3-vzJfTcM8QG8TMIAlq_36qK1yUd2bvHOk3lxRVJ1QO8vfKF8IRFjPY" alt="Sierra del Chorrillo"/>
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={`${cleanBase}images/experiencia-avistamiento-aves.webp`} width="512" height="341" loading="lazy" alt="Sierra del Chorrillo"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <p class="text-white font-label-md flex items-center gap-2"><span class="material-symbols-outlined">visibility</span> Observación de Aves</p>
           </div>
         </div>
         <div class="md:col-span-4 group relative overflow-hidden rounded-xl h-[500px]">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA06H2kdDNtrcl_LllcB5VvXbgbkTS1Jza6oC93410HJ2AObo4EvxPmdLTUDHJMQe8ct3h3KiRZ9NesZJVa3oWGICPNwxB0w-L4h-nKbWr5EUWABtzqGbQWIbBKt6dm5ayoeMiP0ef4sGIa-SGjM4y-mNL8vxfoaDhhKeO-9D53aDpRYCH-HIFd9bkWf-GxCJyW4spzOE_mhR3hpOEowTPj1_tuIorJxwPq9FgW0_U9bd8R3hRG5HDkjK0K09GQX5MwT2-Ybe2gRWA" alt="Patrimonio Arquitectonico"/>
+          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={`${cleanBase}images/patrimonio-arquitectonico.webp`} width="512" height="341" loading="lazy" alt="Patrimonio Arquitectonico"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
             <div>
               <p class="text-white font-headline-sm mb-2">Recorrido Arquitectónico Patrimonial</p>

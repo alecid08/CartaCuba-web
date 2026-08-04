@@ -1,6 +1,8 @@
 ---
 interface Props {
   bgImage: string;
+  bgWidth?: number;
+  bgHeight?: number;
   badgeText: string;
   badgeClass?: string;
   badgeIcon?: string;
@@ -14,6 +16,8 @@ interface Props {
 
 const {
   bgImage,
+  bgWidth = 512,
+  bgHeight = 293,
   badgeText,
   badgeClass = "bg-primary text-on-primary px-4 py-1 rounded-full font-label-md text-label-md mb-6",
   badgeIcon,
@@ -24,15 +28,21 @@ const {
   showScrollIndicator = false,
   showExperts = false
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <section class={`relative ${heightClass} flex items-center overflow-hidden w-full`}>
   <!-- Background Image with Overlay -->
   <div class="absolute inset-0 z-0">
-    <img 
-      alt="Hero background image" 
-      class="w-full h-full object-cover" 
+    <img
+      alt="Hero background image"
+      class="w-full h-full object-cover"
       src={bgImage}
+      width={bgWidth}
+      height={bgHeight}
+      fetchpriority="high"
     />
     <div class={`absolute inset-0 ${overlayClass}`}></div>
   </div>
@@ -72,10 +82,10 @@ const {
     <div class="absolute bottom-10 left-margin-desktop hidden md:flex items-center gap-6 z-10">
       <div class="flex -space-x-3">
         <div class="w-12 h-12 rounded-full border-2 border-background overflow-hidden bg-surface-container">
-          <img alt="Expert ornithologist" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9IDdPJpAy-4KIrxY8ryBJ025fN6mO-TGrbU56OQ85j5EYBwxud-8cx5X2pTobrRI7ULgFKFXggPj0vilxciE2nj3jgWe5ZyVJIgHU6FWY0WXbM-fkcEpDPQ8BOH51taB47ZMFEsq9EBpRP6UKE8_xiXkS2-9wYPOOrDFv-vmseu1ksGOfpL_qtWEplfYaZYM606mheB62CuJqRqxBFpLQiT6jJBN3pSKK37MGuZv4VN8eU8mr7DFK62JemMmcE9ctcovUwJxVsaI" />
+          <img alt="Expert ornithologist" class="w-full h-full object-cover" src={`${cleanBase}images/avatar-ornitologo.webp`} width="512" height="512" loading="lazy" />
         </div>
         <div class="w-12 h-12 rounded-full border-2 border-background overflow-hidden bg-surface-container">
-          <img alt="Botanical researcher" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq_L-Ur5prFNh4ewFDTx8-M1NA21YZ9UowYCkr42ocLARe3o0OHtkbZ2tP45HCc907zVrdl1OxwU2SKp0E5KSztXK2GmElJ8cQX20c6aoVReFjif98eLKOnYdxQpP4vyOyqnsU8uS-O-x-FLRB9yOrHApxe9SafbgE-DLS9n1AazM0BEuXB8fKinHZarP9qYMhhjWBDczTbss93vHRE4eHqo7hI4ADix9pcc8FIuSGT1cBuoHymB_DkO3T0n29NdSx2hKfzqsrv0c" />
+          <img alt="Botanical researcher" class="w-full h-full object-cover" src={`${cleanBase}images/avatar-botanica.webp`} width="512" height="512" loading="lazy" />
         </div>
       </div>
       <p class="text-label-md text-white/90">Guided by local experts &amp; <br/>conservationists</p>

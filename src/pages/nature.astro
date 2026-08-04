@@ -2,12 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import TourCard from '../components/TourCard.astro';
+
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
 ---
 
 <BaseLayout title="Naturaleza y Fauna | CartaCuba" activePage="nature" isNaturePage={true}>
   <!-- Hero Section -->
   <HeroSection
-    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuCaYBuZ4CAf6xdm8j6JAHxFHfix6AQ29Qqyl2xsbTkG6fTKrWwKXmf1mcIwgPYsVrV7OIufBfsc9eHd9gJStDz9EXTWru80Bjl2fHlNvuCtqEo6uAPgzrDpeONrgOr5E3POKOoEY1Ijt-9AGA5hvByrPvnS06tk6pbBkbWJ-l2WaNsy3Oe84F6yvJH2qERLjX7L7JxdhjoHy5tK2nss-rqXzyW_n01hEcYYqI4yeZpJBJU262eb69nEWHIwtSXxxiAAhvomzKq7fiQ"
+    bgImage={`${cleanBase}images/nature-hero.webp`}
+    bgWidth={512}
+    bgHeight={293}
     badgeText="BIODIVERSIDAD DE CAMAGÜEY"
     badgeClass="text-primary bg-primary-fixed/30 border border-primary/20 mb-6"
     badgeIcon="eco"
@@ -33,7 +38,7 @@ import TourCard from '../components/TourCard.astro';
         <div class="grid md:grid-cols-2 gap-16 items-center">
           <div class="relative">
             <div class="leaf-corner overflow-hidden aspect-[4/5] shadow-xl">
-              <img class="w-full h-full object-cover" alt="Cartacuba bird (Todus multicolor)" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQwIULpWJ17ul5O1lHNna3YCyoTqOcSpFNP6hAEr2R3LJZQh0wTv2e2W4dELlbm4L6cwIXQPJ70029GuW8QIgG6u4lSDvDIGN5k1yulQv01LD1Zq7j_yCmbrlTJwNXI44iZ7VJMm_K50md6EjmwJ8fqZUj2C8iSXe6ZCBZch1Ao9EfptJ5TeWuhkf1SvHss0q35zRjb5Sh6omjUBP-JRGL2t3JW91GHlBx4pTA3Kk32k3e_PhvumMRJ9rZH-BeAQcW5HLf8VrJKRXQCg">
+              <img class="w-full h-full object-cover" alt="Cartacuba bird (Todus multicolor)" src={`${cleanBase}images/cartacuba-retrato.webp`} width="287" height="512" loading="lazy">
             </div>
             <div class="absolute -bottom-8 -right-8 bg-primary-fixed p-8 leaf-corner shadow-lg max-w-[200px]">
               <span class="text-on-primary-fixed font-headline-sm block mb-2 font-semibold">Todus multicolor</span>
@@ -81,7 +86,7 @@ import TourCard from '../components/TourCard.astro';
           <TourCard
             type="experience"
             cardClass="md:col-span-2 md:row-span-2 relative group overflow-hidden leaf-corner bg-surface-container-low shadow-sm hover:shadow-xl transition-all border border-outline-variant/30 h-full"
-            image="https://lh3.googleusercontent.com/aida-public/AB6AXuAb4YNF0ee5dMvmvsRiZkC9RT7hrxVpwHxM-dUSqWlJUx4I9bG6MOYhN-41-wBlI8wVufM4b-_uHekwl8l4KPVhl8MMFQ_LYP_qCENsL9FGX7FEmQGAQf9VP7ghpOAxQ0x_nwZCNnTooObAn9kXmnPem2mrMplNIAPPgSc0D579G3o9yr66bsEjsd3n_cFSSWJM7EtjckLzuNyyexoAgVa4DJcfXbfHTY-jC9zmxzGTmPJqwjTrJ-v4-GokMAxCNDcZbrH3UiIB6cE"
+            image={`${cleanBase}images/flora-sierra-cubitas.webp`}
             badgeText="Flora"
             badgeClass="bg-primary"
             title="Bosques de la Sierra de Cubitas"
@@ -98,7 +103,7 @@ import TourCard from '../components/TourCard.astro';
                 <a class="text-primary font-label-md flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Aprende más <span class="material-symbols-outlined">chevron_right</span></a>
               </div>
               <div class="relative overflow-hidden">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Exotic reptile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtWux-LkZsDIbemoZp4_eDA2UwVG4nQ5pklxwmaMA-TYUQdHTEUAAA1ZkHsEDQuBDVBJFLxwQs-8GkVTP_ha5TNlvwA5mQcu9UN64FHGpGSRj3gN5LhzCErUM8p905C8ZVU99rdbtIsRS9p6A2ZfNHeWl6B8pFHzDqbUcIyRJCbsgFoSljMgVN5ih2_SX78SJXmyiQ9nUmFGOk7kXSW9gOdefbkF84KLt8FBd4BpDNZ0SRxL5lDwqHYzzK9KpULbf12Ze9W4MYZ8w">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Exotic reptile" src={`${cleanBase}images/reptil-maja-santamaria.webp`} width="512" height="512" loading="lazy">
               </div>
             </div>
           </div>
@@ -114,7 +119,7 @@ import TourCard from '../components/TourCard.astro';
           
           <!-- Small Card: Maps -->
           <div class="relative group overflow-hidden rounded-xl border border-outline-variant/30 bg-surface-container-highest">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" alt="Topographical map representation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBPNBA2TFHPHX6amqhj2UD2wCixcHjQSeM-Qx5UvtZOpZaUh5fHckrg8wi3Kv2RPmQUGs2EpETCN1ldsQczkkDVNQxVTovoNLrnDjOURqmCGihB-imQRp5VHxnVgeV5OlfNGj3rvzRMIfbRK2hLR2Y76mWRMAK_F1dyeksEXZ_uS6JofHRYdojHeY7xlsviHOjmizxTH7_AHxrHTtf1YZgPWiDSKROgmgG1cLpbIEjowBVCSDbw8i97blfxypfY7Wb6OOcAMGf36s">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" alt="Topographical map representation" src={`${cleanBase}images/mapa-senderos-naturaleza.webp`} width="512" height="512" loading="lazy">
             <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
               <span class="material-symbols-outlined text-primary mb-2">map</span>
               <h3 class="font-label-md text-on-surface font-semibold">Senderos de Observación</h3>
@@ -146,7 +151,7 @@ import TourCard from '../components/TourCard.astro';
           <!-- Flora Item 1 -->
           <div class="group">
             <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Wild Orchid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTe9B-JxqZ5szupHDRwc5neO0AKDCxeePxR3izli7HwDtI5beVViJrZEhrmNBo9rLfhfikRO5L25Nz4Ya-QemDffoxjgPD7ZxZbRoVxjyJq3LHhLz2fRAC6KvUvP66yPKS4OR0QqgX-_NZCYniCe1vM8WqtjyqQVv27iaTrHc90FOH05JSFjKp3QxH8_tNq_SOGVzLbM8Wt0kOQPPL_j1kb8cgTp4-kcuM0HynDqFhKWm55JzfqQUMDTJ5ekaaOTnNjOVcClxVBMw">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Wild Orchid" src={`${cleanBase}images/orquidea-silvestre.webp`} width="512" height="512" loading="lazy">
             </div>
             <h4 class="font-headline-sm text-on-surface font-semibold">Orquídea Silvestre</h4>
             <p class="text-label-md text-primary uppercase tracking-wider mt-1">Orchidaceae</p>
@@ -154,7 +159,7 @@ import TourCard from '../components/TourCard.astro';
           <!-- Flora Item 2 -->
           <div class="group">
             <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Coral Shrub" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXb3g3-vDuDx-GJe0ZkIOPJ0QQdfGNJLAEwYoTcKfysmwUuKhL-v1fn5QwjsyhIas4Tb5jvCaLKsGrhL5ZeNiZ9bIXjSf2_PwQJ9FctJFfhSHfNH6qLTWIorcHB2rjcu3cMUg0CIpOAhwopcLL8ZD0WhyY4ECSxM4S3XIeKiPqs7tF-fOs95G2VJgOeDY7Avq9dwW2GGoiKEiRlWPBGZiTeH0nWDJXWfjxLJS3V9jRQXuVTo5LrG7xrc71Aoz__kntjy4UHLGiTE0">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Coral Shrub" src={`${cleanBase}images/palo-de-coral.webp`} width="512" height="512" loading="lazy">
             </div>
             <h4 class="font-headline-sm text-on-surface font-semibold">Palo de Coral</h4>
             <p class="text-label-md text-primary uppercase tracking-wider mt-1">Hamelia patens</p>
@@ -162,7 +167,7 @@ import TourCard from '../components/TourCard.astro';
           <!-- Flora Item 3 -->
           <div class="group">
             <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Yarey Palm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTYekWgiJg7mjash0-EsDEHFVkz1vF6vcLYV7cyTMJ_TbNCZ0IWBIdike0XnolMCk12c7MGJQq8XhL1EVD0dQSPPdbXmkHi05SYQAXMrl24PU7k-NuITvj36bbwfwwKRE6yTawSliJHwvtuyENpOz6_tWK0CxCaw5jbbApo5nTPEnEEMTO8opD5YWlNynq95nXhasbYxQO8ecGFQHsr_9QAyjmcsYbFlkW0F_AjOg6B_VW8K_T8Yw0gkzlrKP4WwSm8nZdHBhkQjM">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Yarey Palm" src={`${cleanBase}images/palma-yarey.webp`} width="512" height="512" loading="lazy">
             </div>
             <h4 class="font-headline-sm text-on-surface font-semibold">Palma Yarey</h4>
             <p class="text-label-md text-primary uppercase tracking-wider mt-1">Coccothrinax</p>
@@ -170,7 +175,7 @@ import TourCard from '../components/TourCard.astro';
           <!-- Flora Item 4 -->
           <div class="group">
             <div class="aspect-square rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tree Fern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUw__XYkIP58d9K9uc_OnugN6K_rJGts7KrDmPaxXq-llydk_d9bR-H7JWOKDCsk6gXs9z3qGg-nO_jrunH-mes9g71-13XPkLUwmNHZ_E1_PPrFjy4m5HOyBSkxndbj5v4wVFUS2lyFN26BDhuQzvb1TFZ0VX37doJpIT4_f1dt--WX3fIgSBaejy_FXRDzYNUez8y0XaCJn01QYlo8L-hW72eI7VzzL4P_O4xq47v9ENAqJVh6BuPxPT_azfiNUvXFNZ2hU4l5Y">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Tree Fern" src={`${cleanBase}images/helecho-cyatheales.webp`} width="512" height="512" loading="lazy">
             </div>
             <h4 class="font-headline-sm text-on-surface font-semibold">Helecho Arborescente</h4>
             <p class="text-label-md text-primary uppercase tracking-wider mt-1">Cyatheales</p>
