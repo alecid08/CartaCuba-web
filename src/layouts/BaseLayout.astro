@@ -58,10 +58,20 @@ const waNumberB64 = "KzUzNTEzODM2OTA=";
   <link rel="preload" as="font" type="font/woff2" href={beVietnam400Url} crossorigin />
   <link rel="preload" as="font" type="font/woff2" href={beVietnam600Url} crossorigin />
 
-  <!-- Material Symbols: only remaining Google Fonts dependency (self-hosting balloons this variable icon font to ~3.5x Google's served size, see Aug 2026 perf audit) -->
+  <!-- Material Symbols: only remaining Google Fonts dependency (self-hosting balloons this variable icon font to ~3.5x Google's served size, see Aug 2026 perf audit).
+       Loaded non-render-blocking: the css2 stylesheet was sitting in the critical path (~5.3s chain to a 1.1MB woff2 in
+       earlier traces). media="print" + onload swap defers it off the critical path; icons pop in once it lands. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+  </noscript>
 
   <!-- Cloudflare Turnstile: bot protection, loaded only on pages with a form -->
   {loadTurnstile && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
