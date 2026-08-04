@@ -10,7 +10,7 @@ if (!tour) {
 const reviews = await getApprovedReviews('mesa-camagueyana');
 ---
 
-<BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours">
+<BaseLayout title={`${tour.title} | CartaCuba`} activePage="tours" loadTurnstile>
   <!-- Hero Section -->
   <section class="relative h-[500px] md:h-[620px] lg:h-[680px] flex items-center overflow-hidden w-full pt-20">
     <div class="absolute inset-0 z-0">

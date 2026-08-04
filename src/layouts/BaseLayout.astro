@@ -21,14 +21,16 @@ interface Props {
   activePage?: 'nature' | 'culture' | 'heritage' | 'experiences' | 'estancias' | 'home' | 'tours' | 'destino' | 'nosotros';
   bodyClass?: string;
   isNaturePage?: boolean;
+  loadTurnstile?: boolean;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = "Experiencias turísticas auténticas y personalizadas en Camagüey, Cuba. Grupos pequeños, cultura real, naturaleza y vivencias locales. Contacta por WhatsApp.",
-  activePage, 
-  bodyClass = "bg-background text-on-background font-body-md overflow-x-hidden", 
-  isNaturePage = false 
+  activePage,
+  bodyClass = "bg-background text-on-background font-body-md overflow-x-hidden",
+  isNaturePage = false,
+  loadTurnstile = false
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -61,8 +63,8 @@ const waNumberB64 = "KzUzNTEzODM2OTA=";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-  <!-- Cloudflare Turnstile: bot protection for public forms -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <!-- Cloudflare Turnstile: bot protection, loaded only on pages with a form -->
+  {loadTurnstile && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 
   <!-- Contact link obfuscation: keeps phone/email out of static page source -->
   <script define:vars={{ waNumberB64 }} is:inline>
