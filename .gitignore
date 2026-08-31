@@ -8,3 +8,7 @@ dist
 
 html originales/
 imagene para a web/
+CartaCuba-web/
+*.tgz
+.npmrc
+rediseño.html

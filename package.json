@@ -21,6 +21,8 @@
     "wrangler": "^4.118.0"
   },
   "devDependencies": {
+    "@cloudflare/workerd-linux-64": "^1.20260730.1",
+    "@rolldown/binding-linux-x64-gnu": "^1.2.1",
     "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.3"
   }
