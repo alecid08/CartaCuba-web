@@ -78,7 +78,7 @@ const featuredTour = tours[0];
               <img 
                 alt={tour.title} 
                 class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300 ease-in-out" 
-                src={tour.image}
+                src={tour.image || (tour.id === 'camaguey-laberintica' ? `${cleanBase}images/experiencia-laberinto-patios.webp` : '')}
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden"></div>
               <span class="absolute top-4 left-4 bg-primary text-white text-xs font-label-md px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-sm z-20">

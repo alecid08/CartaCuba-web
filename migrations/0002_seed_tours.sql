@@ -9,7 +9,7 @@ VALUES (
   '3–4 horas',
   30,
   '$30–40 USD',
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuChv-vowG9d03HtQirv__UJDgtUcZIPm9yg8qFhoFhulqs_z_1Al73RjgayNpw_4JW9KCn7gzkP87-cQj3SraSYdbej78YvCUqw9uS1888KTLXwVJslmarZjWSarP4l-tLYUrVbFh5RR0P_eifLXzjZJs77oI6UDq5_6ak1TL4FF3-NSrHarAmCL-4zKQ94j8Wg6DIhm38ojZCqYM-38Y65wZaT0xkfrg3S5g9bsUPGW3FUHtD0bV0ba6TD6TqG6y-Fc7fHSyuTJkQ',
+  '/images/experiencia-laberinto-patios.webp',
   'Recorre el laberinto colonial de Camagüey, Patrimonio UNESCO. Plazas ocultas, tinajones centenarios, iglesias coloniales y la historia de una ciudad diseñada para confundir piratas. Guía historiador local incluido.',
   'Plazas coloniales, tinajones, Iglesia de la Merced, Teatro Principal. Un recorrido por el laberinto urbano diseñado para despistar piratas ingleses en el siglo XVII. Grupos de máximo 6 personas.',
   '["Guía historiador local", "Entradas a plazas y casonas coloniales", "Jugo natural de cortesía"]',

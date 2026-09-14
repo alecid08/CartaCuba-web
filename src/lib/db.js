@@ -1,6 +1,9 @@
 import { env } from 'cloudflare:workers';
 
 function parseTourRow(row) {
+  const defaultImages = {
+    'camaguey-laberintica': '/images/experiencia-laberinto-patios.webp',
+  };
   return {
     id: row.id,
     title: row.title,
@@ -9,7 +12,7 @@ function parseTourRow(row) {
     duration: row.duration,
     price: row.price,
     priceDisplay: row.price_display,
-    image: row.image,
+    image: row.image || defaultImages[row.id] || '',
     shortDescription: row.short_description,
     fullDescription: row.full_description,
     included: JSON.parse(row.included || '[]'),

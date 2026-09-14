@@ -17,7 +17,7 @@ const reviews = await getApprovedReviews('camaguey-laberintica');
       <img 
         alt={tour.title} 
         class="w-full h-full object-cover object-center" 
-        src={tour.image}
+        src={tour.image || '/images/experiencia-laberinto-patios.webp'}
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
     </div>
