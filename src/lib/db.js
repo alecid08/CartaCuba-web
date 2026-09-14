@@ -3,7 +3,24 @@ import { env } from 'cloudflare:workers';
 function parseTourRow(row) {
   const defaultImages = {
     'camaguey-laberintica': '/images/experiencia-laberinto-patios.webp',
+    'mesa-camagueyana': '/images/mesa-camagueyana.webp',
   };
+
+  let image = row.image;
+  if (!image || image.includes('lh3.googleusercontent.com')) {
+    image = defaultImages[row.id] || image || '';
+  }
+
+  let galleryImages = JSON.parse(row.gallery_images || '[]');
+  if (row.id === 'limones-tuabaquey') {
+    galleryImages = galleryImages.map((img, i) => {
+      if (typeof img === 'string' && img.includes('lh3.googleusercontent.com')) {
+        return `/images/limones-tuabaquey-0${i + 1}.webp`;
+      }
+      return img;
+    });
+  }
+
   return {
     id: row.id,
     title: row.title,
@@ -12,12 +29,12 @@ function parseTourRow(row) {
     duration: row.duration,
     price: row.price,
     priceDisplay: row.price_display,
-    image: row.image || defaultImages[row.id] || '',
+    image,
     shortDescription: row.short_description,
     fullDescription: row.full_description,
     included: JSON.parse(row.included || '[]'),
     excluded: JSON.parse(row.excluded || '[]'),
-    galleryImages: JSON.parse(row.gallery_images || '[]'),
+    galleryImages,
     itinerary: JSON.parse(row.itinerary || '[]'),
   };
 }
