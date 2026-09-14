@@ -1,0 +1,62 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.grainy-overlay {
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    opacity: 0.05;
+}
+
+.leaf-shape {
+    border-top-right-radius: 64px;
+    border-bottom-left-radius: 64px;
+}
+
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.organic-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.organic-shape-alt {
+    border-radius: 63% 37% 54% 46% / 30% 60% 40% 70%;
+}
+
+.textured-bg {
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-blend-mode: multiply;
+}
+
+.leaf-corner {
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.texture-grain {
+    position: relative;
+}
+.texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+}
+
+.organic-grain {
+    background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.grain-texture {
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    opacity: 0.05;
+    pointer-events: none;
+}

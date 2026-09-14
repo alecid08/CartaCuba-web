@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import TourCard from '../components/TourCard.astro';
+---
+
+<BaseLayout title="Estancias Auténticas | CartaCuba" activePage="estancias" bodyClass="bg-background text-on-background font-body-md texture-grain min-h-screen flex flex-col">
+  <!-- Hero Section -->
+  <HeroSection
+    bgImage="https://lh3.googleusercontent.com/aida-public/AB6AXuDnlb4glw2CPTGZCUI-HOuLt92aOEaYRT_uFZB9Klw-loSnseHCPIXOghOOOZPGHeNn0RrdKfy1AEUBBaydvT2Ixg3lRQux-ZGXV91RQQ4sR9aLSx63eSRLfqxre_sl7ZOVL8-Re2IWwcOaaAZmwS2D_0azOl2L1GQ70FgdE9xqos4SMBjFi4ZZbnVuhvvWG1-KrhgWksTih7Q3z4W5dp3rWM_nuEVif4VVhNLYf1IiVG6ig2mN-iiBnLyc0KE7f3xesXtT2RRnd8M"
+    badgeText="Estancias Auténticas"
+    badgeClass="inline-block bg-primary/10 text-primary font-label-md px-4 py-1 rounded-full mb-6"
+    title="El alma de Camagüey late tras estas puertas."
+    description="Descubre la hospitalidad genuina en casas coloniales preservadas por generaciones. Mucho más que un alquiler; una inmersión en la herencia viva."
+    heightClass="h-[614px] md:h-[716px]"
+  />
+
+  <main class="relative">
+    <!-- Search / Filter Bar -->
+    <div class="px-margin-desktop -mt-10 relative z-20">
+      <div class="max-w-container-max mx-auto bg-surface-container-lowest rounded-2xl shadow-xl p-4 md:p-6 border border-outline-variant/30 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+        <div class="space-y-2">
+          <label class="font-label-md text-primary ml-2 flex items-center gap-2 font-semibold">
+            <span class="material-symbols-outlined text-sm">location_on</span> Destino
+          </label>
+          <select class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary text-on-surface">
+            <option>Camagüey Centro</option>
+            <option>Plaza de San Juan</option>
+            <option>Calle República</option>
+          </select>
+        </div>
+        <div class="space-y-2">
+          <label class="font-label-md text-primary ml-2 flex items-center gap-2 font-semibold">
+            <span class="material-symbols-outlined text-sm">calendar_month</span> Fechas
+          </label>
+          <input class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary text-on-surface" placeholder="Seleccionar estancia" type="text">
+        </div>
+        <div class="space-y-2">
+          <label class="font-label-md text-primary ml-2 flex items-center gap-2 font-semibold">
+            <span class="material-symbols-outlined text-sm">group</span> Huéspedes
+          </label>
+          <input class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary text-on-surface" type="number" value="2">
+        </div>
+        <button class="bg-primary text-on-primary h-[52px] rounded-xl font-label-md hover:bg-primary-container flex items-center justify-center gap-2 transition-all active:scale-95">
+          <span class="material-symbols-outlined">search</span> Buscar Estancia
+        </button>
+      </div>
+    </div>
+
+    <!-- Featured Listings -->
+    <section class="py-20 px-margin-desktop max-w-container-max mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <h2 class="font-headline-md text-headline-md text-on-background mb-4 font-semibold">Casas con Historia</h2>
+          <p class="font-body-lg text-on-surface-variant max-w-xl">Curaduría de estancias que mantienen sus techos de madera original, tinajones centenarios y el espíritu de la ciudad de las plazas.</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento-ish Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <!-- Card 1 -->
+        <TourCard
+          type="stay"
+          image="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSWkVOOypuBYarFpfYFpdQB6tpYW2l12hwUVPHASzcyRinF2J71is-6_00W7clUwFQyHTc7JLOSd99Nz8LiPvq2FwcPfyPNMQQGSf36Hc0ZwPVQ7XViFFgYcYrhz79hd0OuNKkv23JaO5qiOdrKcMfhwujVGWQbSC4B4kH3s-OXKC-Y4sMvpUxI37gj9-bCjoi4MKwq_-7PcPFvKPChwyfEYedE1DNdZRbIdcWLkQ-DbSoYBsS1zZ4fcZj1WaOZsNWFkiX94lhIY"
+          title="La Casona de los Tinajones"
+          subtitle="Plaza de San Juan de Dios"
+          rating="4.98"
+          price="$85"
+          badgeText="Exclusivo"
+          badgeClass="bg-primary"
+          cardClass="card-hover-effect"
+        />
+
+        <!-- Card 2 -->
+        <TourCard
+          type="stay"
+          image="https://lh3.googleusercontent.com/aida-public/AB6AXuA0X8UILMIH4e9HzrxMUwHRaDDJ9ykgL2ZDin5ruDdtaFV0fRs45uugCn4ZXdMzd40bWhRhgrlduOf9A2TsAgXMGBIg_QtdGxKJnUXmXcLXGZpDW7DaqHMLMUGhxmYAyErR9CaXZtG38l3_k2udT8qpYhKt6cDlomYS9b5p9v8Z-5jIFGR4lP1KJYgwhorwivqscHDObv1X95Z9xSRnMUfA6bzBKyUk_Rwez2pMhRNlgKrlNHBuTVcdTP1GiVnvWxGi2F0EH4fJWmY"
+          title="Apartamento La Palma"
+          subtitle="Cerca de la Catedral"
+          rating="5.0"
+          price="$110"
+          cardClass="card-hover-effect"
+        />
+
+        <!-- Card 3 -->
+        <TourCard
+          type="stay"
+          image="https://lh3.googleusercontent.com/aida-public/AB6AXuBIFnm245DOyNWCckQ3Z2d5_HDpxqbT0ywHadIkq4QwajKw6QdyXJCMa0644MiRYr0gmil33HzIc5xi0f3A6o7a_Ol9EzLZA9X9fZrEl7H026_-lUysmq_O9HF0gleXMczaGp0hWFslsYwHM6GYQrK_xRSdfXHLHKnmv0G-XGCy1M4XmgE7O1hj_SVyIdXPU0b9wCQ0MxHXD7AXedyXUCDG7vfyR2Modpk2xoAhYp6CeKsW8aAp8Mg5sW6bLTeYQwuECG0dqMAg4Uk"
+          title="Hostal El Oasis Colonial"
+          subtitle="Zona Patrimonial"
+          rating="4.92"
+          price="$72"
+          badgeText="Última disponible"
+          badgeClass="bg-secondary"
+          cardClass="card-hover-effect"
+        />
+      </div>
+    </section>
+
+    <!-- Meet the Hosts -->
+    <section class="bg-surface-container py-24 px-margin-desktop overflow-hidden">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <div class="organic-shape w-full aspect-square bg-primary-fixed overflow-hidden relative z-10">
+            <img class="w-full h-full object-cover" alt="Cuban Host portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYZ8oqe9hGz26KVZXpYGonh81uycDvQwzD1HwykrBNr7IgFBnaRB36EFLncEIb_VFcqrtDSKREJpPJhN7Pvufgy063VjNPo9VpvpSaPOlxCWvUvLJc7qjel581fLhR109vSw2-kOrqrO05V0h9dSmsi6J7ZGbYLQxuZAao-BC4z6qsDmjM5cK8jN-N3V1dQKNwNbHZKQ5P_UUGi190uqAO_IMavDCU_J9FJxGBQMbVnR7_m7N2EStVHLFwu80aW3YBmTJusaH0lRY">
+          </div>
+          <!-- Decorative element -->
+          <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary-fixed-dim rounded-full mix-blend-multiply opacity-30 animate-pulse"></div>
+        </div>
+        <div class="space-y-8">
+          <h2 class="font-headline-md text-headline-md leading-tight font-semibold">Anfitriones que aman su tierra.</h2>
+          <p class="font-body-lg text-on-surface-variant">No son solo gestores de alquileres. Son Doña Beatriz, que hornea los mejores 'suaves' de la ciudad, y Don Manuel, un experto en la historia de la cerámica local. Al elegir una CartaCuba Stay, te unes a una familia.</p>
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <div class="text-primary font-display-lg text-display-lg-mobile mb-2 font-bold">150+</div>
+              <p class="font-label-md text-on-surface-variant uppercase tracking-widest font-semibold">Familias Locales</p>
+            </div>
+            <div>
+              <div class="text-primary font-display-lg text-display-lg-mobile mb-2 font-bold">4.9</div>
+              <p class="font-label-md text-on-surface-variant uppercase tracking-widest font-semibold">Calificación Media</p>
+            </div>
+          </div>
+          <button class="border-2 border-primary text-primary px-8 py-4 rounded-full font-label-md hover:bg-primary hover:text-on-primary transition-all flex items-center gap-3 active:scale-95">
+            Conoce a nuestros anfitriones <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-headline-md text-headline-md mb-4 font-semibold">Lo que cuentan los viajeros</h2>
+        <p class="font-body-md text-on-surface-variant italic">Historias reales de personas que encontraron un hogar lejos de casa.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-surface-container-lowest p-8 rounded-3xl border-l-4 border-primary shadow-sm relative">
+          <span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-primary/10">format_quote</span>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+              <img class="w-full h-full object-cover" alt="Julian Schmidt avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwFTQyn0dE7tKP8hiB2nN9GJE2gdvHhlQ_VJMcbFYS5zOhhLGSy0nC7nA9_kJ0uuj3NudtfTM1-0j73NwKaUMF1CvqDpZc96ZmwU9rXUfw17Jh5oMKsV6gZJd5unGyeGx9wkQ-QMa5urmRoDCF48JuEAMBqHepPwq6cbSezxbo62gkZHdyxOUa4lfwtJ0yBIlJbSfNRV8SZ0qhNCDA0xWJsLHGFAwdiScDeM_rGnclYn8FQziPg2szX-6FZ_kHyyyGPDrzZrCChQg">
+            </div>
+            <div>
+              <h4 class="font-bold text-on-surface">Julian Schmidt</h4>
+              <p class="text-xs text-on-surface-variant uppercase tracking-tighter">Berlín, Alemania</p>
+            </div>
+          </div>
+          <p class="font-body-md leading-relaxed text-on-surface-variant">"Quedarme en la Casona de Beatriz fue la mejor decisión de mi viaje por Cuba. Los techos altos y la brisa constante en el patio me transportaron a otra época. La seguridad y el calor humano son inigualables."</p>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="bg-surface-container-lowest p-8 rounded-3xl border-l-4 border-secondary shadow-sm relative">
+          <span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-secondary/10">format_quote</span>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+              <img class="w-full h-full object-cover" alt="Elena Rossi avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZoFGmRfd5oWwy4nnsdTXUTsAWQ6xNqN38lZNrcR163TxKYVlYdz2K1VOncCh1nYsmzq9C89KVVsRveZgiAV6DJW4EUDgSS5T2Tv-VzMLOw63X-Wq9Nfx6_ErkiE-PlMaboos5lmEcDAJc30VTuFE24o5qgXY_xwozHtC9rUpFiQAfe4NeYea1EUutrgkLei4YZhhg5FtzowoPXJj_vGPk2W9X1BARDyyB_nbVuFA8X6cPGiRA-68D_cN1Qnd-cC02CUZA6dRcMq4">
+            </div>
+            <div>
+              <h4 class="font-bold text-on-surface">Elena Rossi</h4>
+              <p class="text-xs text-on-surface-variant uppercase tracking-tighter">Milán, Italia</p>
+            </div>
+          </div>
+          <p class="font-body-md leading-relaxed text-on-surface-variant">"CartaCuba me ayudó a encontrar un sitio auténtico que no aparecía en las grandes plataformas. La habitación estaba impecable y los desayunos con fruta fresca local fueron el highlight de mis mañanas."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter / CTA -->
+    <section class="py-20 px-margin-desktop">
+      <div class="max-w-container-max mx-auto bg-primary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full translate-x-1/2 -translate-y-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        <div class="relative z-10 space-y-8">
+          <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-primary font-bold">Únete a nuestra comunidad de guardianes.</h2>
+          <p class="font-body-lg text-primary-fixed max-w-2xl mx-auto">Suscríbete para recibir historias exclusivas de Camagüey y ofertas especiales en estancias patrimoniales.</p>
+          <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+            <input class="flex-grow rounded-full px-6 py-4 bg-white/10 border border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-white outline-none" placeholder="Tu correo electrónico" type="email">
+            <button class="bg-white text-primary px-8 py-4 rounded-full font-label-md hover:bg-secondary-fixed transition-all active:scale-95">
+              Suscribirme
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  // Simple interactive hover effect for card list
+  document.querySelectorAll('.card-hover-effect').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-4px)';
+      card.style.transition = 'all 0.3s ease';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
+  });
+</script>

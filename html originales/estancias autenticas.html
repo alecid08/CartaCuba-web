@@ -1,0 +1,413 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Estancias Auténticas | CartaCuba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .organic-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        .leaf-corner {
+            border-top-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+        }
+        .texture-grain {
+            position: relative;
+        }
+        .texture-grain::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1e1b18",
+                    "on-secondary-fixed": "#410003",
+                    "outline-variant": "#bdcabc",
+                    "primary": "#006b34",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#fdffdd",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "background": "#fff8f5",
+                    "secondary-container": "#e41e27",
+                    "primary-container": "#008643",
+                    "surface-container-low": "#fbf2ed",
+                    "tertiary-container": "#76756f",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005227",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#3e4a3f",
+                    "surface-container": "#f5ece7",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#6edd8d",
+                    "surface-container-highest": "#e9e1dc",
+                    "surface-bright": "#fff8f5",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#1c1c18",
+                    "on-primary-container": "#f6fff3",
+                    "surface-tint": "#006d35",
+                    "surface-container-high": "#efe6e2",
+                    "inverse-surface": "#34302c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#8afaa7",
+                    "on-secondary-fixed-variant": "#93000f",
+                    "on-tertiary-fixed-variant": "#474742",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1e1b18",
+                    "tertiary": "#5d5c57",
+                    "on-primary-fixed": "#00210c",
+                    "tertiary-fixed-dim": "#c9c6c0",
+                    "tertiary-fixed": "#e5e2db",
+                    "surface": "#fff8f5",
+                    "inverse-on-surface": "#f8efea",
+                    "inverse-primary": "#6edd8d",
+                    "surface-dim": "#e1d8d4",
+                    "on-secondary-container": "#fffbff",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdad6",
+                    "outline": "#6e7a6e",
+                    "secondary": "#bb0017",
+                    "surface-variant": "#e9e1dc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Libre Caslon Text"],
+                    "headline-md": ["Libre Caslon Text"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg-mobile": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md texture-grain min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight">CartaCuba</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Nature</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-semibold" href="#">Culture</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Heritage</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Experiences</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center text-primary font-label-md px-4 py-2 hover:bg-primary/5 rounded-lg transition-all">
+<span class="material-symbols-outlined mr-2">search</span> Search
+                </button>
+<button class="bg-primary text-on-primary font-label-md px-6 py-3 rounded-full hover:bg-primary-container transition-all shadow-sm">
+                    Book Now
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[614px] md:h-[716px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Colonial house interior in Camagüey" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnlb4glw2CPTGZCUI-HOuLt92aOEaYRT_uFZB9Klw-loSnseHCPIXOghOOOZPGHeNn0RrdKfy1AEUBBaydvT2Ixg3lRQux-ZGXV91RQQ4sR9aLSx63eSRLfqxre_sl7ZOVL8-Re2IWwcOaaAZmwS2D_0azOl2L1GQ70FgdE9xqos4SMBjFi4ZZbnVuhvvWG1-KrhgWksTih7Q3z4W5dp3rWM_nuEVif4VVhNLYf1IiVG6ig2mN-iiBnLyc0KE7f3xesXtT2RRnd8M">
+<div class="absolute inset-0 bg-black/30"></div>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="max-w-2xl">
+<span class="inline-block bg-primary/10 text-primary font-label-md px-4 py-1 rounded-full mb-6">Estancias Auténticas</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 text-white">El alma de Camagüey late tras estas puertas.</h1>
+<p class="font-body-lg text-body-lg mb-8 text-white">Descubre la hospitalidad genuina en casas coloniales preservadas por generaciones. Mucho más que un alquiler; una inmersión en la herencia viva.</p>
+</div>
+</div>
+</section>
+<!-- Search / Filter Bar -->
+<div class="px-margin-desktop -mt-10 relative z-20">
+<div class="max-w-container-max mx-auto bg-surface-container-lowest rounded-2xl shadow-xl p-4 md:p-6 border border-outline-variant/30 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+<div class="space-y-2">
+<label class="font-label-md text-primary ml-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span> Destino
+                    </label>
+<select class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary">
+<option>Camagüey Centro</option>
+<option>Plaza de San Juan</option>
+<option>Calle República</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-primary ml-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span> Fechas
+                    </label>
+<input class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary" placeholder="Seleccionar estancia" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-primary ml-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">group</span> Huéspedes
+                    </label>
+<input class="w-full bg-surface-container border-none rounded-xl font-body-md py-3 px-4 focus:ring-2 focus:ring-primary" type="number" value="2">
+</div>
+<button class="bg-primary text-on-primary h-[52px] rounded-xl font-label-md hover:bg-primary-container flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined">search</span> Buscar Estancia
+                </button>
+</div>
+</div>
+<!-- Featured Listings -->
+<section class="py-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Casas con Historia</h2>
+<p class="font-body-lg text-on-surface-variant max-w-xl">Curaduría de estancias que mantienen sus techos de madera original, tinajones centenarios y el espíritu de la ciudad de las plazas.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bento-ish Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden leaf-corner mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="An elegant bedroom in a Cuban colonial house, featuring high wooden beam ceilings and a grand four-poster bed made of dark mahogany. The walls are a soft heritage bone color, decorated with traditional pottery. Large wooden windows open to a sun-drenched balcony, and the room is accented with emerald green textiles and vibrant tropical plants." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSWkVOOypuBYarFpfYFpdQB6tpYW2l12hwUVPHASzcyRinF2J71is-6_00W7clUwFQyHTc7JLOSd99Nz8LiPvq2FwcPfyPNMQQGSf36Hc0ZwPVQ7XViFFgYcYrhz79hd0OuNKkv23JaO5qiOdrKcMfhwujVGWQbSC4B4kH3s-OXKC-Y4sMvpUxI37gj9-bCjoi4MKwq_-7PcPFvKPChwyfEYedE1DNdZRbIdcWLkQ-DbSoYBsS1zZ4fcZj1WaOZsNWFkiX94lhIY">
+<div class="absolute top-4 left-4 bg-primary text-on-primary font-label-md px-3 py-1 rounded-full">Exclusivo</div>
+<div class="absolute bottom-4 right-4 bg-background/90 backdrop-blur px-3 py-1 rounded-lg text-primary font-bold shadow-sm">
+                            $85 <span class="text-xs font-normal">/ noche</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm">La Casona de los Tinajones</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md">4.98</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md italic">Plaza de San Juan de Dios</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden leaf-corner mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A modern minimalist living space inside a historic building in Camagüey. The design blends industrial exposed brick walls with traditional Cuban floor tiles. Large circular mirrors reflect a courtyard filled with greenery. The color palette features warm clay tones and cool mint green accents, illuminated by soft morning sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0X8UILMIH4e9HzrxMUwHRaDDJ9ykgL2ZDin5ruDdtaFV0fRs45uugCn4ZXdMzd40bWhRhgrlduOf9A2TsAgXMGBIg_QtdGxKJnUXmXcLXGZpDW7DaqHMLMUGhxmYAyErR9CaXZtG38l3_k2udT8qpYhKt6cDlomYS9b5p9v8Z-5jIFGR4lP1KJYgwhorwivqscHDObv1X95Z9xSRnMUfA6bzBKyUk_Rwez2pMhRNlgKrlNHBuTVcdTP1GiVnvWxGi2F0EH4fJWmY">
+<div class="absolute bottom-4 right-4 bg-background/90 backdrop-blur px-3 py-1 rounded-lg text-primary font-bold shadow-sm">
+                            $110 <span class="text-xs font-normal">/ noche</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm">Apartamento La Palma</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md">5.0</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md italic">Cerca de la Catedral</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden leaf-corner mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A tranquil guest suite in a boutique rental, showcasing a colonial archway painted in a deep emerald green. The bed is covered in crisp white linen, and a small writing desk overlooks a leafy indoor garden. The light is warm and inviting, highlighting the textured stone walls and artistic atmosphere of Camagüey's old quarter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIFnm245DOyNWCckQ3Z2d5_HDpxqbT0ywHadIkq4QwajKw6QdyXJCMa0644MiRYr0gmil33HzIc5xi0f3A6o7a_Ol9EzLZA9X9fZrEl7H026_-lUysmq_O9HF0gleXMczaGp0hWFslsYwHM6GYQrK_xRSdfXHLHKnmv0G-XGCy1M4XmgE7O1hj_SVyIdXPU0b9wCQ0MxHXD7AXedyXUCDG7vfyR2Modpk2xoAhYp6CeKsW8aAp8Mg5sW6bLTeYQwuECG0dqMAg4Uk">
+<div class="absolute top-4 left-4 bg-secondary text-on-secondary font-label-md px-3 py-1 rounded-full">Última disponible</div>
+<div class="absolute bottom-4 right-4 bg-background/90 backdrop-blur px-3 py-1 rounded-lg text-primary font-bold shadow-sm">
+                            $72 <span class="text-xs font-normal">/ noche</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm">Hostal El Oasis Colonial</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md">4.92</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md italic">Zona Patrimonial</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Meet the Hosts -->
+<section class="bg-surface-container py-24 px-margin-desktop overflow-hidden">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="organic-shape w-full aspect-square bg-primary-fixed overflow-hidden relative z-10">
+<img class="w-full h-full object-cover" data-alt="A portrait of a warm and smiling Cuban host, a woman in her late 50s, standing in front of her colonial home's entrance. She has kind eyes and wears a simple, elegant linen dress. The background shows the vibrant colors of Camagüey's streets and a glimpse of her well-maintained garden, conveying a sense of trust, authenticity, and local hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYZ8oqe9hGz26KVZXpYGonh81uycDvQwzD1HwykrBNr7IgFBnaRB36EFLncEIb_VFcqrtDSKREJpPJhN7Pvufgy063VjNPo9VpvpSaPOlxCWvUvLJc7qjel581fLhR109vSw2-kOrqrO05V0h9dSmsi6J7ZGbYLQxuZAao-BC4z6qsDmjM5cK8jN-N3V1dQKNwNbHZKQ5P_UUGi190uqAO_IMavDCU_J9FJxGBQMbVnR7_m7N2EStVHLFwu80aW3YBmTJusaH0lRY">
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary-fixed-dim rounded-full mix-blend-multiply opacity-30 animate-pulse"></div>
+</div>
+<div class="space-y-8">
+<h2 class="font-headline-md text-headline-md leading-tight">Anfitriones que aman su tierra.</h2>
+<p class="font-body-lg text-on-surface-variant">No son solo gestores de alquileres. Son Doña Beatriz, que hornea los mejores 'suaves' de la ciudad, y Don Manuel, un experto en la historia de la cerámica local. Al elegir una CartaCuba Stay, te unes a una familia.</p>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<div class="text-primary font-display-lg text-display-lg-mobile mb-2">150+</div>
+<p class="font-label-md text-on-surface-variant uppercase tracking-widest">Familias Locales</p>
+</div>
+<div>
+<div class="text-primary font-display-lg text-display-lg-mobile mb-2">4.9</div>
+<p class="font-label-md text-on-surface-variant uppercase tracking-widest">Calificación Media</p>
+</div>
+</div>
+<button class="border-2 border-primary text-primary px-8 py-4 rounded-full font-label-md hover:bg-primary hover:text-on-primary transition-all flex items-center gap-3">
+                        Conoce a nuestros anfitriones <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="font-headline-md text-headline-md mb-4">Lo que cuentan los viajeros</h2>
+<p class="font-body-md text-on-surface-variant italic">Historias reales de personas que encontraron un hogar lejos de casa.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-3xl border-l-4 border-primary shadow-sm relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-primary/10">format_quote</span>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwFTQyn0dE7tKP8hiB2nN9GJE2gdvHhlQ_VJMcbFYS5zOhhLGSy0nC7nA9_kJ0uuj3NudtfTM1-0j73NwKaUMF1CvqDpZc96ZmwU9rXUfw17Jh5oMKsV6gZJd5unGyeGx9wkQ-QMa5urmRoDCF48JuEAMBqHepPwq6cbSezxbo62gkZHdyxOUa4lfwtJ0yBIlJbSfNRV8SZ0qhNCDA0xWJsLHGFAwdiScDeM_rGnclYn8FQziPg2szX-6FZ_kHyyyGPDrzZrCChQg">
+</div>
+<div>
+<h4 class="font-bold">Julian Schmidt</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Berlín, Alemania</p>
+</div>
+</div>
+<p class="font-body-md leading-relaxed">"Quedarme en la Casona de Beatriz fue la mejor decisión de mi viaje por Cuba. Los techos altos y la brisa constante en el patio me transportaron a otra época. La seguridad y el calor humano son inigualables."</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl border-l-4 border-secondary shadow-sm relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-secondary/10">format_quote</span>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZoFGmRfd5oWwy4nnsdTXUTsAWQ6xNqN38lZNrcR163TxKYVlYdz2K1VOncCh1nYsmzq9C89KVVsRveZgiAV6DJW4EUDgSS5T2Tv-VzMLOw63X-Wq9Nfx6_ErkiE-PlMaboos5lmEcDAJc30VTuFE24o5qgXY_xwozHtC9rUpFiQAfe4NeYea1EUutrgkLei4YZhhg5FtzowoPXJj_vGPk2W9X1BARDyyB_nbVuFA8X6cPGiRA-68D_cN1Qnd-cC02CUZA6dRcMq4">
+</div>
+<div>
+<h4 class="font-bold">Elena Rossi</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Milán, Italia</p>
+</div>
+</div>
+<p class="font-body-md leading-relaxed">"CartaCuba me ayudó a encontrar un sitio auténtico que no aparecía en las grandes plataformas. La habitación estaba impecable y los desayunos con fruta fresca local fueron el highlight de mis mañanas."</p>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-20 px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-primary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 translate-y-1/2"></div>
+</div>
+<div class="relative z-10 space-y-8">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-primary">Únete a nuestra comunidad de guardianes.</h2>
+<p class="font-body-lg text-primary-fixed max-w-2xl mx-auto">Suscríbete para recibir historias exclusivas de Camagüey y ofertas especiales en estancias patrimoniales.</p>
+<form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+<input class="flex-grow rounded-full px-6 py-4 bg-white/10 border border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-white outline-none" placeholder="Tu correo electrónico" type="email">
+<button class="bg-white text-primary px-8 py-4 rounded-full font-label-md hover:bg-secondary-fixed transition-all">
+                            Suscribirme
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant/50">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-sm text-headline-sm text-primary-fixed-dim">CartaCuba</div>
+<p class="font-body-md text-on-surface-variant">© 2024 CartaCuba. Preserving the heritage of Camagüey through sustainable and authentic tourism.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Enlaces Útiles</h5>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Us</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Local Maps</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Conservation</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Categorías</h5>
+<ul class="space-y-2">
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Casas Coloniales</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Estudios de Arte</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Fincas Rurales</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Habitaciones Boutique</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Síguenos</h5>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll header effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md', 'h-16');
+                nav.classList.remove('h-20');
+            } else {
+                nav.classList.remove('shadow-md', 'h-16');
+                nav.classList.add('h-20');
+            }
+        });
+
+        // Simple interactive hover effect for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
