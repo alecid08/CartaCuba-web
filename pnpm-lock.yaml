@@ -27,6 +27,9 @@ importers:
         specifier: ^4.118.0
         version: 4.118.0
     devDependencies:
+      '@cloudflare/workerd-linux-64':
+        specifier: ^1.20260730.1
+        version: 1.20260730.1
       '@rolldown/binding-linux-x64-gnu':
         specifier: ^1.2.1
         version: 1.2.1
@@ -2184,8 +2187,7 @@ snapshots:
   '@cloudflare/workerd-linux-64@1.20260722.1':
     optional: true
 
-  '@cloudflare/workerd-linux-64@1.20260730.1':
-    optional: true
+  '@cloudflare/workerd-linux-64@1.20260730.1': {}
 
   '@cloudflare/workerd-linux-arm64@1.20260722.1':
     optional: true
