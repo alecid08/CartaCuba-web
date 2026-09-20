@@ -21,8 +21,13 @@ const cleanBase = base.endsWith('/') ? base : `${base}/`;
     heightClass="h-[819px]"
     overlayClass="bg-black/40"
   >
-    <button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-lg hover:shadow-xl transition-all">Explorar Mapa</button>
-    <button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">Ver la Historia</button>
+    <button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-primary hover:bg-on-primary-fixed text-white text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group active:scale-95 font-sans" type="button">
+      <span>Explorar Mapa</span>
+      <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">east</span>
+    </button>
+    <button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border-[1.5px] border-primary text-primary hover:bg-primary hover:text-white text-xs uppercase tracking-wider font-bold transition-all duration-200 active:scale-95 font-sans" type="button">
+      <span>Ver la Historia</span>
+    </button>
   </HeroSection>
 
   <main class="relative z-10">

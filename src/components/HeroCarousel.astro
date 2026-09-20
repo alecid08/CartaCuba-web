@@ -75,10 +75,10 @@ const slides = [
             <div class="flex gap-4">
               <a 
                 href={slide.ctaLink} 
-                class="bg-primary text-white hover:bg-primary-container px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-lg active:scale-95"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-primary hover:bg-on-primary-fixed text-white text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group active:scale-95 font-sans"
               >
                 <span>{slide.ctaText}</span>
-                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">east</span>
               </a>
             </div>
           </div>
