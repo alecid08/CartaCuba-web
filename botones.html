@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CartaCuba — Sistema de Botones y Acciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @font-face {
+      font-family: 'Zodiak';
+      src: local('Zodiak Bold'), local('Zodiak-Bold'),
+           url('https://cdn.jsdelivr.net/fontsource/fonts/zodiak:vf@latest/latin-wght-normal.woff2') format('woff2-variations'),
+           url('https://cdn.jsdelivr.net/fontsource/fonts/zodiak@latest/latin-700.woff2') format('woff2');
+      font-weight: 600 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Fallback con serif display de alto contraste que mantiene el temperamento editorial de Zodiak */
+    .font-zodiak {
+      font-family: 'Zodiak', 'Cinzel', 'Playfair Display', Georgia, serif;
+      font-feature-settings: "liga" 1, "dlig" 1;
+    }
+
+    .font-sans-body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    .glass-dark {
+      background: rgba(24, 59, 45, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Zodiak', 'Cinzel', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            bosque: {
+              DEFAULT: '#183B2D',
+              deep: '#10281F',
+              light: '#23523F',
+            },
+            esmeralda: {
+              DEFAULT: '#22C55E',
+              bright: '#10B981',
+              soft: '#E8F5EE',
+            },
+            barro: {
+              DEFAULT: '#C35D38',
+              hover: '#AB4D2B',
+              soft: '#F8ECE7',
+            },
+            arena: {
+              DEFAULT: '#FAF7F2',
+              card: '#F4EEE4',
+              border: '#E8E1D5',
+            },
+            cielo: {
+              DEFAULT: '#2B6CB0',
+              soft: '#EAF2F8',
+            },
+            dorado: {
+              DEFAULT: '#B8860B',
+              soft: '#FEF9E7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#FAF7F2] text-[#1E2922] font-sans antialiased min-h-screen pb-20 selection:bg-[#183B2D] selection:text-white">
+<!-- Header / Barra Superior -->
+<header class="bg-white border-b border-[#E8E1D5] sticky top-0 z-30 shadow-xs">
+<div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#183B2D] flex items-center justify-center text-[#22C55E]">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<div>
+<span class="font-zodiak font-bold text-xl text-[#183B2D] tracking-tight">CartaCuba</span>
+<span class="block text-[10px] uppercase tracking-widest text-[#78716C] font-semibold font-sans">Design System — Botones</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#E8F5EE] text-[#183B2D] font-sans">
+<span class="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse"></span>
+        20 Estilos Activos
+      </div>
+</div>
+</header>
+<!-- Hero Introductorio -->
+<section class="max-w-5xl mx-auto px-4 pt-10 pb-6">
+<div class="border-l-4 border-[#C35D38] pl-4 mb-4">
+<p class="text-xs uppercase tracking-widest font-bold text-[#C35D38] font-sans">Guía de Componentes Interactivos</p>
+<h1 class="font-zodiak text-3xl md:text-4xl text-[#183B2D] mt-1 font-bold">20 Estilos de Botones para CartaCuba</h1>
+</div>
+<p class="text-[#57534E] text-sm md:text-base max-w-3xl leading-relaxed font-sans">
+      Diseñados específicamente según la paleta orgánica del proyecto: <strong class="text-[#183B2D]">Verde Bosque</strong> (identidad y senderos), <strong class="text-[#C35D38]">Barro Tinajón</strong> (cultura y artesanía), <strong class="text-[#22C55E]">Esmeralda</strong> (conservación y WhatsApp), <strong class="text-[#2B6CB0]">Cielo Colonial</strong> y contrastes en marfil. Cada uno adaptado al tono editorial y funcional de la plataforma.
+    </p>
+<!-- Bloque Explicativo de la Pareja Tipográfica (Zodiak + Plus Jakarta Sans) -->
+<div class="mt-6 p-4 md:p-5 rounded-2xl bg-white border border-[#E8E1D5] shadow-xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#F4EEE4] pb-3 mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#183B2D] text-[20px]">font_download</span>
+<span class="font-zodiak font-bold text-sm text-[#183B2D]">Tipografía de Sistema: Zodiak Bold + Plus Jakarta Sans</span>
+</div>
+<span class="text-[11px] font-semibold text-[#C35D38] bg-[#F8ECE7] px-2.5 py-0.5 rounded-full self-start sm:self-auto font-sans">Normativa Tipográfica</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+<div class="flex items-start gap-3 bg-[#FAF7F2] p-3 rounded-xl border border-[#E8E1D5]">
+<span class="text-xl font-zodiak font-bold text-[#183B2D] leading-none mt-0.5">Aa</span>
+<div>
+<span class="font-zodiak font-bold text-[#183B2D] text-[13px] block">Zodiak Bold (Titulares históricos y descubrimiento)</span>
+<p class="text-[#57534E] text-[12px] mt-0.5 font-sans leading-snug">Serif display de alto contraste con carácter de archivo decimonónico, usada en encabezados, numeración cardinal de fichas y títulos de colección.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 bg-[#FAF7F2] p-3 rounded-xl border border-[#E8E1D5]">
+<span class="text-xl font-sans font-bold text-[#183B2D] leading-none mt-0.5">Aa</span>
+<div>
+<span class="font-sans font-bold text-[#183B2D] text-[13px] block">Plus Jakarta Sans (Cuerpo editorial contemporáneo)</span>
+<p class="text-[#57534E] text-[12px] mt-0.5 font-sans leading-snug">Geometría humanista legible y cálida, empleada en microtextos, botones funcionales, etiquetas badge, badges de destino y descripciones de uso.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Barra de Paleta Rápida -->
+<div class="mt-4 p-4 rounded-2xl bg-white border border-[#E8E1D5] flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
+<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-[#183B2D]"></span> <span class="font-medium text-[#44403C]">#183B2D Bosque</span></div>
+<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-[#C35D38]"></span> <span class="font-medium text-[#44403C]">#C35D38 Barro/Tinajón</span></div>
+<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-[#22C55E]"></span> <span class="font-medium text-[#44403C]">#22C55E Esmeralda Cuba</span></div>
+<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-[#2B6CB0]"></span> <span class="font-medium text-[#44403C]">#2B6CB0 Azulejo Colonial</span></div>
+<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-[#F4EEE4] border border-[#DCD3C5]"></span> <span class="font-medium text-[#44403C]">#F4EEE4 Arena Tinaja</span></div>
+</div>
+</section>
+<!-- CONTENEDOR DE GRUPOS -->
+<main class="max-w-5xl mx-auto px-4 space-y-12 mt-4">
+<!-- GRUPO 1: Botones Principales y CTA Primarios (Tours y Exploración) -->
+<section class="bg-white rounded-3xl p-6 md:p-8 border border-[#E8E1D5] shadow-xs">
+<div class="flex items-center justify-between border-b border-[#F4EEE4] pb-4 mb-6">
+<div>
+<span class="text-xs font-bold text-[#183B2D] uppercase tracking-wider bg-[#E8F5EE] px-2.5 py-1 rounded-md font-sans">Colección 01</span>
+<h2 class="font-zodiak font-bold text-2xl text-[#183B2D] mt-2">Acciones Primarias &amp; Exploración</h2>
+<p class="text-xs text-[#78716C] mt-0.5 font-sans">Llamadas de alta jerarquía para navegación de tours y cabeceras</p>
+</div>
+<span class="material-symbols-outlined text-[#183B2D] text-3xl opacity-40">explore</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 01. Píldora Bosque Clásica -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">01. PÍLDORA BOSQUE PRINCIPAL</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Hero / General</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">El botón estrella del sitio web: fondo verde bosque profundo con flecha microanimada.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#183B2D] hover:bg-[#10281F] text-white text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group active:scale-95 font-sans" type="button">
+<span>Explorar Senderos</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">east</span>
+</button>
+</div>
+</div>
+<!-- 02. Píldora Bosque con Brújula Dorada -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">02. PÍLDORA EXPEDICIÓN CAMAGÜEY</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Destinos</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Usado en "El Espíritu de la Tierra", mayúsculas compactas con icono brújula acentuado.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#183B2D] hover:bg-[#23523F] text-white text-xs uppercase tracking-widest font-bold transition-all shadow-xs active:scale-95 font-sans" type="button">
+<span>EXPLORAR CAMAGÜEY</span>
+<span class="material-symbols-outlined text-[#EAB308] text-[18px]">explore</span>
+</button>
+</div>
+</div>
+<!-- 03. Card Tour CTA Invertido -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">03. CARD TOUR COMPACTO</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Tarjetas Tours</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Botón compacto para el interior de las tarjetas con precio y duración.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#183B2D] hover:bg-[#10281F] text-white text-xs font-semibold tracking-wide transition-all group active:scale-95 font-sans" type="button">
+<span>Conocer más</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform text-[#22C55E]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- 04. Botón Borde Bosque & Fondo Marfil -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">04. OUTLINE BOSQUE ORGÁNICO</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Secundario Hero</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Acción secundaria elegante con borde sutil de 1.5px y hover en color sólido.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border-1.5 border-[#183B2D] text-[#183B2D] hover:bg-[#183B2D] hover:text-white text-xs uppercase tracking-wider font-bold transition-all duration-200 active:scale-95 font-sans" type="button">
+<span>Ver Itinerarios 2025</span>
+<span class="material-symbols-outlined text-[17px]">calendar_month</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- GRUPO 2: Temáticos por Categoría de Tour (Naturaleza, Patrimonio, Cultura, Gastro) -->
+<section class="bg-white rounded-3xl p-6 md:p-8 border border-[#E8E1D5] shadow-xs">
+<div class="flex items-center justify-between border-b border-[#F4EEE4] pb-4 mb-6">
+<div>
+<span class="text-xs font-bold text-[#C35D38] uppercase tracking-wider bg-[#F8ECE7] px-2.5 py-1 rounded-md font-sans">Colección 02</span>
+<h2 class="font-zodiak font-bold text-2xl text-[#183B2D] mt-2">Temáticas &amp; Ecosistemas</h2>
+<p class="text-xs text-[#78716C] mt-0.5 font-sans">Adaptados cromáticamente a cada vertiente experiencial de Camagüey</p>
+</div>
+<span class="material-symbols-outlined text-[#C35D38] text-3xl opacity-40">palette</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 05. Naturaleza & Observación de Aves (Verde Cartacuba) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">05. ECO-SENDEROS &amp; AVES</span>
+<span class="text-[10px] text-[#15803D] bg-[#DCFCE7] font-semibold px-2 py-0.5 rounded font-sans">Naturaleza</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Tono verde musgo/lima con icono ornitológico para Limones y Najasa.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[#1E5631] hover:bg-[#163F24] text-white text-xs uppercase tracking-wider font-bold shadow-xs transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[#86EFAC] text-[18px]">flutter_dash</span>
+<span>Rutas de Avistamiento</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- 06. Barro y Cerámica Tinajonera (Terracota) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#C35D38] tracking-wide">06. BARRO &amp; TALLER TINAJONERO</span>
+<span class="text-[10px] text-[#C35D38] bg-[#F8ECE7] font-semibold px-2 py-0.5 rounded font-sans">Cultura &amp; Arte</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Terracota viva evocando los tinajones coloniales y la arcilla de Camagüey.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#C35D38] hover:bg-[#AB4D2B] text-white text-xs uppercase tracking-wider font-bold shadow-sm transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+<span>Reservar Taller de Arcilla</span>
+</button>
+</div>
+</div>
+<!-- 07. Patrimonio & Laberinto Colonial (Azulejo Colonial) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#1E3A8A] tracking-wide">07. LABERINTO PATRIMONIAL</span>
+<span class="text-[10px] text-[#1D4ED8] bg-[#DBEAFE] font-semibold px-2 py-0.5 rounded font-sans">Patrimonio</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Azul ultramar colonial con icono de arquitectura medieval y diseño pirata.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs uppercase tracking-wider font-bold shadow-xs transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+<span>Descubrir Plazas Ocultas</span>
+</button>
+</div>
+</div>
+<!-- 08. Mesa Camagüeyana & Gastronomía (Ámbar y Especias) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#92400E] tracking-wide">08. MESA &amp; FOGÓN CRIOLLO</span>
+<span class="text-[10px] text-[#B45309] bg-[#FEF3C7] font-semibold px-2 py-0.5 rounded font-sans">Gastronomía</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Tono miel y ajiaco tradicional para clases culinarias y catas de ron local.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#B45309] hover:bg-[#92400E] text-white text-xs uppercase tracking-wider font-bold shadow-xs transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+<span>Cena con Anfitriona Local</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- GRUPO 3: WhatsApp, Reservas Directas & Contacto Humano -->
+<section class="bg-white rounded-3xl p-6 md:p-8 border border-[#E8E1D5] shadow-xs">
+<div class="flex items-center justify-between border-b border-[#F4EEE4] pb-4 mb-6">
+<div>
+<span class="text-xs font-bold text-[#059669] uppercase tracking-wider bg-[#ECFDF5] px-2.5 py-1 rounded-md font-sans">Colección 03</span>
+<h2 class="font-zodiak font-bold text-2xl text-[#183B2D] mt-2">WhatsApp &amp; Conversión Directa</h2>
+<p class="text-xs text-[#78716C] mt-0.5 font-sans">El canal primordial en Cuba: atención humana inmediata sin intermediarios</p>
+</div>
+<span class="material-symbols-outlined text-[#059669] text-3xl opacity-40">chat</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 09. WhatsApp Esmeralda Sólido (Banner Final) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#047857] tracking-wide">09. WHATSAPP ESMERALDA ALTA VISIBILIDAD</span>
+<span class="text-[10px] text-[#065F46] bg-[#A7F3D0] px-2 py-0.5 rounded font-semibold font-sans">Conversión #1</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Verde esmeralda vibrante presente en el banner final y footer del diseño móvil.</p>
+</div>
+<div class="pt-2">
+<button class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#10B981] hover:bg-[#059669] text-white text-xs uppercase tracking-widest font-extrabold shadow-sm transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>ESCRÍBENOS POR WHATSAPP</span>
+</button>
+</div>
+</div>
+<!-- 10. WhatsApp Flotante Circular (FAB) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#047857] tracking-wide">10. BOTÓN FLOTANTE PERMANENTE (FAB)</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Móvil Fijo</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Botón de esquina inferior derecha con onda de pulso para dudas en tiempo real.</p>
+</div>
+<div class="pt-2 flex items-center gap-4">
+<button class="w-13 h-13 rounded-full bg-[#10B981] hover:bg-[#059669] text-white flex items-center justify-center shadow-lg transition-transform active:scale-90 relative" type="button">
+<span class="material-symbols-outlined text-[26px]">chat</span>
+<span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#C35D38] border-2 border-white rounded-full"></span>
+</button>
+<div class="text-xs text-[#78716C] font-sans">
+<span class="font-bold text-[#183B2D] block font-sans">Chat con Guía Nativo</span>
+              Respuesta en menos de 2h
+            </div>
+</div>
+</div>
+<!-- 11. WhatsApp con Insignia de Confianza (Respuesta <2h) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">11. BARRA WHATSAPP INFORMATIVA</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Detalle Tour</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Fondo bosque oscuro con pastilla verde acentuada y microtexto de seguridad.</p>
+</div>
+<div class="pt-2">
+<button class="w-full flex items-center justify-between px-5 py-3 rounded-2xl bg-[#183B2D] hover:bg-[#10281F] text-white transition-all active:scale-98" type="button">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-[#10B981] flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div class="text-left font-sans">
+<p class="text-xs font-bold leading-tight font-sans">Consultar Disponibilidad</p>
+<p class="text-[10px] text-[#A7F3D0] font-sans">Sin pagos adelantados</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-[#A7F3D0]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- 12. Solicitud por Email / Formulario Alternativo -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">12. ITINERARIO PERSONALIZADO (OUTLINE)</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Alternativa</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Para agencias o viajeros que prefieren cotización formal por correo electrónico.</p>
+</div>
+<div class="pt-2">
+<button class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#D7CFC2] hover:border-[#183B2D] text-[#183B2D] bg-white hover:bg-[#FAF7F2] text-xs font-bold tracking-wide transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Solicitar Itinerario Privado</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- GRUPO 4: Filtros de Píldora, Tags & Segmentadores -->
+<section class="bg-white rounded-3xl p-6 md:p-8 border border-[#E8E1D5] shadow-xs">
+<div class="flex items-center justify-between border-b border-[#F4EEE4] pb-4 mb-6">
+<div>
+<span class="text-xs font-bold text-[#78716C] uppercase tracking-wider bg-[#F5F5F4] px-2.5 py-1 rounded-md font-sans">Colección 04</span>
+<h2 class="font-zodiak font-bold text-2xl text-[#183B2D] mt-2">Filtros, Píldoras &amp; Navegación</h2>
+<p class="text-xs text-[#78716C] mt-0.5 font-sans">Para organizar el catálogo de tours según intereses del viajero</p>
+</div>
+<span class="material-symbols-outlined text-[#78716C] text-3xl opacity-40">tune</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 13. Píldora Filtro Activa (Verde Bosque) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">13. FILTRO ACTIVO / SELECCIONADO</span>
+<span class="text-[10px] text-white bg-[#183B2D] px-2 py-0.5 rounded font-semibold font-sans">Estado Activo</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Fondo oscuro con punto verde brillante indicador de filtro encendido.</p>
+</div>
+<div class="pt-2 flex flex-wrap gap-2">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#183B2D] text-white text-xs font-semibold shadow-xs font-sans" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+<span>Todos los Tours</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-[#E8E1D5] text-[#57534E] hover:border-[#183B2D] text-xs font-medium font-sans" type="button">
+<span class="material-symbols-outlined text-[15px] text-[#16A34A]">park</span>
+<span>Naturaleza</span>
+</button>
+</div>
+</div>
+<!-- 14. Píldora Filtro Terracota (Cultura / Patrimonio) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#C35D38] tracking-wide">14. PÍLDORA CATEGORÍA PATRIMONIO</span>
+<span class="text-[10px] text-[#C35D38] bg-[#F8ECE7] px-2 py-0.5 rounded font-semibold font-sans">Etiqueta Card</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Insignia colocada sobre las fotografías de tours para clasificar el contenido.</p>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#183B2D]/90 backdrop-blur-xs text-white text-[11px] font-semibold tracking-wider uppercase font-sans" type="button">
+<span class="material-symbols-outlined text-[14px] text-[#C35D38]">account_balance</span>
+<span>Patrimonio</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#183B2D]/90 backdrop-blur-xs text-white text-[11px] font-semibold tracking-wider uppercase font-sans" type="button">
+<span class="material-symbols-outlined text-[14px] text-[#22C55E]">eco</span>
+<span>Naturaleza</span>
+</button>
+</div>
+</div>
+<!-- 15. Controles Carrusel Circular (Prev / Next) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">15. BOTONES DE NAVEGACIÓN SLIDER</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Controles UI</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Botones circulares flotantes para pasar diapositivas y testimonios.</p>
+</div>
+<div class="pt-2 flex items-center gap-3">
+<button aria-label="Anterior" class="w-10 h-10 rounded-full bg-[#183B2D] text-white flex items-center justify-center hover:bg-[#10281F] shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Siguiente" class="w-10 h-10 rounded-full bg-[#183B2D] text-white flex items-center justify-center hover:bg-[#10281F] shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<span class="text-xs text-[#78716C] ml-2 font-sans">Variante fondo blanco:</span>
+<button aria-label="Siguiente blanco" class="w-10 h-10 rounded-full bg-white border border-[#E8E1D5] text-[#183B2D] flex items-center justify-center hover:bg-[#F4EEE4] shadow-2xs active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- 16. Enlace Editorial con Flecha ("Ver todos los tours") -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">16. ENLACE EDITORIAL SUBRAYADO DINÁMICO</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Texto Enlace</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Para cabeceras de sección que dirigen a la página completa de experiencias.</p>
+</div>
+<div class="pt-2 flex flex-col gap-2 font-sans">
+<a class="inline-flex items-center gap-2 text-[#183B2D] hover:text-[#C35D38] font-zodiak font-bold text-sm tracking-wide transition-colors group" href="#tours">
+<span>Ver todos los tours y expediciones</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform text-[#C35D38]">east</span>
+</a>
+<a class="inline-flex items-center gap-1.5 text-xs text-[#78716C] hover:text-[#183B2D] font-medium tracking-wide font-sans" href="#galeria">
+<span>Descargar Guía de Flora de Najasa (PDF)</span>
+<span class="material-symbols-outlined text-[15px]">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- GRUPO 5: Botones Especiales, Glassmorphism & Micro-interacciones -->
+<section class="bg-white rounded-3xl p-6 md:p-8 border border-[#E8E1D5] shadow-xs">
+<div class="flex items-center justify-between border-b border-[#F4EEE4] pb-4 mb-6">
+<div>
+<span class="text-xs font-bold text-[#B8860B] uppercase tracking-wider bg-[#FEF9E7] px-2.5 py-1 rounded-md font-sans">Colección 05</span>
+<h2 class="font-zodiak font-bold text-2xl text-[#183B2D] mt-2">Especiales, Glassmorphism &amp; Micro-Acciones</h2>
+<p class="text-xs text-[#78716C] mt-0.5 font-sans">Diseñados para superponer sobre fotografías, barras fijas y redes sociales</p>
+</div>
+<span class="material-symbols-outlined text-[#B8860B] text-3xl opacity-40">auto_awesome</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 17. Glassmorphic Dark (Sobre Fotos del Slider Hero) -->
+<div class="p-5 rounded-2xl bg-[#183B2D] text-white flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#86EFAC] tracking-wide">17. GLASSMORPHISM SOBRE FOTOGRAFÍA</span>
+<span class="text-[10px] text-white bg-white/20 px-2 py-0.5 rounded font-sans">Hero Overlay</span>
+</div>
+<p class="text-xs text-[#D1D5DB] font-sans">Diseñado para superponerse con legibilidad sobre imágenes de la Cotorra o Cartacuba.</p>
+</div>
+<div class="pt-2">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md text-white text-xs uppercase tracking-wider font-bold transition-all active:scale-95 font-sans" type="button">
+<span class="material-symbols-outlined text-[17px] text-[#22C55E]">play_circle</span>
+<span>Ver Documental de la Sierra</span>
+</button>
+</div>
+</div>
+<!-- 18. Botón Insignia "Más Popular" / Recomendado -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">18. ACCIÓN CON DISTINTIVO FAVORITO</span>
+<span class="text-[10px] text-[#B8860B] bg-[#FEF9E7] font-semibold px-2 py-0.5 rounded font-sans">Recomendado</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Botón de reserva que incorpora estrella de distinción y precio integrado.</p>
+</div>
+<div class="pt-2">
+<button class="w-full flex items-center justify-between px-5 py-3 rounded-xl bg-[#183B2D] hover:bg-[#10281F] text-white text-xs font-semibold transition-all font-sans" type="button">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#FBBF24] text-[18px]">hotel_class</span>
+<span>Reservar Tour Estrella</span>
+</span>
+<span class="bg-[#22C55E]/20 text-[#86EFAC] px-2 py-0.5 rounded font-mono font-bold">Desde $55</span>
+</button>
+</div>
+</div>
+<!-- 19. Barra de Navegación Inferior (Tabs Móvil) -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">19. BOTONES DE TAB BAR INFERIOR</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Navegación Fija</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Icono + etiqueta vertical para la navegación del pie de pantalla móvil.</p>
+</div>
+<div class="pt-2 bg-white p-2 rounded-xl border border-[#E8E1D5] flex justify-around">
+<button class="flex flex-col items-center text-[#183B2D] font-bold text-[10px] font-sans" type="button">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span>Inicio</span>
+</button>
+<button class="flex flex-col items-center text-[#78716C] hover:text-[#183B2D] text-[10px] font-sans" type="button">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Tours</span>
+</button>
+<button class="flex flex-col items-center text-[#78716C] hover:text-[#183B2D] text-[10px] font-sans" type="button">
+<span class="material-symbols-outlined text-[20px]">photo_library</span>
+<span>Galería</span>
+</button>
+<button class="flex flex-col items-center text-[#78716C] hover:text-[#183B2D] text-[10px] font-sans" type="button">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Nosotros</span>
+</button>
+</div>
+</div>
+<!-- 20. Micro-acciones de Redes Sociales & Compartir -->
+<div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-zodiak font-bold text-[13px] text-[#183B2D] tracking-wide">20. BOTONES SOCIALES &amp; COMPARTIR</span>
+<span class="text-[10px] text-[#78716C] bg-white px-2 py-0.5 rounded border border-[#E8E1D5] font-sans">Footer / Ficha</span>
+</div>
+<p class="text-xs text-[#57534E] font-sans">Botones circulares suaves para compartir el tour en Instagram, Facebook o enlace.</p>
+</div>
+<div class="pt-2 flex items-center gap-3 font-sans">
+<button aria-label="Compartir en Facebook" class="w-10 h-10 rounded-full bg-white border border-[#E8E1D5] text-[#183B2D] hover:bg-[#183B2D] hover:text-white flex items-center justify-center transition-all" type="button">
+<span class="text-xs font-bold font-sans">fb</span>
+</button>
+<button aria-label="Compartir en Instagram" class="w-10 h-10 rounded-full bg-white border border-[#E8E1D5] text-[#183B2D] hover:bg-[#183B2D] hover:text-white flex items-center justify-center transition-all" type="button">
+<span class="text-xs font-bold font-sans">ig</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-[#E8E1D5] text-[#183B2D] hover:bg-[#F4EEE4] text-xs font-semibold transition-all font-sans" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span>Compartir Expedición</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Resumen de Uso y Buenas Prácticas -->
+<section class="bg-[#183B2D] rounded-3xl p-6 md:p-8 text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-[#22C55E] text-2xl">verified</span>
+<h3 class="font-zodiak font-bold text-xl">Reglas de Aplicación para el Sitio Web</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#D1D5DB] leading-relaxed font-sans">
+<div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+<strong class="text-white block mb-1 text-sm font-sans font-semibold">1. Jerarquía Clara</strong>
+          No uses más de un botón con fondo <em>#183B2D</em> por área visual visible. Combínalo con variantes outline o enlaces editoriales de texto.
+        </div>
+<div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+<strong class="text-white block mb-1 text-sm font-sans font-semibold">2. Terracota como Acento Cultural</strong>
+          El color barro (<em>#C35D38</em>) se reserva para talleres de cerámica, historia y elementos conmemorativos del patrimonio de Camagüey.
+        </div>
+<div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+<strong class="text-white block mb-1 text-sm font-sans font-semibold">3. WhatsApp como Conversión Rápida</strong>
+          El verde esmeralda brillante (<em>#10B981 / #22C55E</em>) está reservado exclusivamente para la comunicación y reservas directas por chat.
+        </div>
+</div>
+</section>
+</main>
+</body></html>
