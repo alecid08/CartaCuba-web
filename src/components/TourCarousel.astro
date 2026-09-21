@@ -16,10 +16,10 @@ const allTours = [...startClones, ...tours, ...endClones];
   <!-- Nav Buttons -->
   <button 
     id="tour-prev" 
-    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
-    aria-label="Tours anteriores"
+    class="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer z-40"
+    aria-label="Anterior"
   >
-    <span class="material-symbols-outlined text-2xl font-bold">west</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_left</span>
   </button>
 
   <!-- Track Wrapper -->
@@ -111,10 +111,10 @@ const allTours = [...startClones, ...tours, ...endClones];
   <!-- Nav Buttons -->
   <button 
     id="tour-next" 
-    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
-    aria-label="Tours siguientes"
+    class="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer z-40"
+    aria-label="Siguiente"
   >
-    <span class="material-symbols-outlined text-2xl font-bold">east</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_right</span>
   </button>
 </div>
 
@@ -130,16 +130,6 @@ const allTours = [...startClones, ...tours, ...endClones];
       padding-left: 4rem; /* 64px */
       padding-right: 4rem; /* 64px */
     }
-  }
-
-  /* Nav Buttons Styling */
-  .tour-nav-btn {
-    width: 44px;
-    height: 44px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #C47A2C;
-    z-index: 45;
   }
 
   #tour-prev {
