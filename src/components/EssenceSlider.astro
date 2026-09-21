@@ -45,16 +45,10 @@ const allEssences = [...startClones, ...essences, ...endClones];
   <!-- Nav Buttons (Visible and functional in all formats) -->
   <button 
     id="essence-prev" 
-    class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex items-center gap-1.5 bg-[#E8D8B7] hover:bg-[#1F3D2B] border border-[#1F3D2B] text-[#1F3D2B] hover:text-[#E8D8B7] rounded-full p-2.5 sm:px-4 sm:py-2 transition-all duration-300 active:scale-95 shadow-md cursor-pointer hover:shadow-lg group"
-    aria-label="Anterior esencia"
+    class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer"
+    aria-label="Anterior"
   >
-    <span class="material-symbols-outlined text-lg sm:text-xl font-bold transition-transform group-hover:-translate-x-0.5">west</span>
-    <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-colors" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 80C30 80 65 65 80 40C90 25 85 5 70 10C50 15 35 40 30 55C25 45 20 30 10 25C0 20 0 40 5 55C7 63 7 73 15 80Z" fill="currentColor"/>
-      <path d="M70 10C63 13 57 20 55 27C59 29 65 27 70 23C72 19 72 13 70 10Z" fill="#bb0017"/>
-      <circle cx="73" cy="17" r="2.5" fill="white"/>
-    </svg>
-    <span class="hidden md:inline font-label-md text-[11px] font-bold uppercase tracking-wider">Camagüey</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_left</span>
   </button>
 
   <!-- Track Wrapper -->
@@ -124,16 +118,10 @@ const allEssences = [...startClones, ...essences, ...endClones];
   <!-- Next Button -->
   <button 
     id="essence-next" 
-    class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex items-center gap-1.5 bg-[#E8D8B7] hover:bg-[#1F3D2B] border border-[#1F3D2B] text-[#1F3D2B] hover:text-[#E8D8B7] rounded-full p-2.5 sm:px-4 sm:py-2 transition-all duration-300 active:scale-95 shadow-md cursor-pointer hover:shadow-lg group"
-    aria-label="Siguiente esencia"
+    class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer"
+    aria-label="Siguiente"
   >
-    <span class="hidden md:inline font-label-md text-[11px] font-bold uppercase tracking-wider">Camagüey</span>
-    <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-colors" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 80C30 80 65 65 80 40C90 25 85 5 70 10C50 15 35 40 30 55C25 45 20 30 10 25C0 20 0 40 5 55C7 63 7 73 15 80Z" fill="currentColor"/>
-      <path d="M70 10C63 13 57 20 55 27C59 29 65 27 70 23C72 19 72 13 70 10Z" fill="#bb0017"/>
-      <circle cx="73" cy="17" r="2.5" fill="white"/>
-    </svg>
-    <span class="material-symbols-outlined text-lg sm:text-xl font-bold transition-transform group-hover:translate-x-0.5">east</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_right</span>
   </button>
 </div>
 

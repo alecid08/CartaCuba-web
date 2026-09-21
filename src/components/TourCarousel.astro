@@ -16,10 +16,10 @@ const allTours = [...startClones, ...tours, ...endClones];
   <!-- Nav Buttons -->
   <button 
     id="tour-prev" 
-    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
-    aria-label="Tours anteriores"
+    class="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer z-40"
+    aria-label="Anterior"
   >
-    <span class="material-symbols-outlined text-2xl font-bold">west</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_left</span>
   </button>
 
   <!-- Track Wrapper -->
@@ -81,8 +81,12 @@ const allTours = [...startClones, ...tours, ...endClones];
               <!-- 6. Botón CTA — al fondo de la card -->
               <a 
                 href={`${cleanBase}tours/${tour.id}/`}
-                class="w-full bg-[#1F3D2B] text-white hover:bg-[#3E6B48] text-center py-2.5 rounded-full font-label-md transition-all duration-300 flex items-center justify-center gap-2 text-xs font-bold relative z-40"
+                class="w-full bg-primary text-white hover:bg-on-primary-fixed text-center py-2.5 px-4 rounded-full font-label-md transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-bold relative z-40 active:scale-95 font-sans"
               >
+                {tour.id === 'camaguey-laberintica' && <span class="material-symbols-outlined text-[16px]">account_balance</span>}
+                {tour.id === 'arte-bohemia' && <span class="material-symbols-outlined text-[16px]">handshake</span>}
+                {(tour.id === 'campina-sierra-najasa' || tour.id === 'limones-tuabaquey') && <span class="material-symbols-outlined text-[#86EFAC] text-[16px]">flutter_dash</span>}
+                {tour.id === 'mesa-camagueyana' && <span class="material-symbols-outlined text-[16px]">restaurant</span>}
                 <span>Conocer más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -107,10 +111,10 @@ const allTours = [...startClones, ...tours, ...endClones];
   <!-- Nav Buttons -->
   <button 
     id="tour-next" 
-    class="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer tour-nav-btn"
-    aria-label="Tours siguientes"
+    class="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-on-primary-fixed shadow-sm active:scale-95 transition-all cursor-pointer z-40"
+    aria-label="Siguiente"
   >
-    <span class="material-symbols-outlined text-2xl font-bold">east</span>
+    <span class="material-symbols-outlined text-[20px]">chevron_right</span>
   </button>
 </div>
 
@@ -126,16 +130,6 @@ const allTours = [...startClones, ...tours, ...endClones];
       padding-left: 4rem; /* 64px */
       padding-right: 4rem; /* 64px */
     }
-  }
-
-  /* Nav Buttons Styling */
-  .tour-nav-btn {
-    width: 44px;
-    height: 44px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #C47A2C;
-    z-index: 45;
   }
 
   #tour-prev {

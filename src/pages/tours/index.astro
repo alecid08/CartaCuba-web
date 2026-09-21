@@ -30,7 +30,7 @@ const featuredTour = tours[0];
         <div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full group-hover:scale-110 transition-transform"></div>
         <div class="relative z-10 space-y-4">
           <div class="flex justify-between items-start">
-            <span class="bg-[#e41e27] text-white text-[11px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider">Más Vendido</span>
+            <span class="bg-terracotta text-white text-[11px] font-label-md px-3 py-1 rounded-full uppercase tracking-wider">Más Vendido</span>
             <div class="text-right">
               <span class="text-xs text-on-surface-variant dark:text-surface-variant block uppercase">Precio especial</span>
               <span class="font-bold text-primary font-headline-sm text-lg">${featuredTour.price} USD</span>
@@ -45,10 +45,13 @@ const featuredTour = tours[0];
           <div class="pt-2">
             <a 
               href={`${cleanBase}tours/${featuredTour.id}/`} 
-              class="w-full bg-[#bb0017] hover:bg-[#a00012] text-white text-center py-3 px-6 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              class="w-full flex items-center justify-between px-5 py-3 rounded-xl bg-primary hover:bg-on-primary-fixed text-white text-xs uppercase tracking-wider font-bold transition-all active:scale-95 font-sans"
             >
-              <span>Reservar Tour Destacado</span>
-              <span class="material-symbols-outlined text-[18px]">explore</span>
+              <span class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[#FBBF24] text-[18px]">hotel_class</span>
+                <span>Reservar Tour Destacado</span>
+              </span>
+              <span class="bg-[#22C55E]/20 text-[#86EFAC] px-2 py-0.5 rounded font-mono font-bold">Desde ${featuredTour.price}</span>
             </a>
           </div>
         </div>
@@ -115,9 +118,13 @@ const featuredTour = tours[0];
                   </span>
                 </div>
                 
-                <div class="bg-[#1F3D2B]/10 text-[#1F3D2B] group-hover:bg-[#1F3D2B] group-hover:text-white px-8 py-3 rounded-full font-label-md text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300">
+                <div class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary hover:bg-on-primary-fixed text-white text-xs uppercase tracking-wider font-bold shadow-xs transition-all active:scale-95 font-sans">
+                  {tour.id === 'camaguey-laberintica' && <span class="material-symbols-outlined text-[18px]">account_balance</span>}
+                  {tour.id === 'arte-bohemia' && <span class="material-symbols-outlined text-[18px]">handshake</span>}
+                  {(tour.id === 'campina-sierra-najasa' || tour.id === 'limones-tuabaquey') && <span class="material-symbols-outlined text-[#86EFAC] text-[18px]">flutter_dash</span>}
+                  {tour.id === 'mesa-camagueyana' && <span class="material-symbols-outlined text-[18px]">restaurant</span>}
                   <span>Ver Detalles</span>
-                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </div>
               </div>
             </div>
