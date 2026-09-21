@@ -115,9 +115,13 @@ const featuredTour = tours[0];
                   </span>
                 </div>
                 
-                <div class="bg-[#1F3D2B]/10 text-[#1F3D2B] group-hover:bg-[#1F3D2B] group-hover:text-white px-8 py-3 rounded-full font-label-md text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300">
+                <div class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary hover:bg-on-primary-fixed text-white text-xs uppercase tracking-wider font-bold shadow-xs transition-all active:scale-95 font-sans">
+                  {tour.id === 'camaguey-laberintica' && <span class="material-symbols-outlined text-[18px]">account_balance</span>}
+                  {tour.id === 'arte-bohemia' && <span class="material-symbols-outlined text-[18px]">handshake</span>}
+                  {(tour.id === 'campina-sierra-najasa' || tour.id === 'limones-tuabaquey') && <span class="material-symbols-outlined text-[#86EFAC] text-[18px]">flutter_dash</span>}
+                  {tour.id === 'mesa-camagueyana' && <span class="material-symbols-outlined text-[18px]">restaurant</span>}
                   <span>Ver Detalles</span>
-                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </div>
               </div>
             </div>
